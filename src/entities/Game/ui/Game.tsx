@@ -31,18 +31,19 @@ export const Game: FC<IProps> = ({ name, icon, href, record }) => {
 }
 const GameLayout = styled.div`
   width: 100%;
-  height: 115px;
+  height: 105px;
   background: linear-gradient(268.07deg, #070011 12.96%, #9C80AD 97.1%);
   display: grid;
   grid-template-rows: 2.3fr 1fr;
+  padding: 10px 0 7px 12px;
 
   .top {
-    padding: 20px 10px 0;
     display: flex;
     align-content: baseline;
     //justify-content: space-between;
     //width: 100%;
-    border-bottom: rgba(155, 139, 188, 0.1) 2px solid;
+    border-bottom: rgba(155, 139, 188, 0.2) 2px solid;
+    padding-right: 12px;
 
     .icon-box {
       display: flex;
@@ -50,7 +51,6 @@ const GameLayout = styled.div`
 
       img {
         max-width: 70px;
-        
       }
     }
 
@@ -65,13 +65,13 @@ const GameLayout = styled.div`
         font-family: 'Inter', serif;
         font-style: normal;
         font-weight: 700;
-        font-size: 20px;
+        font-size: 22px;
         line-height: 30px;
         display: flex;
         align-items: center;
         letter-spacing: 0.2em;
 
-        color: #DACEF3;
+        color: white;
 
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       }
@@ -89,13 +89,22 @@ const GameLayout = styled.div`
   }
 
   .bottom {
+    //padding-bottom: 7px;
+    padding-left: 5px;
     display: flex;
     align-content: center;
     height: min-content;
     width: 100%;
 
     span {
-      padding: 5px;
+      //padding: 7px;
+      font-family: 'Inter', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+
+      color: #D7D7D7;
     }
   }
 
