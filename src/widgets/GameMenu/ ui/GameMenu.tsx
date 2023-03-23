@@ -20,6 +20,6 @@ const GameMenuLayout = styled.main`
   display: flex;
   flex-direction: column;
   align-content: center;
-  padding: 20px 10px;
-  gap: 15px;
+  padding: 20px 7px;
+  gap: 7px;
 `
