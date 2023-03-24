@@ -31,7 +31,7 @@ export const Game: FC<IProps> = ({ name, icon, href, record }) => {
 }
 const GameLayout = styled.div`
   width: 100%;
-  max-width: 320px;
+  max-width: 360px;
   height: 105px;
   background: linear-gradient(268.07deg, #070011 12.96%, var(--main-color) 97.1%);
   display: grid;

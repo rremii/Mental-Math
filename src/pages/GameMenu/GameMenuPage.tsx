@@ -2,6 +2,7 @@ import GameMenu from "@widgets/GameMenu/ ui/GameMenu"
 import Header from "@widgets/Header/ui/Header"
 import styled from "styled-components"
 import background from "@shared/assets/DarkTheme/background.png"
+import qwe from "@shared/assets/DarkTheme/image.png"
 
 const GameMenuPage = () => {
 
@@ -13,7 +14,7 @@ const GameMenuPage = () => {
 }
 export default GameMenuPage
 const GameMenuLayout = styled.div`
-  background-image: url(${background});
+  background-image: url(${qwe});
   background-size: cover;
   min-height: 100%;
   max-width: 600px;
