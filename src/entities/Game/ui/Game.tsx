@@ -30,9 +30,10 @@ export const Game: FC<IProps> = ({ name, icon, href, record }) => {
   </GameLayout>
 }
 const GameLayout = styled.div`
-  width: 90%;
+  width: 100%;
+  max-width: 320px;
   height: 105px;
-  background: linear-gradient(268.07deg, #070011 12.96%, #5d85e8 97.1%);
+  background: linear-gradient(268.07deg, #070011 12.96%, var(--main-color) 97.1%);
   display: grid;
   grid-template-rows: 2.3fr 1fr;
   padding: 10px 0 7px 12px;
@@ -74,7 +75,7 @@ const GameLayout = styled.div`
         align-items: center;
         letter-spacing: 0.2em;
         word-wrap: break-word;
-        color: white;
+        color: rgba(255, 255, 255, 0.8);
         max-width: 50px;
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       }
@@ -107,7 +108,7 @@ const GameLayout = styled.div`
       font-size: 16px;
       line-height: 19px;
 
-      color: #D7D7D7;
+      color: #c1c0c0;
     }
   }
 
