@@ -30,9 +30,9 @@ export const Game: FC<IProps> = ({ name, icon, href, record }) => {
   </GameLayout>
 }
 const GameLayout = styled.div`
-  width: 100%;
+  width: 90%;
   height: 105px;
-  background: linear-gradient(268.07deg, #070011 12.96%, #9C80AD 97.1%);
+  background: linear-gradient(268.07deg, #070011 12.96%, #5d85e8 97.1%);
   display: grid;
   grid-template-rows: 2.3fr 1fr;
   padding: 10px 0 7px 12px;
@@ -48,6 +48,8 @@ const GameLayout = styled.div`
     .icon-box {
       display: flex;
       align-items: center;
+      justify-content: center;
+      flex: 0 0 70px;
 
       img {
         max-width: 70px;
@@ -62,17 +64,18 @@ const GameLayout = styled.div`
       justify-content: center;
 
       span {
+        transform: translateX(-100%);
         font-family: 'Inter', serif;
         font-style: normal;
         font-weight: 700;
-        font-size: 22px;
+        font-size: 18px;
         line-height: 30px;
         display: flex;
         align-items: center;
         letter-spacing: 0.2em;
-
+        word-wrap: break-word;
         color: white;
-
+        max-width: 50px;
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       }
     }
