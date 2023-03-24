@@ -18,7 +18,7 @@ const Header = () => {
 export default Header
 const HeaderLayout = styled.header`
   height: 74px;
-  background-color: #080f25;
+  background-color: var(--dark-main-color);
 
   display: flex;
   justify-content: space-between;
