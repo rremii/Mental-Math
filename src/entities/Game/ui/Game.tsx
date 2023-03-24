@@ -36,8 +36,9 @@ const GameLayout = styled.div`
   background: linear-gradient(268.07deg, #070011 12.96%, var(--main-color) 97.1%);
   display: grid;
   grid-template-rows: 2.3fr 1fr;
-  padding: 10px 0 7px 12px;
-
+  row-gap: 5px;
+  padding: 10px 0 0px 12px;
+  
   .top {
     display: flex;
     align-content: baseline;
@@ -97,8 +98,8 @@ const GameLayout = styled.div`
     padding-left: 5px;
     display: flex;
     align-content: center;
-    height: min-content;
     width: 100%;
+    height: 100%;
 
     span {
       //padding: 7px;
@@ -107,7 +108,6 @@ const GameLayout = styled.div`
       font-weight: 400;
       font-size: 16px;
       line-height: 19px;
-
       color: #c1c0c0;
     }
   }
