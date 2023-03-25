@@ -18,8 +18,8 @@ const Header = () => {
 export default Header
 const HeaderLayout = styled.header`
   height: 74px;
-  background-color: var(--dark-main-color);
-
+  background: linear-gradient(349.08deg, #1B0324 7.62%, #080013 91.55%);
+  box-shadow: 0px 7px 50px #300F4A;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,8 +31,11 @@ const HeaderLayout = styled.header`
     font-weight: 400;
     font-size: 32px;
     line-height: 39px;
-    -webkit-text-stroke: 1px #4D4363;
-    color: white;
+
+
+    color: #FFFFFF;
+
+    text-shadow: 0px 1px 7px rgba(255, 255, 255, 0.25);
   }
 
   .settings {

@@ -14,7 +14,7 @@ const GameMenuPage = () => {
 }
 export default GameMenuPage
 const GameMenuLayout = styled.div`
-  background-image: url(${qwe});
+  background-image: url(${background  });
   background-size: cover;
   min-height: 100%;
   max-width: 600px;
