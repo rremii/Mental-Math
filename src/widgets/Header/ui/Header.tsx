@@ -8,7 +8,7 @@ const Header = () => {
     {/*<img alt='logo' className="logo" src={}/>*/}
     <span></span>
     <div className="logo">
-      Quick Brains
+      Mental Math
     </div>
     <div className="settings">
       <img src={Settings} alt="settings" />

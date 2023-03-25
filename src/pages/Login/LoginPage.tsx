@@ -1,18 +1,20 @@
 import GameMenu from "@widgets/GameMenu/ ui/GameMenu"
 import Header from "@widgets/Header/ui/Header"
 import styled from "styled-components"
+import { LoginMenu } from "@widgets/LoginMenu"
 import background from "@shared/assets/DarkTheme/background.png"
 
-const GameMenuPage = () => {
+const LoginPage = () => {
 
 
-  return <GameMenuLayout>
+  return <LoginLayout>
     <Header />
-    <GameMenu />
-  </GameMenuLayout>
+    <LoginMenu />
+  </LoginLayout>
 }
-export default GameMenuPage
-const GameMenuLayout = styled.div`
+export default LoginPage
+const LoginLayout = styled.div`
+  
   min-height: 100%;
   max-width: 600px;
   width: 100%;
