@@ -3,43 +3,34 @@ import { NavLink, useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
+import { FC, ReactNode } from "react"
+import { FormFields } from "@entities/Auth"
 
-type Inputs = {
-  email: string;
-  password: string;
-};
 
-const schema = yup.object().shape({
-  email: yup.string().required(),
-  password: yup.string().required()
-}).required()
+interface IProps {
+  children: ReactNode[]
+  OnSubmit: () => void
+  title: string
+  btnText: string
+  linkText: string
+  linkHref: string
+}
 
-export const Form = () => {
-  const navigate = useNavigate()
+export const Form: FC<IProps> = ({ children, OnSubmit, btnText, linkText, title, linkHref }) => {
 
-  const { register, handleSubmit, reset } = useForm<Inputs>({
-    resolver: yupResolver(schema) // yup, joi and even your own.
-  })
 
-  const OnSubmit = (data: Inputs) => {
-    console.log(data)
-    reset()
-    navigate("/game-menu")
-  }
-
-  return <FormLayout onSubmit={handleSubmit(OnSubmit)}>
+  return <FormLayout autoComplete="off" onSubmit={OnSubmit}>
     <div className="title">
-      <h2>Sign In</h2>
+      <h2>{title}</h2>
     </div>
     <div className="input-box">
-      <input type="email" {...register("email")} placeholder="Email" />
-      <input type="password"  {...register("password")} placeholder="Password" />
+      {children}
     </div>
     <div className="submit-box">
-      <button type="submit">Sign In</button>
+      <button type="submit">{btnText}</button>
     </div>
-    <NavLink to="#" className="link">
-      Already have an account?
+    <NavLink to={"/" + linkHref} className="link">
+      {linkText}
     </NavLink>
   </FormLayout>
 }
@@ -52,7 +43,7 @@ const FormLayout = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 29px 26px 0;
+  padding: 29px 26px 29px;
 
   .title {
     margin-bottom: 56px;

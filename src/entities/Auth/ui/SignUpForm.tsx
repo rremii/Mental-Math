@@ -6,25 +6,27 @@ import * as yup from "yup"
 import { useNavigate } from "react-router-dom"
 
 export interface FormFields {
+  userName: string
   email: string;
   password: string;
 }
 
 
 const schema = yup.object().shape({
+  userName: yup.string().required(),
   email: yup.string().required(),
   password: yup.string().required()
 }).required()
 
 
-const LoginFormData = {
-  btnText: "Sign In",
-  linkText: "Don't have an account yet?",
-  title: "Sign In",
-  linkHref: "sign-up"
+const SignUpFormData = {
+  btnText: "Sign Up",
+  linkText: "Already have an account?",
+  title: "Sign Up",
+  linkHref: "login"
 }
 
-export const LoginForm = () => {
+export const SignUpForm = () => {
   const navigate = useNavigate()
 
 
@@ -38,9 +40,10 @@ export const LoginForm = () => {
     navigate("/game-menu")
   }
 
-  return <Form {...LoginFormData} OnSubmit={handleSubmit(OnSubmit)}>
-    <input type="email" {...register("email")} placeholder="Email" />
-    <input type="password"  {...register("password")} placeholder="Password" />
+  return <Form {...SignUpFormData} OnSubmit={handleSubmit(OnSubmit)}>
+    <input autoComplete={"off"} type="text" {...register("userName")} placeholder="Name" />
+    <input autoComplete={"off"} type="email" {...register("email")} placeholder="Email" />
+    <input autoComplete={"off"} type="password"  {...register("password")} placeholder="Password" />
   </Form>
 
 }
