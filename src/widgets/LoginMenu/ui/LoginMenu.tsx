@@ -25,9 +25,11 @@ export const LoginMenu = () => {
 const LoginMenuLayout = styled.main`
   display: flex;
   flex-direction: column;
+  position: relative;
   align-items: center;
   //justify-content: space-evenly;
-  max-height: 100%;
+  height: min-content;
+
   gap: 62px;
   padding-top: 50px;
   padding-bottom: 50px;

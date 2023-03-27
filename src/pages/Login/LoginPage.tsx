@@ -14,10 +14,13 @@ const LoginPage = () => {
 }
 export default LoginPage
 const LoginLayout = styled.div`
-  
-  min-height: 100%;
+  background-color: red;
+  height: 100%;
   max-width: 600px;
   width: 100%;
   background-image: url(${background});
   background-size: cover;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 50px;
 `

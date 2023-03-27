@@ -17,7 +17,7 @@ const Header = () => {
 }
 export default Header
 const HeaderLayout = styled.header`
-  height: 74px;
+  flex: 0 0 74px;
   background: linear-gradient(349.08deg, #1B0324 7.62%, #080013 91.55%);
   box-shadow: 0px 7px 50px #300F4A;
   display: flex;
