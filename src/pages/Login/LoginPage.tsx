@@ -14,8 +14,8 @@ const LoginPage = () => {
 }
 export default LoginPage
 const LoginLayout = styled.div`
-  background-color: red;
-  height: 100%;
+  //height: 100%;
+  height: min-content;
   max-width: 600px;
   width: 100%;
   background-image: url(${background});

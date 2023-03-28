@@ -8,7 +8,6 @@ import AvatarChangeMenu from "@widgets/AvatarChangeMenu/ui/AvatarChangeMenu"
 function App() {
 
   return <Layout>
-    {/*<AvatarChangeMenu />*/}
 
     <Routing />
 

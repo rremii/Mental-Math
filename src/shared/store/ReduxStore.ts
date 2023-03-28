@@ -1,9 +1,10 @@
 import { combineReducers, configureStore, PreloadedState } from "@reduxjs/toolkit"
 import { Reducer } from "redux"
 import { Api } from "../api/config/Api"
+import { AvatarMenuReducer } from "@widgets/AvatarChangeMenu/model/AvatarMenuSlice"
 
 const rootReducer: Reducer = combineReducers({
-  // Nav: NavModel.NavReducer,
+  AvatarMenu: AvatarMenuReducer,
   // ViewMode: ViewModeModel.ViewModeReducer,
   [Api.reducerPath]: Api.reducer
 
@@ -20,7 +21,6 @@ export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
 }
 
 export type RootState = ReturnType<typeof rootReducer>
-
 
 export const store = setupStore()
 

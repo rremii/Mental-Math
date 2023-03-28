@@ -13,11 +13,7 @@ export const LoginMenu = () => {
 
   return <LoginMenuLayout>
     <div className="typing-text-box">
-      {/*  <ChangeAvatar />*/}
       <TypeWriter content={HelloTitle} speed={100} />
-      {/*<TypeWriter>*/}
-      {/*  Login to continue your jurney*/}
-      {/*</TypeWriter>*/}
     </div>
     <LoginForm />
   </LoginMenuLayout>

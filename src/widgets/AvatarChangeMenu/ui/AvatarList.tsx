@@ -12,5 +12,10 @@ export const AvatarList: FC<props> = ({ children }) => {
 }
 const AvatarListLayout = styled.div`
 
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 24px 30px;
+  gap: 20px;
 
 `
