@@ -6,14 +6,14 @@ import "./styles/style.scss"
 import AvatarChangeMenu from "@widgets/AvatarChangeMenu/ui/AvatarChangeMenu"
 
 function App() {
+  //TODO make avatars with hashTables and
+  // disctionaries(when getting avatar from
+  // the backend and choosing which to choose juts push
+  // em all to the Map and get from there by name
 
   return <Layout>
-
     <Routing />
-
-
   </Layout>
-
 }
 
 export default withProviders(App)
