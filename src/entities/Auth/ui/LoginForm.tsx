@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import { useNavigate } from "react-router-dom"
+import { useLoginMutation } from "@entities/Auth/api/AuthApi"
+import { useEffect } from "react"
 
 export interface FormFields {
   email: string;
@@ -32,8 +34,20 @@ export const LoginForm = () => {
     resolver: yupResolver(schema) // yup, joi and even your own.
   })
 
-  const OnSubmit = (data: FormFields) => {
+  const [login, { isLoading, data }] = useLoginMutation()
+
+  useEffect(() => {
+
     console.log(data)
+    // debugger
+
+
+  }, [isLoading, data])
+
+
+  const OnSubmit = async (data: FormFields) => {
+    await login(data)
+
     reset()
     navigate("/game-menu")
   }
