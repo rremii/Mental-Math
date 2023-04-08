@@ -40,8 +40,10 @@ export const SignUpForm = () => {
   const [register, { isLoading, data }] = useRegisterMutation()
 
   useEffect(() => {
-    debugger
     console.log(data)
+    debugger
+
+
   }, [isLoading, data])
   // const Register = useRegister()
 

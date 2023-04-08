@@ -13,9 +13,12 @@ const GameMenuPage = () => {
 }
 export default GameMenuPage
 const GameMenuLayout = styled.div`
-  min-height: 100%;
+  min-height: 100vh;
+  height: min-content;
   max-width: 600px;
   width: 100%;
   background-image: url(${background});
   background-size: cover;
+  display: flex;
+  flex-direction: column;
 `

@@ -2,16 +2,24 @@ import styled from "styled-components"
 import { useEffect, useState } from "react"
 
 
-export const TypeWriter = ({ content = "", speed = 1000 }) => {
+export const TypeWriter = ({ content = "", speed = 1000, delay = 0 }) => {
   const [displayedContent, setDisplayedContent] = useState("")
   const [index, setIndex] = useState(0)
+  const [isStarted, setStart] = useState(false)
 
 
   useEffect(() => {
+    if (!isStarted) {
+      const delayTimer = setTimeout(() => {
+        setStart(true)
+      }, delay)
+      return () => clearTimeout(delayTimer)
+    }
+    if (isStarted) {
       const timer = setTimeout(() => {
         setIndex((index) => {
 
-          if (index >= content.length - 1) {
+          if (index >= content.length) {
             return index
           }
 
@@ -21,10 +29,9 @@ export const TypeWriter = ({ content = "", speed = 1000 }) => {
         })
       }, speed)
 
-
       return () => clearTimeout(timer)
-    }, [displayedContent]
-  )
+    }
+  }, [displayedContent, isStarted, content])
 
 
   return <TextLayout>{displayedContent}</TextLayout>

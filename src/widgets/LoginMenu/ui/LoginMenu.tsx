@@ -2,6 +2,9 @@ import { LoginForm } from "@entities/Auth"
 import styled from "styled-components"
 import { ChangeAvatar } from "@features/ChangeAvatar"
 import { TypeWriter } from "@shared/ui/TypeWriter"
+import { Api } from "@shared/api/config/Api"
+import { useTypedSelector } from "@shared/Hooks/store-hooks"
+import { AuthApi } from "@entities/Auth/api/AuthApi"
 
 //https://codesandbox.io/s/nervous-colden-doq9b?from-embed=&file=/src/styles.css:58-145
 const HelloTitle = `

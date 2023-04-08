@@ -4,6 +4,9 @@ import { withProviders } from "./providers"
 import { Routing } from "../pages"
 import "./styles/style.scss"
 import AvatarChangeMenu from "@widgets/AvatarChangeMenu/ui/AvatarChangeMenu"
+import { Toast } from "@shared/ui/Toast"
+import Layout from "./layout/Layout"
+
 
 function App() {
   //TODO make avatars with hashTables and
@@ -18,14 +21,5 @@ function App() {
 
 export default withProviders(App)
 
-const Layout = styled.div`
-  width: 100vw;
-  height: 100vh;
-  overflow-x: hidden;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  //overflow-y: auto;
 
-`
 

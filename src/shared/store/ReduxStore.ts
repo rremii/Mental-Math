@@ -2,9 +2,13 @@ import { combineReducers, configureStore, PreloadedState } from "@reduxjs/toolki
 import { Reducer } from "redux"
 import { Api } from "../api/config/Api"
 import { AvatarMenuReducer } from "@widgets/AvatarChangeMenu/model/AvatarMenuSlice"
+import { AuthReducer } from "@entities/Auth/model/AuthSlice"
+import { ToastReducer } from "@shared/store/global-slices/ToastSlice"
 
 const rootReducer: Reducer = combineReducers({
   AvatarMenu: AvatarMenuReducer,
+  Auth: AuthReducer,
+  Toast: ToastReducer,
   // ViewMode: ViewModeModel.ViewModeReducer,
   [Api.reducerPath]: Api.reducer
 

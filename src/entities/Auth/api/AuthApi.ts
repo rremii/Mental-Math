@@ -1,7 +1,7 @@
 import { Api } from "@shared/api/config/Api"
 import { AuthResponse, LoginDto, RegisterDto } from "@entities/Auth/types"
 
-const AuthApi = Api.injectEndpoints({
+export const AuthApi = Api.injectEndpoints({
 
   endpoints: (build) => ({
 
@@ -16,6 +16,13 @@ const AuthApi = Api.injectEndpoints({
     }),
 
     login: build.mutation<AuthResponse, LoginDto>({
+      transformErrorResponse: (response, meta, arg) => {
+        console.log("qweqweqwe")
+        return {
+          originalArg: arg,
+          error: response
+        }
+      },
       query: (loginData) => ({
         url: "auth/login",
         method: "POST",

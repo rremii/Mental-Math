@@ -2,6 +2,14 @@ import { BaseQueryFn, createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/r
 import { $api, $apiDefault, API_URL } from "./index"
 import { AxiosInstance, AxiosRequestConfig } from "axios"
 
+interface ApiError {
+  message: string
+  name: string
+  options: {}
+  response: { statusCode: number, message: string, error: string }
+  status: number
+}
+
 const axiosBaseQuery =
   (
     { baseUrl }: { baseUrl: string } = { baseUrl: "" }
@@ -13,7 +21,7 @@ const axiosBaseQuery =
     withInterceptors?: boolean  //use default axios, instead of custom with interceptors
   },
     unknown,
-    unknown> =>
+    ApiError> =>
     async ({ url, method, data, params, withInterceptors }) => {
 
       let result

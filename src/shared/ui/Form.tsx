@@ -14,12 +14,14 @@ interface IProps {
   btnText: string
   linkText: string
   linkHref: string
+  error?: string
 }
 
-export const Form: FC<IProps> = ({ children, OnSubmit, btnText, linkText, title, linkHref }) => {
+export const Form: FC<IProps> = ({ children, OnSubmit, btnText, linkText, title, linkHref, error }) => {
 
 
-  return <FormLayout autoComplete="off" onSubmit={OnSubmit}>
+  return <FormLayout isError={!!error} autoComplete="off" onSubmit={OnSubmit}>
+
     <div className="title">
       <h2>{title}</h2>
     </div>
@@ -34,7 +36,9 @@ export const Form: FC<IProps> = ({ children, OnSubmit, btnText, linkText, title,
     </NavLink>
   </FormLayout>
 }
-const FormLayout = styled.form`
+const FormLayout = styled.form<{
+  isError: boolean
+}>`
 
   width: 280px;
   min-height: 430px;
@@ -89,7 +93,7 @@ const FormLayout = styled.form`
         font-size: 20px;
         line-height: 30px;
 
-        color: rgba(169, 84, 253, 0.56);
+        color: ${({ isError }) => !isError ? "rgba(169, 84, 253, 0.56)" : "red"};
       }
     }
   }
@@ -103,7 +107,7 @@ const FormLayout = styled.form`
     padding-right: 10px;
 
     button {
-      background: #A954FD;
+      background: ${({ isError }) => !isError ? "#A954FD" : "red"};
       border-radius: 9px;
       padding: 5px 19px;
       font-family: 'Inter', sans-serif;
