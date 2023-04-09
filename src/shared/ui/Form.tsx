@@ -14,14 +14,25 @@ interface IProps {
   btnText: string
   linkText: string
   linkHref: string
+  isPending: boolean
   error?: string
   isError?: boolean
 }
 
-export const Form: FC<IProps> = ({ children, OnSubmit, btnText, linkText, title, linkHref, error, isError }) => {
+export const Form: FC<IProps> = ({
+                                   children,
+                                   OnSubmit,
+                                   btnText,
+                                   linkText,
+                                   title,
+                                   linkHref,
+                                   error,
+                                   isError,
+                                   isPending
+                                 }) => {
 
 
-  return <FormLayout isError={!!isError} autoComplete="off" onSubmit={OnSubmit}>
+  return <FormLayout isPending={isPending} isError={!!isError} autoComplete="off" onSubmit={OnSubmit}>
 
     <div className="title">
       <h2>{title}</h2>
@@ -30,7 +41,7 @@ export const Form: FC<IProps> = ({ children, OnSubmit, btnText, linkText, title,
       {children}
     </div>
     <div className="submit-box">
-      <button disabled={isError} type="submit">{btnText}</button>
+      <button disabled={isPending} type="submit">{btnText}</button>
     </div>
     <NavLink to={"/" + linkHref} className="link">
       {linkText}
@@ -39,6 +50,7 @@ export const Form: FC<IProps> = ({ children, OnSubmit, btnText, linkText, title,
 }
 const FormLayout = styled.form<{
   isError: boolean
+  isPending: boolean
 }>`
 
   width: 280px;
@@ -108,7 +120,7 @@ const FormLayout = styled.form<{
     padding-right: 10px;
 
     button {
-      background: ${({ isError }) => !isError ? "#A954FD" : "red"};
+      background: ${({ isError, isPending }) => isPending && "rgba(86,43,150,0.71)" || isError && "red" || "#A954FD"};
       border-radius: 9px;
       padding: 5px 19px;
       font-family: 'Inter', sans-serif;

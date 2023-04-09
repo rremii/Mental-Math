@@ -5,8 +5,10 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import { useNavigate } from "react-router-dom"
 import useRegister from "@entities/Auth/model/useRegister"
-import { useRegisterMutation } from "@entities/Auth/api/AuthApi"
+import { useLoginMutation, useRegisterMutation } from "@entities/Auth/api/AuthApi"
 import { useEffect } from "react"
+import { useTypedSelector } from "@shared/Hooks/store-hooks"
+import { useToast } from "@shared/Hooks/useToast"
 
 export interface FormFields {
   userName: string
@@ -30,33 +32,21 @@ const SignUpFormData = {
 }
 
 export const SignUpForm = () => {
-  const navigate = useNavigate()
-
 
   const { register: reg, handleSubmit, reset } = useForm<FormFields>({
-    resolver: yupResolver(schema) // yup, joi and even your own.
+    resolver: yupResolver(schema)
   })
 
-  const [register, { isLoading, data }] = useRegisterMutation()
-
-  useEffect(() => {
-    console.log(data)
-    debugger
+  const { Register, isError, isLoading } = useRegister()
 
 
-  }, [isLoading, data])
-  // const Register = useRegister()
-
-  const OnSubmit = (data: FormFields) => {
-
-    register({ ...data, avatar: "avatar1" })
-
-
+  const OnSubmit = async (data: FormFields) => {
+    await Register({ ...data, avatar: "avatar1" })
     reset()
-    navigate("/game-menu")
   }
 
-  return <Form {...SignUpFormData} OnSubmit={handleSubmit(OnSubmit)}>
+
+  return <Form isPending={isLoading} isError={isError} {...SignUpFormData} OnSubmit={handleSubmit(OnSubmit)}>
     <input autoComplete={"off"} type="text" {...reg("userName")} placeholder="Name" />
     <input autoComplete={"off"} type="email" {...reg("email")} placeholder="Email" />
     <input autoComplete={"off"} type="password"  {...reg("password")} placeholder="Password" />
