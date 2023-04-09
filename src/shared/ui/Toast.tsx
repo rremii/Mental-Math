@@ -6,11 +6,14 @@ import { TypeWriter } from "@shared/ui/TypeWriter"
 export const Toast: React.FC = () => {
 
   const isShown = useTypedSelector(state => state.Toast.isShown)
+  const message = useTypedSelector(state => state.Toast.message)
 
   return (
     <Layout isShown={isShown}>
-      <TypeWriter content={`Wrong email or password`} speed={75}
-                  delay={2000} />
+      {isShown ?
+        <TypeWriter content={message} speed={75}
+                    delay={1000} /> :
+        <pre>{message}</pre>}
     </Layout>
   )
 }
@@ -26,6 +29,7 @@ const Layout = styled.div<{
   transition: .5s;
   border-radius: 6px;
   padding: 16px;
+  width: max-content;
 
   pre {
     font-family: "HP Simplified Jpan";
@@ -33,7 +37,6 @@ const Layout = styled.div<{
     font-weight: bold;
     color: white;
     word-wrap: break-word;
-
     max-width: 300px;
   }
 

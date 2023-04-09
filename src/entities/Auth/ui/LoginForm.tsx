@@ -5,10 +5,10 @@ import * as yup from "yup"
 import { useNavigate } from "react-router-dom"
 import { useLoginMutation } from "@entities/Auth/api/AuthApi"
 import { useEffect } from "react"
-import { useAppDispatch } from "@shared/Hooks/store-hooks"
+import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
 import { setLoginError } from "@entities/Auth/model/AuthSlice"
+import { useToast } from "@shared/Hooks/useToast"
 
-// import { useToast } from "@shared/Hooks/useToast"
 
 export interface FormFields {
   email: string;
@@ -30,45 +30,35 @@ const LoginFormData = {
 }
 
 export const LoginForm = () => {
-  const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
-
-  // const { showToast } = useToast()
-
-
-  // const [loginError, setLoginError] = useState<string>()
+  const isError = useTypedSelector(state => state.Toast.isShown)
 
   const { register, handleSubmit, reset } = useForm<FormFields>({
-    resolver: yupResolver(schema) // yup, joi and even your own.
+    resolver: yupResolver(schema)
   })
 
-  const [login, { isLoading, data, error }] = useLoginMutation()
+  const { ShowToast } = useToast(5000)
+
+
+  const [login, { isSuccess, data }] = useLoginMutation()
 
   useEffect(() => {
-      if (data) {
-        localStorage.setItem("accessToken", data.accessToken)
-        navigate("/game-menu")
-      }
-      if (error && error.message) {
-        // debugger
-        // dispatch(setLoginError(error.message))
-      }
-    }, [isLoading, data, error]
-  )
+    if (!data) return
+    localStorage.setItem("accessToken", data.accessToken)
+    navigate("/game-menu")
+  }, [isSuccess, data])
 
 
   const OnSubmit = async (data: FormFields) => {
 
     await login(data).unwrap().catch(err => {
-      debugger
+      ShowToast(err.message)
     })
-
-
     reset()
   }
 
-  return <Form error={error?.message}  {...LoginFormData} OnSubmit={handleSubmit(OnSubmit)}>
+  return <Form isError={isError}  {...LoginFormData} OnSubmit={handleSubmit(OnSubmit)}>
     <input type="email" {...register("email")} placeholder="Email" />
     <input type="password"  {...register("password")} placeholder="Password" />
   </Form>

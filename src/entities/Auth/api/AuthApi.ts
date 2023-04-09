@@ -14,20 +14,13 @@ export const AuthApi = Api.injectEndpoints({
 
       // invalidatesTags: ["Message"]
     }),
-
     login: build.mutation<AuthResponse, LoginDto>({
-      transformErrorResponse: (response, meta, arg) => {
-        console.log("qweqweqwe")
-        return {
-          originalArg: arg,
-          error: response
-        }
-      },
       query: (loginData) => ({
         url: "auth/login",
         method: "POST",
         data: loginData
-      })
+      }),
+
     })
 
     // getAllMessages: build.query <message[], { chat_id: number | null, user_id: number }>({

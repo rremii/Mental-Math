@@ -15,12 +15,13 @@ interface IProps {
   linkText: string
   linkHref: string
   error?: string
+  isError?: boolean
 }
 
-export const Form: FC<IProps> = ({ children, OnSubmit, btnText, linkText, title, linkHref, error }) => {
+export const Form: FC<IProps> = ({ children, OnSubmit, btnText, linkText, title, linkHref, error, isError }) => {
 
 
-  return <FormLayout isError={!!error} autoComplete="off" onSubmit={OnSubmit}>
+  return <FormLayout isError={!!isError} autoComplete="off" onSubmit={OnSubmit}>
 
     <div className="title">
       <h2>{title}</h2>
@@ -29,7 +30,7 @@ export const Form: FC<IProps> = ({ children, OnSubmit, btnText, linkText, title,
       {children}
     </div>
     <div className="submit-box">
-      <button type="submit">{btnText}</button>
+      <button disabled={isError} type="submit">{btnText}</button>
     </div>
     <NavLink to={"/" + linkHref} className="link">
       {linkText}

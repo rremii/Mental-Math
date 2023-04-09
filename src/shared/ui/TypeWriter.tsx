@@ -9,6 +9,7 @@ export const TypeWriter = ({ content = "", speed = 1000, delay = 0 }) => {
 
 
   useEffect(() => {
+    if (!content) return
     if (!isStarted) {
       const delayTimer = setTimeout(() => {
         setStart(true)
