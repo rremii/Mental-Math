@@ -2,6 +2,7 @@ import GameMenu from "@widgets/GameMenu/ ui/GameMenu"
 import Header from "@widgets/Header/ui/Header"
 import styled from "styled-components"
 import background from "@shared/assets/DarkTheme/background.png"
+import useIsAuth from "@entities/Auth/model/useIsAuth"
 
 const GameMenuPage = () => {
 
@@ -12,7 +13,7 @@ const GameMenuPage = () => {
   </GameMenuLayout>
 }
 export default GameMenuPage
-const GameMenuLayout = styled.div`
+const GameMenuLayout = styled.main`
   min-height: 100vh;
   height: min-content;
   max-width: 600px;

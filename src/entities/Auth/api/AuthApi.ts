@@ -21,6 +21,14 @@ export const AuthApi = Api.injectEndpoints({
         data: loginData
       }),
 
+    }),
+
+    refresh: build.query<AuthResponse, void>({
+      query: () => ({
+        url: "auth/refresh",
+        method: "GET",
+      }),
+
     })
 
     // getAllMessages: build.query <message[], { chat_id: number | null, user_id: number }>({
@@ -43,8 +51,9 @@ export const AuthApi = Api.injectEndpoints({
   }),
   overrideExisting: false
 })
-
+export const {refresh} = AuthApi.endpoints
 export const {
+  useRefreshQuery,
   useRegisterMutation,
   useLoginMutation
 } = AuthApi

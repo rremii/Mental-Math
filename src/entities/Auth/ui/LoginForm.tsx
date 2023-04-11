@@ -40,6 +40,7 @@ export const LoginForm = () => {
 
 
   const OnSubmit = async (data: FormFields) => {
+    if (isError) return
     await Login(data)
     reset()
   }
