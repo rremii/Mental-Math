@@ -9,23 +9,44 @@ import Avatar4 from "@shared/assets/DarkTheme/avatars/avatarIcon4.png"
 import Avatar5 from "@shared/assets/DarkTheme/avatars/avatarIcon5.png"
 import Avatar6 from "@shared/assets/DarkTheme/avatars/avatarIcon6.png"
 import Avatar7 from "@shared/assets/DarkTheme/avatars/avatarIcon7.png"
-import { useTypedSelector } from "@shared/Hooks/store-hooks"
+import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
+import { setAvatar } from "@widgets/AvatarChangeMenu/model/AvatarMenuSlice"
+import { Avatars } from "@widgets/AvatarChangeMenu/model/types"
 
 const AvatarChangeMenu = () => {
+  const dispatch = useAppDispatch()
 
   const isAvatarMenuOpen = useTypedSelector(state => state.AvatarMenu.isAvatarMenuOpen)
+  const avatar = useTypedSelector(state => state.AvatarMenu.avatar)
+  const isLoggedIn = useTypedSelector(state => state.Auth.isLoggedIn)
+
+
+  const ChangeAvatar = () => {
+
+  }
+  const SetAvatar = (avatar: Avatars) => {
+    dispatch(setAvatar(avatar))
+  }
+
 
   return <AvatarMenuLayout isActive={isAvatarMenuOpen}>
     <Header />
     <AvatarList>
-      <Avatar src={Avatar1} />
-      <Avatar src={Avatar2} />
-      <Avatar src={Avatar3} />
-      <Avatar src={Avatar4} />
-      <Avatar src={Avatar5} />
-      <Avatar src={Avatar6} />
-      <Avatar src={Avatar7} />
-      <Avatar />
+      <Avatar isActive={avatar === "avatar1"} onClick={isLoggedIn === "success" ? ChangeAvatar : SetAvatar}
+              src={Avatar1} avatar="avatar1" />
+      <Avatar isActive={avatar === "avatar2"} onClick={isLoggedIn === "success" ? ChangeAvatar : SetAvatar}
+              src={Avatar2} avatar="avatar2" />
+      <Avatar isActive={avatar === "avatar3"} onClick={isLoggedIn === "success" ? ChangeAvatar : SetAvatar}
+              src={Avatar3} avatar="avatar3" />
+      <Avatar isActive={avatar === "avatar4"} onClick={isLoggedIn === "success" ? ChangeAvatar : SetAvatar}
+              src={Avatar4} avatar="avatar4" />
+      <Avatar isActive={avatar === "avatar5"} onClick={isLoggedIn === "success" ? ChangeAvatar : SetAvatar}
+              src={Avatar5} avatar="avatar5" />
+      <Avatar isActive={avatar === "avatar6"} onClick={isLoggedIn === "success" ? ChangeAvatar : SetAvatar}
+              src={Avatar6} avatar="avatar6" />
+      <Avatar isActive={avatar === "avatar7"} onClick={isLoggedIn === "success" ? ChangeAvatar : SetAvatar}
+              src={Avatar7} avatar="avatar7" />
+      <Avatar isActive={avatar === "noAvatar"} onClick={isLoggedIn === "success" ? ChangeAvatar : SetAvatar} />
     </AvatarList>
   </AvatarMenuLayout>
 }

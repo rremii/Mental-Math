@@ -11,7 +11,9 @@ export const Header = () => {
   }
 
   return <HeaderLayout>
-    <img onClick={OnArrowClick} src={Arrow} alt="arrow" />
+    <div className="img-box">
+      <img onClick={OnArrowClick} src={Arrow} alt="arrow" />
+    </div>
 
     <h2 className="title">Profile Picture</h2>
 
@@ -26,9 +28,24 @@ const HeaderLayout = styled.div`
   background: linear-gradient(349.08deg, #1B0324 7.62%, #080013 91.55%);
   box-shadow: 0px 7px 50px #300F4A;
 
-  img {
+  .img-box {
     cursor: pointer;
-    width: 35px;
+    transition: .4s;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background: linear-gradient(349.08deg, rgba(92, 7, 123, 0.14) 7.62%, rgba(60, 2, 139, 0.15) 91.55%);
+    }
+
+    img {
+
+      width: 35px;
+    }
   }
 
   .title {

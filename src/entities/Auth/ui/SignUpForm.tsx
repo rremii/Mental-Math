@@ -33,6 +33,9 @@ const SignUpFormData = {
 
 export const SignUpForm = () => {
 
+
+  const avatar = useTypedSelector(state => state.AvatarMenu.avatar)
+
   const { register: reg, handleSubmit, reset } = useForm<FormFields>({
     resolver: yupResolver(schema)
   })
@@ -41,7 +44,7 @@ export const SignUpForm = () => {
 
 
   const OnSubmit = async (data: FormFields) => {
-    await Register({ ...data, avatar: "avatar1" })
+    await Register({ ...data, avatar })
     reset()
   }
 

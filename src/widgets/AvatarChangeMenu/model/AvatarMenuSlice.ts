@@ -1,13 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { Avatars } from "@widgets/AvatarChangeMenu/model/types"
 
 
 interface initialStateType {
   isAvatarMenuOpen: boolean
-
+  avatar: Avatars
 }
 
 const initialState = {
-  isAvatarMenuOpen: false
+  isAvatarMenuOpen: false,
+  avatar: "noAvatar"
 } as initialStateType
 
 const AvatarMenuSlice = createSlice({
@@ -16,8 +18,11 @@ const AvatarMenuSlice = createSlice({
   reducers: {
     setAvatarMenuOpen(state, action: PayloadAction<boolean>) {
       state.isAvatarMenuOpen = action.payload
+    },
+    setAvatar(state, action: PayloadAction<Avatars>) {
+      state.avatar = action.payload
     }
   }
 })
-export const { setAvatarMenuOpen } = AvatarMenuSlice.actions
+export const { setAvatarMenuOpen, setAvatar } = AvatarMenuSlice.actions
 export const AvatarMenuReducer = AvatarMenuSlice.reducer
