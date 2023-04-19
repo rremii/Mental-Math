@@ -4,9 +4,11 @@ import { Api } from "../api/config/Api"
 import { AvatarMenuReducer } from "@widgets/AvatarChangeMenu/model/AvatarMenuSlice"
 import { AuthReducer } from "@entities/Auth/model/AuthSlice"
 import { ToastReducer } from "@shared/store/global-slices/ToastSlice"
+import { SettingsMenuReducer } from "@widgets/SettingsMenu/model/SettingsSlice"
 
 const rootReducer: Reducer = combineReducers({
   AvatarMenu: AvatarMenuReducer,
+  SettingsMenu: SettingsMenuReducer,
   Auth: AuthReducer,
   Toast: ToastReducer,
   // ViewMode: ViewModeModel.ViewModeReducer,

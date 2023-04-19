@@ -6,11 +6,13 @@ import background from "@shared/assets/DarkTheme/background.png"
 import { SignUpMenu } from "@widgets/SignUpMenu"
 import AvatarChangeMenu from "@widgets/AvatarChangeMenu/ui/AvatarChangeMenu"
 import React from "react"
+import SettingsMenu from "@widgets/SettingsMenu/ui/SettingsMenu"
 
 const SignUpPage = () => {
 
   return <SignUpLayout>
     <AvatarChangeMenu />
+    <SettingsMenu />
     <Header />
     <SignUpMenu />
   </SignUpLayout>
