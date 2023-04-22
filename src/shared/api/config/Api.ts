@@ -12,7 +12,7 @@ const axiosBaseQuery = ({ baseUrl }: { baseUrl: string } = { baseUrl: "" }): Bas
   withInterceptors?: boolean  //use default axios, instead of custom with interceptors
 },
   unknown,
-  ApiError> => async ({ url, method, data, params, withInterceptors }) => {
+  ApiError> => async ({ url, method, data, params, withInterceptors = true }) => {
   try {
 
     let result
@@ -35,6 +35,7 @@ const axiosBaseQuery = ({ baseUrl }: { baseUrl: string } = { baseUrl: "" }): Bas
 export const Api = createApi({
     reducerPath: "chatApiRtk",
     baseQuery: axiosBaseQuery({ baseUrl: API_URL }),
-    endpoints: () => ({})
+    endpoints: () => ({}),
+    tagTypes: ["User"]
   }
 )

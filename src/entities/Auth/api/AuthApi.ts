@@ -20,7 +20,6 @@ export const AuthApi = Api.injectEndpoints({
         method: "POST",
         data: loginData
       }),
-
     }),
 
     refresh: build.query<AuthResponse, void>({

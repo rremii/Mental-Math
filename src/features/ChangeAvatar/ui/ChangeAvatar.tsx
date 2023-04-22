@@ -14,7 +14,7 @@ export const ChangeAvatar = () => {
   const { avatarSrc } = UseGetAvatarSrc(avatar)
 
 
-  return <ChangeAvatarLayout onClick={OpenAvatarMenu}>
+  return <ChangeAvatarLayout className="ChangeAvatar" onClick={OpenAvatarMenu}>
     <img src={avatarSrc} alt="ChangeAvatarLayout" />
   </ChangeAvatarLayout>
 }
