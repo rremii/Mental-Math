@@ -15,3 +15,8 @@ export interface ChangeNameDto {
   id: number
   newName: string
 }
+
+export interface ChangeAvatarDto {
+  id: number
+  newAvatar: string
+}

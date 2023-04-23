@@ -1,5 +1,5 @@
 import { Api } from "@shared/api/config/Api"
-import { ChangeNameDto, DefaultResponse, User } from "@entities/User/types"
+import { ChangeAvatarDto, ChangeNameDto, DefaultResponse, User } from "@entities/User/types"
 
 export const UserApi = Api.injectEndpoints({
 
@@ -8,6 +8,15 @@ export const UserApi = Api.injectEndpoints({
     changeName: build.mutation<DefaultResponse, ChangeNameDto>({
       query: (data) => ({
         url: "users/name",
+        method: "POST",
+        data
+      }),
+
+      invalidatesTags: ["User"]
+    }),
+    changeAvatar: build.mutation<DefaultResponse, ChangeAvatarDto>({
+      query: (data) => ({
+        url: "users/avatar",
         method: "POST",
         data
       }),
@@ -29,4 +38,4 @@ export const UserApi = Api.injectEndpoints({
   overrideExisting: false
 })
 export const {} = UserApi.endpoints
-export const { useGetUserQuery, useChangeNameMutation } = UserApi
+export const { useGetUserQuery, useChangeNameMutation,useChangeAvatarMutation } = UserApi

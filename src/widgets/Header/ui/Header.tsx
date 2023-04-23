@@ -20,9 +20,9 @@ const Header = () => {
     <div className="logo">
       Mental Math
     </div>
-    <div onClick={OpenSettings} className="settings">
-      <img src={Settings} alt="settings" />
-    </div>
+    {/*<div onClick={OpenSettings} className="settings">*/}
+    {/*  <img src={Settings} alt="settings" />*/}
+    {/*</div>*/}
   </HeaderLayout>
 }
 export default Header

@@ -10,25 +10,31 @@ import Avatar5 from "@shared/assets/DarkTheme/avatars/avatarIcon5.png"
 import Avatar6 from "@shared/assets/DarkTheme/avatars/avatarIcon6.png"
 import Avatar7 from "@shared/assets/DarkTheme/avatars/avatarIcon7.png"
 import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
-import { setAvatar } from "@widgets/AvatarChangeMenu/model/AvatarMenuSlice"
 import { Avatars } from "@widgets/AvatarChangeMenu/model/types"
+import { setAvatar } from "@widgets/AvatarChangeMenu/model/AvatarMenuSlice"
+import { useChangeAvatarMutation, useGetUserQuery } from "@entities/User/api/UserApi"
 
 const AvatarChangeMenu = () => {
   const dispatch = useAppDispatch()
 
   const isAvatarMenuOpen = useTypedSelector(state => state.AvatarMenu.isAvatarMenuOpen)
-  const avatar = useTypedSelector(state => state.AvatarMenu.avatar)
+  let avatar = useTypedSelector(state => state.AvatarMenu.avatar)
   const isLoggedIn = useTypedSelector(state => state.Auth.isLoggedIn)
 
+  const { data: user } = useGetUserQuery(undefined, {
+    skip: isLoggedIn !== "success"
+  })
+  const [changeAvatar] = useChangeAvatarMutation()
 
-  const ChangeAvatar = () => {
-
+  const ChangeAvatar = (avatar: string) => {
+    if (!avatar || !user) return
+    changeAvatar({ id: user.id, newAvatar: avatar })
   }
   const SetAvatar = (avatar: Avatars) => {
     dispatch(setAvatar(avatar))
   }
 
-
+  avatar = user?.avatar || avatar
   return <AvatarMenuLayout isActive={isAvatarMenuOpen}>
     <Header />
     <AvatarList>

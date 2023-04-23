@@ -12,7 +12,6 @@ const SignUpPage = () => {
 
   return <SignUpLayout>
     <AvatarChangeMenu />
-    <SettingsMenu />
     <Header />
     <SignUpMenu />
   </SignUpLayout>

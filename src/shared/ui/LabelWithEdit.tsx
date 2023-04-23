@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { useEffect, useRef, useState } from "react"
+import Pencil from "@shared/assets/DarkTheme/pencil.svg"
 
 interface props {
   labelText?: string
@@ -41,7 +42,7 @@ export const LabelWithEdit = ({ labelText = "", onClick, onBlur, isLoading }: pr
 
     <div className="labelBox">
       <label htmlFor="label">{label}
-        <div className="edit" />
+        <img className="edit" src={Pencil} alt="edit" />
       </label>
     </div>
 
@@ -109,9 +110,8 @@ const LabelLayout = styled.div<{
         position: absolute;
         top: 0;
         left: calc(100% + 10px);
-        background-color: green;
-        width: 15px;
-        height: 15px;
+        width: 30px;
+        height: 30px;
       }
     }
   }

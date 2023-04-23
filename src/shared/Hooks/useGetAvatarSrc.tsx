@@ -1,9 +1,16 @@
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
 import { Avatars } from "@widgets/AvatarChangeMenu/model/types"
 import { AvatarSrc } from "@shared/Constants/AvatarsSrc"
+import { useGetUserQuery } from "@entities/User/api/UserApi"
 
-export const UseGetAvatarSrc = (avatar: Avatars) => {
+export const UseGetAvatarSrc = () => {
+  const avatar = useTypedSelector(state => state.AvatarMenu.avatar)
+  const isLoggedIn = useTypedSelector(state => state.Auth.isLoggedIn)
 
-  return { avatarSrc: AvatarSrc.get(avatar) }
+  const { data: user } = useGetUserQuery(undefined, {
+    skip: isLoggedIn !== "success"
+  })
+
+  return { avatarSrc: AvatarSrc.get(user?.avatar || avatar) }
 
 }
