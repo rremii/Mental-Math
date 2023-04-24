@@ -1,8 +1,8 @@
 import GameMenu from "@widgets/GameMenu/ ui/GameMenu"
-import Header from "@widgets/Header/ui/Header"
 import styled from "styled-components"
 import { LoginMenu } from "@widgets/LoginMenu"
 import background from "@shared/assets/DarkTheme/background.png"
+import Header from "@widgets/LoginMenu/ui/Header"
 
 const LoginPage = () => {
 

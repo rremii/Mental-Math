@@ -2,6 +2,7 @@ import styled from "styled-components"
 import Arrow from "@shared/assets/DarkTheme/arrowIcon.svg"
 import { useAppDispatch } from "@shared/Hooks/store-hooks"
 import { setAvatarMenuOpen } from "@widgets/AvatarChangeMenu/model/AvatarMenuSlice"
+import { HeaderWrapper } from "@shared/ui/HeaderWrapper"
 
 export const Header = () => {
   const dispatch = useAppDispatch()
@@ -19,7 +20,7 @@ export const Header = () => {
 
   </HeaderLayout>
 }
-const HeaderLayout = styled.div`
+const HeaderLayout = styled(HeaderWrapper)`
   height: 72px;
   position: relative;
   display: flex;
@@ -43,7 +44,6 @@ const HeaderLayout = styled.div`
     }
 
     img {
-
       width: 35px;
     }
   }
@@ -61,6 +61,4 @@ const HeaderLayout = styled.div`
     color: #FFFFFF;
     text-shadow: 0px 1px 7px rgba(255, 255, 255, 0.25);
   }
-
-
 `

@@ -13,16 +13,15 @@ const Header = () => {
     dispatch(setSettingsMenu(true))
   }
 
-
   return <HeaderLayout isSettings={isSettingsOpen}>
     {/*<img alt='logo' className="logo" src={}/>*/}
     <span></span>
     <div className="logo">
       Mental Math
     </div>
-    {/*<div onClick={OpenSettings} className="settings">*/}
-    {/*  <img src={Settings} alt="settings" />*/}
-    {/*</div>*/}
+    <div onClick={OpenSettings} className="settings">
+      <img src={Settings} alt="settings" />
+    </div>
   </HeaderLayout>
 }
 export default Header
