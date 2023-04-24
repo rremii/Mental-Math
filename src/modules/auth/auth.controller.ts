@@ -21,12 +21,14 @@ import { Request, Response } from "express"
 import { GetCookieExpTime } from "src/common/helpers/getCookieExpTime"
 import { AccessTokenGuard } from "../../guards/access-token.guard"
 import { RefreshTokenGuard } from "../../guards/refresh-token.guard"
+import { ConfigService } from "@nestjs/config"
 
 @Controller("auth")
 export class AuthController {
   constructor(
     private readonly authService: AuthService,
     private readonly tokenService: TokenService,
+    private readonly configService: ConfigService,
     private readonly jwtService: JwtService,
   ) {}
 
@@ -43,7 +45,7 @@ export class AuthController {
     )
     response.cookie("refresh-token", refreshToken, {
       httpOnly: true,
-      domain: "localhost",
+      domain: this.configService.get("client_domain"),
       expires: GetCookieExpTime(),
     })
     return { accessToken }
@@ -60,7 +62,7 @@ export class AuthController {
       await this.tokenService.refreshTokens(refreshToken)
     response.cookie("refreshToken", newRefreshToken, {
       httpOnly: true,
-      domain: "localhost",
+      domain: this.configService.get("client_domain"),
       expires: GetCookieExpTime(),
     })
     return { accessToken }
@@ -79,7 +81,7 @@ export class AuthController {
     )
     response.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      domain: "localhost", //TODO fix
+      domain: this.configService.get("client_domain"), //TODO fix
       expires: GetCookieExpTime(),
     })
 

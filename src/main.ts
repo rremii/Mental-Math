@@ -18,13 +18,13 @@ async function bootstrap() {
     .build()
   const document = SwaggerModule.createDocument(app, config)
   SwaggerModule.setup("api", app, document)
+  const configService = app.get(ConfigService)
 
   app.use(cookieParser())
   app.enableCors({
     credentials: true,
-    origin: "http://localhost:5173",
+    origin: configService.get("client_origin"),
   })
-  const configService = app.get(ConfigService)
   await app.listen(+configService.get("port"))
 }
 
