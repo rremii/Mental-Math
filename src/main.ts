@@ -7,7 +7,7 @@ import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger"
 
 //TODO https://dev.to/thejscode/deploying-nestjs-application-easy-and-explained-11cm
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule)
+  const app = await NestFactory.create(AppModule, { cors: true })
   app.useGlobalFilters(new AllExceptionsFilter())
 
   const config = new DocumentBuilder()
@@ -22,10 +22,10 @@ async function bootstrap() {
   const configService = app.get(ConfigService)
 
   app.use(cookieParser())
-  app.enableCors({
-    credentials: true,
-    origin: configService.get("client_origin"),
-  })
+  // app.enableCors({
+  //   credentials: true,
+  //   origin: configService.get("client_origin"),
+  // })
   await app.listen(+configService.get("port"))
 }
 
