@@ -45,7 +45,7 @@ export class AuthController {
     )
     response.cookie("refresh-token", refreshToken, {
       httpOnly: true,
-      domain: this.configService.get("client_domain"),
+      domain: "https://mental-math-remi.netlify.app",
       expires: GetCookieExpTime(),
     })
     return { accessToken }
@@ -62,7 +62,7 @@ export class AuthController {
       await this.tokenService.refreshTokens(refreshToken)
     response.cookie("refreshToken", newRefreshToken, {
       httpOnly: true,
-      domain: this.configService.get("client_domain"),
+      domain: "https://mental-math-remi.netlify.app",
       expires: GetCookieExpTime(),
     })
     return { accessToken }
@@ -81,7 +81,8 @@ export class AuthController {
     )
     response.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      domain: this.configService.get("client_domain"), //TODO fix
+      domain: "https://mental-math-remi.netlify.app", //TODO fix
+      // domain: this.configService.get("client_domain"), //TODO fix
       expires: GetCookieExpTime(),
     })
 
