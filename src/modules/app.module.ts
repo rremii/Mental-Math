@@ -33,12 +33,12 @@ import { TokenModule } from "./token/token.module"
 
           entities: [User],
 
-          // ssl: true,
-          // extra: {
-          //   ssl: {
-          //     rejectUnauthorized: false,
-          //   },
-          // },
+          ssl: true,
+          extra: {
+            ssl: {
+              rejectUnauthorized: false,
+            },
+          },
         }
       },
       inject: [ConfigService],
