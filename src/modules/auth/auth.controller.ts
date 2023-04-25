@@ -90,7 +90,7 @@ export class AuthController {
   }
 
   // @UseGuards(AccessTokenGuard)
-  @Post("test")
+  @Get("test")
   test() {
     return true
   }
