@@ -5,6 +5,7 @@ import * as cookieParser from "cookie-parser"
 import { AllExceptionsFilter } from "./exception-filters/exception.filter"
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger"
 
+//TODO https://dev.to/thejscode/deploying-nestjs-application-easy-and-explained-11cm
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
   app.useGlobalFilters(new AllExceptionsFilter())
