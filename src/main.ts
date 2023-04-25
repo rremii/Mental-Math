@@ -23,7 +23,7 @@ async function bootstrap() {
 
   app.use(cookieParser())
   app.enableCors({
-    origin: ["http://localhost:3000", "https://mental-math-remi.netlify.app"],
+    origin: ["http://localhost:5173", "https://mental-math-remi.netlify.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
