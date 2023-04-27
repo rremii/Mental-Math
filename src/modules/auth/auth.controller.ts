@@ -50,7 +50,7 @@ export class AuthController {
       sameSite: false,
       secure: true,
 
-      expires: GetCookieExpTime(),
+      maxAge: GetCookieExpTime(),
     })
     return { accessToken }
   }
@@ -72,7 +72,7 @@ export class AuthController {
       sameSite: "none",
       secure: true,
 
-      maxAge: 1000 * 60,
+      maxAge: GetCookieExpTime(),
     })
     return { accessToken }
   }
@@ -94,7 +94,7 @@ export class AuthController {
       // domain: this.configService.get("client_domain"), //TODO fix
       sameSite: "none",
       secure: true,
-      maxAge: 1000 * 60,
+      maxAge: GetCookieExpTime(),
     })
 
     return { accessToken }
