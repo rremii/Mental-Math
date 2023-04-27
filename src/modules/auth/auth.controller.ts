@@ -30,8 +30,7 @@ export class AuthController {
     private readonly tokenService: TokenService,
     private readonly configService: ConfigService,
     private readonly jwtService: JwtService,
-  ) {
-  }
+  ) {}
 
   @ApiTags("auth")
   @ApiResponse({ status: 201, type: User })
@@ -46,7 +45,8 @@ export class AuthController {
     )
     response.cookie("refresh-token", refreshToken, {
       httpOnly: true,
-      domain: "https://mental-math-remi.netlify.app",
+      // domain: "https://mental-math-remi.netlify.app",
+      domain: this.configService.get("client_domain"), //TODO fix
       expires: GetCookieExpTime(),
     })
     return { accessToken }
@@ -63,7 +63,8 @@ export class AuthController {
       await this.tokenService.refreshTokens(refreshToken)
     response.cookie("refreshToken", newRefreshToken, {
       httpOnly: true,
-      domain: "https://mental-math-remi.netlify.app",
+      // domain: "https://mental-math-remi.netlify.app",
+      domain: this.configService.get("client_domain"), //TODO fix
       expires: GetCookieExpTime(),
     })
     return { accessToken }
@@ -82,8 +83,8 @@ export class AuthController {
     )
     response.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      domain: "https://mental-math-remi.netlify.app", //TODO fix
-      // domain: this.configService.get("client_domain"), //TODO fix
+      // domain: "https://mental-math-remi.netlify.app", //TODO fix
+      domain: this.configService.get("client_domain"), //TODO fix
       expires: GetCookieExpTime(),
     })
 
