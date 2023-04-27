@@ -13,7 +13,7 @@ import { TokenModule } from "./token/token.module"
     ConfigModule.forRoot({
       isGlobal: true,
       load: [configurations],
-      envFilePath: ".development.env",
+      envFilePath: [".development.env", ".env", ".production.env"],
     }),
     UsersModule,
     AuthModule,
