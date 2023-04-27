@@ -66,9 +66,10 @@ export class AuthController {
       await this.tokenService.refreshTokens(refreshToken)
     response.cookie("refreshToken", newRefreshToken, {
       httpOnly: true,
+      path: "auth/refresh",
       // domain: "https://mental-math-remi.netlify.app",
-      domain: this.configService.get("client_domain"), //TODO fix
-      sameSite: false,
+      domain: "*", //TODO fix
+      sameSite: "none",
       secure: true,
 
       maxAge: 1000 * 60,
@@ -90,8 +91,8 @@ export class AuthController {
     response.cookie("refreshToken", refreshToken, {
       httpOnly: true,
       // domain: "https://mental-math-remi.netlify.app", //TODO fix
-      domain: this.configService.get("client_domain"), //TODO fix
-      sameSite: false,
+      domain: "*", //TODO fix
+      sameSite: "none",
       secure: true,
       maxAge: 1000 * 60,
     })
