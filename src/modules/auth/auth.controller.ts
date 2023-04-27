@@ -48,6 +48,8 @@ export class AuthController {
       // domain: "https://mental-math-remi.netlify.app",
       domain: this.configService.get("client_domain"), //TODO fix
       sameSite: false,
+      secure: true,
+
       expires: GetCookieExpTime(),
     })
     return { accessToken }
@@ -67,6 +69,7 @@ export class AuthController {
       // domain: "https://mental-math-remi.netlify.app",
       domain: this.configService.get("client_domain"), //TODO fix
       sameSite: false,
+      secure: true,
 
       expires: GetCookieExpTime(),
     })
@@ -89,7 +92,7 @@ export class AuthController {
       // domain: "https://mental-math-remi.netlify.app", //TODO fix
       domain: this.configService.get("client_domain"), //TODO fix
       sameSite: false,
-
+      secure: true,
       expires: GetCookieExpTime(),
     })
 
