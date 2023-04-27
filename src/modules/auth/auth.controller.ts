@@ -71,7 +71,7 @@ export class AuthController {
       sameSite: false,
       secure: true,
 
-      expires: GetCookieExpTime(),
+      maxAge: 1000 * 60,
     })
     return { accessToken }
   }
@@ -93,7 +93,7 @@ export class AuthController {
       domain: this.configService.get("client_domain"), //TODO fix
       sameSite: false,
       secure: true,
-      expires: GetCookieExpTime(),
+      maxAge: 1000 * 60,
     })
 
     return { accessToken }
