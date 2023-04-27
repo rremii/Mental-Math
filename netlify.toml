@@ -1,5 +1,0 @@
-[[redirects]]
-from = "/game-menu"
-to = "/"
-status = 200
-force = true
