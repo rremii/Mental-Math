@@ -1,8 +1,4 @@
 import styled from "styled-components"
-import Settings from "@shared/assets/DarkTheme/settings.svg"
-import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
-import { setSettingsMenu } from "@widgets/SettingsMenu/model/SettingsSlice"
-import { FC } from "react"
 
 // import Logo from '@shared/assets/DarkTheme/l'
 

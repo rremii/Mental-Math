@@ -1,6 +1,6 @@
-import { BaseQueryFn, createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
+import { BaseQueryFn, createApi } from "@reduxjs/toolkit/query/react"
 import { $api, $apiDefault, API_URL } from "./index"
-import { AxiosError, AxiosInstance, AxiosRequestConfig } from "axios"
+import { AxiosError, AxiosRequestConfig } from "axios"
 import { ApiError } from "@shared/api/config/types"
 
 

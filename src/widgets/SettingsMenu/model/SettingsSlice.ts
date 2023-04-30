@@ -1,13 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { Avatars } from "@widgets/AvatarChangeMenu/model/types"
 
 
 interface initialStateType {
   isSettingsMenuOpen: boolean
+  isDarkMode: boolean
 }
 
 const initialState = {
-  isSettingsMenuOpen: false
+  isSettingsMenuOpen: false,
+  isDarkMode: true
 } as initialStateType
 
 const SettingsSlice = createSlice({
@@ -16,9 +17,11 @@ const SettingsSlice = createSlice({
   reducers: {
     setSettingsMenu(state, action: PayloadAction<boolean>) {
       state.isSettingsMenuOpen = action.payload
+    },
+    setDarkMode(state, action: PayloadAction<boolean>) {
+      state.isDarkMode = action.payload
     }
-
   }
 })
-export const { setSettingsMenu } = SettingsSlice.actions
+export const { setSettingsMenu, setDarkMode } = SettingsSlice.actions
 export const SettingsMenuReducer = SettingsSlice.reducer

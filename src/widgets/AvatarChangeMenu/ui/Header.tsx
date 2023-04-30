@@ -26,8 +26,8 @@ const HeaderLayout = styled(HeaderWrapper)`
   display: flex;
   align-items: center;
   padding-left: 27px;
-  background: linear-gradient(349.08deg, #1B0324 7.62%, #080013 91.55%);
-  box-shadow: 0px 7px 50px #300F4A;
+  background: var(--header-color);
+  box-shadow: 0px 7px 50px var(--header-shadow-color);
 
   .img-box {
     cursor: pointer;
@@ -40,7 +40,7 @@ const HeaderLayout = styled(HeaderWrapper)`
     justify-content: center;
 
     &:hover {
-      background: linear-gradient(349.08deg, rgba(92, 7, 123, 0.14) 7.62%, rgba(60, 2, 139, 0.15) 91.55%);
+      background: var(--hover2-color);
     }
 
     img {
@@ -58,7 +58,7 @@ const HeaderLayout = styled(HeaderWrapper)`
     font-weight: 400;
     font-size: 25px;
     line-height: 39px;
-    color: #FFFFFF;
+    color: var(--main-text-color);
     text-shadow: 0px 1px 7px rgba(255, 255, 255, 0.25);
   }
 `

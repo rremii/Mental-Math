@@ -62,7 +62,7 @@ const AvatarMenuLayout = styled.div<{
 }>`
   position: fixed;
   z-index: 2;
-  background-color: #100022;
+  background-color: var(--default-menu-bg-color);
   width: 100vw;
   max-width: 600px;
   height: 100vh;

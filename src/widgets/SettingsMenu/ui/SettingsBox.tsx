@@ -1,8 +1,8 @@
 import styled from "styled-components"
-import { FC, ReactNode } from "react"
+import { FC } from "react"
 import { ChangeAvatar } from "@features/ChangeAvatar"
-import { LabelWithEdit } from "@shared/ui/LabelWithEdit"
 import { ChangeName } from "@features/ChangeName/ui/ChangeName"
+import { ToggleTheme } from "@features/ToggleTheme/ui/ToggleTheme"
 
 interface props {
   // children: ReactNode
@@ -13,14 +13,15 @@ export const SettingsBox: FC<props> = () => {
   return <SettingsBoxLayout>
     <ChangeAvatar />
     <ChangeName />
+    <ToggleTheme />
   </SettingsBoxLayout>
 }
 const SettingsBoxLayout = styled.div`
 
   display: flex;
   flex-direction: column;
-  align-items: center;
-  color: white;
+  //align-items: center;
+  color: var(--main-text-color);
   padding: 24px 30px;
   gap: 20px;
   height: 100%;

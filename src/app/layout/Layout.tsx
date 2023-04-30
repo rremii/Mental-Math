@@ -1,8 +1,6 @@
 import styled from "styled-components"
 import React, { FC } from "react"
 import { Toast } from "@shared/ui/Toast"
-import AvatarChangeMenu from "@widgets/AvatarChangeMenu/ui/AvatarChangeMenu"
-import SettingsMenu from "@widgets/SettingsMenu/ui/SettingsMenu"
 
 interface Props {
   children: React.ReactNode

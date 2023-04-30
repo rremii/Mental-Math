@@ -1,7 +1,4 @@
 import styled from "styled-components"
-import Settings from "@shared/assets/DarkTheme/settings.svg"
-import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
-import { setSettingsMenu } from "@widgets/SettingsMenu/model/SettingsSlice"
 // import Logo from '@shared/assets/DarkTheme/l'
 
 const Header = () => {
@@ -15,8 +12,8 @@ export default Header
 const HeaderLayout = styled.header`
   flex: 0 0 74px;
   //height: 74px;
-  background: linear-gradient(349.08deg, #1B0324 7.62%, #080013 91.55%);
-  box-shadow: 0px 7px 50px #300F4A;
+  background: var(--header-color);
+  box-shadow: 0px 7px 50px var(--header-shadow-color);
   display: flex;
   justify-content: center;
   align-items: center;

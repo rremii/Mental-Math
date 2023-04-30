@@ -1,9 +1,4 @@
-import {
-  maxWidth,
-  maxWidthWrapper,
-  minWidth,
-  wrapperWidth
-} from "./settings"
+import { maxWidth, maxWidthWrapper, minWidth, wrapperWidth } from "./settings"
 
 export const Rem = (px: number) => `${+px / 16}rem`
 

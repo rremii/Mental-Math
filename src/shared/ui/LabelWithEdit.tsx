@@ -76,7 +76,7 @@ const LabelLayout = styled.div<{
       line-height: 48px;
       padding: 0 20px;
 
-      color: white;
+      color: var(--main-text-color);
       width: 100%;
       height: 100%;
       background-color: transparent;
@@ -92,7 +92,7 @@ const LabelLayout = styled.div<{
     height: 100%;
 
     &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: var(--hover1-color);
     }
 
     label {
@@ -103,7 +103,7 @@ const LabelLayout = styled.div<{
       line-height: 48px;
       cursor: pointer;
 
-      color: #FFFFFF;
+      color: var(--main-text-color);
       position: relative;
 
       .edit {
@@ -121,7 +121,7 @@ const LabelLayout = styled.div<{
     position: absolute;
     top: 100%;
     left: 0;
-    background: rgba(217, 217, 217, 0.49);
+    background: var(--input-border-bottom);
     border-radius: 50px;
     width: 100%;
     height: 2px;

@@ -1,10 +1,6 @@
-import { LoginDto, RegisterDto } from "@entities/Auth/types"
-import { refresh, useLoginMutation, useRefreshQuery, useRegisterMutation } from "@entities/Auth/api/AuthApi"
+import { refresh, useRefreshQuery } from "@entities/Auth/api/AuthApi"
 import { useEffect } from "react"
-import { useToast } from "@shared/Hooks/useToast"
-import { FormFields } from "@entities/Auth/ui/SignUpForm"
-import { useNavigate } from "react-router-dom"
-import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
+import { useAppDispatch } from "@shared/Hooks/store-hooks"
 import { setAuthRejected, setAuthSuccess } from "@entities/Auth/model/AuthSlice"
 
 const UseRefresh = () => {

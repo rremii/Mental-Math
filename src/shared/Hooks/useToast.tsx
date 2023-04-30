@@ -1,7 +1,6 @@
-import React, { createElement, useEffect } from "react"
+import React, { useEffect } from "react"
 import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
 import { clearMessage, hideToast, showToast } from "@shared/store/global-slices/ToastSlice"
-import { clearTimeout } from "timers"
 
 
 export const useToast = (duration: number) => {

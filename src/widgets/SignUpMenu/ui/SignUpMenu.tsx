@@ -1,9 +1,6 @@
-import { LoginForm } from "@entities/Auth"
 import styled from "styled-components"
 import { ChangeAvatar } from "@features/ChangeAvatar"
 import { SignUpForm } from "@entities/Auth/ui/SignUpForm"
-import { useState } from "react"
-import { Avatars } from "@widgets/AvatarChangeMenu/model/types"
 
 export const SignUpMenu = () => {
 

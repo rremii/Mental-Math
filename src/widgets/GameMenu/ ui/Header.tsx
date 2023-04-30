@@ -30,8 +30,8 @@ const HeaderLayout = styled.header<{
 }>`
   flex: 0 0 74px;
   //height: 74px;
-  background: linear-gradient(349.08deg, #1B0324 7.62%, #080013 91.55%);
-  box-shadow: 0px 7px 50px #300F4A;
+  background: var(--header-color);
+  box-shadow: 0px 7px 50px var(--header-shadow-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -45,9 +45,9 @@ const HeaderLayout = styled.header<{
     line-height: 39px;
 
 
-    color: #FFFFFF;
+    color: var(--main-text-color);
 
-    text-shadow: 0px 1px 7px rgba(255, 255, 255, 0.25);
+    text-shadow: 0px 1px 7px var(--text-shadow);
   }
 
   .settings {
@@ -62,7 +62,7 @@ const HeaderLayout = styled.header<{
     border-radius: 50%;
 
     &:hover {
-      background: linear-gradient(349.08deg, rgba(92, 7, 123, 0.22) 7.62%, rgba(60, 2, 139, 0.14) 91.55%);
+      background: var(--hover2-color);
     }
   }
 

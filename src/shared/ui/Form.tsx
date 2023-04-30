@@ -1,10 +1,6 @@
 import styled from "styled-components"
-import { NavLink, useNavigate } from "react-router-dom"
-import { useForm } from "react-hook-form"
-import { yupResolver } from "@hookform/resolvers/yup"
-import * as yup from "yup"
+import { NavLink } from "react-router-dom"
 import { FC, ReactNode } from "react"
-import { FormFields } from "@entities/Auth"
 
 
 interface IProps {
@@ -55,7 +51,7 @@ const FormLayout = styled.form<{
 
   width: 280px;
   min-height: 430px;
-  background: linear-gradient(179.5deg, #240E2C 0.43%, rgba(124, 60, 154, 0.32) 95.39%);
+  background: var(--auth-form-bg-color);
   border-radius: 90px 0px;
   display: flex;
   flex-direction: column;
@@ -73,7 +69,7 @@ const FormLayout = styled.form<{
       font-size: 40px;
       line-height: 52px;
       /* identical to box height */
-      color: #FFFFFF;
+      color: var(--main-text-color);
     }
   }
 
@@ -106,7 +102,7 @@ const FormLayout = styled.form<{
         font-size: 20px;
         line-height: 30px;
 
-        color: ${({ isError }) => !isError ? "rgba(169, 84, 253, 0.56)" : "red"};
+        color: ${({ isError }) => !isError ? "var(--placeholder-color)" : "red"};
       }
     }
   }
@@ -120,7 +116,10 @@ const FormLayout = styled.form<{
     padding-right: 10px;
 
     button {
-      background: ${({ isError, isPending }) => isPending && "rgba(86,43,150,0.71)" || isError && "red" || "#A954FD"};
+      background: ${({
+                       isError,
+                       isPending
+                     }) => isPending && `var(--auth-form-btn-color)` || isError && "red" || "#A954FD"};
       border-radius: 9px;
       padding: 5px 19px;
       font-family: 'Inter', sans-serif;
@@ -129,7 +128,7 @@ const FormLayout = styled.form<{
       font-size: 25px;
       line-height: 30px;
 
-      color: #FFFFFF;
+      color: var(--main-text-color);
     }
   }
 
@@ -140,6 +139,6 @@ const FormLayout = styled.form<{
     font-size: 16px;
     line-height: 19px;
 
-    color: #FFFFFF;
+    color: var(--main-text-color);
   }
 `

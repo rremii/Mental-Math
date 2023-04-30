@@ -1,10 +1,9 @@
 import { useEffect } from "react"
 import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
 import { useNavigate } from "react-router-dom"
-import UseRefresh from "@entities/Auth/model/useRefresh"
+import useRefresh from "@entities/Auth/model/useRefresh"
 import { useLocation } from "react-router"
 import useIsProtectedRoute from "@entities/Auth/model/useIsProtectedRoute"
-import useRefresh from "@entities/Auth/model/useRefresh"
 
 
 const useIsAuth = () => {

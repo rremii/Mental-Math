@@ -1,11 +1,8 @@
-import GameMenu from "@widgets/GameMenu/ ui/GameMenu"
 import styled from "styled-components"
-import { LoginMenu } from "@widgets/LoginMenu"
 import background from "@shared/assets/DarkTheme/background.png"
 import { SignUpMenu } from "@widgets/SignUpMenu"
 import AvatarChangeMenu from "@widgets/AvatarChangeMenu/ui/AvatarChangeMenu"
 import React from "react"
-import SettingsMenu from "@widgets/SettingsMenu/ui/SettingsMenu"
 import Header from "@widgets/SignUpMenu/ui/Header"
 
 const SignUpPage = () => {

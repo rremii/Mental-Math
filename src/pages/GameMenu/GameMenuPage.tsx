@@ -1,7 +1,6 @@
 import GameMenu from "@widgets/GameMenu/ ui/GameMenu"
 import styled from "styled-components"
 import background from "@shared/assets/DarkTheme/background.png"
-import useIsAuth from "@entities/Auth/model/useIsAuth"
 import SettingsMenu from "@widgets/SettingsMenu/ui/SettingsMenu"
 import AvatarChangeMenu from "@widgets/AvatarChangeMenu/ui/AvatarChangeMenu"
 import React from "react"

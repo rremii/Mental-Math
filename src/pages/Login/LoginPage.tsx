@@ -1,4 +1,3 @@
-import GameMenu from "@widgets/GameMenu/ ui/GameMenu"
 import styled from "styled-components"
 import { LoginMenu } from "@widgets/LoginMenu"
 import background from "@shared/assets/DarkTheme/background.png"

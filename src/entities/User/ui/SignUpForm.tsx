@@ -1,14 +1,9 @@
 import { Form } from "@shared/ui/Form"
-import styled from "styled-components"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
-import { useNavigate } from "react-router-dom"
 import useRegister from "@entities/Auth/model/useRegister"
-import { useLoginMutation, useRegisterMutation } from "@entities/Auth/api/AuthApi"
-import { useEffect } from "react"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
-import { useToast } from "@shared/Hooks/useToast"
 
 export interface FormFields {
   userName: string

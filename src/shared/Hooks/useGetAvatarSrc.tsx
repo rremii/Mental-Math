@@ -1,5 +1,4 @@
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
-import { Avatars } from "@widgets/AvatarChangeMenu/model/types"
 import { AvatarSrc } from "@shared/Constants/AvatarsSrc"
 import { useGetUserQuery } from "@entities/User/api/UserApi"
 

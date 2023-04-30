@@ -33,18 +33,18 @@ const GameLayout = styled.div`
   width: 100%;
   max-width: 360px;
   height: 105px;
-  background: linear-gradient(268.07deg, #070011 12.96%, var(--main-color) 97.1%);
+  background: var(--game-cell-bg-color);
   display: grid;
   grid-template-rows: 2.3fr 1fr;
   row-gap: 5px;
   padding: 10px 0 0px 12px;
-  
+
   .top {
     display: flex;
     align-content: baseline;
     //justify-content: space-between;
     //width: 100%;
-    border-bottom: rgba(155, 139, 188, 0.2) 2px solid;
+    border-bottom: var(--separator-color) 2px solid;
     padding-right: 12px;
 
     .icon-box {
@@ -76,9 +76,9 @@ const GameLayout = styled.div`
         align-items: center;
         letter-spacing: 0.2em;
         word-wrap: break-word;
-        color: rgba(255, 255, 255, 0.8);
+        color: var(--sub-text-color);
         max-width: 50px;
-        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        text-shadow: 0px 4px 4px var(--text-shadow-dark);
       }
     }
 
@@ -108,7 +108,7 @@ const GameLayout = styled.div`
       font-weight: 400;
       font-size: 16px;
       line-height: 19px;
-      color: #c1c0c0;
+      color: var(--sub-text-color);
     }
   }
 

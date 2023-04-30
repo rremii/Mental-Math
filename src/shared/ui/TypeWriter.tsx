@@ -43,7 +43,7 @@ const TextLayout = styled.pre`
   font-weight: 400;
   font-size: 30px;
   line-height: 30px;
-  color: #d3c1f1;
+  color: var(--typing-animation-color);
   @keyframes blink {
     from {
       opacity: 0%;
@@ -54,7 +54,7 @@ const TextLayout = styled.pre`
   }
 
   &::after {
-    background-color: rgba(82, 255, 99, 1);
+    background-color: var(--typing-animation-sub-color);
     content: "|";
     animation: blink 1s infinite;
   }

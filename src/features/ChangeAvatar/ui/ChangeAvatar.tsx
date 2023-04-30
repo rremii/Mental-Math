@@ -1,9 +1,7 @@
 import styled from "styled-components"
-import NoAvatarIcon from "@shared/assets/DarkTheme/avatars/NoAvatarIcon.svg"
-import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
+import { useAppDispatch } from "@shared/Hooks/store-hooks"
 import { setAvatarMenuOpen } from "@widgets/AvatarChangeMenu/model/AvatarMenuSlice"
 import { UseGetAvatarSrc } from "@shared/Hooks/useGetAvatarSrc"
-import { useGetUserQuery } from "@entities/User/api/UserApi"
 
 export const ChangeAvatar = () => {
   const dispatch = useAppDispatch()
