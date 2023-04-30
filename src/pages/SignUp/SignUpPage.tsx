@@ -12,6 +12,7 @@ const SignUpPage = () => {
     <Header />
     <SignUpMenu />
   </SignUpLayout>
+
 }
 export default SignUpPage
 const SignUpLayout = styled.div`

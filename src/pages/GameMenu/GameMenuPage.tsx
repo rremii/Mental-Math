@@ -5,6 +5,7 @@ import SettingsMenu from "@widgets/SettingsMenu/ui/SettingsMenu"
 import AvatarChangeMenu from "@widgets/AvatarChangeMenu/ui/AvatarChangeMenu"
 import React from "react"
 import Header from "@widgets/GameMenu/ ui/Header"
+import { useChangeTheme } from "@widgets/SettingsMenu/hooks/useChangeTheme"
 
 const GameMenuPage = () => {
 

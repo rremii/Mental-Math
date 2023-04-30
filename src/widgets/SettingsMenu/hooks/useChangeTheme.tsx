@@ -27,6 +27,7 @@ export const useChangeTheme = () => {
   }
 
   useEffect(() => {
+    console.log("useEffect")
     ChangeTheme()
   }, [isDarkMode])
 
