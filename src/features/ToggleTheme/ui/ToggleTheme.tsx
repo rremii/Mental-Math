@@ -1,8 +1,7 @@
 import { ToggleBtn } from "@shared/ui/ToggleBtn"
 import styled from "styled-components"
-import { useLocalStorage } from "@shared/Hooks/useLocalStorage"
 import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
-import { setDarkMode } from "@widgets/SettingsMenu/model/SettingsSlice"
+import { setDarkMode } from "@entities/Settings"
 
 export const ToggleTheme = () => {
   const dispatch = useAppDispatch()

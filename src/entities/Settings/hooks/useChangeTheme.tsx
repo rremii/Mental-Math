@@ -1,9 +1,8 @@
-import { useLocalStorage } from "@shared/Hooks/useLocalStorage"
 import { useEffect } from "react"
 import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
-import { setDarkMode } from "@widgets/SettingsMenu/model/SettingsSlice"
-import { DarkTheme, LightTheme } from "@widgets/SettingsMenu/constants"
-import { SetStyleProperty } from "@widgets/SettingsMenu/helpers"
+import { setDarkMode } from "@entities/Settings/model/SettingsSlice"
+import { DarkTheme, LightTheme } from "@entities/Settings/constants"
+import { SetStyleProperty } from "@entities/Settings/helpers"
 
 
 export const useChangeTheme = () => {

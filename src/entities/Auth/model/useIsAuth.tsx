@@ -1,13 +1,11 @@
 import { useEffect } from "react"
 import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
 import { useNavigate } from "react-router-dom"
-import useRefresh from "@entities/Auth/model/useRefresh"
-import { useLocation } from "react-router"
-import useIsProtectedRoute from "@entities/Auth/model/useIsProtectedRoute"
+import { useRefresh } from ".."
+import { useIsProtectedRoute } from "./useIsProtectedRoute"
 
 
-const useIsAuth = () => {
-  const location = useLocation()
+export const useIsAuth = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
@@ -34,5 +32,4 @@ const useIsAuth = () => {
 
   return { isPending, isLoggedIn }
 }
-export default useIsAuth
 

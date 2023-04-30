@@ -6,7 +6,7 @@ import InputMathIcon from "@shared/assets/DarkTheme/inputMathIcon.svg"
 import TrueFalseIcon from "@shared/assets/DarkTheme/trueFasleIcon.svg"
 import BalanceIcon from "@shared/assets/DarkTheme/balanceIcon.svg"
 
-const GameMenu = () => {
+export const GameMenu = () => {
   return <GameMenuLayout>
     <Game name={"Quick\n Math"} record={0} href={"quick-math"} icon={QuickMathIcon} />
     <Game name={"Hard\n Math"} record={0} href={"hard-math"} icon={HardMathIcon} />
@@ -15,7 +15,6 @@ const GameMenu = () => {
     <Game name={"Balance"} record={0} href={"balance-math"} icon={BalanceIcon} />
   </GameMenuLayout>
 }
-export default GameMenu
 const GameMenuLayout = styled.main`
   display: flex;
   flex-direction: column;

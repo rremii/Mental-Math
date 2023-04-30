@@ -1,8 +1,8 @@
 import styled from "styled-components"
 import { FC } from "react"
 import { ChangeAvatar } from "@features/ChangeAvatar"
-import { ChangeName } from "@features/ChangeName/ui/ChangeName"
-import { ToggleTheme } from "@features/ToggleTheme/ui/ToggleTheme"
+import { ChangeName } from "@features/ChangeName"
+import { ToggleTheme } from "@features/ToggleTheme"
 
 interface props {
   // children: ReactNode

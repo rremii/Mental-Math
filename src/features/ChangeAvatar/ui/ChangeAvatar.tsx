@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { useAppDispatch } from "@shared/Hooks/store-hooks"
-import { setAvatarMenuOpen } from "@widgets/AvatarChangeMenu/model/AvatarMenuSlice"
 import { UseGetAvatarSrc } from "@shared/Hooks/useGetAvatarSrc"
+import { setAvatarMenuOpen } from "@entities/Avatar"
 
 export const ChangeAvatar = () => {
   const dispatch = useAppDispatch()

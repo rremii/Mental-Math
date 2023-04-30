@@ -1,11 +1,9 @@
-import GameMenu from "@widgets/GameMenu/ ui/GameMenu"
 import styled from "styled-components"
 import background from "@shared/assets/DarkTheme/background.png"
-import SettingsMenu from "@widgets/SettingsMenu/ui/SettingsMenu"
-import AvatarChangeMenu from "@widgets/AvatarChangeMenu/ui/AvatarChangeMenu"
 import React from "react"
-import Header from "@widgets/GameMenu/ ui/Header"
-import { useChangeTheme } from "@widgets/SettingsMenu/hooks/useChangeTheme"
+import { GameMenu, Header } from "@widgets/GameMenu"
+import { SettingsMenu } from "@widgets/SettingsMenu"
+import { AvatarChangeMenu } from "@widgets/AvatarChangeMenu"
 
 const GameMenuPage = () => {
 

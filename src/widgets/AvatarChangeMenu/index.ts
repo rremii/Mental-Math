@@ -1,1 +1,1 @@
-export * from "./ui/AvatarChangeMenu"
+export { AvatarChangeMenu } from "./ui/AvatarChangeMenu"

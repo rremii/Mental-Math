@@ -1,14 +1,13 @@
 import styled from "styled-components"
 // import Logo from '@shared/assets/DarkTheme/l'
 
-const Header = () => {
+export const Header = () => {
   return <HeaderLayout>
     <div className="logo">
       Mental Math
     </div>
   </HeaderLayout>
 }
-export default Header
 const HeaderLayout = styled.header`
   flex: 0 0 74px;
   //height: 74px;

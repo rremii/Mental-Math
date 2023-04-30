@@ -3,7 +3,7 @@ import { SettingsBox } from "./SettingsBox"
 import { Header } from "./Header"
 import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
 
-const SettingsMenu = () => {
+export const SettingsMenu = () => {
   const dispatch = useAppDispatch()
 
   const isSettingsMenuOpen = useTypedSelector(state => state.SettingsMenu.isSettingsMenuOpen)
@@ -14,7 +14,6 @@ const SettingsMenu = () => {
     <SettingsBox />
   </SettingsMenuLayout>
 }
-export default SettingsMenu
 const SettingsMenuLayout = styled.div<{
   isActive: boolean
 }>`

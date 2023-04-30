@@ -1,10 +1,10 @@
 import styled from "styled-components"
 import Settings from "@shared/assets/DarkTheme/settings.svg"
 import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
-import { setSettingsMenu } from "@widgets/SettingsMenu/model/SettingsSlice"
+import { setSettingsMenu } from "@entities/Settings"
 // import Logo from '@shared/assets/DarkTheme/l'
 
-const Header = () => {
+export const Header = () => {
   const dispatch = useAppDispatch()
 
   const isSettingsOpen = useTypedSelector(state => state.SettingsMenu.isSettingsMenuOpen)
@@ -24,7 +24,6 @@ const Header = () => {
     </div>
   </HeaderLayout>
 }
-export default Header
 const HeaderLayout = styled.header<{
   isSettings: boolean
 }>`

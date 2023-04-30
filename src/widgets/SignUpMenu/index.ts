@@ -1,1 +1,2 @@
-export * from "./ui/SignUpMenu"
+export { SignUpMenu } from "./ui/SignUpMenu"
+export { Header } from "./ui/Header"

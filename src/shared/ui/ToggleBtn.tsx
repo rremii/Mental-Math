@@ -1,6 +1,5 @@
 import styled from "styled-components"
-import { boolean } from "yup"
-import { FC, useState } from "react"
+import { FC } from "react"
 
 interface props {
   isActive: boolean

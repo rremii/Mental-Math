@@ -2,14 +2,12 @@ import { Form } from "@shared/ui/Form"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
-import useLogin from "@entities/Auth/model/useLogin"
+import { useLogin } from "@entities/Auth/model/useLogin"
 
-
-export interface FormFields {
+interface FormFields {
   email: string;
   password: string;
 }
-
 
 const schema = yup.object().shape({
   email: yup.string().required(),

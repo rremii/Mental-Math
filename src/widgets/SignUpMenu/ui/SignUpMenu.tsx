@@ -1,13 +1,13 @@
 import styled from "styled-components"
 import { ChangeAvatar } from "@features/ChangeAvatar"
-import { SignUpForm } from "@entities/Auth/ui/SignUpForm"
+import { SignUpForm } from "@entities/Auth"
 
 export const SignUpMenu = () => {
 
 
   return <SignUpMenuLayout>
     <div className="change-avatar-box">
-      <ChangeAvatar  />
+      <ChangeAvatar />
     </div>
     <SignUpForm />
   </SignUpMenuLayout>

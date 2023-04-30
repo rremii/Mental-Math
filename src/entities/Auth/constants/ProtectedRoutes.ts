@@ -1,1 +1,1 @@
-export const AuthProtectedRoutes = ["/", "/game-menu"]
+export const AuthProtectedRoutes = ["/"]

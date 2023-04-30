@@ -1,20 +1,20 @@
 import styled from "styled-components"
 import NoAvatarIcon from "@shared/assets/DarkTheme/avatars/NoAvatarIcon.svg"
 import { FC } from "react"
-import { Avatars } from "@widgets/AvatarChangeMenu/model/types"
+import { Avatars } from "@entities/Avatar/model/types"
+import { AvatarSrc } from "@shared/Constants/AvatarsSrc"
 
 interface props {
-  src?: string
   avatar?: Avatars
   isActive: boolean
   onClick: (avatars: Avatars) => void
 }
 
-export const Avatar: FC<props> = ({ src = NoAvatarIcon, isActive = false, avatar = "noAvatar", onClick }) => {
+export const Avatar: FC<props> = ({ isActive = false, avatar = "noAvatar", onClick }) => {
 
 
   return <AvatarLayout onClick={() => onClick(avatar)} isActive={isActive}>
-    <img src={src} alt="avatar" />
+    <img src={AvatarSrc.get(avatar) || NoAvatarIcon} alt="avatar" />
   </AvatarLayout>
 }
 const AvatarLayout = styled.div<{

@@ -1,9 +1,9 @@
 import { refresh, useRefreshQuery } from "@entities/Auth/api/AuthApi"
 import { useEffect } from "react"
 import { useAppDispatch } from "@shared/Hooks/store-hooks"
-import { setAuthRejected, setAuthSuccess } from "@entities/Auth/model/AuthSlice"
+import { setAuthRejected, setAuthSuccess } from ".."
 
-const UseRefresh = () => {
+export const useRefresh = () => {
   const dispatch = useAppDispatch()
 
   const { data, isError } = useRefreshQuery()
@@ -28,4 +28,3 @@ const UseRefresh = () => {
 
 
 }
-export default UseRefresh

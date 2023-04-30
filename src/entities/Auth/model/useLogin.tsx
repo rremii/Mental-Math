@@ -4,9 +4,9 @@ import { useEffect } from "react"
 import { useToast } from "@shared/Hooks/useToast"
 import { useNavigate } from "react-router-dom"
 import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
-import { setAuthRejected, setAuthSuccess } from "@entities/Auth/model/AuthSlice"
+import { setAuthRejected, setAuthSuccess } from ".."
 
-const UseLogin = () => {
+export const useLogin = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
@@ -22,7 +22,7 @@ const UseLogin = () => {
     if (!data) return
     localStorage.setItem("accessToken", data.accessToken)
     dispatch(setAuthSuccess())
-    navigate("/game-menu")
+    navigate("/")
   }, [isSuccess, data])
 
   const Login = async (data: LoginDto) => {
@@ -42,4 +42,3 @@ const UseLogin = () => {
 
 
 }
-export default UseLogin

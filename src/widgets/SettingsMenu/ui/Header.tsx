@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import Arrow from "@shared/assets/DarkTheme/arrowIcon.svg"
 import { useAppDispatch } from "@shared/Hooks/store-hooks"
-import { setSettingsMenu } from "@widgets/SettingsMenu/model/SettingsSlice"
+import { setSettingsMenu } from "@entities/Settings"
 
 export const Header = () => {
   const dispatch = useAppDispatch()
@@ -11,8 +11,8 @@ export const Header = () => {
   }
 
   return <HeaderLayout>
-    <div className="img-box">
-      <img onClick={OnArrowClick} src={Arrow} alt="arrow" />
+    <div onClick={OnArrowClick} className="img-box">
+      <img src={Arrow} alt="arrow" />
     </div>
 
     <h2 className="title">Settings</h2>

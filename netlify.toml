@@ -1,10 +1,4 @@
 [[redirects]]
-from = "/game-menu"
-to = "/"
-status = 200
-force = true
-
-[[redirects]]
 from = "/login"
 to = "/"
 status = 200

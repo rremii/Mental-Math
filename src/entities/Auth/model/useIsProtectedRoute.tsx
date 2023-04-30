@@ -1,8 +1,8 @@
 import { useLocation } from "react-router"
-import { AuthProtectedRoutes } from "@entities/Auth/constants/ProtectedRoutes"
+import { AuthProtectedRoutes } from "../constants/ProtectedRoutes"
 
 
-const UseIsProtectedRoute = () => {
+export const useIsProtectedRoute = () => {
   const location = useLocation()
 
   const IsProtectedRoute = (): boolean => {
@@ -11,5 +11,4 @@ const UseIsProtectedRoute = () => {
 
   return { IsProtectedRoute }
 }
-export default UseIsProtectedRoute
 

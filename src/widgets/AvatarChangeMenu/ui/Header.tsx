@@ -1,8 +1,8 @@
 import styled from "styled-components"
 import Arrow from "@shared/assets/DarkTheme/arrowIcon.svg"
 import { useAppDispatch } from "@shared/Hooks/store-hooks"
-import { setAvatarMenuOpen } from "@widgets/AvatarChangeMenu/model/AvatarMenuSlice"
 import { HeaderWrapper } from "@shared/ui/HeaderWrapper"
+import { setAvatarMenuOpen } from "@entities/Avatar"
 
 export const Header = () => {
   const dispatch = useAppDispatch()

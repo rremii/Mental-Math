@@ -1,9 +1,8 @@
 import styled from "styled-components"
 import background from "@shared/assets/DarkTheme/background.png"
-import { SignUpMenu } from "@widgets/SignUpMenu"
-import AvatarChangeMenu from "@widgets/AvatarChangeMenu/ui/AvatarChangeMenu"
+import { Header, SignUpMenu } from "@widgets/SignUpMenu"
 import React from "react"
-import Header from "@widgets/SignUpMenu/ui/Header"
+import { AvatarChangeMenu } from "@widgets/AvatarChangeMenu"
 
 const SignUpPage = () => {
 

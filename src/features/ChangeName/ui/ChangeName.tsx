@@ -1,5 +1,5 @@
 import { LabelWithEdit } from "@shared/ui/LabelWithEdit"
-import { useChangeNameMutation, useGetUserQuery } from "@entities/User/api/UserApi"
+import { useChangeNameMutation, useGetUserQuery } from "@entities/User"
 
 export const ChangeName = () => {
 

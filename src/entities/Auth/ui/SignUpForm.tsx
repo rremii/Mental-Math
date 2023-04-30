@@ -2,10 +2,10 @@ import { Form } from "@shared/ui/Form"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
-import useRegister from "@entities/Auth/model/useRegister"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
+import { useRegister } from "@entities/Auth/model/useRegister"
 
-export interface FormFields {
+interface FormFields {
   userName: string
   email: string;
   password: string;
