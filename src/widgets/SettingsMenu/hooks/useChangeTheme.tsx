@@ -13,7 +13,7 @@ export const useChangeTheme = () => {
 
 
   const ChangeTheme = () => {
-
+    console.log(isDarkMode)
     if (isDarkMode)
       DarkTheme.forEach(({ property, value }) => {
         SetStyleProperty(property, value)
