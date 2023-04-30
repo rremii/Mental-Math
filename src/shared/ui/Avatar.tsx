@@ -2,7 +2,7 @@ import styled from "styled-components"
 import NoAvatarIcon from "@shared/assets/DarkTheme/avatars/NoAvatarIcon.svg"
 import { FC } from "react"
 import { Avatars } from "@entities/Avatar/model/types"
-import { AvatarSrc } from "@shared/Constants/AvatarsSrc"
+import { AvatarSrc } from "@entities/Avatar/constants/AvatarsSrc"
 
 interface props {
   avatar?: Avatars

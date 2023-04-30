@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import { useAppDispatch } from "@shared/Hooks/store-hooks"
-import { UseGetAvatarSrc } from "@shared/Hooks/useGetAvatarSrc"
-import { setAvatarMenuOpen } from "@entities/Avatar"
+import { setAvatarMenuOpen, useGetAvatarSrc } from "@entities/Avatar"
 
 export const ChangeAvatar = () => {
   const dispatch = useAppDispatch()
@@ -10,7 +9,7 @@ export const ChangeAvatar = () => {
   const OpenAvatarMenu = () => {
     dispatch(setAvatarMenuOpen(true))
   }
-  const { avatarSrc } = UseGetAvatarSrc()
+  const { avatarSrc } = useGetAvatarSrc()
 
 
   return <ChangeAvatarLayout className="ChangeAvatar" onClick={OpenAvatarMenu}>
