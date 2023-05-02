@@ -3,3 +3,9 @@ from = "/login"
 to = "/"
 status = 200
 force = true
+
+[[redirects]]
+from = "/quick-math"
+to = "/"
+status = 200
+force = true
