@@ -5,32 +5,25 @@ import { GameHeader } from "@shared/ui/GameHeader"
 import { ProgressBar } from "@shared/ui/ProgressBar"
 import { useEffect, useState } from "react"
 import { ResultBtn } from "@shared/ui/ResultBtn"
+import { useGetEquation } from "@entities/QuickMath"
 
 export const QuickMathMenu = () => {
 
 
   const [time, setTime] = useState(3)
-  //
-  // useEffect(() => {
-  //
-  //
-  //   const timer = setTimeout(() => {
-  //     setTime((time) => time + 1)
-  //   }, 1000)
-  //
-  //   if (time >= 9) {
-  //     // setTime(0)
-  //     return () => clearTimeout(timer)
-  //   }
-  //
-  //   return () => clearTimeout(timer)
-  // }, [time])
+  const [stage, setStage] = useState(2)
 
+  const { equation, updateEquation } = useGetEquation()
+
+
+  useEffect(() => {
+    updateEquation()
+  }, [stage])
 
   return <QuickMathLayout>
-    <GameHeader time={time} currentScore={2} />
+    <GameHeader time={time} currentScore={stage} />
     <ProgressBar progress={time / 10} />
-    <EquationSection equation={"2-1=?"} />
+    <EquationSection equation={equation} />
     <ButtonsSection>
       <ResultBtn result="success">0</ResultBtn>
       <ResultBtn>2</ResultBtn>

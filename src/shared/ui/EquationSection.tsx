@@ -26,7 +26,7 @@ const EquationSectionLayout = styled.div`
   line-height: 30px;
   /* identical to box height, or 75% */
 
-  letter-spacing: 0.2em;
+  letter-spacing: 0em;
 
   color: #FFFFFF;
   padding-bottom: 50px;
