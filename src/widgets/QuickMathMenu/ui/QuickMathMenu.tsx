@@ -32,10 +32,10 @@ export const QuickMathMenu = () => {
     <ProgressBar progress={time / 10} />
     <EquationSection equation={"2-1=?"} />
     <ButtonsSection>
-      <ResultBtn>0</ResultBtn>
-      <ResultBtn>-1</ResultBtn>
+      <ResultBtn result="success">0</ResultBtn>
       <ResultBtn>2</ResultBtn>
       <ResultBtn>3</ResultBtn>
+      <ResultBtn result="fail">-1</ResultBtn>
     </ButtonsSection>
   </QuickMathLayout>
 }
