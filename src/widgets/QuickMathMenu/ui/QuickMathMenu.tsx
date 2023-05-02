@@ -1,14 +1,15 @@
 import styled from "styled-components"
-import { ButtonsSection } from "./ButtonsSection"
-import { EquationSection } from "./EquationSection"
-import { Header } from "./Header"
-import { ProgressBar } from "./ProgressBar"
+import { ButtonsSection } from "@shared/ui/ButtonsSection"
+import { EquationSection } from "@shared/ui/EquationSection"
+import { GameHeader } from "@shared/ui/GameHeader"
+import { ProgressBar } from "@shared/ui/ProgressBar"
 import { useEffect, useState } from "react"
+import { ResultBtn } from "@shared/ui/ResultBtn"
 
 export const QuickMathMenu = () => {
 
 
-  // const [time, setTime] = useState(0)
+  const [time, setTime] = useState(3)
   //
   // useEffect(() => {
   //
@@ -27,14 +28,19 @@ export const QuickMathMenu = () => {
 
 
   return <QuickMathLayout>
-    <Header />
-    <ProgressBar progress={0.1} />
-    <EquationSection />
-    <ButtonsSection />
+    <GameHeader time={time} currentScore={2} />
+    <ProgressBar progress={time / 10} />
+    <EquationSection equation={"2-1=?"} />
+    <ButtonsSection>
+      <ResultBtn>0</ResultBtn>
+      <ResultBtn>-1</ResultBtn>
+      <ResultBtn>2</ResultBtn>
+      <ResultBtn>3</ResultBtn>
+    </ButtonsSection>
   </QuickMathLayout>
 }
 const QuickMathLayout = styled.div`
-  background: linear-gradient(121.57deg, #310156 49.39%, #250042 50.22%);
+  background: linear-gradient(121.57deg, #180029 49.39%, #150024 50.22%);
   width: 100%;
   height: 100%;
   color: white;

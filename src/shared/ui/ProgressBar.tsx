@@ -15,7 +15,7 @@ const ProgressBarLayout = styled.div<{
 }>`
   height: 38px;
   width: 100%;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.86);
   position: relative;
   border-radius: 5px;
 
@@ -27,7 +27,7 @@ const ProgressBarLayout = styled.div<{
     width: ${({ progress }) => progress ? progress * 100 + "%" : "0"};
     height: 100%;
     transition: 1s;
-    background-color: #8614CB;
+    background-color: #6f11a8;
     border-radius: inherit;
   }
 

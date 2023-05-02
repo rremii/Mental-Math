@@ -11,7 +11,7 @@ export const ResultBtn: FC<props> = ({ children }) => {
   </ButtonLayout>
 }
 const ButtonLayout = styled.button`
-  background: #7713B4;
+  background: rgba(172, 29, 255, 0.47);
   border-radius: 5px;
   height: 85px;
   width: 100%;

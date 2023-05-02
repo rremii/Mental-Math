@@ -1,4 +1,4 @@
-import { Game } from "@entities/Game"
+import { GoToGame } from "@features/GoToGame"
 import styled from "styled-components"
 import HardMathIcon from "@shared/assets/DarkTheme/hardMathIcon.svg"
 import QuickMathIcon from "@shared/assets/DarkTheme/quickMathIcon.svg"
@@ -6,13 +6,24 @@ import InputMathIcon from "@shared/assets/DarkTheme/inputMathIcon.svg"
 import TrueFalseIcon from "@shared/assets/DarkTheme/trueFasleIcon.svg"
 import BalanceIcon from "@shared/assets/DarkTheme/balanceIcon.svg"
 
+
+const Games = [
+  { name: "Quick\n Math", href: "quick-math", icon: QuickMathIcon },
+  { name: "Hard\n Math", href: "hard-math", icon: HardMathIcon },
+  { name: "Input\n Math", href: "input-math", icon: InputMathIcon },
+  { name: "True\n False", href: "true-false-math", icon: TrueFalseIcon },
+  { name: "Balance", href: "balance-math", icon: BalanceIcon }
+]
+
 export const GameMenu = () => {
+
+
   return <GameMenuLayout>
-    <Game name={"Quick\n Math"} record={0} href={"quick-math"} icon={QuickMathIcon} />
-    <Game name={"Hard\n Math"} record={0} href={"hard-math"} icon={HardMathIcon} />
-    <Game name={"Input\n Math"} record={0} href={"input-math"} icon={InputMathIcon} />
-    <Game name={"True\n False"} record={0} href={"true-false-math"} icon={TrueFalseIcon} />
-    <Game name={"Balance"} record={0} href={"balance-math"} icon={BalanceIcon} />
+
+    {Games.map(({ name, icon, href }) => {
+      return <GoToGame name={name} record={0} href={href} icon={icon} />
+    })}
+
   </GameMenuLayout>
 }
 const GameMenuLayout = styled.main`

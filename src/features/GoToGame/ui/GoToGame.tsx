@@ -11,8 +11,8 @@ interface IProps {
 }
 
 
-export const Game: FC<IProps> = ({ name, icon, href, record }) => {
-  return <GameLayout>
+export const GoToGame: FC<IProps> = ({ name, icon, href, record }) => {
+  return <GameLayout to={href}>
     <div className="top">
       <div className="icon-box">
         <img src={icon} alt={name} />
@@ -20,7 +20,7 @@ export const Game: FC<IProps> = ({ name, icon, href, record }) => {
       <div className="name-box">
         <span>{name}</span>
       </div>
-      <NavLink to={href} className="rating-box">
+      <NavLink to={"leaderboard/" + href} className="rating-box">
         <img src={ratingIcon} alt="rating icon" />
       </NavLink>
     </div>
@@ -29,7 +29,7 @@ export const Game: FC<IProps> = ({ name, icon, href, record }) => {
     </div>
   </GameLayout>
 }
-const GameLayout = styled.div`
+const GameLayout = styled(NavLink)`
   width: 100%;
   max-width: 360px;
   height: 105px;

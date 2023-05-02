@@ -1,8 +1,13 @@
 import styled from "styled-components"
+import { FC } from "react"
 
-export const EquationSection = () => {
+interface props {
+  equation: string
+}
+
+export const EquationSection: FC<props> = ({ equation }) => {
   return <EquationSectionLayout>
-    2+1=?
+    {equation}
   </EquationSectionLayout>
 }
 const EquationSectionLayout = styled.div`

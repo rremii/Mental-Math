@@ -1,16 +1,24 @@
 import styled from "styled-components"
 import ClockIcon from "@shared/assets/DarkTheme/clock-icon.svg"
 import CupIcon from "@shared/assets/DarkTheme/cup-icon.svg"
+import { FC } from "react"
 
-export const Header = () => {
+interface props {
+  time: number
+  currentScore: number
+}
+
+export const GameHeader: FC<props> = ({ time, currentScore }) => {
+
+
   return <HeaderLayout>
     <div className="section">
       <img src={ClockIcon} alt="clock-icon" />
-      <span>1</span>
+      <span>{time}</span>
     </div>
     <div className="section">
       <img src={CupIcon} alt="cup-icon" />
-      <span>5</span>
+      <span>{currentScore}</span>
     </div>
   </HeaderLayout>
 }
