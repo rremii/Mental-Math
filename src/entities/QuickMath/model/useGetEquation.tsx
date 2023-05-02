@@ -36,7 +36,7 @@ export const useGetEquation = () => {
   const [mulDifficulty, setMulDifficulty] = useState(1)
 
   const updateEquation = (): void => {
-    if (Math.random() > 0.5) {
+    if (Math.random() > 0.25) {
 
       const num1 = Math.floor(Math.random() * (10 + difficulty) + 1)
       const num2 = Math.floor(Math.random() * (10 + difficulty) + 1)
@@ -52,19 +52,30 @@ export const useGetEquation = () => {
       const num2 = Math.floor(Math.random() * (10 + mulDifficulty) + 1)
       const sign = "x"
 
+      if (Math.random() > 0.5) {
 
-      const num3 = num1 * num2 //answer is num1
-      const elements = [num2, num1]
+        const num3 = num1 * num2
+        const elements = [num2, num1]
 
-      const shuffledElements = ShuffleArray(elements) as number[]
+        const shuffledElements = ShuffleArray(elements) as number[]
 
-      const index = GetRandomArrElId(shuffledElements)
+        const index = GetRandomArrElId(shuffledElements)
 
-      const resArr: Array<string | number> = shuffledElements.map((num, id) => {
-        return id === index ? "?" : num
-      })
+        const resArr: Array<string | number> = shuffledElements.map((num, id) => {
+          return id === index ? "?" : num
+        })
 
-      setEquation(GetEquationString(sign, [...resArr, num3]))
+        setEquation(GetEquationString(sign, [...resArr, num3]))
+      } else {
+        // const num3 = num1 * num2 //answer is num3
+        const elements = [num2, num1]
+
+        const shuffledElements = ShuffleArray(elements) as number[]
+
+
+        setEquation(GetEquationString(sign, [...shuffledElements, "?"]))
+      }
+
     }
   }
 
