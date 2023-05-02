@@ -5,6 +5,7 @@ import SignUp from "./SignUp/SignUpPage"
 import GameMenu from "./GameMenu/GameMenuPage"
 import { useIsAuth } from "@entities/Auth"
 import { useChangeTheme } from "@entities/Settings"
+import QuickMath from "./QuickMath/QuickMathPage"
 
 // const GameMenu = lazy(() => import("./GameMenu/GameMenuPage"))
 
@@ -20,6 +21,7 @@ export const Routing = () => {
       {!isPending && isLoggedIn === "success" && <>
         <Route path="/" element={<GameMenu />} />
       </>}
+      <Route path="/quick-math" element={<QuickMath />} />
       <Route path="/login" element={<Login />} />
       <Route path="/sign-up" element={<SignUp />} />
     </Routes>
