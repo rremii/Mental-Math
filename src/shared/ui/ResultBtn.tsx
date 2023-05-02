@@ -11,7 +11,7 @@ export const ResultBtn: FC<props> = ({ children }) => {
   </ButtonLayout>
 }
 const ButtonLayout = styled.button`
-  background: linear-gradient(255.8deg, rgb(84, 13, 127) 0%, rgba(119, 19, 180, 0.3) 100%);
+  background: linear-gradient(255.8deg, rgb(115, 17, 173) 0%, rgba(119, 19, 180, 0.3) 100%);
   border-radius: 5px;
   height: 85px;
   width: 100%;

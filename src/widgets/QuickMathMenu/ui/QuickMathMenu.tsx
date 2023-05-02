@@ -40,7 +40,7 @@ export const QuickMathMenu = () => {
   </QuickMathLayout>
 }
 const QuickMathLayout = styled.div`
-  background: linear-gradient(121.57deg, #1d002d 49.39%, #150024 50.22%);
+  background: linear-gradient(121.57deg, #1f0031 49.39%, #150024 50.22%);
   width: 100%;
   height: 100%;
   color: white;
