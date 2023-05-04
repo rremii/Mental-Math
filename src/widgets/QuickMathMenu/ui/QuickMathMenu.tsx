@@ -13,8 +13,12 @@ export const QuickMathMenu = () => {
   const [time, setTime] = useState(3)
   const [stage, setStage] = useState(2)
 
-  const { equation, updateEquation } = useGetEquation()
+  const { equation, answer, updateEquation } = useGetEquation()
 
+  useEffect(() => {
+
+    console.log(answer)
+  }, [equation])
 
   useEffect(() => {
     updateEquation()
