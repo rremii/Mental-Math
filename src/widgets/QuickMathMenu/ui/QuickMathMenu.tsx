@@ -5,23 +5,59 @@ import { GameHeader } from "@shared/ui/GameHeader"
 import { ProgressBar } from "@shared/ui/ProgressBar"
 import { useEffect, useState } from "react"
 import { ResultBtn } from "@shared/ui/ResultBtn"
-import { useGetEquation } from "@entities/QuickMath"
+import { useEquation } from "@entities/QuickMath"
+import { clearTimeout } from "timers"
+import { useTimer } from "@entities/QuickMath/model/useTimer"
+
+export type resultType = "initial" | "success" | "fail" //TODO
 
 export const QuickMathMenu = () => {
 
 
-  const [time, setTime] = useState(3)
-  const [stage, setStage] = useState(2)
+  const {
+    equation, setResult, setBtnId, stage,
+    setStage, result, btnId,
+    answers, correctAnswer, updateEquation
+  } = useEquation()
 
-  const { equation, answer, updateEquation } = useGetEquation()
+  const { Start: StartTimer, Stop: StopTimer, Reset: ResetTime, time, timerState } = useTimer(10, 1)
+
+
+  const CheckAnswer = (answer: number, btnId: number) => {
+    if (correctAnswer === answer) {
+      setResult("success")
+      StopTimer()
+      setStage(stage => stage + 1)
+    } else {
+      setResult("fail")
+      StopTimer()
+      alert("you lost")
+    }
+    setBtnId(btnId)
+  }
+
+
+  useEffect(() => { //checking time
+    if (timerState === "timeout") {
+      alert("time is out")
+      setResult("fail")
+    }
+    if (result !== "initial") return
+
+    if (timerState === "initial") StartTimer()
+
+  }, [time, timerState])
+
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setBtnId(undefined)
+      updateEquation()
+      setResult("initial")
+      ResetTime()
+    }, 1000)
 
-    console.log(answer)
-  }, [equation])
-
-  useEffect(() => {
-    updateEquation()
+    return () => window.clearTimeout(timer)
   }, [stage])
 
   return <QuickMathLayout>
@@ -29,10 +65,13 @@ export const QuickMathMenu = () => {
     <ProgressBar progress={time / 10} />
     <EquationSection equation={equation} />
     <ButtonsSection>
-      <ResultBtn result="success">0</ResultBtn>
-      <ResultBtn>2</ResultBtn>
-      <ResultBtn>3</ResultBtn>
-      <ResultBtn result="fail">-1</ResultBtn>
+      {answers?.map((answer, i) => {
+
+
+        return <ResultBtn isDisabled={result !== "initial"} result={i === btnId ? result : "initial"}
+                          onClick={() => CheckAnswer(answer, i)}
+                          key={i}>{answer}</ResultBtn>
+      })}
     </ButtonsSection>
   </QuickMathLayout>
 }

@@ -19,9 +19,9 @@ export const Routing = () => {
 
     <Routes>
       {!isPending && isLoggedIn === "success" && <>
+        <Route path="/quick-math" element={<QuickMath />} />
         <Route path="/" element={<GameMenu />} />
       </>}
-      <Route path="/quick-math" element={<QuickMath />} />
       <Route path="/login" element={<Login />} />
       <Route path="/sign-up" element={<SignUp />} />
     </Routes>
