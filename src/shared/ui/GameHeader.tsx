@@ -10,7 +10,6 @@ interface props {
 
 export const GameHeader: FC<props> = ({ time, currentScore }) => {
 
-
   return <HeaderLayout>
     <div className="section">
       <img src={ClockIcon} alt="clock-icon" />

@@ -21,7 +21,7 @@ export const GameMenu = () => {
   return <GameMenuLayout>
 
     {Games.map(({ name, icon, href }) => {
-      return <GoToGame name={name} record={0} href={href} icon={icon} />
+      return <GoToGame key={name} name={name} record={0} href={href} icon={icon} />
     })}
 
   </GameMenuLayout>

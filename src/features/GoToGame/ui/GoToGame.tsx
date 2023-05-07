@@ -1,7 +1,7 @@
 import styled from "styled-components"
-import { FC } from "react"
+import React, { FC } from "react"
 import ratingIcon from "@shared/assets/DarkTheme/rating.svg"
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 
 interface IProps {
   icon: string
@@ -12,6 +12,15 @@ interface IProps {
 
 
 export const GoToGame: FC<IProps> = ({ name, icon, href, record }) => {
+  const navigate = useNavigate()
+
+
+  const RedirectTo = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault()
+    e.stopPropagation()
+    navigate("/leaderboard/" + href)
+  }
+
   return <GameLayout to={href}>
     <div className="top">
       <div className="icon-box">
@@ -20,9 +29,9 @@ export const GoToGame: FC<IProps> = ({ name, icon, href, record }) => {
       <div className="name-box">
         <span>{name}</span>
       </div>
-      <NavLink to={"leaderboard/" + href} className="rating-box">
+      <div onClick={RedirectTo} className="rating-box">
         <img src={ratingIcon} alt="rating icon" />
-      </NavLink>
+      </div>
     </div>
     <div className="bottom">
       <span>Best {record}</span>
@@ -38,6 +47,7 @@ const GameLayout = styled(NavLink)`
   grid-template-rows: 2.3fr 1fr;
   row-gap: 5px;
   padding: 10px 0 0px 12px;
+  pointer-events: auto;
 
   .top {
     display: flex;
