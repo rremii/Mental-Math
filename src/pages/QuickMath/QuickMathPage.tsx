@@ -1,10 +1,9 @@
 import styled from "styled-components"
-import { QuickMathMenu } from "@widgets/QuickMathMenu"
-import { GameResultMenu } from "@widgets/GameResultMenu"
+import { QuickMathMenu, QuickMathResultMenu } from "@widgets/QuickMathMenu"
 
 const QuickMathPage = () => {
   return <QuickMathLayout>
-    <GameResultMenu />
+    <QuickMathResultMenu />
     <QuickMathMenu />
   </QuickMathLayout>
 }

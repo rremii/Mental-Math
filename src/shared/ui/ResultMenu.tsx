@@ -1,27 +1,45 @@
 import styled from "styled-components"
+import { FC, useEffect } from "react"
+import { NavLink, useNavigate } from "react-router-dom"
 
-export const GameResultMenu = () => {
+interface props {
+  result: number
+  wrongAnswer: number
+  correctAnswer: number
+  isHidden: boolean
+  OnRestart: () => void
+}
 
-  return <GameResultLayout>
+export const ResultMenu: FC<props> = ({ wrongAnswer, result, isHidden, OnRestart, correctAnswer }) => {
+  const navigate = useNavigate()
+
+  const RedirectTo = () => {
+    navigate("/")
+    OnRestart()
+  }
+
+  return <ResultLayout isHidden={isHidden}>
     <header className="header">
       <h1>YOUR RESULT</h1>
-      <h2>2</h2>
+      <h2>{result}</h2>
     </header>
     <div className="result-section">
       <div className="wrong">
-        <p>Wrong answer:</p> <span>8</span>
+        <p>Wrong answer:</p> <span>{wrongAnswer}</span>
       </div>
       <div className="correct">
-        <p>Wrong answer:</p> <span>8</span>
+        <p>Correct answer:</p> <span>{correctAnswer}</span>
       </div>
     </div>
     <div className="btn-menu">
-      <button className="menu">Menu</button>
-      <button className="restart">Restart</button>
+      <button onClick={RedirectTo} className="menu">Menu</button>
+      <button onClick={OnRestart} className="restart">Restart</button>
     </div>
-  </GameResultLayout>
+  </ResultLayout>
 }
-const GameResultLayout = styled.div`
+const ResultLayout = styled.div<{
+  isHidden: boolean
+}>`
   position: fixed;
   z-index: 3;
   background: linear-gradient(121.57deg, #1f0031 49.39%, #150024 50.22%);
@@ -29,9 +47,12 @@ const GameResultLayout = styled.div`
   max-width: 600px;
   height: 100vh;
   overflow-y: auto;
-
+  top: 0;
+  left: ${({ isHidden }) => isHidden ? "100%" : "0"};
   color: white;
   padding: 10px 16px 25px;
+  transition: 0.5s;
+  transition-delay: ${({ isHidden }) => isHidden ? "" : "1.25s"};
 
   display: flex;
   flex-direction: column;
@@ -131,7 +152,9 @@ const GameResultLayout = styled.div`
       /* identical to box height, or 188% */
 
       letter-spacing: 0.2em;
-
+      display: flex;
+      align-items: center;
+      justify-items: center;
       color: #A954FD;
     }
 
@@ -155,3 +178,4 @@ const GameResultLayout = styled.div`
     }
   }
 `
+

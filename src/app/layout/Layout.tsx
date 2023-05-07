@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import React, { FC } from "react"
+import React, { FC, useEffect } from "react"
 import { Toast } from "@shared/ui/Toast"
 
 interface Props {
@@ -7,6 +7,10 @@ interface Props {
 }
 
 const Layout: FC<Props> = ({ children }) => {
+
+  useEffect(() => {
+    window.scrollTo({ top: 100 })
+  })
 
   return <LayoutStyles>
     <Toast />
