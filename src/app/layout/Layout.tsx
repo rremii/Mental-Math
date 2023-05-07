@@ -8,9 +8,7 @@ interface Props {
 
 const Layout: FC<Props> = ({ children }) => {
 
-  useEffect(() => {
-    window.scrollTo({ top: 100 })
-  })
+
 
   return <LayoutStyles>
     <Toast />
