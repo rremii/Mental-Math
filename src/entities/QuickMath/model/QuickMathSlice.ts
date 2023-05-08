@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { resultType } from "@widgets/QuickMathMenu"
+import { resultType, stageType } from "@widgets/QuickMathMenu"
 
 
 interface initialStateType {
@@ -7,12 +7,14 @@ interface initialStateType {
   wrongAnswer: number | null
   stage: number
   result: resultType
+  stageState: stageType
   clickedBtnId: number | null
 }
 
 const initialState = {
   clickedBtnId: null,
   result: "initial",
+  stageState: "preStart",
   stage: 0,
   correctAnswer: null,
   wrongAnswer: null
@@ -28,6 +30,9 @@ const QuickMathSlice = createSlice({
     setResult(state, action: PayloadAction<resultType>) {
       state.result = action.payload
     },
+    setStageState(state, action: PayloadAction<stageType>) {
+      state.stageState = action.payload
+    },
     setBtnId(state, action: PayloadAction<number | null>) {
       state.clickedBtnId = action.payload
     },
@@ -39,5 +44,9 @@ const QuickMathSlice = createSlice({
     }
   }
 })
-export const { setStage, setWrongAnswer, setCorrectAnswer, setResult, setBtnId } = QuickMathSlice.actions
+export const {
+  setStage, setStageState,
+  setWrongAnswer, setCorrectAnswer, setResult, setBtnId
+}
+  = QuickMathSlice.actions
 export const QuickMathReducer = QuickMathSlice.reducer

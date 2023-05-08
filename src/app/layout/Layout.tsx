@@ -9,7 +9,6 @@ interface Props {
 const Layout: FC<Props> = ({ children }) => {
 
 
-
   return <LayoutStyles>
     <Toast />
 

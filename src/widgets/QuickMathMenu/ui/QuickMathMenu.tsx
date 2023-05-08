@@ -5,18 +5,37 @@ import { GameHeader } from "@shared/ui/GameHeader"
 import { ProgressBar } from "@shared/ui/ProgressBar"
 import { useEffect, useState } from "react"
 import { ResultBtn } from "@shared/ui/ResultBtn"
-import { setBtnId, setCorrectAnswer, setResult, setStage, setWrongAnswer, useEquation } from "@entities/QuickMath"
+import {
+  setBtnId,
+  setCorrectAnswer,
+  setResult,
+  setStage,
+  setStageState,
+  setWrongAnswer,
+  useEquation
+} from "@entities/QuickMath"
 import { clearTimeout } from "timers"
 import { useTimer } from "@entities/QuickMath/model/useTimer"
 import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
+import { useIsPreStart } from "@entities/QuickMath/model/useIsPreStart"
+import { PreStartTimer } from "@shared/ui/PreStartTimer"
 
 export type resultType = "initial" | "success" | "fail" //TODO
+export type stageType = "preStart" | "running" | "finished" //TODO
+
+
+//TODO fix
+
+export const preStartTime = 3
+export const preStartTimeGap = 1
+
 
 export const QuickMathMenu = () => {
   const dispatch = useAppDispatch()
 
   const stage = useTypedSelector(state => state.QuickMath.stage)
   const result = useTypedSelector(state => state.QuickMath.result)
+  const stageState = useTypedSelector(state => state.QuickMath.stageState)
   const clickedBtnId = useTypedSelector(state => state.QuickMath.clickedBtnId)
 
 
@@ -28,14 +47,14 @@ export const QuickMathMenu = () => {
   const CheckAnswer = (answer: number, btnId: number) => {
     if (correctAnswer === answer) {
       dispatch(setResult("success"))
-      StopTimer()
       dispatch(setStage((stage + 1)))
     } else {
       dispatch(setResult("fail"))
       dispatch(setCorrectAnswer(correctAnswer))
       dispatch(setWrongAnswer(answer))
-      StopTimer()
     }
+    StopTimer()
+    dispatch(setStageState("finished"))
     dispatch(setBtnId(btnId))
   }
 
@@ -43,9 +62,10 @@ export const QuickMathMenu = () => {
   useEffect(() => { //checking time
     if (timerState === "timeout") {
       dispatch(setResult("fail"))
+      dispatch(setStageState("finished"))
       dispatch(setCorrectAnswer(correctAnswer))
     }
-    if (result !== "initial") return
+    if (stageState !== "running") return
 
     if (timerState === "initial") StartTimer()
 
@@ -54,7 +74,7 @@ export const QuickMathMenu = () => {
 //TODO useResetGame
   useEffect(() => {
 
-    if (result === "initial") {
+    if (stageState === "running") {
       updateEquation()
       ResetTime()
       resetDifficulty()
@@ -66,24 +86,37 @@ export const QuickMathMenu = () => {
       updateEquation()
       resetDifficulty()
       dispatch(setResult("initial"))
+      dispatch(setStageState("running"))
       ResetTime()
     }, 1000)
 
     return () => window.clearTimeout(timer)
-  }, [stage, result])
+  }, [stageState])
+
+
+  const { isPreStart } = useIsPreStart(preStartTime, preStartTimeGap)
+
+
+  useEffect(() => {
+    if (!isPreStart) dispatch(setStageState("running"))
+  }, [isPreStart])
 
   return <QuickMathLayout>
     <GameHeader time={time} currentScore={stage} />
     <ProgressBar progress={time / 10} />
-    <EquationSection equation={equation} />
+    {!isPreStart ? <EquationSection equation={equation} />
+      : <>
+        <h3 className="preTitle">Choose the right answer</h3>
+        <PreStartTimer initTime={preStartTime} timeGap={preStartTimeGap} /></>}
     <ButtonsSection>
+
       {answers?.map((answer, i) => {
         let btnResult: resultType = "initial"
         if (i === clickedBtnId && result === "fail") btnResult = "fail"
         if (i === clickedBtnId && result === "success") btnResult = "success"
         if (answer === correctAnswer && result === "fail") btnResult = "success"
         return <ResultBtn isDisabled={result !== "initial"} result={btnResult}
-                          onClick={() => CheckAnswer(answer, i)}
+                          onClick={() => CheckAnswer(+answer, i)}
                           key={i}>{answer}</ResultBtn>
       })}
     </ButtonsSection>
@@ -97,4 +130,28 @@ const QuickMathLayout = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0 20px 40px;
+
+  .preStartTimer {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .preTitle {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 30px;
+    /* identical to box height, or 94% */
+    width: 100%;
+    display: flex;
+
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+    letter-spacing: 0.2em;
+    margin-top: 50px;
+    color: #FFFFFF;
+  }
 `

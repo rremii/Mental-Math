@@ -19,7 +19,7 @@ export const useEquation = () => {
   // const [result, setResult] = useState<resultType>("initial")
   // const [btnId, setBtnId] = useState<number>()
   const [equation, setEquation] = useState<string>("")
-  const [answers, setAnswers] = useState<number[]>()
+  const [answers, setAnswers] = useState<string[] | number[]>(["", "", "", ""])
   const [correctAnswer, setCorrectAnswer] = useState<number | null>(null)
   const [difficulty, setDifficulty] = useState(1)
   const [mulDifficulty, setMulDifficulty] = useState(1)
