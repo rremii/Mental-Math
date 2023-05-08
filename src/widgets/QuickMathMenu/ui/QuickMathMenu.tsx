@@ -52,6 +52,7 @@ export const QuickMathMenu = () => {
       dispatch(setResult("fail"))
       dispatch(setCorrectAnswer(correctAnswer))
       dispatch(setWrongAnswer(answer))
+      resetDifficulty()
     }
     StopTimer()
     dispatch(setStageState("finished"))
@@ -64,6 +65,7 @@ export const QuickMathMenu = () => {
       dispatch(setResult("fail"))
       dispatch(setStageState("finished"))
       dispatch(setCorrectAnswer(correctAnswer))
+      resetDifficulty()
     }
     if (stageState !== "running") return
 
@@ -77,14 +79,12 @@ export const QuickMathMenu = () => {
     if (stageState === "running") {
       updateEquation()
       ResetTime()
-      resetDifficulty()
     }
 
     if (result !== "success") return
     const timer = setTimeout(() => {
       dispatch(setBtnId(null))
       updateEquation()
-      resetDifficulty()
       dispatch(setResult("initial"))
       dispatch(setStageState("running"))
       ResetTime()
