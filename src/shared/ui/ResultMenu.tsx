@@ -8,14 +8,15 @@ interface props {
   correctAnswer: number
   isHidden: boolean
   OnRestart: () => void
+  OnMenu: () => void
 }
 
-export const ResultMenu: FC<props> = ({ wrongAnswer, result, isHidden, OnRestart, correctAnswer }) => {
+export const ResultMenu: FC<props> = ({ wrongAnswer, result, isHidden, OnRestart, correctAnswer, OnMenu }) => {
   const navigate = useNavigate()
 
-  const RedirectTo = () => {
+  const OnMenuClick = () => {
     navigate("/")
-    OnRestart()
+    OnMenu()
   }
 
   return <ResultLayout isHidden={isHidden}>
@@ -32,7 +33,7 @@ export const ResultMenu: FC<props> = ({ wrongAnswer, result, isHidden, OnRestart
       </div>
     </div>
     <div className="btn-menu">
-      <button onClick={RedirectTo} className="menu">Menu</button>
+      <button onClick={OnMenuClick} className="menu">Menu</button>
       <button onClick={OnRestart} className="restart">Restart</button>
     </div>
   </ResultLayout>

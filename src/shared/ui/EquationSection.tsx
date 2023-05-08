@@ -6,6 +6,9 @@ interface props {
 }
 
 export const EquationSection: FC<props> = ({ equation }) => {
+
+
+
   return <EquationSectionLayout>
     {equation}
   </EquationSectionLayout>
