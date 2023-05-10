@@ -28,7 +28,7 @@ export const SolveEquation = (equation: string) => {
 
   const equationArrLeft = equationStringLeft.split(" ")
 
-  let sign: string = "+" //sign of ?
+  let sign = "+" //sign of ?
   let resNum: null | number = null
 
   if (equationArrLeft.includes("x")) {

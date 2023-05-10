@@ -4,7 +4,6 @@ import { SolveEquation } from "../helpers/SolveEquation"
 import { CreateEquation } from "../helpers/CreateEquation"
 import { CreateMultiplyEquation } from "../helpers/CreateMultiplyEquation"
 import { GetAnswersArr } from "@entities/QuickMath/helpers/GetAnswersArr"
-import { resultType } from "@widgets/QuickMathMenu"
 
 
 const IsMultiply = () => {
@@ -13,11 +12,8 @@ const IsMultiply = () => {
 }
 
 export const useEquation = () => {
-  // const [time, setTime] = useState(3)
 
-  // const [stage, setStage] = useState(2)
-  // const [result, setResult] = useState<resultType>("initial")
-  // const [btnId, setBtnId] = useState<number>()
+
   const [equation, setEquation] = useState<string>("")
   const [answers, setAnswers] = useState<string[] | number[]>(["", "", "", ""])
   const [correctAnswer, setCorrectAnswer] = useState<number | null>(null)
@@ -26,7 +22,7 @@ export const useEquation = () => {
 
 
   const updateEquation = (): void => {
-    let equation: string = ""
+    let equation = ""
     if (IsMultiply()) {
       equation = CreateMultiplyEquation(mulDifficulty)
       setMulDifficulty(difficulty => difficulty + 1)
@@ -51,7 +47,6 @@ export const useEquation = () => {
     equation, answers,
     resetDifficulty,
     correctAnswer, updateEquation
-
   }
 
 }

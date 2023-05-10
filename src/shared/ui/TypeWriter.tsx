@@ -1,8 +1,13 @@
 import styled from "styled-components"
 import { useEffect, useState } from "react"
 
+interface props {
+  content: string
+  speed: number
+  delay: number
+}
 
-export const TypeWriter = ({ content = "", speed = 1000, delay = 0 }) => {
+export const TypeWriter = ({ content = "", speed = 1000, delay = 0 }: props) => {
   const [displayedContent, setDisplayedContent] = useState("")
   const [index, setIndex] = useState(0)
   const [isStarted, setStart] = useState(false)

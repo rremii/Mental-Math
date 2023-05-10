@@ -19,15 +19,9 @@ import { useTimer } from "@entities/QuickMath/model/useTimer"
 import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
 import { useIsPreStart } from "@entities/QuickMath/model/useIsPreStart"
 import { PreStartTimer } from "@shared/ui/PreStartTimer"
+import { GetBtnResult } from "@entities/QuickMath/helpers/GetBtnResult"
+import { PreStartGap, PreStartTime, StageTime, StageTimeGap } from "@entities/QuickMath/constants"
 
-export type resultType = "initial" | "success" | "fail" //TODO
-export type stageType = "preStart" | "running" | "finished" //TODO
-
-
-//TODO fix
-
-export const preStartTime = 3
-export const preStartTimeGap = 1
 
 
 export const QuickMathMenu = () => {
@@ -41,41 +35,25 @@ export const QuickMathMenu = () => {
 
   const { equation, answers, correctAnswer, updateEquation, resetDifficulty } = useEquation()
 
-  const { Start: StartTimer, Stop: StopTimer, Reset: ResetTime, time, timerState } = useTimer(10, 1)
+  const { Start: StartTimer, Stop: StopTimer, Reset: ResetTime, time, timerState } = useTimer(StageTime, StageTimeGap)
+
+  useIsPreStart()
 
 
-  const CheckAnswer = (answer: number, btnId: number) => {
-    if (correctAnswer === answer) {
-      dispatch(setResult("success"))
-      dispatch(setStage((stage + 1)))
-    } else {
-      dispatch(setResult("fail"))
-      dispatch(setCorrectAnswer(correctAnswer))
-      dispatch(setWrongAnswer(answer))
-      resetDifficulty()
-    }
-    StopTimer()
-    dispatch(setStageState("finished"))
-    dispatch(setBtnId(btnId))
-  }
-
-
-  useEffect(() => { //checking time
+  useEffect(() => {
     if (timerState === "timeout") {
       dispatch(setResult("fail"))
       dispatch(setStageState("finished"))
       dispatch(setCorrectAnswer(correctAnswer))
       resetDifficulty()
     }
-    if (stageState !== "running") return
 
-    if (timerState === "initial") StartTimer()
+    if (timerState === "initial" && stageState === "running") StartTimer()
 
   }, [time, timerState])
 
-//TODO useResetGame
-  useEffect(() => {
 
+  useEffect(() => {
     if (stageState === "running") {
       updateEquation()
       ResetTime()
@@ -94,30 +72,41 @@ export const QuickMathMenu = () => {
   }, [stageState])
 
 
-  const { isPreStart } = useIsPreStart(preStartTime, preStartTimeGap)
-
-
-  useEffect(() => {
-    if (!isPreStart) dispatch(setStageState("running"))
-  }, [isPreStart])
+  const CheckAnswer = (answer: number, btnId: number) => {
+    if (correctAnswer === answer) {
+      dispatch(setResult("success"))
+      dispatch(setStage((stage + 1)))
+    } else {
+      dispatch(setResult("fail"))
+      dispatch(setCorrectAnswer(correctAnswer))
+      dispatch(setWrongAnswer(answer))
+      resetDifficulty()
+    }
+    StopTimer()
+    dispatch(setStageState("finished"))
+    dispatch(setBtnId(btnId))
+  }
 
   return <QuickMathLayout>
     <GameHeader time={time} currentScore={stage} />
     <ProgressBar progress={time / 10} />
-    {!isPreStart ? <EquationSection equation={equation} />
+    {stageState !== "preStart" ? <EquationSection equation={equation} />
       : <>
         <h3 className="preTitle">Choose the right answer</h3>
-        <PreStartTimer initTime={preStartTime} timeGap={preStartTimeGap} /></>}
+        <PreStartTimer initTime={PreStartTime} timeGap={PreStartGap} /></>}
     <ButtonsSection>
 
-      {answers?.map((answer, i) => {
-        let btnResult: resultType = "initial"
-        if (i === clickedBtnId && result === "fail") btnResult = "fail"
-        if (i === clickedBtnId && result === "success") btnResult = "success"
-        if (answer === correctAnswer && result === "fail") btnResult = "success"
+      {answers?.map((answer, btnId) => {
+        const btnResult = GetBtnResult({
+          btnId,
+          result,
+          clickedBtnId,
+          correctAnswer: correctAnswer ? correctAnswer : 0,
+          answer: +answer
+        })
         return <ResultBtn isDisabled={result !== "initial"} result={btnResult}
-                          onClick={() => CheckAnswer(+answer, i)}
-                          key={i}>{answer}</ResultBtn>
+                          onClick={() => CheckAnswer(+answer, btnId)}
+                          key={btnId}>{answer}</ResultBtn>
       })}
     </ButtonsSection>
   </QuickMathLayout>

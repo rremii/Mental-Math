@@ -37,5 +37,5 @@ export const UserApi = Api.injectEndpoints({
   }),
   overrideExisting: false
 })
-export const {} = UserApi.endpoints
-export const { useGetUserQuery, useChangeNameMutation,useChangeAvatarMutation } = UserApi
+// export const {} = UserApi.endpoints
+export const { useGetUserQuery, useChangeNameMutation, useChangeAvatarMutation } = UserApi

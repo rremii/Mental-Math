@@ -1,24 +1,27 @@
 import { useEffect, useState } from "react"
-import { useTypedSelector } from "@shared/Hooks/store-hooks"
+import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
 import { useTimer } from "@entities/QuickMath/model/useTimer"
+import { setStageState } from "@entities/QuickMath"
+import { PreStartGap, PreStartTime } from "@entities/QuickMath/constants"
 
-export const useIsPreStart = (initTime:number,timeGap:number) => {
+export const useIsPreStart = () => {
+  const dispatch = useAppDispatch()
+
   const stageState = useTypedSelector(state => state.QuickMath.stageState)
 
-  const [isPreStart, setPreStart] = useState<boolean>(true)
-
-  const { Start, time, timerState } = useTimer(initTime, timeGap)
+  const { Start, time, timerState } = useTimer(PreStartTime, PreStartGap)
 
 
   useEffect(() => {
-    if (timerState === "timeout") setPreStart(false)
+    if (timerState === "timeout") {
+      dispatch(setStageState("running"))
+    }
 
-    if (stageState !== "preStart") return
-    Start()
+    if (stageState === "preStart") Start()
 
-  }, [isPreStart, timerState])
+  }, [timerState])
 
-  return { time, isPreStart }
+  return { time }
 
 
 }

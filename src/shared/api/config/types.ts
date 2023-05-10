@@ -1,7 +1,7 @@
 export interface ApiError {
   message: string
   name: string
-  options: {}
+  options: object
   response: { statusCode: number, message: string, error: string }
   status: number
 }
