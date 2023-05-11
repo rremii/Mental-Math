@@ -3,93 +3,38 @@ import { ButtonsSection } from "@shared/ui/ButtonsSection"
 import { EquationSection } from "@shared/ui/EquationSection"
 import { GameHeader } from "@shared/ui/GameHeader"
 import { ProgressBar } from "@shared/ui/ProgressBar"
-import { useEffect, useState } from "react"
 import { ResultBtn } from "@shared/ui/ResultBtn"
-import {
-  setBtnId,
-  setCorrectAnswer,
-  setResult,
-  setStage,
-  setStageState,
-  setWrongAnswer,
-  useEquation
-} from "@entities/QuickMath"
-import { clearTimeout } from "timers"
-import { useTimer } from "@entities/QuickMath/model/useTimer"
-import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
+import { useStage } from "@entities/QuickMath"
+import { useTypedSelector } from "@shared/Hooks/store-hooks"
 import { useIsPreStart } from "@entities/QuickMath/model/useIsPreStart"
 import { PreStartTimer } from "@shared/ui/PreStartTimer"
 import { GetBtnResult } from "@entities/QuickMath/helpers/GetBtnResult"
-import { PreStartGap, PreStartTime, StageTime, StageTimeGap } from "@entities/QuickMath/constants"
-
+import { PreStartGap, PreStartTime } from "@entities/QuickMath/constants"
 
 
 export const QuickMathMenu = () => {
-  const dispatch = useAppDispatch()
 
   const stage = useTypedSelector(state => state.QuickMath.stage)
   const result = useTypedSelector(state => state.QuickMath.result)
   const stageState = useTypedSelector(state => state.QuickMath.stageState)
   const clickedBtnId = useTypedSelector(state => state.QuickMath.clickedBtnId)
-
-
-  const { equation, answers, correctAnswer, updateEquation, resetDifficulty } = useEquation()
-
-  const { Start: StartTimer, Stop: StopTimer, Reset: ResetTime, time, timerState } = useTimer(StageTime, StageTimeGap)
+  const equation = useTypedSelector(state => state.QuickMath.equation)
+  const answers = useTypedSelector(state => state.QuickMath.answers)
+  const correctAnswer = useTypedSelector(state => state.QuickMath.correctAnswer)
 
   useIsPreStart()
 
-
-  useEffect(() => {
-    if (timerState === "timeout") {
-      dispatch(setResult("fail"))
-      dispatch(setStageState("finished"))
-      dispatch(setCorrectAnswer(correctAnswer))
-      resetDifficulty()
-    }
-
-    if (timerState === "initial" && stageState === "running") StartTimer()
-
-  }, [time, timerState])
+  const { stageTime, HandleFail, HandleSuccess } = useStage()
 
 
-  useEffect(() => {
-    if (stageState === "running") {
-      updateEquation()
-      ResetTime()
-    }
-
-    if (result !== "success") return
-    const timer = setTimeout(() => {
-      dispatch(setBtnId(null))
-      updateEquation()
-      dispatch(setResult("initial"))
-      dispatch(setStageState("running"))
-      ResetTime()
-    }, 1000)
-
-    return () => window.clearTimeout(timer)
-  }, [stageState])
-
-
-  const CheckAnswer = (answer: number, btnId: number) => {
-    if (correctAnswer === answer) {
-      dispatch(setResult("success"))
-      dispatch(setStage((stage + 1)))
-    } else {
-      dispatch(setResult("fail"))
-      dispatch(setCorrectAnswer(correctAnswer))
-      dispatch(setWrongAnswer(answer))
-      resetDifficulty()
-    }
-    StopTimer()
-    dispatch(setStageState("finished"))
-    dispatch(setBtnId(btnId))
+  const CheckAnswer = (answer: number, clickedBtnId: number) => {
+    if (correctAnswer === answer) HandleSuccess(clickedBtnId)
+    else HandleFail(clickedBtnId, answer)
   }
 
   return <QuickMathLayout>
-    <GameHeader time={time} currentScore={stage} />
-    <ProgressBar progress={time / 10} />
+    <GameHeader time={stageTime} currentScore={stage} />
+    <ProgressBar progress={stageTime / 10} />
     {stageState !== "preStart" ? <EquationSection equation={equation} />
       : <>
         <h3 className="preTitle">Choose the right answer</h3>
@@ -101,8 +46,8 @@ export const QuickMathMenu = () => {
           btnId,
           result,
           clickedBtnId,
-          correctAnswer: correctAnswer ? correctAnswer : 0,
-          answer: +answer
+          correctAnswer,
+          answer
         })
         return <ResultBtn isDisabled={result !== "initial"} result={btnResult}
                           onClick={() => CheckAnswer(+answer, btnId)}

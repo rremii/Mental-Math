@@ -1,5 +1,4 @@
 import { combineReducers, configureStore, PreloadedState } from "@reduxjs/toolkit"
-import { Reducer } from "redux"
 import { Api } from "../api/config/Api"
 import { ToastReducer } from "@shared/store/global-slices/ToastSlice"
 import { SettingsMenuReducer } from "@entities/Settings/model/SettingsSlice"
@@ -7,14 +6,13 @@ import { AvatarMenuReducer } from "@entities/Avatar/model/AvatarMenuSlice"
 import { AuthReducer } from "@entities/Auth"
 import { QuickMathReducer } from "@entities/QuickMath"
 
-const rootReducer: Reducer = combineReducers({
+const rootReducer = combineReducers({
   AvatarMenu: AvatarMenuReducer,
   SettingsMenu: SettingsMenuReducer,
   Auth: AuthReducer,
   Toast: ToastReducer,
   QuickMath: QuickMathReducer,
   [Api.reducerPath]: Api.reducer
-
 })
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
@@ -27,8 +25,8 @@ export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
   })
 }
 
-export type RootState = ReturnType<typeof rootReducer>
 
 export const store = setupStore()
 
+export type RootState = ReturnType<typeof rootReducer>
 

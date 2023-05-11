@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import React, { FC, useEffect } from "react"
+import React, { FC } from "react"
 import { Toast } from "@shared/ui/Toast"
 
 interface Props {

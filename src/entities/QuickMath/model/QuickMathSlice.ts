@@ -9,6 +9,11 @@ interface initialStateType {
   result: resultType
   stageState: stageType
   clickedBtnId: number | null
+
+  equation: string
+  answers: string[] | number[]
+  difficulty: number
+  mulDifficulty: number
 }
 
 const initialState = {
@@ -17,7 +22,11 @@ const initialState = {
   stageState: "preStart",
   stage: 0,
   correctAnswer: null,
-  wrongAnswer: null
+  wrongAnswer: null,
+  answers: ["", "", "", ""],
+  difficulty: 1,
+  mulDifficulty: 1,
+  equation: ""
 } as initialStateType
 
 const QuickMathSlice = createSlice({
@@ -27,11 +36,11 @@ const QuickMathSlice = createSlice({
     setStage(state, action: PayloadAction<number>) {
       state.stage = action.payload
     },
-    setResult(state, action: PayloadAction<resultType>) {
-      state.result = action.payload
-    },
     setStageState(state, action: PayloadAction<stageType>) {
       state.stageState = action.payload
+    },
+    setResult(state, action: PayloadAction<resultType>) {
+      state.result = action.payload
     },
     setBtnId(state, action: PayloadAction<number | null>) {
       state.clickedBtnId = action.payload
@@ -41,11 +50,24 @@ const QuickMathSlice = createSlice({
     },
     setWrongAnswer(state, action: PayloadAction<number | null>) {
       state.wrongAnswer = action.payload
+    },
+    //
+    setAnswers(state, action: PayloadAction<number[]>) {
+      state.answers = action.payload
+    },
+    setEquation(state, action: PayloadAction<string>) {
+      state.equation = action.payload
+    },
+    setDifficulty(state, action: PayloadAction<number>) {
+      state.difficulty = action.payload
+    },
+    setMulDifficulty(state, action: PayloadAction<number>) {
+      state.difficulty = action.payload
     }
   }
 })
 export const {
-  setStage, setStageState,
+  setStage, setStageState, setEquation, setMulDifficulty, setDifficulty, setAnswers,
   setWrongAnswer, setCorrectAnswer, setResult, setBtnId
 }
   = QuickMathSlice.actions

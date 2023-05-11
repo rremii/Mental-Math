@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import React, { FC, MouseEventHandler } from "react"
+import React, { FC } from "react"
 import { resultType } from "@widgets/QuickMathMenu"
 
 interface props {

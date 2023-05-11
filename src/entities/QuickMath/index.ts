@@ -1,3 +1,3 @@
 export * from "./model/QuickMathSlice"
 
-export { useEquation } from "./model/useEquation"
+export { useStage } from "./model/useStage"

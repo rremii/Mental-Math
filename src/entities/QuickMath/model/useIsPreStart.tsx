@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
 import { useTimer } from "@entities/QuickMath/model/useTimer"
 import { setStageState } from "@entities/QuickMath"
@@ -13,9 +13,8 @@ export const useIsPreStart = () => {
 
 
   useEffect(() => {
-    if (timerState === "timeout") {
-      dispatch(setStageState("running"))
-    }
+    
+    if (timerState === "timeout") dispatch(setStageState("running"))
 
     if (stageState === "preStart") Start()
 

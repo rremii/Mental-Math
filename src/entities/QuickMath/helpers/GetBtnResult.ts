@@ -1,11 +1,11 @@
 import { resultType } from "@entities/QuickMath/types"
 
 interface props {
-  clickedBtnId: number
+  clickedBtnId: number | null
   btnId: number
   result: resultType
-  answer: number
-  correctAnswer: number
+  answer: number | string
+  correctAnswer: number | null
 }
 
 export const GetBtnResult = ({ btnId, clickedBtnId, result, answer, correctAnswer }: props): resultType => {

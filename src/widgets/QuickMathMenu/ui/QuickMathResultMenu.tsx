@@ -1,7 +1,5 @@
-import styled from "styled-components"
 import { ResultMenu } from "@shared/ui/ResultMenu"
 import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
-import { useEffect } from "react"
 import { setBtnId, setResult, setStage, setStageState } from "@entities/QuickMath"
 
 export const QuickMathResultMenu = () => {

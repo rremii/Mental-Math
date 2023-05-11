@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { ResultBtn } from "@shared/ui/ResultBtn"
 import { FC } from "react"
 
 interface props {

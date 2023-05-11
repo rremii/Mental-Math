@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import { FC, useEffect } from "react"
-import { NavLink, useNavigate } from "react-router-dom"
+import { FC } from "react"
+import { useNavigate } from "react-router-dom"
 
 interface props {
   result: number
