@@ -2,10 +2,13 @@ import {
   BaseEntity,
   Column,
   Entity,
+  JoinColumn,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm"
 import { IUser } from "../users.interface"
+import { QuickMath } from "../../quick-math/entities/quick-math.entity"
 
 @Entity()
 export class User extends BaseEntity implements IUser {
@@ -26,22 +29,8 @@ export class User extends BaseEntity implements IUser {
 
   @Column({ nullable: true })
   refreshToken: string
-}
 
-//
-// export class Task implements ITask {
-//   id = new Date().getTime()
-//   status: Status
-//   task: string
-//   tags: string[]
-//   email: string
-//   createdAt = new Date
-//   updatedAt = new Date
-//
-//   constructor(task: string, email?: string, tags?: string[], status?: Status) {
-//     this.task = task
-//     this.tags = tags || []
-//     this.status = status || Status.ACTIVE
-//     this.email = email || null
-//   }
-// }
+  // @OneToOne(() => QuickMath, (quickMath) => quickMath.user)
+  // @JoinColumn()
+  // quickMath: QuickMath
+}

@@ -7,6 +7,8 @@ import { UsersModule } from "./users/users.module"
 import { AuthModule } from "./auth/auth.module"
 import { User } from "./users/entities/user.entity"
 import { TokenModule } from "./token/token.module"
+import { QuickMath } from "./quick-math/entities/quick-math.entity"
+import { QuickMathModule } from "./quick-math/quick-math.module"
 
 @Module({
   imports: [
@@ -18,6 +20,7 @@ import { TokenModule } from "./token/token.module"
     UsersModule,
     AuthModule,
     TokenModule,
+    QuickMathModule,
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (config: ConfigService) => {
@@ -29,9 +32,9 @@ import { TokenModule } from "./token/token.module"
           username: config.get("db_user_name"),
           password: config.get("db_password"),
           database: config.get("db_name"),
-          synchronize: true,
+          synchronize: false,
 
-          entities: [User],
+          entities: [User, QuickMath],
 
           ssl: true,
           extra: {
