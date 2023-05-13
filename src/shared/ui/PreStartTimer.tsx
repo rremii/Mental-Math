@@ -43,7 +43,7 @@ const TimerLayout = styled.div`
     /* identical to box height, or 75% */
 
     letter-spacing: 0em;
-    color: #FFFFFF;
+    color: var(--main-text-color);
     animation: scaleDown 1s infinite;
   }
 

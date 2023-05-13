@@ -49,7 +49,7 @@ export const QuickMathMenu = () => {
           correctAnswer,
           answer
         })
-        return <ResultBtn isDisabled={result !== "initial"} result={btnResult}
+        return <ResultBtn isDisabled={result !== "initial" || stageState !== "running"} result={btnResult}
                           onClick={() => CheckAnswer(+answer, btnId)}
                           key={btnId}>{answer}</ResultBtn>
       })}
@@ -57,10 +57,10 @@ export const QuickMathMenu = () => {
   </QuickMathLayout>
 }
 const QuickMathLayout = styled.div`
-  background: linear-gradient(121.57deg, #1f0031 49.39%, #150024 50.22%);
+  background: var(--game-menu-bg);
   width: 100%;
   height: 100%;
-  color: white;
+  color: var(--main-text-color);
   display: flex;
   flex-direction: column;
   padding: 0 20px 40px;
@@ -86,6 +86,6 @@ const QuickMathLayout = styled.div`
 
     letter-spacing: 0.2em;
     margin-top: 50px;
-    color: #FFFFFF;
+    color: var(--main-text-color);
   }
 `

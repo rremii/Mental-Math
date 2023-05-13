@@ -5,24 +5,39 @@ import QuickMathIcon from "@shared/assets/DarkTheme/quickMathIcon.svg"
 import InputMathIcon from "@shared/assets/DarkTheme/inputMathIcon.svg"
 import TrueFalseIcon from "@shared/assets/DarkTheme/trueFasleIcon.svg"
 import BalanceIcon from "@shared/assets/DarkTheme/balanceIcon.svg"
+import { useAppDispatch } from "@shared/Hooks/store-hooks"
+import { useGetGameResultsQuery, useGetUserQuery } from "@entities/User"
+import { useEffect, useMemo, useState } from "react"
 
-
-const Games = [
-  { name: "Quick\n Math", href: "quick-math", icon: QuickMathIcon },
-  { name: "Hard\n Math", href: "hard-math", icon: HardMathIcon },
-  { name: "Input\n Math", href: "input-math", icon: InputMathIcon },
-  { name: "True\n False", href: "true-false-math", icon: TrueFalseIcon },
-  { name: "Balance", href: "balance-math", icon: BalanceIcon }
-]
 
 export const GameMenu = () => {
+  const dispatch = useAppDispatch()
 
+  // const res = dispatch()
+  //
+  const { data: user } = useGetUserQuery()
+
+  const { data: gameResults } = useGetGameResultsQuery({ id: user ? user.id : 0 }, {
+    skip: !user
+  })
+
+
+  const Games = useMemo(() => [
+    { name: "Quick\n Math", href: "quick-math", icon: QuickMathIcon, score: gameResults?.quickMathScore || 0 },
+    { name: "Hard\n Math", href: "hard-math", icon: HardMathIcon, score: 0 },
+    { name: "Input\n Math", href: "input-math", icon: InputMathIcon, score: 0 },
+    { name: "True\n False", href: "true-false-math", icon: TrueFalseIcon, score: 0 },
+    { name: "Balance", href: "balance-math", icon: BalanceIcon, score: 0 }
+  ], [gameResults])
 
   return <GameMenuLayout>
 
-    {Games.map(({ name, icon, href }) => {
-      return <GoToGame key={name} name={name} record={0} href={href} icon={icon} />
+
+    {Games.map(({ name, icon, href, score }) => {
+      return <GoToGame key={name} name={name} record={score} href={href}
+                       icon={icon} />
     })}
+    {/*    <GoToGame key={name} name={name} record={0} href={href} icon={icon} />*/}
 
   </GameMenuLayout>
 }

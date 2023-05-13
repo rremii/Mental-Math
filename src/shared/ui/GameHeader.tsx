@@ -44,7 +44,7 @@ const HeaderLayout = styled.header`
       font-size: 20px;
       line-height: 30px;
       letter-spacing: 0.2em;
-      color: #FFFFFF;
+      color: var(--main-text-color);
     }
   }
 

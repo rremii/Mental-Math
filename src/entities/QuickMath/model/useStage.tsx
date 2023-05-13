@@ -15,9 +15,10 @@ import {
   setResult,
   setStage,
   setStageState,
-  setWrongAnswer
+  setWrongAnswer, useUpdateQuickMathScoreMutation
 } from "@entities/QuickMath"
 import { useTimer } from "@entities/QuickMath/model/useTimer"
+import { useGetUserQuery } from "@entities/User"
 
 
 const IsMultiply = () => {
@@ -36,8 +37,16 @@ export const useStage = () => {
   const correctAnswer = useTypedSelector(state => state.QuickMath.correctAnswer)
 
 
-  const { Start: StartTimer, Reset: ResetTime, time: stageTime, timerState } = useTimer(StageTime, StageTimeGap)
+  const {
+    Start: StartTimer,
+    Stop: StopTimer,
+    Reset: ResetTime,
+    time: stageTime,
+    timerState
+  } = useTimer(StageTime, StageTimeGap)
 
+  const [updateQuickMathScore] = useUpdateQuickMathScoreMutation()
+  const { data: user } = useGetUserQuery()
 
   useEffect(() => {
     if (timerState === "timeout") {
@@ -65,7 +74,7 @@ export const useStage = () => {
       dispatch(setResult("initial"))
       dispatch(setStageState("running"))
       ResetTime()
-    }, StageTimeGap)
+    }, StageTimeGap * 1000)
 
     return () => window.clearTimeout(timer)
   }, [stageState])
@@ -96,6 +105,7 @@ export const useStage = () => {
     dispatch(setStage((stage + 1)))
     dispatch(setStageState("finished"))
     dispatch(setBtnId(clickedBtnId))
+    StopTimer()
   }
   const HandleFail = (clickedBtnId: number, answer: number) => {
     dispatch(setResult("fail"))
@@ -104,6 +114,10 @@ export const useStage = () => {
     resetDifficulty()
     dispatch(setStageState("finished"))
     dispatch(setBtnId(clickedBtnId))
+    StopTimer()
+
+    if (!user) return
+    updateQuickMathScore({ newScore: stage, userId: user.id })
   }
 
 

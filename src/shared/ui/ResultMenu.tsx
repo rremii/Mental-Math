@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom"
 
 interface props {
   result: number
-  wrongAnswer: number
-  correctAnswer: number
+  wrongAnswer: number | null
+  correctAnswer: number | null
   isHidden: boolean
   OnRestart: () => void
   OnMenu: () => void
@@ -43,14 +43,14 @@ const ResultLayout = styled.div<{
 }>`
   position: fixed;
   z-index: 3;
-  background: linear-gradient(121.57deg, #1f0031 49.39%, #150024 50.22%);
+  background: var(--game-menu-bg);
   width: 100vw;
   max-width: 600px;
   height: 100vh;
   overflow-y: auto;
   top: 0;
   left: ${({ isHidden }) => isHidden ? "100%" : "0"};
-  color: white;
+  color: var(--main-text-color);
   padding: 10px 16px 25px;
   transition: 0.5s;
   transition-delay: ${({ isHidden }) => isHidden ? "" : "1.25s"};
@@ -78,10 +78,10 @@ const ResultLayout = styled.div<{
 
       letter-spacing: 0.2em;
 
-      color: #EED9F8;
+      color: var(--result-menu-header);
     }
 
-    border-bottom: 1px solid rgba(84, 51, 125, 1);
+    border-bottom: 1px solid var(--separator-result-menu);
 
   }
 
@@ -110,7 +110,7 @@ const ResultLayout = styled.div<{
 
         letter-spacing: 0.2em;
 
-        color: #FF6565;
+        color: var(--fail-answer);
       }
 
     }
@@ -131,7 +131,7 @@ const ResultLayout = styled.div<{
 
         letter-spacing: 0.2em;
 
-        color: #96FD94;
+        color: var(--correct-answer);
       }
     }
 
@@ -156,7 +156,7 @@ const ResultLayout = styled.div<{
       display: flex;
       align-items: center;
       justify-items: center;
-      color: #A954FD;
+      color: var(--result-menu-btn-text);
     }
 
     .restart {
@@ -174,7 +174,7 @@ const ResultLayout = styled.div<{
       width: 181px;
       height: 41px;
 
-      background: #7713B4;
+      background: var(--restart-game-btn);
       border-radius: 20px;
     }
   }

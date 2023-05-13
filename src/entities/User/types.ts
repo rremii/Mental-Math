@@ -20,3 +20,7 @@ export interface ChangeAvatarDto {
   id: number
   newAvatar: string
 }
+
+export interface GameResults {
+  quickMathScore:number
+}

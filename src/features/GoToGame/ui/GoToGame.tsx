@@ -7,7 +7,7 @@ interface IProps {
   icon: string
   name: string
   href: string
-  record: number
+  record?: number
 }
 
 
