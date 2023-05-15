@@ -1,12 +1,14 @@
 import styled from "styled-components"
 import { RatingHeader } from "@widgets/QuickMathBestsMenu/ui/RatingHeader"
-import { RatingCell } from "@widgets/QuickMathBestsMenu/ui/RatingCell"
+import { placeType, RatingCell } from "@widgets/QuickMathBestsMenu/ui/RatingCell"
 import { MenuBtn } from "@widgets/QuickMathBestsMenu/ui/MenuBtn"
 import { number } from "yup"
 import { useGetBestUsersQuery } from "@entities/QuickMath"
 import { User } from "@entities/User/types"
 import { useEffect } from "react"
 import { UserQuickMath } from "@entities/QuickMath/types"
+import { AvatarSrc } from "@entities/Avatar"
+import { RatingSrc } from "@entities/QuickMath/constants"
 
 export const QuickMathBestsMenu = () => {
 
@@ -18,7 +20,10 @@ export const QuickMathBestsMenu = () => {
     <RatingHeader title={"Quick Math"} />
     <div className="cell-cont">
       {bestUsers?.map(({ userName, avatar, quickMath, id }: UserQuickMath, i) => {
-        return <RatingCell key={id} place={"first"} avatar={avatar} score={quickMath?.score || 0} userName={userName} />
+        const avatarSrc = AvatarSrc.get(avatar)
+        const ratingSrc = RatingSrc.get(i)
+        return <RatingCell key={id} ratingSrc={ratingSrc} avatar={avatarSrc} score={quickMath?.score || ""}
+                           userName={userName} />
       })}
     </div>
     <div className="btn-cont">

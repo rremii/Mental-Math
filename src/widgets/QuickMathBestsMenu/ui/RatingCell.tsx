@@ -4,18 +4,17 @@ import Rating from "@shared/assets/DarkTheme/rating.svg"
 import { Avatars } from "@entities/Avatar/model/types"
 import { FC } from "react"
 
-type placeType = "first" | "second" | "third"
+export type placeType = "first" | "second" | "third"
 
 interface props {
   avatar: Avatars
   userName: string
-  score: number
-  place?: placeType
+  score: number | string
+  ratingSrc?: string
 }
 
-export const RatingCell: FC<props> = ({ place, score, userName, avatar }) => {
+export const RatingCell: FC<props> = ({ ratingSrc, score, userName, avatar }) => {
 
-  const avatarSrc = AvatarSrc.get(avatar)
 
 //put ot helpers
   const GetRatingSrc = (place: placeType) => {
@@ -32,14 +31,14 @@ export const RatingCell: FC<props> = ({ place, score, userName, avatar }) => {
 
   return <CellLayout>
     <div className="avatar">
-      <img src={avatarSrc} alt="avatar" />
+      <img src={avatar} alt="avatar" />
     </div>
     <div className="info">
       <h2>{userName}</h2>
       <p>Score: {score}</p>
     </div>
-    {place && <div className="top">
-      <img src={GetRatingSrc(place)} alt="rating" />
+    {ratingSrc && <div className="top">
+      <img src={ratingSrc} alt="rating" />
     </div>}
 
   </CellLayout>

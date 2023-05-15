@@ -51,7 +51,7 @@ const GameLayout = styled(NavLink)`
 
   .top {
     display: flex;
-    align-content: baseline;
+    align-items: center;
     //justify-content: space-between;
     //width: 100%;
     border-bottom: var(--separator-color) 2px solid;
@@ -93,12 +93,19 @@ const GameLayout = styled(NavLink)`
     }
 
     .rating-box {
-      width: 45px;
+      flex: 1 0 60px;
+      height: 60px;
       display: flex;
       align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+      margin-bottom: 5px;
 
       img {
-        width: 100%;
+        transform: translateY(-5px);
+        width: 45px !important;
+        height: 45px !important;
       }
     }
   }
