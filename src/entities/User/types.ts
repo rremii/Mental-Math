@@ -1,9 +1,11 @@
+import { Avatars } from "@entities/Avatar/model/types"
+
 export interface User {
   id: number
   userName: string
   email: string
   password: string
-  avatar: string
+  avatar: Avatars
   refreshToken: string
 }
 
@@ -22,5 +24,5 @@ export interface ChangeAvatarDto {
 }
 
 export interface GameResults {
-  quickMathScore:number
+  quickMathScore: number
 }

@@ -1,5 +1,6 @@
 import { Api } from "@shared/api/config/Api"
 import { ChangeAvatarDto, ChangeNameDto, DefaultResponse, GameResults, User } from "@entities/User/types"
+import { QuickMathApi } from "@entities/QuickMath"
 
 export const UserApi = Api.injectEndpoints({
 
@@ -33,19 +34,22 @@ export const UserApi = Api.injectEndpoints({
       providesTags: ["User"]
     }),
 
-    getGameResults: build.query<GameResults, {id:number}>({
-      query: ({id}) => ({
+    getGameResults: build.query<GameResults, { id?: number }>({
+      query: ({ id }) => ({
         url: "users/results/" + id,
         method: "GET"
       }),
-      providesTags: ["Game-results"]
+      providesTags: ["Results"]
     })
-
-
 
 
   }),
   overrideExisting: false
 })
-// export const {} = QuickMathApi.endpoints
-export const {useGetGameResultsQuery, useGetUserQuery, useChangeNameMutation, useChangeAvatarMutation } = UserApi
+// export const { getGameResults } = UserApi.endpoints
+export const {
+  useGetGameResultsQuery,
+  useGetUserQuery,
+  useChangeNameMutation,
+  useChangeAvatarMutation
+} = UserApi

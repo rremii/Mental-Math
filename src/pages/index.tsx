@@ -6,6 +6,7 @@ import GameMenu from "./GameMenu/GameMenuPage"
 import { useIsAuth } from "@entities/Auth"
 import { useChangeTheme } from "@entities/Settings"
 import QuickMath from "./QuickMath/QuickMathPage"
+import QuickMathBests from "./QuickMathBests/QuickMathBestsPage"
 
 // const GameMenu = lazy(() => import("./GameMenu/GameMenuPage"))
 
@@ -21,6 +22,7 @@ export const Routing = () => {
       {!isPending && isLoggedIn === "success" && <>
         <Route path="/quick-math" element={<QuickMath />} />
         <Route path="/" element={<GameMenu />} />
+        <Route path="/leaderboard/quick-math" element={<QuickMathBests />} />
       </>}
       <Route path="/login" element={<Login />} />
       <Route path="/sign-up" element={<SignUp />} />

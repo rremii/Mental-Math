@@ -5,4 +5,6 @@ export const PreStartGap = 1
 export const StageTime = 10
 export const StageTimeGap = 1
 
+export const AmountOfBestUsers = 10
+
 

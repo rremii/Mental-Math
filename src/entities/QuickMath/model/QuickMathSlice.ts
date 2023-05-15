@@ -63,10 +63,14 @@ const QuickMathSlice = createSlice({
     },
     setMulDifficulty(state, action: PayloadAction<number>) {
       state.difficulty = action.payload
+    },
+    clearAnswers(state) {
+      state.answers = ["", "", "", ""]
     }
   }
 })
 export const {
+  clearAnswers,
   setStage, setStageState, setEquation, setMulDifficulty, setDifficulty, setAnswers,
   setWrongAnswer, setCorrectAnswer, setResult, setBtnId
 }

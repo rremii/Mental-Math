@@ -12,7 +12,7 @@ export const LoginMenu = () => {
 
   return <LoginMenuLayout>
     <div className="typing-text-box">
-      <TypeWriter content={HelloTitle} speed={100} />
+      <TypeWriter content={HelloTitle} speed={100}  delay={0}/>
     </div>
     <LoginForm />
   </LoginMenuLayout>

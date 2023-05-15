@@ -1,1 +1,1 @@
-export const AuthProtectedRoutes = ["/", "/quick-math"]
+export const AuthProtectedRoutes = ["/", "/quick-math", "/leaderboard/quick-math"]

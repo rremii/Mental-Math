@@ -1,5 +1,7 @@
 import { Api } from "@shared/api/config/Api"
 import { ChangeAvatarDto, ChangeNameDto, DefaultResponse, User } from "@entities/User/types"
+import { AmountOfBestUsers } from "@entities/QuickMath/constants"
+import { UserQuickMath } from "@entities/QuickMath/types"
 
 export const QuickMathApi = Api.injectEndpoints({
 
@@ -11,31 +13,20 @@ export const QuickMathApi = Api.injectEndpoints({
         method: "PUT",
         data
       }),
+      invalidatesTags: ["Results"]
+    }),
 
-      invalidatesTags: ["Game-results"]
+    getBestUsers: build.query<UserQuickMath[], void>({
+      query: () => ({
+        url: "quick-math/best/" + AmountOfBestUsers,
+        method: "GET"
+      }),
+      providesTags: ["BestUsers"]
     })
-    // changeAvatar: build.mutation<DefaultResponse, ChangeAvatarDto>({
-    //   query: (data) => ({
-    //     url: "users/avatar",
-    //     method: "POST",
-    //     data
-    //   }),
-    //
-    //   invalidatesTags: ["User"]
-    // }),
-    //
-    //
-    // getQuickMathResult: build.query<{ score: number }, { id: number }>({
-    //   query: ({ id }) => ({
-    //     url: `quick-math/${id}`,
-    //     method: "GET"
-    //   })
-    // providesTags: ["User"]
-    // })
 
 
   }),
   overrideExisting: false
 })
 // export const {getQuickMathResult} = QuickMathApi.endpoints
-export const { useUpdateQuickMathScoreMutation } = QuickMathApi
+export const { useUpdateQuickMathScoreMutation, useGetBestUsersQuery } = QuickMathApi

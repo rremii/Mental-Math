@@ -50,6 +50,7 @@ const HeaderLayout = styled.header<{
   }
 
   .settings {
+
     cursor: pointer;
     transition: 1s;
     transform: ${({ isSettings }) => isSettings ? "rotate(180deg)" : "rotate(0)"};

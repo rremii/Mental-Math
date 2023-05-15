@@ -1,0 +1,106 @@
+import styled from "styled-components"
+import { AvatarSrc, useGetAvatarSrc } from "@entities/Avatar"
+import Rating from "@shared/assets/DarkTheme/rating.svg"
+import { Avatars } from "@entities/Avatar/model/types"
+import { FC } from "react"
+
+type placeType = "first" | "second" | "third"
+
+interface props {
+  avatar: Avatars
+  userName: string
+  score: number
+  place?: placeType
+}
+
+export const RatingCell: FC<props> = ({ place, score, userName, avatar }) => {
+
+  const avatarSrc = AvatarSrc.get(avatar)
+
+//put ot helpers
+  const GetRatingSrc = (place: placeType) => {
+    switch (place) {
+      case "first":
+        return Rating
+      case "second":
+        return Rating
+      case "third":
+        return Rating
+    }
+  }
+
+
+  return <CellLayout>
+    <div className="avatar">
+      <img src={avatarSrc} alt="avatar" />
+    </div>
+    <div className="info">
+      <h2>{userName}</h2>
+      <p>Score: {score}</p>
+    </div>
+    {place && <div className="top">
+      <img src={GetRatingSrc(place)} alt="rating" />
+    </div>}
+
+  </CellLayout>
+}
+const CellLayout = styled.div`
+  display: flex;
+  width: 100%;
+  gap: 21px;
+
+  .avatar {
+    width: 75px;
+    height: 75px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .info {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+
+    h2 {
+      font-family: 'Inter', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      //line-height: 30px;
+      /* identical to box height, or 188% */
+
+      letter-spacing: 0.2em;
+      color: var(--main-text-color);
+
+    }
+
+    p {
+      font-family: 'Inter', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      //line-height: 30px;
+      /* or 250% */
+
+      letter-spacing: 0.05em;
+
+      color: var(--sub-text-color);
+    }
+  }
+
+  .top {
+    width: 45px;
+    height: 45px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+`

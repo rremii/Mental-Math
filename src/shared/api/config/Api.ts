@@ -33,9 +33,9 @@ const axiosBaseQuery = ({ baseUrl }: { baseUrl: string } = { baseUrl: "" }): Bas
 }
 
 export const Api = createApi({
-    reducerPath: "chatApiRtk",
+    reducerPath: "ApiRtk",
     baseQuery: axiosBaseQuery({ baseUrl: API_URL }),
     endpoints: () => ({}),
-    tagTypes: ["User", "Game-results"]
+    tagTypes: ["User", "Results","BestUsers"]
   }
 )

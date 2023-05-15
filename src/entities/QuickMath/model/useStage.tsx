@@ -118,6 +118,7 @@ export const useStage = () => {
 
     if (!user) return
     updateQuickMathScore({ newScore: stage, userId: user.id })
+
   }
 
 

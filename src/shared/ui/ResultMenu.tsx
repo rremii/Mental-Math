@@ -18,7 +18,6 @@ export const ResultMenu: FC<props> = ({ wrongAnswer, result, isHidden, OnRestart
     navigate("/")
     OnMenu()
   }
-
   return <ResultLayout isHidden={isHidden}>
     <header className="header">
       <h1>YOUR RESULT</h1>

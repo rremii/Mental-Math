@@ -11,19 +11,16 @@ import { useEffect, useMemo, useState } from "react"
 
 
 export const GameMenu = () => {
-  const dispatch = useAppDispatch()
 
-  // const res = dispatch()
-  //
   const { data: user } = useGetUserQuery()
 
-  const { data: gameResults } = useGetGameResultsQuery({ id: user ? user.id : 0 }, {
+  const { data: gameResults } = useGetGameResultsQuery({ id: user?.id }, {
     skip: !user
   })
 
 
   const Games = useMemo(() => [
-    { name: "Quick\n Math", href: "quick-math", icon: QuickMathIcon, score: gameResults?.quickMathScore || 0 },
+    { name: "Quick\n Math", href: "quick-math", icon: QuickMathIcon, score: gameResults?.quickMathScore },
     { name: "Hard\n Math", href: "hard-math", icon: HardMathIcon, score: 0 },
     { name: "Input\n Math", href: "input-math", icon: InputMathIcon, score: 0 },
     { name: "True\n False", href: "true-false-math", icon: TrueFalseIcon, score: 0 },
@@ -37,7 +34,6 @@ export const GameMenu = () => {
       return <GoToGame key={name} name={name} record={score} href={href}
                        icon={icon} />
     })}
-    {/*    <GoToGame key={name} name={name} record={0} href={href} icon={icon} />*/}
 
   </GameMenuLayout>
 }
