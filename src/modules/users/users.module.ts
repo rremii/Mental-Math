@@ -6,11 +6,19 @@ import { User } from "./entities/user.entity"
 import { TokenModule } from "../token/token.module"
 import { TokenService } from "../token/token.service"
 import { JwtModule } from "@nestjs/jwt"
+import { QuickMath } from "../quick-math/entities/quick-math.entity"
+import { QuickMathModule } from "../quick-math/quick-math.module"
+import { QuickMathService } from "../quick-math/quick-math.service"
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User]), JwtModule],
+  imports: [
+    TypeOrmModule.forFeature([User, QuickMath]),
+    JwtModule,
+    QuickMathModule,
+    TokenModule,
+  ],
   exports: [TypeOrmModule, UsersService],
-  providers: [UsersService, TokenService],
+  providers: [UsersService, QuickMathService, TokenService],
   controllers: [UsersController],
 })
 export class UsersModule implements NestModule {

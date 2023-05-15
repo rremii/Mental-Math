@@ -10,13 +10,19 @@ import { ApiError } from "../../common/constants/errors"
 import { ChangeNameDto } from "./dto/change-name.dto"
 import { DefaultResponse } from "../../common/types/types"
 import { ChangeAvatarDto } from "./dto/change-avatar.dto"
+import { QuickMath } from "../quick-math/entities/quick-math.entity"
+import { QuickMathService } from "../quick-math/quick-math.service"
+import { GameResultsResponse } from "./response/gameResults.response"
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectRepository(User)
     private readonly usersRepository: Repository<User>,
+    @InjectRepository(QuickMath)
+    private readonly quickMathRepository: Repository<QuickMath>,
     private readonly tokenService: TokenService,
+    private readonly quickMathService: QuickMathService,
   ) {}
 
   async findUserByEmail(email: string): Promise<User> {
@@ -24,11 +30,15 @@ export class UsersService {
   }
 
   async createUser(user: CreateUserDto): Promise<User> {
+    const quickMath = await this.quickMathRepository.create()
+    if (!quickMath) throw new BadRequestException("could not create quick math")
+
     const newUser = new User()
     newUser.email = user.email
     newUser.userName = user.userName
     newUser.password = await HashData(user.password)
     newUser.avatar = user.avatar
+    newUser.quickMath = quickMath
 
     await newUser.save()
 
@@ -60,5 +70,11 @@ export class UsersService {
     if (!user) throw new BadRequestException(ApiError.USER_NOT_FOUND)
 
     return user
+  }
+
+  async getGameResultsById(id: number): Promise<GameResultsResponse> {
+    const { score } = await this.quickMathService.getScoreById(id)
+
+    return { quickMathScore: score }
   }
 }

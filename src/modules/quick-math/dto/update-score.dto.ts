@@ -15,6 +15,6 @@ export class UpdateScoreDto {
   userId: number
 
   @IsNotEmpty()
-  @IsString()
+  @IsNumber()
   newScore: number
 }

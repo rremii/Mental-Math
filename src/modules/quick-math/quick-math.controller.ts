@@ -3,7 +3,9 @@ import {
   Controller,
   Get,
   Param,
+  ParseIntPipe,
   Post,
+  Put,
   UseGuards,
   UsePipes,
   ValidationPipe,
@@ -14,36 +16,31 @@ import { AccessTokenGuard } from "../../guards/access-token.guard"
 import { ChangeNameDto } from "../users/dto/change-name.dto"
 import { DefaultResponse } from "../../common/types/types"
 import { UpdateScoreDto } from "./dto/update-score.dto"
+import { User } from "../users/entities/user.entity"
 
 @Controller("quick-math")
 export class QuickMathController {
   constructor(private readonly quickMathService: QuickMathService) {}
 
-  // @Post("name")
-  // @UseGuards(AccessTokenGuard)
-  // @UsePipes(new ValidationPipe())
-  // changeName(@Body() changeNameDto: ChangeNameDto): Promise<DefaultResponse> {
-  //   return this.usersService.changeName(changeNameDto)
-  // }
-
-  @Post()
-  // @UseGuards(AccessTokenGuard)
+  @Put("result")
   @UsePipes(new ValidationPipe())
+  @UseGuards(AccessTokenGuard)
   updateScoreById(
-    @Body("") updateScoreDto: UpdateScoreDto,
+    @Body() updateScoreDto: UpdateScoreDto,
   ): Promise<DefaultResponse> {
     return this.quickMathService.updateScoreById(updateScoreDto)
   }
 
-  @Get("bests")
-  // @UseGuards(AccessTokenGuard)
-  getBestsUsers() {
-    return this.quickMathService.getBestsUsers()
+  @Get("best/:limit")
+  @UseGuards(AccessTokenGuard)
+  @UsePipes(new ParseIntPipe())
+  getBestsUsers(@Param("limit") limit: number): Promise<User[]> {
+    return this.quickMathService.getBestsUsers(limit)
   }
 
-  @Get(":id")
-  // @UseGuards(AccessTokenGuard)
-  getScoreById(@Param("id") userId: number) {
-    return this.quickMathService.getScoreById(userId)
-  }
+  // @Get("result/:id")
+  // // @UseGuards(AccessTokenGuard)
+  // getScoreById(@Param("id") userId: number) {
+  //   return this.quickMathService.getScoreById(userId)
+  // }
 }

@@ -2,6 +2,8 @@ import {
   Body,
   Controller,
   Get,
+  Param,
+  ParseIntPipe,
   Post,
   Req,
   Res,
@@ -17,6 +19,7 @@ import { Request, Response } from "express"
 import { ChangeNameDto } from "./dto/change-name.dto"
 import { DefaultResponse } from "../../common/types/types"
 import { ChangeAvatarDto } from "./dto/change-avatar.dto"
+import { GameResultsResponse } from "./response/gameResults.response"
 
 // import { AccessTokenGuard } from "../../guards/access-token.guard"
 
@@ -51,5 +54,14 @@ export class UsersController {
   getUser(@Req() request: Request): Promise<User> {
     const authToken = request.headers.authorization.split(" ").at(1)
     return this.usersService.getUser(authToken)
+  }
+
+  // @UseGuards(AccessTokenGuard)
+  @Get("results/:id")
+  @UsePipes(new ParseIntPipe())
+  getGameResultsById(
+    @Param("id") userId: number,
+  ): Promise<GameResultsResponse> {
+    return this.usersService.getGameResultsById(userId)
   }
 }

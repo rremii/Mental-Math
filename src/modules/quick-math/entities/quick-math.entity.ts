@@ -14,12 +14,9 @@ export class QuickMath extends BaseEntity implements IQuickMath {
   @PrimaryGeneratedColumn()
   id: number
 
-  @Column()
-  userId: number
-
-  @Column()
+  @Column({ default: 0 })
   score: number
 
-  // @OneToOne(() => User, (user) => user.quickMath) // specify inverse side as a second parameter
-  // user: User
+  @OneToOne(() => User, (user) => user.quickMath) // specify inverse side as a second parameter
+  user: User
 }

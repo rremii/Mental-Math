@@ -1,5 +1,7 @@
 import {
+  BadRequestException,
   Injectable,
+  NotFoundException,
   Post,
   UseGuards,
   UsePipes,
@@ -10,12 +12,18 @@ import { Repository } from "typeorm"
 import { UpdateScoreDto } from "./dto/update-score.dto"
 import { DefaultResponse } from "../../common/types/types"
 import { QuickMath } from "./entities/quick-math.entity"
+import { User } from "../users/entities/user.entity"
+import { NOTFOUND } from "dns"
+import { ApiError } from "../../common/constants/errors"
+import { find } from "rxjs"
 
 @Injectable()
 export class QuickMathService {
   constructor(
     @InjectRepository(QuickMath)
-    private readonly quickMathRepository: Repository<QuickMath>, // @InjectRepository(User) // private readonly userRepository: Repository<User>,
+    private readonly quickMathRepository: Repository<QuickMath>,
+    @InjectRepository(User)
+    private readonly userRepository: Repository<User>,
   ) {}
 
   // async findUserByEmail(email: string): Promise<User> {
@@ -26,19 +34,49 @@ export class QuickMathService {
     newScore,
     userId,
   }: UpdateScoreDto): Promise<DefaultResponse> {
-    // const userResult = await this.quickMathRepository.update(
-    //   { userId },
-    //   { score: newScore },
-    // )
+    const quickMathRes = await this.quickMathRepository.findOne({
+      where: {
+        user: {
+          id: userId,
+        },
+      },
+    })
+    if (!quickMathRes) throw new NotFoundException(ApiError.USER_GAME_NOT_FOUND)
 
-    const qwe = await this.quickMathRepository.count()
+    if (quickMathRes.score < newScore) quickMathRes.score = newScore
 
-    debugger
+    await quickMathRes.save()
 
-    return { message: "cool" }
+    return { message: "score updated successfully " }
   }
 
-  async getBestsUsers() {}
+  async getBestsUsers(limit: number): Promise<User[]> {
+    return await this.userRepository.find({
+      relations: {
+        quickMath: true,
+      },
+      order: {
+        quickMath: {
+          score: "DESC",
+        },
+      },
+      take: limit,
+    })
+  }
 
-  async getScoreById(userId: number) {}
+  async getScoreById(userId: number): Promise<{ score: number }> {
+    return await this.quickMathRepository.findOne({
+      // relations: {
+      //   user: true,
+      // },
+      // select: {
+      //   score: true,
+      // },
+      where: {
+        user: {
+          id: userId,
+        },
+      },
+    })
+  }
 }

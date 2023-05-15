@@ -32,7 +32,7 @@ import { QuickMathModule } from "./quick-math/quick-math.module"
           username: config.get("db_user_name"),
           password: config.get("db_password"),
           database: config.get("db_name"),
-          synchronize: false,
+          synchronize: true,
 
           entities: [User, QuickMath],
 

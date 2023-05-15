@@ -6,11 +6,13 @@ import {
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
+  Unique,
 } from "typeorm"
 import { IUser } from "../users.interface"
 import { QuickMath } from "../../quick-math/entities/quick-math.entity"
 
 @Entity()
+@Unique(["email"])
 export class User extends BaseEntity implements IUser {
   @PrimaryGeneratedColumn()
   id: number
@@ -30,7 +32,7 @@ export class User extends BaseEntity implements IUser {
   @Column({ nullable: true })
   refreshToken: string
 
-  // @OneToOne(() => QuickMath, (quickMath) => quickMath.user)
-  // @JoinColumn()
-  // quickMath: QuickMath
+  @OneToOne(() => QuickMath, (quickMath) => quickMath.user)
+  @JoinColumn()
+  quickMath: QuickMath
 }
