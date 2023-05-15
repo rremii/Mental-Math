@@ -9,3 +9,9 @@ from = "/quick-math"
 to = "/"
 status = 200
 force = true
+
+[[redirects]]
+from = "/leaderboard/quick-math"
+to = "/"
+status = 200
+force = true
