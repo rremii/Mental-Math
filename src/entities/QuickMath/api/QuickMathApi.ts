@@ -13,7 +13,7 @@ export const QuickMathApi = Api.injectEndpoints({
         method: "PUT",
         data
       }),
-      invalidatesTags: ["Results"]
+      invalidatesTags: ["Results", "BestUsers"]
     }),
 
     getBestUsers: build.query<UserQuickMath[], void>({
