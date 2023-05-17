@@ -1,9 +1,9 @@
 import { Api } from "@shared/api/config/Api"
-import { ChangeAvatarDto, ChangeNameDto, DefaultResponse, User } from "@entities/User/types"
-import { AmountOfBestUsers } from "@entities/QuickMath/constants"
-import { UserQuickMath } from "@entities/QuickMath/types"
+import { DefaultResponse } from "@entities/User/types"
+import { AmountOfBestUsers } from "@entities/Game/constants"
+import { UserQuickMath } from "@entities/Game/types"
 
-export const QuickMathApi = Api.injectEndpoints({
+export const GameApi = Api.injectEndpoints({
 
   endpoints: (build) => ({
 
@@ -28,5 +28,5 @@ export const QuickMathApi = Api.injectEndpoints({
   }),
   overrideExisting: false
 })
-// export const {getQuickMathResult} = QuickMathApi.endpoints
-export const { useUpdateQuickMathScoreMutation, useGetBestUsersQuery } = QuickMathApi
+// export const {getQuickMathResult} = HardMathApi.endpoints
+export const { useUpdateQuickMathScoreMutation, useGetBestUsersQuery } = GameApi

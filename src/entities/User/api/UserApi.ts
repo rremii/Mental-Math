@@ -1,6 +1,5 @@
 import { Api } from "@shared/api/config/Api"
 import { ChangeAvatarDto, ChangeNameDto, DefaultResponse, GameResults, User } from "@entities/User/types"
-import { QuickMathApi } from "@entities/QuickMath"
 
 export const UserApi = Api.injectEndpoints({
 

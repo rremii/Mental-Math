@@ -1,17 +1,27 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { resultType, stageType } from "@entities/QuickMath/types"
+import { resultType, stageType } from "../types"
+
+// import { resultType, stageType } from "@entities/QuickMath/types"
 
 
 interface initialStateType {
+
+
   correctAnswer: number | null
+
   wrongAnswer: number | null
+  equation: string
+  // answers: string[] | number[]
+
+  quickAnswers: string[] | number[]
+  hardAnswers: string[] | number[]
+  balanceAnswers: "left" | "right"
+
+
   stage: number
   result: resultType
   stageState: stageType
   clickedBtnId: number | null
-
-  equation: string
-  answers: string[] | number[]
   difficulty: number
   mulDifficulty: number
 }
@@ -23,14 +33,17 @@ const initialState = {
   stage: 0,
   correctAnswer: null,
   wrongAnswer: null,
-  answers: ["", "", "", ""],
+  // answers: ["", "", "", ""],
+
+  quickAnswers: ["", "", "", ""],
+
   difficulty: 1,
   mulDifficulty: 1,
   equation: ""
 } as initialStateType
 
-const QuickMathSlice = createSlice({
-  name: "QuickMathSlice",
+const GameSlice = createSlice({
+  name: "GameSlice",
   initialState,
   reducers: {
     setStage(state, action: PayloadAction<number>) {
@@ -52,8 +65,11 @@ const QuickMathSlice = createSlice({
       state.wrongAnswer = action.payload
     },
     //
-    setAnswers(state, action: PayloadAction<number[]>) {
-      state.answers = action.payload
+    // setAnswers(state, action: PayloadAction<number[]>) {
+    //   state.answers = action.payload
+    // },
+    setQuickAnswers(state, action: PayloadAction<number[]>) {
+      state.quickAnswers = action.payload
     },
     setEquation(state, action: PayloadAction<string>) {
       state.equation = action.payload
@@ -65,14 +81,15 @@ const QuickMathSlice = createSlice({
       state.difficulty = action.payload
     },
     clearAnswers(state) {
-      state.answers = ["", "", "", ""]
+      state.quickAnswers = ["", "", "", ""]
     }
+
   }
 })
 export const {
   clearAnswers,
-  setStage, setStageState, setEquation, setMulDifficulty, setDifficulty, setAnswers,
-  setWrongAnswer, setCorrectAnswer, setResult, setBtnId
+  setStage, setStageState, setEquation, setMulDifficulty, setDifficulty,
+  setWrongAnswer, setCorrectAnswer, setResult, setBtnId, setQuickAnswers
 }
-  = QuickMathSlice.actions
-export const QuickMathReducer = QuickMathSlice.reducer
+  = GameSlice.actions
+export const GameReducer = GameSlice.reducer

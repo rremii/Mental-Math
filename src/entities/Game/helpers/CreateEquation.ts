@@ -1,7 +1,7 @@
-import { NoneMultiplySigns } from "@entities/QuickMath/constants"
-import { GetRandomArrElId } from "@entities/QuickMath/helpers/GetRandomArrElId"
-import { ShuffleArray } from "@entities/QuickMath/helpers/ShuffleArray"
-import { GetEquationString } from "@entities/QuickMath/helpers/GetEquationString"
+import { NoneMultiplySigns } from "@entities/Game/constants"
+import { GetRandomArrElId } from "@shared/helpers/GetRandomArrElId"
+import { ShuffleArray } from "@shared/helpers/ShuffleArray"
+import { GetEquationString } from "@entities/Game/helpers/GetEquationString"
 
 export const CreateEquation = (difficulty: number) => {
 

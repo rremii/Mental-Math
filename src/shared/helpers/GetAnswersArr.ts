@@ -1,4 +1,4 @@
-import { ShuffleArray } from "@entities/QuickMath/helpers/ShuffleArray"
+import { ShuffleArray } from "@shared/helpers/ShuffleArray"
 
 export const GetAnswersArr = (answer: number) => {
 

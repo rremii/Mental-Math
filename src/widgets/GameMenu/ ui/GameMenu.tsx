@@ -5,9 +5,8 @@ import QuickMathIcon from "@shared/assets/DarkTheme/quickMathIcon.svg"
 import InputMathIcon from "@shared/assets/DarkTheme/inputMathIcon.svg"
 import TrueFalseIcon from "@shared/assets/DarkTheme/trueFasleIcon.svg"
 import BalanceIcon from "@shared/assets/DarkTheme/balanceIcon.svg"
-import { useAppDispatch } from "@shared/Hooks/store-hooks"
 import { useGetGameResultsQuery, useGetUserQuery } from "@entities/User"
-import { useEffect, useMemo, useState } from "react"
+import { useMemo } from "react"
 
 
 export const GameMenu = () => {

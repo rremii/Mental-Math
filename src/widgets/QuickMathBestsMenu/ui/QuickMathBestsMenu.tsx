@@ -1,14 +1,9 @@
 import styled from "styled-components"
-import { RatingHeader } from "@widgets/QuickMathBestsMenu/ui/RatingHeader"
-import { placeType, RatingCell } from "@widgets/QuickMathBestsMenu/ui/RatingCell"
-import { MenuBtn } from "@widgets/QuickMathBestsMenu/ui/MenuBtn"
-import { number } from "yup"
-import { useGetBestUsersQuery } from "@entities/QuickMath"
-import { User } from "@entities/User/types"
-import { useEffect } from "react"
-import { UserQuickMath } from "@entities/QuickMath/types"
+import { RatingHeader } from "@shared/ui/RatingHeader"
+import { RatingCell } from "@shared/ui/RatingCell"
+import { MenuBtn } from "@shared/ui/MenuBtn"
 import { AvatarSrc } from "@entities/Avatar"
-import { RatingSrc } from "@entities/QuickMath/constants"
+import { RatingSrc, useGetBestUsersQuery, UserQuickMath } from "@entities/Game"
 
 export const QuickMathBestsMenu = () => {
 

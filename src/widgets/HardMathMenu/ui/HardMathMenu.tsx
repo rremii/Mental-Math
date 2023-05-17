@@ -10,14 +10,13 @@ import { GetBtnResult } from "@shared/helpers/GetBtnResult"
 import { PreStartGap, PreStartTime, useIsPreStart, useStage } from "@entities/Game"
 
 
-export const QuickMathMenu = () => {
-
+export const HardMathMenu = () => {
   const stage = useTypedSelector(state => state.Game.stage)
   const result = useTypedSelector(state => state.Game.result)
   const stageState = useTypedSelector(state => state.Game.stageState)
   const clickedBtnId = useTypedSelector(state => state.Game.clickedBtnId)
   const equation = useTypedSelector(state => state.Game.equation)
-  const quickAnswers = useTypedSelector(state => state.Game.quickAnswers)
+  const answers = useTypedSelector(state => state.Game.answers)
   const correctAnswer = useTypedSelector(state => state.Game.correctAnswer)
 
   useIsPreStart()
@@ -30,7 +29,7 @@ export const QuickMathMenu = () => {
     else HandleFail(clickedBtnId, answer)
   }
 
-  return <QuickMathLayout>
+  return <HardMathLayout>
     <GameHeader time={stageTime} currentScore={stage} />
     <ProgressBar progress={stageTime / 10} />
     {stageState !== "preStart" ? <EquationSection equation={equation} />
@@ -39,7 +38,7 @@ export const QuickMathMenu = () => {
         <PreStartTimer initTime={PreStartTime} timeGap={PreStartGap} /></>}
     <ButtonsSection>
 
-      {quickAnswers?.map((answer, btnId) => {
+      {answers?.map((answer, btnId) => {
         const btnResult = GetBtnResult({
           btnId,
           result,
@@ -52,9 +51,9 @@ export const QuickMathMenu = () => {
                           key={btnId}>{answer}</ResultBtn>
       })}
     </ButtonsSection>
-  </QuickMathLayout>
+  </HardMathLayout>
 }
-const QuickMathLayout = styled.div`
+const HardMathLayout = styled.div`
   background: var(--game-menu-bg);
   width: 100%;
   height: 100%;

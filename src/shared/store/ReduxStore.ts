@@ -4,14 +4,16 @@ import { ToastReducer } from "@shared/store/global-slices/ToastSlice"
 import { SettingsMenuReducer } from "@entities/Settings/model/SettingsSlice"
 import { AvatarMenuReducer } from "@entities/Avatar/model/AvatarMenuSlice"
 import { AuthReducer } from "@entities/Auth"
-import { QuickMathReducer } from "@entities/QuickMath"
+import { GameReducer } from "@entities/Game"
 
 const rootReducer = combineReducers({
   AvatarMenu: AvatarMenuReducer,
   SettingsMenu: SettingsMenuReducer,
   Auth: AuthReducer,
   Toast: ToastReducer,
-  QuickMath: QuickMathReducer,
+  Game:GameReducer,
+  // QuickMath: QuickMathReducer,
+  // HardMath: HardMathReducer,
   [Api.reducerPath]: Api.reducer
 })
 

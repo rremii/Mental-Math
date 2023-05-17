@@ -1,11 +1,7 @@
 import { useEffect } from "react"
-import { MultiplyChance, StageTime, StageTimeGap } from "@entities/QuickMath/constants"
-import { SolveEquation } from "../helpers/SolveEquation"
-import { CreateEquation } from "../helpers/CreateEquation"
-import { CreateMultiplyEquation } from "../helpers/CreateMultiplyEquation"
-import { GetAnswersArr } from "@entities/QuickMath/helpers/GetAnswersArr"
 import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
 import {
+  MultiplyChance,
   setAnswers,
   setBtnId,
   setCorrectAnswer,
@@ -15,26 +11,21 @@ import {
   setResult,
   setStage,
   setStageState,
-  setWrongAnswer, useUpdateQuickMathScoreMutation
-} from "@entities/QuickMath"
-import { useTimer } from "@entities/QuickMath/model/useTimer"
+  setWrongAnswer, StageTime, StageTimeGap,
+  useUpdateQuickMathScoreMutation
+} from "@entities/Game"
+import { useTimer } from "@shared/Hooks/useTimer"
 import { useGetUserQuery } from "@entities/User"
+import { useQuickEquation } from "@entities/Game/model/useQuickEquation"
 
-
-const IsMultiply = () => {
-  const random = Math.random()
-  return random < MultiplyChance
-}
 
 export const useStage = () => {
   const dispatch = useAppDispatch()
 
-  const mulDifficulty = useTypedSelector(state => state.QuickMath.mulDifficulty)
-  const stage = useTypedSelector(state => state.QuickMath.stage)
-  const difficulty = useTypedSelector(state => state.QuickMath.difficulty)
-  const result = useTypedSelector(state => state.QuickMath.result)
-  const stageState = useTypedSelector(state => state.QuickMath.stageState)
-  const correctAnswer = useTypedSelector(state => state.QuickMath.correctAnswer)
+  const stage = useTypedSelector(state => state.Game.stage)
+  const result = useTypedSelector(state => state.Game.result)
+  const stageState = useTypedSelector(state => state.Game.stageState)
+  const correctAnswer = useTypedSelector(state => state.Game.correctAnswer)
 
 
   const {
@@ -44,9 +35,15 @@ export const useStage = () => {
     time: stageTime,
     timerState
   } = useTimer(StageTime, StageTimeGap)
+  const { updateEquation } = useQuickEquation()
 
   const [updateQuickMathScore] = useUpdateQuickMathScoreMutation()
   const { data: user } = useGetUserQuery()
+
+  const resetDifficulty = () => {
+    dispatch(setDifficulty(1))
+    dispatch(setMulDifficulty(1))
+  }
 
   useEffect(() => {
     if (timerState === "timeout") {
@@ -79,26 +76,6 @@ export const useStage = () => {
     return () => window.clearTimeout(timer)
   }, [stageState])
 
-  const updateEquation = (): void => {
-    let equation = ""
-    if (IsMultiply()) {
-      equation = CreateMultiplyEquation(mulDifficulty)
-      dispatch(setMulDifficulty(difficulty + 1))
-    } else {
-      equation = CreateEquation(difficulty)
-      dispatch(setDifficulty(difficulty + 1))
-    }
-    dispatch(setEquation(equation))
-
-    const answer = SolveEquation(equation)
-    dispatch(setCorrectAnswer(answer))
-    const answers = GetAnswersArr(answer)
-    dispatch(setAnswers(answers))
-  }
-  const resetDifficulty = () => {
-    dispatch(setDifficulty(1))
-    dispatch(setMulDifficulty(1))
-  }
 
   const HandleSuccess = (clickedBtnId: number) => {
     dispatch(setResult("success"))

@@ -1,6 +1,6 @@
-import { ShuffleArray } from "@entities/QuickMath/helpers/ShuffleArray"
-import { GetRandomArrElId } from "@entities/QuickMath/helpers/GetRandomArrElId"
-import { GetEquationString } from "@entities/QuickMath/helpers/GetEquationString"
+import { ShuffleArray } from "@shared/helpers/ShuffleArray"
+import { GetRandomArrElId } from "@shared/helpers/GetRandomArrElId"
+import { GetEquationString } from "@entities/Game/helpers/GetEquationString"
 
 export const CreateMultiplyEquation = (mulDifficulty: number) => {
   const num1 = Math.floor(Math.random() * (10 + mulDifficulty) + 1)
