@@ -1,8 +1,8 @@
 import { useEffect } from "react"
 import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
 import {
+  Games,
   MultiplyChance,
-  setAnswers,
   setBtnId,
   setCorrectAnswer,
   setDifficulty,
@@ -17,9 +17,10 @@ import {
 import { useTimer } from "@shared/Hooks/useTimer"
 import { useGetUserQuery } from "@entities/User"
 import { useQuickEquation } from "@entities/Game/model/useQuickEquation"
+import { useHardEquation } from "@entities/Game/model/useHardEquation"
 
 
-export const useStage = () => {
+export const useStage = (game: Games) => {
   const dispatch = useAppDispatch()
 
   const stage = useTypedSelector(state => state.Game.stage)
@@ -35,7 +36,8 @@ export const useStage = () => {
     time: stageTime,
     timerState
   } = useTimer(StageTime, StageTimeGap)
-  const { updateEquation } = useQuickEquation()
+  const { updateEquation: updateQuickEquation } = useQuickEquation()
+  const { updateEquation: updateHardEquation } = useHardEquation()
 
   const [updateQuickMathScore] = useUpdateQuickMathScoreMutation()
   const { data: user } = useGetUserQuery()
@@ -58,6 +60,22 @@ export const useStage = () => {
 
 
   useEffect(() => {
+
+    let updateEquation: () => void
+
+    switch (game) {
+      case Games.quickMath:
+        updateEquation = updateQuickEquation
+        break
+      case Games.hardMath:
+        updateEquation = updateHardEquation
+        break
+      default:
+        updateEquation = () => {
+        }
+    }
+
+
     if (stageState === "running") {
       updateEquation()
       ResetTime()

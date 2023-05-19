@@ -7,7 +7,7 @@ import { ResultBtn } from "@shared/ui/ResultBtn"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
 import { PreStartTimer } from "@shared/ui/PreStartTimer"
 import { GetBtnResult } from "@shared/helpers/GetBtnResult"
-import { PreStartGap, PreStartTime, useIsPreStart, useStage } from "@entities/Game"
+import { Games, PreStartGap, PreStartTime, useIsPreStart, useStage } from "@entities/Game"
 
 
 export const QuickMathMenu = () => {
@@ -22,7 +22,7 @@ export const QuickMathMenu = () => {
 
   useIsPreStart()
 
-  const { stageTime, HandleFail, HandleSuccess } = useStage()
+  const { stageTime, HandleFail, HandleSuccess } = useStage(Games.quickMath)
 
 
   const CheckAnswer = (answer: number, clickedBtnId: number) => {

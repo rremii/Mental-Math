@@ -8,6 +8,12 @@ export interface IQuickMath {
   score: number
 }
 
+export enum Games {
+  quickMath = "quick-math",
+  hardMath = "hard-math",
+  balance = "balance",
+}
+
 export interface UserQuickMath extends User {
   quickMath: IQuickMath
 }

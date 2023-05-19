@@ -7,7 +7,7 @@ import { ResultBtn } from "@shared/ui/ResultBtn"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
 import { PreStartTimer } from "@shared/ui/PreStartTimer"
 import { GetBtnResult } from "@shared/helpers/GetBtnResult"
-import { PreStartGap, PreStartTime, useIsPreStart, useStage } from "@entities/Game"
+import { Games, PreStartGap, PreStartTime, useIsPreStart, useStage } from "@entities/Game"
 
 
 export const HardMathMenu = () => {
@@ -16,12 +16,12 @@ export const HardMathMenu = () => {
   const stageState = useTypedSelector(state => state.Game.stageState)
   const clickedBtnId = useTypedSelector(state => state.Game.clickedBtnId)
   const equation = useTypedSelector(state => state.Game.equation)
-  const answers = useTypedSelector(state => state.Game.answers)
+  const hardAnswers = useTypedSelector(state => state.Game.hardAnswers)
   const correctAnswer = useTypedSelector(state => state.Game.correctAnswer)
 
   useIsPreStart()
 
-  const { stageTime, HandleFail, HandleSuccess } = useStage()
+  const { stageTime, HandleFail, HandleSuccess } = useStage(Games.hardMath)
 
 
   const CheckAnswer = (answer: number, clickedBtnId: number) => {
@@ -38,7 +38,7 @@ export const HardMathMenu = () => {
         <PreStartTimer initTime={PreStartTime} timeGap={PreStartGap} /></>}
     <ButtonsSection>
 
-      {answers?.map((answer, btnId) => {
+      {hardAnswers?.map((answer, btnId) => {
         const btnResult = GetBtnResult({
           btnId,
           result,
