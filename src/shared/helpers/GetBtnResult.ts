@@ -1,4 +1,4 @@
-import { resultType } from "@entities/QuickMath/types"
+import { resultType } from "@entities/Game"
 
 interface props {
   clickedBtnId: number | null
