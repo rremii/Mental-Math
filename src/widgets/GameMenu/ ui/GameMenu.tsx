@@ -20,7 +20,7 @@ export const GameMenu = () => {
 
   const Games = useMemo(() => [
     { name: "Quick\n Math", href: "quick-math", icon: QuickMathIcon, score: gameResults?.quickMathScore },
-    { name: "Hard\n Math", href: "hard-math", icon: HardMathIcon, score: 0 },
+    { name: "Hard\n Math", href: "hard-math", icon: HardMathIcon, score: gameResults?.hardMathScore },
     { name: "Input\n Math", href: "input-math", icon: InputMathIcon, score: 0 },
     { name: "True\n False", href: "true-false-math", icon: TrueFalseIcon, score: 0 },
     { name: "Balance", href: "balance-math", icon: BalanceIcon, score: 0 }

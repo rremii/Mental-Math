@@ -1,12 +1,11 @@
 import { ShuffleArray } from "@shared/helpers/ShuffleArray"
 import { GetRandomArrElId } from "@shared/helpers/GetRandomArrElId"
-import { GetEquationString } from "@entities/Game/helpers/GetEquationString"
 import { GetHardEquationStr } from "@entities/Game/helpers/GetHardEquationStr"
 
 export const CreateHardMultiplyEquation = (mulDifficulty: number) => {
-  const num1 = Math.floor(Math.random() * (10 + mulDifficulty) + 1)
-  const num2 = Math.floor(Math.random() * (10 + mulDifficulty) + 1)
-  const num3 = Math.floor(Math.random() * (10 + mulDifficulty) + 1)
+  const num1 = Math.floor(Math.random() * (5 + mulDifficulty) + 1)
+  const num2 = Math.floor(Math.random() * (5 + mulDifficulty) + 1)
+  const num3 = Math.floor(Math.random() * (5 + mulDifficulty) + 1)
   const sign = "x"
 
   const num4 = num1 * num2 * num3

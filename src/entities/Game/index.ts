@@ -6,4 +6,4 @@ export { useIsPreStart } from "./model/useIsPreStart"
 export * from "./constants/index"
 export * from "./types"
 
-export * from "./api/GameApi"
+export * from "./api/QuickMathApi"

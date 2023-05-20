@@ -1,12 +1,11 @@
-import { CreateMultiplyEquation } from "@entities/Game/helpers/CreateMultiplyEquation"
 import {
   MultiplyChance,
   setCorrectAnswer,
   setDifficulty,
   setEquation,
-  setMulDifficulty, setQuickAnswers
+  setHardAnswers,
+  setMulDifficulty
 } from "@entities/Game"
-import { CreateEquation } from "@entities/Game/helpers/CreateEquation"
 import { SolveEquation } from "@shared/helpers/SolveEquation"
 import { GetAnswersArr } from "@shared/helpers/GetAnswersArr"
 import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
@@ -34,13 +33,12 @@ export const useHardEquation = () => {
       equation = CreateHardEquation(difficulty)
       dispatch(setDifficulty(difficulty + 1))
     }
-    debugger
     dispatch(setEquation(equation))
 
     const answer = SolveEquation(equation)
     dispatch(setCorrectAnswer(answer))
     const answers = GetAnswersArr(answer)
-    dispatch(setQuickAnswers(answers))
+    dispatch(setHardAnswers(answers))
   }
 
   return { updateEquation }

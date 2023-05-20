@@ -1,7 +1,8 @@
-import { clearAnswers, setBtnId, setResult, setStage, setStageState } from "@entities/Game"
+import { clearAnswers } from "@entities/Game"
 import { useAppDispatch } from "@shared/Hooks/store-hooks"
+import { setBtnId, setResult, setStage, setStageState } from "@entities/Game/model/StageSlice"
 
-export const useRestartGame = ()=>{
+export const useRestartGame = () => {
   const dispatch = useAppDispatch()
 
 
@@ -21,6 +22,6 @@ export const useRestartGame = ()=>{
   }
 
 
-  return { ResetGame,ResetStage}
+  return { ResetGame, ResetStage }
 
 }

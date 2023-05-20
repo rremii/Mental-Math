@@ -1,31 +1,22 @@
 import { useEffect } from "react"
 import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
 import {
-  Games,
-  MultiplyChance,
-  setBtnId,
   setCorrectAnswer,
   setDifficulty,
-  setEquation,
   setMulDifficulty,
-  setResult,
-  setStage,
-  setStageState,
-  setWrongAnswer, StageTime, StageTimeGap,
-  useUpdateQuickMathScoreMutation
+  setWrongAnswer,
+  StageTimeGap
 } from "@entities/Game"
 import { useTimer } from "@shared/Hooks/useTimer"
-import { useGetUserQuery } from "@entities/User"
-import { useQuickEquation } from "@entities/Game/model/useQuickEquation"
-import { useHardEquation } from "@entities/Game/model/useHardEquation"
+import { setBtnId, setResult, setStage, setStageState } from "./StageSlice"
 
 
-export const useStage = (game: Games) => {
+export const useStage = (UpdateEquation: () => void, UpdateUserScore: () => void, StageTime: number) => {
   const dispatch = useAppDispatch()
 
-  const stage = useTypedSelector(state => state.Game.stage)
-  const result = useTypedSelector(state => state.Game.result)
-  const stageState = useTypedSelector(state => state.Game.stageState)
+  const stage = useTypedSelector(state => state.Stage.stage)
+  const result = useTypedSelector(state => state.Stage.result)
+  const stageState = useTypedSelector(state => state.Stage.stageState)
   const correctAnswer = useTypedSelector(state => state.Game.correctAnswer)
 
 
@@ -36,11 +27,7 @@ export const useStage = (game: Games) => {
     time: stageTime,
     timerState
   } = useTimer(StageTime, StageTimeGap)
-  const { updateEquation: updateQuickEquation } = useQuickEquation()
-  const { updateEquation: updateHardEquation } = useHardEquation()
 
-  const [updateQuickMathScore] = useUpdateQuickMathScoreMutation()
-  const { data: user } = useGetUserQuery()
 
   const resetDifficulty = () => {
     dispatch(setDifficulty(1))
@@ -61,23 +48,8 @@ export const useStage = (game: Games) => {
 
   useEffect(() => {
 
-    let updateEquation: () => void
-
-    switch (game) {
-      case Games.quickMath:
-        updateEquation = updateQuickEquation
-        break
-      case Games.hardMath:
-        updateEquation = updateHardEquation
-        break
-      default:
-        updateEquation = () => {
-        }
-    }
-
-
     if (stageState === "running") {
-      updateEquation()
+      UpdateEquation()
       ResetTime()
     }
 
@@ -85,7 +57,7 @@ export const useStage = (game: Games) => {
 
     const timer = setTimeout(() => {
       dispatch(setBtnId(null))
-      updateEquation()
+      UpdateEquation()
       dispatch(setResult("initial"))
       dispatch(setStageState("running"))
       ResetTime()
@@ -110,9 +82,7 @@ export const useStage = (game: Games) => {
     dispatch(setStageState("finished"))
     dispatch(setBtnId(clickedBtnId))
     StopTimer()
-
-    if (!user) return
-    updateQuickMathScore({ newScore: stage, userId: user.id })
+    UpdateUserScore()
 
   }
 

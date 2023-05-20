@@ -3,30 +3,31 @@ import { RatingHeader } from "@shared/ui/RatingHeader"
 import { RatingCell } from "@shared/ui/RatingCell"
 import { MenuBtn } from "@shared/ui/MenuBtn"
 import { AvatarSrc } from "@entities/Avatar"
-import { RatingSrc, useGetQuickMathBestUsersQuery, UserQuickMath } from "@entities/Game"
+import { RatingSrc, UserHardMath } from "@entities/Game"
+import { useGetHardMathBestUsersQuery } from "@entities/Game/api/HardMathApi"
 
-export const QuickMathBestsMenu = () => {
-
-
-  const { data: bestUsers } = useGetQuickMathBestUsersQuery()
+export const HardMathBestsMenu = () => {
 
 
-  return <QuickMathBestsLayout>
-    <RatingHeader title={"Quick Math"} />
+  const { data: bestUsers } = useGetHardMathBestUsersQuery()
+
+
+  return <HardMathBestsLayout>
+    <RatingHeader title={"Hard Math"} />
     <div className="cell-cont">
-      {bestUsers?.map(({ userName, avatar, quickMath, id }: UserQuickMath, i) => {
+      {bestUsers?.map(({ userName, avatar, hardMath, id }: UserHardMath, i) => {
         const avatarSrc = AvatarSrc.get(avatar)
         const ratingSrc = RatingSrc.get(i)
-        return <RatingCell key={id} ratingSrc={ratingSrc} avatar={avatarSrc} score={quickMath?.score || ""}
+        return <RatingCell key={id} ratingSrc={ratingSrc} avatar={avatarSrc} score={hardMath?.score || ""}
                            userName={userName} />
       })}
     </div>
     <div className="btn-cont">
       <MenuBtn />
     </div>
-  </QuickMathBestsLayout>
+  </HardMathBestsLayout>
 }
-const QuickMathBestsLayout = styled.div`
+const HardMathBestsLayout = styled.div`
   padding: 0 20px 20px;
   height: 100%;
   display: flex;

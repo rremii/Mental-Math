@@ -3,7 +3,7 @@ import { DefaultResponse } from "@entities/User/types"
 import { AmountOfBestUsers } from "@entities/Game/constants"
 import { UserQuickMath } from "@entities/Game/types"
 
-export const GameApi = Api.injectEndpoints({
+export const QuickMathApi = Api.injectEndpoints({
 
   endpoints: (build) => ({
 
@@ -13,15 +13,15 @@ export const GameApi = Api.injectEndpoints({
         method: "PUT",
         data
       }),
-      invalidatesTags: ["Results", "BestUsers"]
+      invalidatesTags: ["Results", "BestQuickMath"]
     }),
 
-    getBestUsers: build.query<UserQuickMath[], void>({
+    getQuickMathBestUsers: build.query<UserQuickMath[], void>({
       query: () => ({
         url: "quick-math/best/" + AmountOfBestUsers,
         method: "GET"
       }),
-      providesTags: ["BestUsers"]
+      providesTags: ["BestQuickMath"]
     })
 
 
@@ -29,4 +29,4 @@ export const GameApi = Api.injectEndpoints({
   overrideExisting: false
 })
 // export const {getQuickMathResult} = HardMathApi.endpoints
-export const { useUpdateQuickMathScoreMutation, useGetBestUsersQuery } = GameApi
+export const { useUpdateQuickMathScoreMutation, useGetQuickMathBestUsersQuery } = QuickMathApi

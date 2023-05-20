@@ -7,21 +7,33 @@ import { ResultBtn } from "@shared/ui/ResultBtn"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
 import { PreStartTimer } from "@shared/ui/PreStartTimer"
 import { GetBtnResult } from "@shared/helpers/GetBtnResult"
-import { Games, PreStartGap, PreStartTime, useIsPreStart, useStage } from "@entities/Game"
+import { HardStageTime, PreStartGap, PreStartTime, useIsPreStart, useStage } from "@entities/Game"
+import { useHardEquation } from "@entities/Game/model/useHardEquation"
+import { useUpdateHardMathScoreMutation } from "@entities/Game/api/HardMathApi"
+import { useGetUserQuery } from "@entities/User"
 
 
 export const HardMathMenu = () => {
-  const stage = useTypedSelector(state => state.Game.stage)
-  const result = useTypedSelector(state => state.Game.result)
-  const stageState = useTypedSelector(state => state.Game.stageState)
-  const clickedBtnId = useTypedSelector(state => state.Game.clickedBtnId)
+  const stage = useTypedSelector(state => state.Stage.stage)
+  const result = useTypedSelector(state => state.Stage.result)
+  const stageState = useTypedSelector(state => state.Stage.stageState)
+  const clickedBtnId = useTypedSelector(state => state.Stage.clickedBtnId)
   const equation = useTypedSelector(state => state.Game.equation)
   const hardAnswers = useTypedSelector(state => state.Game.hardAnswers)
   const correctAnswer = useTypedSelector(state => state.Game.correctAnswer)
 
   useIsPreStart()
 
-  const { stageTime, HandleFail, HandleSuccess } = useStage(Games.hardMath)
+  const { updateEquation } = useHardEquation()
+  const [updateHardMathScore] = useUpdateHardMathScoreMutation()
+  const { data: user } = useGetUserQuery()
+
+  const UpdateUserScore = () => {
+    if (!user) return
+    updateHardMathScore({ newScore: stage, userId: user.id })
+  }
+
+  const { stageTime, HandleFail, HandleSuccess } = useStage(updateEquation, UpdateUserScore, HardStageTime)
 
 
   const CheckAnswer = (answer: number, clickedBtnId: number) => {
@@ -31,7 +43,7 @@ export const HardMathMenu = () => {
 
   return <HardMathLayout>
     <GameHeader time={stageTime} currentScore={stage} />
-    <ProgressBar progress={stageTime / 10} />
+    <ProgressBar progress={stageTime / HardStageTime} />
     {stageState !== "preStart" ? <EquationSection equation={equation} />
       : <>
         <h3 className="preTitle">Choose the right answer</h3>

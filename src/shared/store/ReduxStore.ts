@@ -5,13 +5,15 @@ import { SettingsMenuReducer } from "@entities/Settings/model/SettingsSlice"
 import { AvatarMenuReducer } from "@entities/Avatar/model/AvatarMenuSlice"
 import { AuthReducer } from "@entities/Auth"
 import { GameReducer } from "@entities/Game"
+import { StageReducer } from "@entities/Game/model/StageSlice"
 
 const rootReducer = combineReducers({
   AvatarMenu: AvatarMenuReducer,
   SettingsMenu: SettingsMenuReducer,
   Auth: AuthReducer,
   Toast: ToastReducer,
-  Game:GameReducer,
+  Game: GameReducer,
+  Stage: StageReducer,
   // QuickMath: QuickMathReducer,
   // HardMath: HardMathReducer,
   [Api.reducerPath]: Api.reducer

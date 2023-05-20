@@ -4,7 +4,8 @@ import {
   setCorrectAnswer,
   setDifficulty,
   setEquation,
-  setMulDifficulty, setQuickAnswers
+  setMulDifficulty,
+  setQuickAnswers
 } from "@entities/Game"
 import { CreateEquation } from "@entities/Game/helpers/CreateEquation"
 import { SolveEquation } from "@shared/helpers/SolveEquation"
