@@ -32,7 +32,7 @@ export class QuickMathController {
   }
 
   @Get("best/:limit")
-  // @UseGuards(AccessTokenGuard)
+  @UseGuards(AccessTokenGuard)
   @UsePipes(new ParseIntPipe())
   getBestsUsers(@Param("limit") limit: number): Promise<User[]> {
     return this.quickMathService.getBestsUsers(limit)

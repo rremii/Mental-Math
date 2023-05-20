@@ -17,6 +17,6 @@ export class HardMath extends BaseEntity implements IHardMath {
   @Column({ default: 0 })
   score: number
 
-  // @OneToOne(() => User, (user) => user.hardMath) // specify inverse side as a second parameter
-  // user: User
+  @OneToOne(() => User, (user) => user.hardMath) // specify inverse side as a second parameter
+  user: User
 }

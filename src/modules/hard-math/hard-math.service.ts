@@ -34,18 +34,18 @@ export class HardMathService {
     newScore,
     userId,
   }: UpdateScoreDto): Promise<DefaultResponse> {
-    // const hardMathRes = await this.hardMathRepository.findOne({
-    //   where: {
-    //     user: {
-    //       id: userId,
-    //     },
-    //   },
-    // })
-    // if (!hardMathRes) throw new NotFoundException(ApiError.USER_GAME_NOT_FOUND)
-    //
-    // if (hardMathRes.score < newScore) hardMathRes.score = newScore
-    //
-    // await hardMathRes.save()
+    const hardMathRes = await this.hardMathRepository.findOne({
+      where: {
+        user: {
+          id: userId,
+        },
+      },
+    })
+    if (!hardMathRes) throw new NotFoundException(ApiError.USER_GAME_NOT_FOUND)
+
+    if (hardMathRes.score < newScore) hardMathRes.score = newScore
+
+    await hardMathRes.save()
 
     return { message: "score updated successfully " }
   }
@@ -53,10 +53,10 @@ export class HardMathService {
   async getBestsUsers(limit: number): Promise<User[]> {
     return await this.userRepository.find({
       relations: {
-        quickMath: true,
+        hardMath: true,
       },
       order: {
-        quickMath: {
+        hardMath: {
           score: "DESC",
         },
       },
@@ -65,20 +65,18 @@ export class HardMathService {
   }
 
   async getScoreById(userId: number): Promise<{ score: number }> {
-    //   return await this.hardMathRepository.findOne({
-    //     // relations: {
-    //     //   user: true,
-    //     // },
-    //     // select: {
-    //     //   score: true,
-    //     // },
-    //     where: {
-    //       user: {
-    //         id: userId,
-    //       },
-    //     },
-    //   })
-    // }
-    return { score: 1 }
+    return await this.hardMathRepository.findOne({
+      // relations: {
+      //   user: true,
+      // },
+      // select: {
+      //   score: true,
+      // },
+      where: {
+        user: {
+          id: userId,
+        },
+      },
+    })
   }
 }

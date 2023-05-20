@@ -37,7 +37,7 @@ import { HardMathModule } from "./hard-math/hard-math.module"
           database: config.get("db_name"),
           synchronize: true,
 
-          entities: [User, QuickMath],
+          entities: [User, QuickMath, HardMath],
 
           ssl: true,
           extra: {

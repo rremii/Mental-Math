@@ -35,23 +35,14 @@ export class UsersService {
   }
 
   async createUser(user: CreateUserDto): Promise<User> {
-    const quickMath = this.quickMathRepository.create({ score: 0 })
-    // const hardMath = await this.hardMathRepository.create()
+    const quickMath = new QuickMath()
+    const hardMath = new HardMath()
 
-    if (!quickMath)
+    await quickMath.save()
+    await hardMath.save()
+
+    if (!quickMath || !hardMath)
       throw new BadRequestException("could not create one of math games")
-
-    // const password = await HashData(user.password)
-    //
-    // const newUser = await this.usersRepository.create({
-    //   email: user.email,
-    //   userName: user.userName,
-    //   password,
-    //   avatar: user.avatar,
-    //   quickMath,
-    //   hardMath,
-    // })
-    // if (!newUser) throw new BadRequestException("could not create user")
 
     const newUser = new User()
     newUser.email = user.email
@@ -59,14 +50,9 @@ export class UsersService {
     newUser.password = await HashData(user.password)
     newUser.avatar = user.avatar
     newUser.quickMath = quickMath
-    // newUser.hardMath = hardMath
-    //
-    // debugger
-    // //
+    newUser.hardMath = hardMath
 
     await newUser.save()
-
-    // debugger
 
     return newUser
   }

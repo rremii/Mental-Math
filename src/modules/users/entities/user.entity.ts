@@ -37,7 +37,7 @@ export class User extends BaseEntity implements IUser {
   @JoinColumn()
   quickMath: QuickMath
 
-  // @OneToOne(() => HardMath, (hardMath) => hardMath.user)
-  // @JoinColumn()
-  // hardMath: HardMath
+  @OneToOne(() => HardMath, (hardMath) => hardMath.user)
+  @JoinColumn()
+  hardMath: HardMath
 }
