@@ -56,8 +56,8 @@ export class UsersController {
     return this.usersService.getUser(authToken)
   }
 
-  // @UseGuards(AccessTokenGuard)
   @Get("results/:id")
+  @UseGuards(AccessTokenGuard)
   @UsePipes(new ParseIntPipe())
   getGameResultsById(
     @Param("id") userId: number,

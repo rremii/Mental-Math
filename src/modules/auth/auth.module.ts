@@ -9,6 +9,7 @@ import { JwtModule, JwtService } from "@nestjs/jwt"
 import { AccessTokenStrategy } from "../../strategy/access-token.strategy"
 import { RefreshTokenStrategy } from "../../strategy/refresh-token.strategy"
 import { QuickMathService } from "../quick-math/quick-math.service"
+import { HardMathService } from "../hard-math/hard-math.service"
 
 @Module({
   imports: [UsersModule, JwtModule],
@@ -21,6 +22,7 @@ import { QuickMathService } from "../quick-math/quick-math.service"
     AccessTokenStrategy,
     RefreshTokenStrategy,
     QuickMathService,
+    HardMathService,
   ],
 })
 export class AuthModule {}

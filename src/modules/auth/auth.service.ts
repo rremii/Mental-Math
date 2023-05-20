@@ -28,8 +28,7 @@ export class AuthService {
     if (existUser) throw new BadRequestException(ApiError.USER_EXIST)
 
     const newUser = await this.usersService.createUser(CreateUserDto)
-
-    const tokens = await this.tokenService.getTokens(existUser)
+    const tokens = await this.tokenService.getTokens(newUser)
     await this.tokenService.updateRefreshToken(newUser.id, tokens.refreshToken)
 
     return tokens

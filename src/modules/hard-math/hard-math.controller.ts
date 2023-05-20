@@ -11,16 +11,16 @@ import {
   ValidationPipe,
 } from "@nestjs/common"
 import { UsersService } from "../users/users.service"
-import { QuickMathService } from "./quick-math.service"
+import { HardMathService } from "./hard-math.service"
 import { AccessTokenGuard } from "../../guards/access-token.guard"
 import { ChangeNameDto } from "../users/dto/change-name.dto"
 import { DefaultResponse } from "../../common/types/types"
 import { UpdateScoreDto } from "./dto/update-score.dto"
 import { User } from "../users/entities/user.entity"
 
-@Controller("quick-math")
-export class QuickMathController {
-  constructor(private readonly quickMathService: QuickMathService) {}
+@Controller("hard-math")
+export class HardMathController {
+  constructor(private readonly hardMathService: HardMathService) {}
 
   @Put("result")
   @UsePipes(new ValidationPipe())
@@ -28,14 +28,14 @@ export class QuickMathController {
   updateScoreById(
     @Body() updateScoreDto: UpdateScoreDto,
   ): Promise<DefaultResponse> {
-    return this.quickMathService.updateScoreById(updateScoreDto)
+    return this.hardMathService.updateScoreById(updateScoreDto)
   }
 
   @Get("best/:limit")
-  // @UseGuards(AccessTokenGuard)
+  @UseGuards(AccessTokenGuard)
   @UsePipes(new ParseIntPipe())
   getBestsUsers(@Param("limit") limit: number): Promise<User[]> {
-    return this.quickMathService.getBestsUsers(limit)
+    return this.hardMathService.getBestsUsers(limit)
   }
 
   // @Get("result/:id")

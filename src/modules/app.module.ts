@@ -9,6 +9,8 @@ import { User } from "./users/entities/user.entity"
 import { TokenModule } from "./token/token.module"
 import { QuickMath } from "./quick-math/entities/quick-math.entity"
 import { QuickMathModule } from "./quick-math/quick-math.module"
+import { HardMath } from "./hard-math/entities/hard-math.entity"
+import { HardMathModule } from "./hard-math/hard-math.module"
 
 @Module({
   imports: [
@@ -21,6 +23,7 @@ import { QuickMathModule } from "./quick-math/quick-math.module"
     AuthModule,
     TokenModule,
     QuickMathModule,
+    HardMathModule,
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (config: ConfigService) => {

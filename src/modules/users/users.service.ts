@@ -13,6 +13,8 @@ import { ChangeAvatarDto } from "./dto/change-avatar.dto"
 import { QuickMath } from "../quick-math/entities/quick-math.entity"
 import { QuickMathService } from "../quick-math/quick-math.service"
 import { GameResultsResponse } from "./response/gameResults.response"
+import { HardMathService } from "../hard-math/hard-math.service"
+import { HardMath } from "../hard-math/entities/hard-math.entity"
 
 @Injectable()
 export class UsersService {
@@ -21,8 +23,11 @@ export class UsersService {
     private readonly usersRepository: Repository<User>,
     @InjectRepository(QuickMath)
     private readonly quickMathRepository: Repository<QuickMath>,
+    @InjectRepository(HardMath)
+    private readonly hardMathRepository: Repository<HardMath>,
     private readonly tokenService: TokenService,
     private readonly quickMathService: QuickMathService,
+    private readonly hardMathService: HardMathService,
   ) {}
 
   async findUserByEmail(email: string): Promise<User> {
@@ -30,8 +35,23 @@ export class UsersService {
   }
 
   async createUser(user: CreateUserDto): Promise<User> {
-    const quickMath = await this.quickMathRepository.create()
-    if (!quickMath) throw new BadRequestException("could not create quick math")
+    const quickMath = this.quickMathRepository.create({ score: 0 })
+    // const hardMath = await this.hardMathRepository.create()
+
+    if (!quickMath)
+      throw new BadRequestException("could not create one of math games")
+
+    // const password = await HashData(user.password)
+    //
+    // const newUser = await this.usersRepository.create({
+    //   email: user.email,
+    //   userName: user.userName,
+    //   password,
+    //   avatar: user.avatar,
+    //   quickMath,
+    //   hardMath,
+    // })
+    // if (!newUser) throw new BadRequestException("could not create user")
 
     const newUser = new User()
     newUser.email = user.email
@@ -39,8 +59,14 @@ export class UsersService {
     newUser.password = await HashData(user.password)
     newUser.avatar = user.avatar
     newUser.quickMath = quickMath
+    // newUser.hardMath = hardMath
+    //
+    // debugger
+    // //
 
     await newUser.save()
+
+    // debugger
 
     return newUser
   }
@@ -73,8 +99,11 @@ export class UsersService {
   }
 
   async getGameResultsById(id: number): Promise<GameResultsResponse> {
-    const { score } = await this.quickMathService.getScoreById(id)
+    const { score: quickMathScore } = await this.quickMathService.getScoreById(
+      id,
+    )
+    const { score: hardMathScore } = await this.hardMathService.getScoreById(id)
 
-    return { quickMathScore: score }
+    return { quickMathScore, hardMathScore }
   }
 }

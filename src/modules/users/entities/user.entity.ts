@@ -10,6 +10,7 @@ import {
 } from "typeorm"
 import { IUser } from "../users.interface"
 import { QuickMath } from "../../quick-math/entities/quick-math.entity"
+import { HardMath } from "../../hard-math/entities/hard-math.entity"
 
 @Entity()
 @Unique(["email"])
@@ -35,4 +36,8 @@ export class User extends BaseEntity implements IUser {
   @OneToOne(() => QuickMath, (quickMath) => quickMath.user)
   @JoinColumn()
   quickMath: QuickMath
+
+  // @OneToOne(() => HardMath, (hardMath) => hardMath.user)
+  // @JoinColumn()
+  // hardMath: HardMath
 }
