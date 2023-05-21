@@ -25,7 +25,7 @@ export const ResultMenu: FC<props> = ({ wrongAnswer, result, isHidden, OnRestart
     </header>
     <div className="result-section">
       <div className="wrong">
-        <p>Wrong answer:</p> <span>{wrongAnswer}</span>
+        <p>Wrong answer:</p> <span>{wrongAnswer || ""}</span>
       </div>
       <div className="correct">
         <p>Correct answer:</p> <span>{correctAnswer}</span>

@@ -38,7 +38,7 @@ export const HardMathMenu = () => {
 
   const CheckAnswer = (answer: number, clickedBtnId: number) => {
     if (correctAnswer === answer) HandleSuccess(clickedBtnId)
-    else HandleFail(clickedBtnId, answer)
+    else HandleFail( answer,clickedBtnId)
   }
 
   return <HardMathLayout>

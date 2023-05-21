@@ -67,20 +67,20 @@ export const useStage = (UpdateEquation: () => void, UpdateUserScore: () => void
   }, [stageState])
 
 
-  const HandleSuccess = (clickedBtnId: number) => {
+  const HandleSuccess = (clickedBtnId?: number) => {
     dispatch(setResult("success"))
     dispatch(setStage((stage + 1)))
     dispatch(setStageState("finished"))
-    dispatch(setBtnId(clickedBtnId))
+    if (clickedBtnId) dispatch(setBtnId(clickedBtnId))
     StopTimer()
   }
-  const HandleFail = (clickedBtnId: number, answer: number) => {
+  const HandleFail = (answer: number, clickedBtnId?: number) => {
     dispatch(setResult("fail"))
     dispatch(setCorrectAnswer(correctAnswer))
     dispatch(setWrongAnswer(answer))
     resetDifficulty()
     dispatch(setStageState("finished"))
-    dispatch(setBtnId(clickedBtnId))
+    if (clickedBtnId) dispatch(setBtnId(clickedBtnId))
     StopTimer()
     UpdateUserScore()
 

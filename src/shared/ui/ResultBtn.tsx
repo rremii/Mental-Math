@@ -3,17 +3,21 @@ import React, { FC } from "react"
 import { resultType } from "@entities/Game"
 
 interface props {
-  children: React.ReactNode
-  result: resultType
+  children?: React.ReactNode
+  result?: resultType
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
-  isDisabled: boolean
+  isDisabled?: boolean
 }
 
 
-export const ResultBtn: FC<props> = ({ onClick, children, result, isDisabled }) => {
+export const ResultBtn: FC<props> = (props = {
+  result: "initial", isDisabled: false, children: "", onClick: () => undefined
+}) => {
+
+  const { result, isDisabled, children, onClick } = props
 
 
-  return <ButtonLayout disabled={isDisabled} onClick={onClick} result={result}>
+  return <ButtonLayout className='ResultBtn' disabled={isDisabled} onClick={onClick} result={result || "initial"}>
     {children}
   </ButtonLayout>
 }

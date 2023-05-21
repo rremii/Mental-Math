@@ -26,4 +26,5 @@ export interface ChangeAvatarDto {
 export interface GameResults {
   quickMathScore: number
   hardMathScore: number
+  inputMathScore: number
 }

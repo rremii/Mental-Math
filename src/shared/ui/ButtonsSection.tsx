@@ -7,7 +7,7 @@ interface props {
 
 export const ButtonsSection: FC<props> = ({ children }) => {
 
-  return <SectionLayout>
+  return <SectionLayout className='ButtonsSection'>
     {children}
   </SectionLayout>
 }

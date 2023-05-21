@@ -3,14 +3,17 @@ import { User } from "@entities/User/types"
 export type resultType = "initial" | "success" | "fail"
 export type stageType = "preStart" | "running" | "finished"
 
-export interface IQuickMath {
+interface MathGame {
   id: number
   score: number
 }
 
-export interface IHardMath {
-  id: number
-  score: number
+export interface IQuickMath extends MathGame {
+}
+
+export interface IHardMath extends MathGame {
+}
+export interface IInputMath extends MathGame {
 }
 
 export enum Games {
@@ -25,4 +28,8 @@ export interface UserQuickMath extends User {
 
 export interface UserHardMath extends User {
   hardMath: IHardMath
+}
+
+export interface UserInputMath extends User {
+  inputMath: IInputMath
 }

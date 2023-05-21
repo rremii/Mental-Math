@@ -2,15 +2,16 @@ import styled from "styled-components"
 import { FC } from "react"
 
 interface props {
-  equation: string
+  equation?: string
 }
 
 export const EquationSection: FC<props> = ({ equation }) => {
 
 
-
   return <EquationSectionLayout>
-    {equation}
+    <div className="equation-box">
+      {equation}
+    </div>
   </EquationSectionLayout>
 }
 const EquationSectionLayout = styled.div`
@@ -22,16 +23,22 @@ const EquationSectionLayout = styled.div`
   align-items: center;
   justify-content: flex-end;
 
-  font-family: 'Inter', sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 40px;
-  line-height: 30px;
-  /* identical to box height, or 75% */
 
-  letter-spacing: 0em;
-
-  color: #FFFFFF;
   padding-bottom: 50px;
 
+  .equation-box {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 50px;
+
+    /* identical to box height, or 75% */
+    min-height: 55px;
+    letter-spacing: 0em;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    color: #FFFFFF;
+  }
 `
