@@ -3,15 +3,15 @@ import { InjectRepository } from "@nestjs/typeorm"
 import { MoreThan, Repository } from "typeorm"
 import { UpdateScoreDto } from "./dto/update-score.dto"
 import { DefaultResponse } from "../../common/types/types"
-import { HardMath } from "./entities/hard-math.entity"
+import { InputMath } from "./entities/input-math.entity"
 import { User } from "../users/entities/user.entity"
 import { ApiError } from "../../common/constants/errors"
 
 @Injectable()
-export class HardMathService {
+export class InputMathService {
   constructor(
-    @InjectRepository(HardMath)
-    private readonly hardMathRepository: Repository<HardMath>,
+    @InjectRepository(InputMath)
+    private readonly inputMathRepository: Repository<InputMath>,
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
   ) {}
@@ -24,18 +24,18 @@ export class HardMathService {
     newScore,
     userId,
   }: UpdateScoreDto): Promise<DefaultResponse> {
-    const hardMathRes = await this.hardMathRepository.findOne({
+    const inputMathRes = await this.inputMathRepository.findOne({
       where: {
         user: {
           id: userId,
         },
       },
     })
-    if (!hardMathRes) throw new NotFoundException(ApiError.USER_GAME_NOT_FOUND)
+    if (!inputMathRes) throw new NotFoundException(ApiError.USER_GAME_NOT_FOUND)
 
-    if (hardMathRes.score < newScore) hardMathRes.score = newScore
+    if (inputMathRes.score < newScore) inputMathRes.score = newScore
 
-    await hardMathRes.save()
+    await inputMathRes.save()
 
     return { message: "score updated successfully " }
   }
@@ -46,12 +46,12 @@ export class HardMathService {
         hardMath: true,
       },
       order: {
-        hardMath: {
+        inputMath: {
           score: "DESC",
         },
       },
       where: {
-        hardMath: {
+        inputMath: {
           score: MoreThan(0),
         },
       },
@@ -60,7 +60,7 @@ export class HardMathService {
   }
 
   async getScoreById(userId: number): Promise<{ score: number }> {
-    return await this.hardMathRepository.findOne({
+    return await this.inputMathRepository.findOne({
       // relations: {
       //   user: true,
       // },

@@ -8,16 +8,22 @@ import { QuickMath } from "../quick-math/entities/quick-math.entity"
 import { QuickMathService } from "../quick-math/quick-math.service"
 import { HardMath } from "../hard-math/entities/hard-math.entity"
 import { HardMathService } from "../hard-math/hard-math.service"
+import { InputMathService } from "../input-math/input-math.service"
+import { InputMath } from "../input-math/entities/input-math.entity"
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User, QuickMath, HardMath]), JwtModule],
+  imports: [
+    TypeOrmModule.forFeature([User, QuickMath, HardMath, InputMath]),
+    JwtModule,
+  ],
   providers: [
     TokenService,
     JwtService,
     UsersService,
     QuickMathService,
     HardMathService,
+    InputMathService,
   ],
-  exports: [TokenService],
+  exports: [TokenService, JwtService, UsersService],
 })
 export class TokenModule {}

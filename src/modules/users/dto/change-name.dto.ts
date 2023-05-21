@@ -1,13 +1,4 @@
-import {
-  ArrayNotEmpty,
-  IsEmail,
-  IsEnum,
-  IsNotEmpty,
-  IsNumber,
-  IsOptional,
-  IsString,
-} from "class-validator"
-import { ApiProperty } from "@nestjs/swagger"
+import { IsNotEmpty, IsNumber, IsString } from "class-validator"
 
 export class ChangeNameDto {
   @IsNotEmpty()

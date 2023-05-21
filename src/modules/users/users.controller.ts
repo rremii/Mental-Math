@@ -6,7 +6,6 @@ import {
   ParseIntPipe,
   Post,
   Req,
-  Res,
   UseGuards,
   UsePipes,
   ValidationPipe,
@@ -15,7 +14,7 @@ import { UsersService } from "./users.service"
 import { CreateUserDto } from "./dto/create-user.dto"
 import { User } from "./entities/user.entity"
 import { AccessTokenGuard } from "../../guards/access-token.guard"
-import { Request, Response } from "express"
+import { Request } from "express"
 import { ChangeNameDto } from "./dto/change-name.dto"
 import { DefaultResponse } from "../../common/types/types"
 import { ChangeAvatarDto } from "./dto/change-avatar.dto"

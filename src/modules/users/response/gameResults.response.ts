@@ -6,4 +6,7 @@ export class GameResultsResponse {
 
   @IsNumber()
   hardMathScore: number
+
+  @IsNumber()
+  inputMathScore: number
 }

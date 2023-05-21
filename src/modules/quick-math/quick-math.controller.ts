@@ -4,16 +4,13 @@ import {
   Get,
   Param,
   ParseIntPipe,
-  Post,
   Put,
   UseGuards,
   UsePipes,
   ValidationPipe,
 } from "@nestjs/common"
-import { UsersService } from "../users/users.service"
 import { QuickMathService } from "./quick-math.service"
 import { AccessTokenGuard } from "../../guards/access-token.guard"
-import { ChangeNameDto } from "../users/dto/change-name.dto"
 import { DefaultResponse } from "../../common/types/types"
 import { UpdateScoreDto } from "./dto/update-score.dto"
 import { User } from "../users/entities/user.entity"

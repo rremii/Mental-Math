@@ -11,16 +11,24 @@ import { QuickMathModule } from "../quick-math/quick-math.module"
 import { QuickMathService } from "../quick-math/quick-math.service"
 import { HardMathService } from "../hard-math/hard-math.service"
 import { HardMath } from "../hard-math/entities/hard-math.entity"
+import { InputMathService } from "../input-math/input-math.service"
+import { InputMath } from "../input-math/entities/input-math.entity"
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User, QuickMath, HardMath]),
+    TypeOrmModule.forFeature([User, QuickMath, HardMath, InputMath]),
     JwtModule,
-    QuickMathModule,
+    // QuickMathModule,
     TokenModule,
   ],
   exports: [TypeOrmModule, UsersService],
-  providers: [UsersService, QuickMathService, TokenService, HardMathService],
+  providers: [
+    UsersService,
+    QuickMathService,
+    TokenService,
+    HardMathService,
+    InputMathService,
+  ],
   controllers: [UsersController],
 })
 export class UsersModule implements NestModule {

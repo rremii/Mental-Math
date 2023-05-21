@@ -3,7 +3,6 @@ import {
   Column,
   Entity,
   JoinColumn,
-  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
   Unique,
@@ -11,6 +10,7 @@ import {
 import { IUser } from "../users.interface"
 import { QuickMath } from "../../quick-math/entities/quick-math.entity"
 import { HardMath } from "../../hard-math/entities/hard-math.entity"
+import { InputMath } from "../../input-math/entities/input-math.entity"
 
 @Entity()
 @Unique(["email"])
@@ -40,4 +40,8 @@ export class User extends BaseEntity implements IUser {
   @OneToOne(() => HardMath, (hardMath) => hardMath.user)
   @JoinColumn()
   hardMath: HardMath
+
+  @OneToOne(() => InputMath, (inputMath) => inputMath.user)
+  @JoinColumn()
+  inputMath: InputMath
 }

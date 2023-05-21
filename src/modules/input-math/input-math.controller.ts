@@ -9,15 +9,15 @@ import {
   UsePipes,
   ValidationPipe,
 } from "@nestjs/common"
-import { HardMathService } from "./hard-math.service"
+import { InputMathService } from "./input-math.service"
 import { AccessTokenGuard } from "../../guards/access-token.guard"
 import { DefaultResponse } from "../../common/types/types"
 import { UpdateScoreDto } from "./dto/update-score.dto"
 import { User } from "../users/entities/user.entity"
 
-@Controller("hard-math")
-export class HardMathController {
-  constructor(private readonly hardMathService: HardMathService) {}
+@Controller("input-math")
+export class InputMathController {
+  constructor(private readonly inputMathService: InputMathService) {}
 
   @Put("result")
   @UsePipes(new ValidationPipe())
@@ -25,14 +25,14 @@ export class HardMathController {
   updateScoreById(
     @Body() updateScoreDto: UpdateScoreDto,
   ): Promise<DefaultResponse> {
-    return this.hardMathService.updateScoreById(updateScoreDto)
+    return this.inputMathService.updateScoreById(updateScoreDto)
   }
 
   @Get("best/:limit")
   @UseGuards(AccessTokenGuard)
   @UsePipes(new ParseIntPipe())
   getBestsUsers(@Param("limit") limit: number): Promise<User[]> {
-    return this.hardMathService.getBestsUsers(limit)
+    return this.inputMathService.getBestsUsers(limit)
   }
 
   // @Get("result/:id")

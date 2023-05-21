@@ -1,21 +1,11 @@
-import {
-  BadRequestException,
-  Injectable,
-  NotFoundException,
-  Post,
-  UseGuards,
-  UsePipes,
-  ValidationPipe,
-} from "@nestjs/common"
+import { Injectable, NotFoundException } from "@nestjs/common"
 import { InjectRepository } from "@nestjs/typeorm"
-import { Repository } from "typeorm"
+import { MoreThan, Repository } from "typeorm"
 import { UpdateScoreDto } from "./dto/update-score.dto"
 import { DefaultResponse } from "../../common/types/types"
 import { QuickMath } from "./entities/quick-math.entity"
 import { User } from "../users/entities/user.entity"
-import { NOTFOUND } from "dns"
 import { ApiError } from "../../common/constants/errors"
-import { find } from "rxjs"
 
 @Injectable()
 export class QuickMathService {
@@ -54,6 +44,11 @@ export class QuickMathService {
     return await this.userRepository.find({
       relations: {
         quickMath: true,
+      },
+      where: {
+        quickMath: {
+          score: MoreThan(0),
+        },
       },
       order: {
         quickMath: {

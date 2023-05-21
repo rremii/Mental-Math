@@ -5,7 +5,6 @@ import { User } from "./entities/user.entity"
 import { CreateUserDto } from "./dto/create-user.dto"
 import { HashData } from "../../common/helpers/hashData"
 import { TokenService } from "../token/token.service"
-import { IUser } from "./users.interface"
 import { ApiError } from "../../common/constants/errors"
 import { ChangeNameDto } from "./dto/change-name.dto"
 import { DefaultResponse } from "../../common/types/types"
@@ -15,19 +14,24 @@ import { QuickMathService } from "../quick-math/quick-math.service"
 import { GameResultsResponse } from "./response/gameResults.response"
 import { HardMathService } from "../hard-math/hard-math.service"
 import { HardMath } from "../hard-math/entities/hard-math.entity"
+import { InputMath } from "../input-math/entities/input-math.entity"
+import { InputMathService } from "../input-math/input-math.service"
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectRepository(User)
     private readonly usersRepository: Repository<User>,
-    @InjectRepository(QuickMath)
-    private readonly quickMathRepository: Repository<QuickMath>,
-    @InjectRepository(HardMath)
-    private readonly hardMathRepository: Repository<HardMath>,
+    // @InjectRepository(QuickMath)
+    // private readonly quickMathRepository: Repository<QuickMath>,
+    // @InjectRepository(HardMath)
+    // private readonly hardMathRepository: Repository<HardMath>,
+    // @InjectRepository(InputMath)
+    // private readonly inputMathRepository: Repository<InputMath>,
     private readonly tokenService: TokenService,
     private readonly quickMathService: QuickMathService,
     private readonly hardMathService: HardMathService,
+    private readonly inputMathService: InputMathService,
   ) {}
 
   async findUserByEmail(email: string): Promise<User> {
@@ -37,11 +41,13 @@ export class UsersService {
   async createUser(user: CreateUserDto): Promise<User> {
     const quickMath = new QuickMath()
     const hardMath = new HardMath()
+    const inputMath = new InputMath()
 
     await quickMath.save()
     await hardMath.save()
+    await inputMath.save()
 
-    if (!quickMath || !hardMath)
+    if (!quickMath || !hardMath || !inputMath)
       throw new BadRequestException("could not create one of math games")
 
     const newUser = new User()
@@ -51,6 +57,7 @@ export class UsersService {
     newUser.avatar = user.avatar
     newUser.quickMath = quickMath
     newUser.hardMath = hardMath
+    newUser.inputMath = inputMath
 
     await newUser.save()
 
@@ -89,7 +96,10 @@ export class UsersService {
       id,
     )
     const { score: hardMathScore } = await this.hardMathService.getScoreById(id)
+    const { score: inputMathScore } = await this.inputMathService.getScoreById(
+      id,
+    )
 
-    return { quickMathScore, hardMathScore }
+    return { quickMathScore, hardMathScore, inputMathScore }
   }
 }

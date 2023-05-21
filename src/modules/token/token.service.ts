@@ -1,14 +1,10 @@
 import { ForbiddenException, Injectable } from "@nestjs/common"
 import { JwtService } from "@nestjs/jwt"
 import { ConfigService } from "@nestjs/config"
-import * as bcrypt from "bcrypt"
-import { UsersService } from "../users/users.service"
 import { InjectRepository } from "@nestjs/typeorm"
 import { User } from "../users/entities/user.entity"
 import { Repository } from "typeorm"
-import { plainToInstance } from "class-transformer"
 import { HashData } from "../../common/helpers/hashData"
-import { IUser } from "../users/users.interface"
 import { TokenPayload } from "./types"
 
 @Injectable()

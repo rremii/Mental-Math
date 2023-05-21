@@ -11,6 +11,8 @@ import { QuickMath } from "./quick-math/entities/quick-math.entity"
 import { QuickMathModule } from "./quick-math/quick-math.module"
 import { HardMath } from "./hard-math/entities/hard-math.entity"
 import { HardMathModule } from "./hard-math/hard-math.module"
+import { InputMathModule } from "./input-math/input-math.module"
+import { InputMath } from "./input-math/entities/input-math.entity"
 
 @Module({
   imports: [
@@ -21,9 +23,10 @@ import { HardMathModule } from "./hard-math/hard-math.module"
     }),
     UsersModule,
     AuthModule,
-    TokenModule,
     QuickMathModule,
     HardMathModule,
+    InputMathModule,
+    TokenModule,
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (config: ConfigService) => {
@@ -37,7 +40,7 @@ import { HardMathModule } from "./hard-math/hard-math.module"
           database: config.get("db_name"),
           synchronize: true,
 
-          entities: [User, QuickMath, HardMath],
+          entities: [User, QuickMath, HardMath, InputMath],
 
           ssl: true,
           extra: {

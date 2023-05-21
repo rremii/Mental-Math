@@ -20,7 +20,6 @@ import { JwtService } from "@nestjs/jwt"
 import { Request, Response } from "express"
 import { GetCookieExpTime } from "src/common/helpers/getCookieExpTime"
 import { AccessTokenGuard } from "../../guards/access-token.guard"
-import { RefreshTokenGuard } from "../../guards/refresh-token.guard"
 import { ConfigService } from "@nestjs/config"
 
 @Controller("auth")
