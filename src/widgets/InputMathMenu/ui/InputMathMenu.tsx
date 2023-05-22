@@ -97,7 +97,7 @@ const HardMathLayout = styled.div`
   color: var(--main-text-color);
   display: flex;
   flex-direction: column;
-  padding: 0 20px 30px;
+  padding: 0 20px 65px;
   align-items: center;
   justify-content: space-between;
 

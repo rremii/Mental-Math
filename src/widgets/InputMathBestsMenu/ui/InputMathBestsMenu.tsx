@@ -29,7 +29,7 @@ export const InputMathBestsMenu = () => {
   </InputMathBestsLayout>
 }
 const InputMathBestsLayout = styled.div`
-  padding: 0 20px 40px;
+  padding: 0 20px 65px;
   height: 100%; 
   display: flex;
   flex-direction: column;

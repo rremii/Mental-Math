@@ -50,7 +50,7 @@ const ResultLayout = styled.div<{
   top: 0;
   left: ${({ isHidden }) => isHidden ? "100%" : "0"};
   color: var(--main-text-color);
-  padding: 10px 16px 25px;
+  padding: 10px 16px 65px;
   transition: 0.5s;
   transition-delay: ${({ isHidden }) => isHidden ? "" : "1.25s"};
 
