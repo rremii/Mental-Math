@@ -43,7 +43,7 @@ export class InputMathService {
   async getBestsUsers(limit: number): Promise<User[]> {
     return await this.userRepository.find({
       relations: {
-        hardMath: true,
+        inputMath: true,
       },
       order: {
         inputMath: {
