@@ -38,7 +38,7 @@ export const HardMathMenu = () => {
 
   const CheckAnswer = (answer: number, clickedBtnId: number) => {
     if (correctAnswer === answer) HandleSuccess(clickedBtnId)
-    else HandleFail( answer,clickedBtnId)
+    else HandleFail(answer, clickedBtnId)
   }
 
   return <HardMathLayout>
@@ -72,7 +72,7 @@ const HardMathLayout = styled.div`
   color: var(--main-text-color);
   display: flex;
   flex-direction: column;
-  padding: 0 20px 40px;
+  padding: 0 20px 50px;
 
   .preStartTimer {
     flex: 1 1 auto;

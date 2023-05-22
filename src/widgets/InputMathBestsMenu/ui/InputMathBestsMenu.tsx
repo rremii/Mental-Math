@@ -13,7 +13,7 @@ export const InputMathBestsMenu = () => {
   const { data: bestUsers } = useGetInputMathBestUsersQuery()
 
 
-  return <HardMathBestsLayout>
+  return <InputMathBestsLayout>
     <RatingHeader title={"Input Math"} />
     <div className="cell-cont">
       {bestUsers?.map(({ userName, avatar, inputMath, id }: UserInputMath, i) => {
@@ -26,11 +26,11 @@ export const InputMathBestsMenu = () => {
     <div className="btn-cont">
       <MenuBtn />
     </div>
-  </HardMathBestsLayout>
+  </InputMathBestsLayout>
 }
-const HardMathBestsLayout = styled.div`
-  padding: 0 20px 20px;
-  height: 100%;
+const InputMathBestsLayout = styled.div`
+  padding: 0 20px 40px;
+  height: 100%; 
   display: flex;
   flex-direction: column;
   align-items: center;
