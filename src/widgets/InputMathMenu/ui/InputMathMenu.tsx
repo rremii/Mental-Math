@@ -7,7 +7,7 @@ import { ResultBtn } from "@shared/ui/ResultBtn"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
 import { PreStartTimer } from "@shared/ui/PreStartTimer"
 import { GetBtnResult } from "@shared/helpers/GetBtnResult"
-import { HardStageTime, PreStartGap, PreStartTime, useIsPreStart, useStage } from "@entities/Game"
+import { HardStageTime, InputStageTime, PreStartGap, PreStartTime, useIsPreStart, useStage } from "@entities/Game"
 import { useHardEquation } from "@entities/Game/model/useHardEquation"
 import { useUpdateHardMathScoreMutation } from "@entities/Game/api/HardMathApi"
 import { useGetUserQuery } from "@entities/User"
@@ -15,7 +15,7 @@ import { useEffect, useState } from "react"
 import { useQuickEquation } from "@entities/Game/model/useQuickEquation"
 import { useReplaceQuestionMark } from "@entities/Game/model/useReplaceQuestionMark"
 import { useUpdateInputMathScoreMutation } from "@entities/Game/api/InputMathApi"
-
+import ArrowIcon from "@shared/assets/DarkTheme/arrowIcon.svg"
 
 export const InputMathMenu = () => {
   const stage = useTypedSelector(state => state.Stage.stage)
@@ -42,7 +42,7 @@ export const InputMathMenu = () => {
     updateInputMathScore({ newScore: stage, userId: user.id })
   }
 
-  const { stageTime, HandleFail, HandleSuccess } = useStage(updateEquation, UpdateUserScore, 1500)
+  const { stageTime, HandleFail, HandleSuccess } = useStage(updateEquation, UpdateUserScore, InputStageTime)
 
 
   useEffect(() => {
@@ -67,7 +67,7 @@ export const InputMathMenu = () => {
 
   return <HardMathLayout>
     <GameHeader time={stageTime} currentScore={stage} />
-    <ProgressBar progress={stageTime / 10} />
+    <ProgressBar progress={stageTime / InputStageTime} />
     {stageState !== "preStart" ? <EquationSection equation={transformedEquation} />
       : <>
         <h3 className="preTitle">Choose the right answer</h3>
@@ -83,7 +83,7 @@ export const InputMathMenu = () => {
       <ResultBtn onClick={() => SetAnswer(8)}>8</ResultBtn>
       <ResultBtn onClick={() => SetAnswer(9)}>9</ResultBtn>
       <div className="option-btn">
-        {curAnswer.length > 0 ? <ResultBtn onClick={DeleteLastNumber} /> :
+        {curAnswer.length > 0 ? <ResultBtn onClick={DeleteLastNumber}><img src={ArrowIcon} alt="delete" /></ResultBtn> :
           <ResultBtn onClick={() => SetAnswer("-")}>-</ResultBtn>}
       </div>
       <ResultBtn onClick={() => SetAnswer(0)}>0</ResultBtn>
@@ -100,6 +100,11 @@ const HardMathLayout = styled.div`
   padding: 0 20px 30px;
   align-items: center;
   justify-content: space-between;
+
+  @media screen and (max-width: 400px) {
+    padding: 0 10px 30px;
+    width: 100vw;
+  }
 
   .preStartTimer {
     flex: 1 1 auto;
@@ -131,18 +136,37 @@ const HardMathLayout = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
     align-content: center;
+    max-width: 300px;
     //column-gap: 0;
-    gap: 4px;
-    width: min-content;
+    //gap: 5px;
+    width: 100%;
   }
 
   .ResultBtn {
-    height: 40px;
+    height: 50px;
     font-size: 21px;
-    width: 90px;
+    max-width: 100px;
+    min-width: 50px;
+    @media screen and (max-width: 400px) {
+      height: 45px;
+    }
   }
 
   .option-btn {
-    //opacity: 0;
+    height: 50px;
+    font-size: 21px;
+    max-width: 100px;
+    width: 100%;
+    min-width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media screen and (max-width: 400px) {
+      height: 45px;
+    }
+
+    img {
+      width: 20px;
+    }
   }
 `

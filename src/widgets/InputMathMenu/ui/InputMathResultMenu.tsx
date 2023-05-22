@@ -8,7 +8,7 @@ export const InputMathResultMenu = () => {
   const result = useTypedSelector(state => state.Stage.result)
   const correctAnswer = useTypedSelector(state => state.Game.correctAnswer)
   const wrongAnswer = useTypedSelector(state => state.Game.wrongAnswer)
-
+//replace special result pages by one cuz they are the same
 
   const { ResetGame, ResetStage } = useRestartGame()
 
