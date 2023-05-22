@@ -34,6 +34,10 @@ const QuickMathBestsLayout = styled.div`
   align-items: center;
   background: var(--game-menu-bg);
   color: var(--main-text-color);
+  @media screen and (max-width: 600px) {
+    padding: 0 20px 70px;
+
+  }
 
   .cell-cont {
     padding: 30px 10px 20px;

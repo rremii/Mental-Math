@@ -72,7 +72,11 @@ const HardMathLayout = styled.div`
   color: var(--main-text-color);
   display: flex;
   flex-direction: column;
-  padding: 0 20px 65px;
+    padding: 0 20px 25px;
+  @media screen and (max-width: 600px) {
+  padding: 0 20px 70px;
+
+  }
 
   .preStartTimer {
     flex: 1 1 auto;

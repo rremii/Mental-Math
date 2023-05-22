@@ -81,7 +81,9 @@ const QuickMathLayout = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0 20px 40px;
-
+  @media screen and (max-width: 600px) {
+    padding: 0 20px 70px;
+  }
   .preStartTimer {
     flex: 1 1 auto;
     width: 100%;
