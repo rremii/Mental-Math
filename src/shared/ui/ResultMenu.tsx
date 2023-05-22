@@ -44,19 +44,23 @@ const ResultLayout = styled.div<{
   z-index: 3;
   background: var(--game-menu-bg);
   width: 100vw;
-  max-width: 600px;
+  max-width: 500px;
   height: 100vh;
   overflow-y: auto;
   top: 0;
   left: ${({ isHidden }) => isHidden ? "100%" : "0"};
   color: var(--main-text-color);
-  padding: 10px 16px 65px;
+  padding: 10px 16px 25px;
   transition: 0.5s;
   transition-delay: ${({ isHidden }) => isHidden ? "" : "1.25s"};
 
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media screen and (max-width: 600px) {
+    padding: 10px 16px 70px;
+  }
 
   .header {
     flex: 0 0 min-content;

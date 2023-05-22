@@ -65,7 +65,7 @@ export const InputMathMenu = () => {
   }
 
 
-  return <HardMathLayout>
+  return <InputMathLayout>
     <GameHeader time={stageTime} currentScore={stage} />
     <ProgressBar progress={stageTime / InputStageTime} />
     {stageState !== "preStart" ? <EquationSection equation={transformedEquation} />
@@ -88,22 +88,24 @@ export const InputMathMenu = () => {
       </div>
       <ResultBtn onClick={() => SetAnswer(0)}>0</ResultBtn>
     </ButtonsSection>
-  </HardMathLayout>
+  </InputMathLayout>
 }
-const HardMathLayout = styled.div`
+const InputMathLayout = styled.div`
   background: var(--game-menu-bg);
   width: 100%;
   height: 100%;
   color: var(--main-text-color);
   display: flex;
   flex-direction: column;
-  padding: 0 20px 65px;
+  padding: 0 20px 25px;
   align-items: center;
   justify-content: space-between;
 
   @media screen and (max-width: 400px) {
-    padding: 0 10px 30px;
     width: 100vw;
+  }
+  @media screen and (max-width: 500px) {
+    padding: 0 10px 70px;
   }
 
   .preStartTimer {

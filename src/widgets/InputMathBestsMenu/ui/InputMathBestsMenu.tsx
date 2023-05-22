@@ -29,13 +29,17 @@ export const InputMathBestsMenu = () => {
   </InputMathBestsLayout>
 }
 const InputMathBestsLayout = styled.div`
-  padding: 0 20px 65px;
-  height: 100%; 
+  padding: 0 20px 25px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: var(--game-menu-bg);
   color: var(--main-text-color);
+
+  @media screen and (max-width: 500px) {
+    padding: 0 20px 70px;
+  }
 
   .cell-cont {
     padding: 30px 10px 20px;
