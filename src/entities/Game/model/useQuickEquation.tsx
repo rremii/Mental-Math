@@ -17,7 +17,7 @@ const IsMultiply = () => {
   return random < MultiplyChance
 }
 
-export const useQuickEquation = (answersAmount: number) => {
+export const useQuickEquation = (answersAmount?: number) => {
   const dispatch = useAppDispatch()
 
   const mulDifficulty = useTypedSelector(state => state.Game.mulDifficulty)
