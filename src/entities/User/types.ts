@@ -27,4 +27,5 @@ export interface GameResults {
   quickMathScore: number
   hardMathScore: number
   inputMathScore: number
+  trueFalseMathScore: number
 }

@@ -3,13 +3,13 @@ import { HardMathMenu, HardMathResultMenu } from "@widgets/HardMathMenu"
 import { InputMathMenu, InputMathResultMenu } from "@widgets/InputMathMenu"
 
 const InputMathPage = () => {
-  return <HardMathLayout>
+  return <MathLayout>
     <InputMathResultMenu />
     <InputMathMenu/>
-  </HardMathLayout>
+  </MathLayout>
 }
 export default InputMathPage
-const HardMathLayout = styled.div`
+const MathLayout = styled.div`
   max-width: 600px;
   width: 100%;
   //display: flex;

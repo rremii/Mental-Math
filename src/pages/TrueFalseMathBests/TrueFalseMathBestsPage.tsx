@@ -1,13 +1,13 @@
 import styled from "styled-components"
 import { HardMathBestsMenu } from "@widgets/HardMathBestsMenu"
-import { InputMathBestsMenu } from "@widgets/InputMathBestsMenu"
+import { TrueFalseMathBestsMenu } from "@widgets/TrueFalseMathBestsMenu"
 
-const InputMathBestsPage = () => {
+const TrueFalseMathBestsPage = () => {
   return <MathBestsLayout>
-    <InputMathBestsMenu />
+    <TrueFalseMathBestsMenu />
   </MathBestsLayout>
 }
-export default InputMathBestsPage
+export default TrueFalseMathBestsPage
 const MathBestsLayout = styled.div`
   max-width: 600px;
   width: 100%;

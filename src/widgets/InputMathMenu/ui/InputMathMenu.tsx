@@ -65,7 +65,7 @@ export const InputMathMenu = () => {
   }
 
 
-  return <InputMathLayout>
+  return <MathLayout>
     <GameHeader time={stageTime} currentScore={stage} />
     <ProgressBar progress={stageTime / InputStageTime} />
     {stageState !== "preStart" ? <EquationSection equation={transformedEquation} />
@@ -88,9 +88,9 @@ export const InputMathMenu = () => {
       </div>
       <ResultBtn onClick={() => SetAnswer(0)}>0</ResultBtn>
     </ButtonsSection>
-  </InputMathLayout>
+  </MathLayout>
 }
-const InputMathLayout = styled.div`
+const MathLayout = styled.div`
   background: var(--game-menu-bg);
   width: 100%;
   height: 100%;

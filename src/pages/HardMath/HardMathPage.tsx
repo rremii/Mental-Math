@@ -2,13 +2,13 @@ import styled from "styled-components"
 import { HardMathMenu, HardMathResultMenu } from "@widgets/HardMathMenu"
 
 const HardMathPage = () => {
-  return <HardMathLayout>
+  return <MathLayout>
     <HardMathResultMenu />
     <HardMathMenu />
-  </HardMathLayout>
+  </MathLayout>
 }
 export default HardMathPage
-const HardMathLayout = styled.div`
+const MathLayout = styled.div`
   max-width: 600px;
   width: 100%;
   //display: flex;

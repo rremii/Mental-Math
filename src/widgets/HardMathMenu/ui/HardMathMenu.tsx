@@ -41,7 +41,7 @@ export const HardMathMenu = () => {
     else HandleFail(answer, clickedBtnId)
   }
 
-  return <HardMathLayout>
+  return <MathLayout>
     <GameHeader time={stageTime} currentScore={stage} />
     <ProgressBar progress={stageTime / HardStageTime} />
     {stageState !== "preStart" ? <EquationSection equation={equation} />
@@ -63,9 +63,9 @@ export const HardMathMenu = () => {
                           key={btnId}>{answer}</ResultBtn>
       })}
     </ButtonsSection>
-  </HardMathLayout>
+  </MathLayout>
 }
-const HardMathLayout = styled.div`
+const MathLayout = styled.div`
   background: var(--game-menu-bg);
   width: 100%;
   height: 100%;

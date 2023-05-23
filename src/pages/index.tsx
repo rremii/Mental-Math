@@ -13,6 +13,7 @@ import InputMath from "./InputMath/InputMathPage"
 import { InputMathBestsMenu } from "@widgets/InputMathBestsMenu"
 import InputMathBests from "./InputMathBests/InputMathBestsPage"
 import TrueFalseMath from "./TrueFalseMath/TrueFalseMathPage"
+import TrueFalseMathBests from "./TrueFalseMathBests/TrueFalseMathBestsPage"
 
 // const GameMenu = lazy(() => import("./GameMenu/GameMenuPage"))
 
@@ -33,6 +34,7 @@ export const Routing = () => {
         <Route path="/leaderboard/quick-math" element={<QuickMathBests />} />
         <Route path="/leaderboard/hard-math" element={<HardMathBests />} />
         <Route path="/leaderboard/input-math" element={<InputMathBests />} />
+        <Route path="/leaderboard/true-false-math" element={<TrueFalseMathBests />} />
         <Route path="/" element={<GameMenu />} />
       </>}
       <Route path="/login" element={<Login />} />

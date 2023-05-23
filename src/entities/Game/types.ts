@@ -16,11 +16,9 @@ export interface IHardMath extends MathGame {
 export interface IInputMath extends MathGame {
 }
 
-export enum Games {
-  quickMath = "quick-math",
-  hardMath = "hard-math",
-  balance = "balance",
+export interface ITrueFalseMath extends MathGame {
 }
+
 
 export interface UserQuickMath extends User {
   quickMath: IQuickMath
@@ -32,4 +30,8 @@ export interface UserHardMath extends User {
 
 export interface UserInputMath extends User {
   inputMath: IInputMath
+}
+
+export interface UserTrueFalseMath extends User {
+  trueFalseMath: ITrueFalseMath
 }

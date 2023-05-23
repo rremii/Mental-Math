@@ -49,7 +49,7 @@ export const QuickMathMenu = () => {
     else HandleFail( answer,clickedBtnId)
   }
 
-  return <QuickMathLayout>
+  return <MathLayout>
     <GameHeader time={stageTime} currentScore={stage} />
     <ProgressBar progress={stageTime / QuickStageTime} />
     {stageState !== "preStart" ? <EquationSection equation={equation} />
@@ -71,9 +71,9 @@ export const QuickMathMenu = () => {
                           key={btnId}>{answer}</ResultBtn>
       })}
     </ButtonsSection>
-  </QuickMathLayout>
+  </MathLayout>
 }
-const QuickMathLayout = styled.div`
+const MathLayout = styled.div`
   background: var(--game-menu-bg);
   width: 100%;
   height: 100%;

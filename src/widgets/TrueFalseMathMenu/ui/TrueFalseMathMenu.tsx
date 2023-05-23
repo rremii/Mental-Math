@@ -15,6 +15,7 @@ import { useQuickEquation } from "@entities/Game/model/useQuickEquation"
 import { useReplaceQuestionMark } from "@entities/Game/model/useReplaceQuestionMark"
 import { GetRandomArrElId } from "@shared/helpers/GetRandomArrElId"
 import { useEffect, useState } from "react"
+import { useUpdateTrueFalseMathScoreMutation } from "@entities/Game/api/TrueFalseMathApi"
 
 function GetRandomArrEl<T>(arr: T[]) {
   return arr[GetRandomArrElId(arr)]
@@ -28,28 +29,28 @@ export const TrueFalseMathMenu = () => {
   const equation = useTypedSelector(state => state.Game.equation)
   const trueFalseAnswers = useTypedSelector(state => state.Game.trueFalseAnswers)
   const correctAnswer = useTypedSelector(state => state.Game.correctAnswer)
-  const quickAnswers = useTypedSelector(state => state.Game.quickAnswers)
+  const hardAnswers = useTypedSelector(state => state.Game.hardAnswers)
 
-  const [curAnswer, setCurAnswer] = useState(quickAnswers[0])
+  const [curAnswer, setCurAnswer] = useState(hardAnswers[0])
 
   useEffect(() => {
-    setCurAnswer(quickAnswers[0])
-  }, [quickAnswers])
+    setCurAnswer(hardAnswers[0])
+  }, [hardAnswers])
 
   useIsPreStart()
 
 
-  const { updateEquation } = useQuickEquation(2)
+  const { updateEquation } = useHardEquation(2)
   const { transformedEquation } = useReplaceQuestionMark(equation, curAnswer)
-  // const [updateHardMathScore] = useUpdateHardMathScoreMutation()
-  // const { data: user } = useGetUserQuery()
+  const [updateTrueFalseMathScore] = useUpdateTrueFalseMathScoreMutation()
+  const { data: user } = useGetUserQuery()
 
-  // const UpdateUserScore = () => {
-  //   if (!user) return
-  //   updateHardMathScore({ newScore: stage, userId: user.id })
-  // }
+  const UpdateUserScore = () => {
+    if (!user) return
+    updateTrueFalseMathScore({ newScore: stage, userId: user.id })
+  }
 
-  const { stageTime, HandleFail, HandleSuccess } = useStage(updateEquation, () => undefined, TrueFalseStageTime)
+  const { stageTime, HandleFail, HandleSuccess } = useStage(updateEquation, UpdateUserScore, TrueFalseStageTime)
 
 
   const CheckAnswer = (answer: "true" | "false", clickedBtnId: number) => {
@@ -58,7 +59,7 @@ export const TrueFalseMathMenu = () => {
     else HandleFail(+curAnswer, clickedBtnId)
   }
 
-  return <TrueFalseMathLayout>
+  return <MathLayout>
     <GameHeader time={stageTime} currentScore={stage} />
     <ProgressBar progress={stageTime / TrueFalseStageTime} />
     {stageState === "preStart" ? <>
@@ -81,9 +82,9 @@ export const TrueFalseMathMenu = () => {
                           key={btnId}>{answer}</ResultBtn>
       })}
     </ButtonsSection>
-  </TrueFalseMathLayout>
+  </MathLayout>
 }
-const TrueFalseMathLayout = styled.div`
+const MathLayout = styled.div`
   background: var(--game-menu-bg);
   width: 100%;
   height: 100%;

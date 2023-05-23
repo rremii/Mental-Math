@@ -3,13 +3,13 @@ import { HardMathMenu, HardMathResultMenu } from "@widgets/HardMathMenu"
 import { TrueFalseMathMenu, TrueFalseMathResultMenu } from "@widgets/TrueFalseMathMenu"
 
 const TrueFalseMathPage = () => {
-  return <HardMathLayout>
+  return <MathLayout>
     <TrueFalseMathResultMenu />
     <TrueFalseMathMenu />
-  </HardMathLayout>
+  </MathLayout>
 }
 export default TrueFalseMathPage
-const HardMathLayout = styled.div`
+const MathLayout = styled.div`
   max-width: 600px;
   width: 100%;
   //display: flex;
