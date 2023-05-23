@@ -13,6 +13,7 @@ interface initialStateType {
 
   quickAnswers: string[] | number[]
   hardAnswers: string[] | number[]
+  trueFalseAnswers: ["true", "false"]
   // balanceAnswers: "left" | "right"
 
 }
@@ -23,6 +24,7 @@ const initialState = {
 
   quickAnswers: ["", "", "", ""],
   hardAnswers: ["", "", "", ""],
+  trueFalseAnswers: ["true", "false"],
 
   difficulty: 1,
   mulDifficulty: 1,

@@ -1,16 +1,20 @@
 import { ShuffleArray } from "@shared/helpers/ShuffleArray"
 
-export const GetAnswersArr = (answer: number) => {
+export const GetAnswersArr = (answer: number, amount: number = 4) => {
 
-  const initialAnswers = [0, 0, 0]
 
-  const falsyAnswers = initialAnswers.map(() => {
+  const falsyAnswers: number[] = []
+
+  for (let i = 0; i < amount - 1; i++) {
+    let curAnswer: number
     if (Math.random() < 0.5) {
-      return answer + Math.ceil((Math.random() * 10 + 1))
+      curAnswer = answer + Math.ceil((Math.random() * 10 + 1))
     } else {
-      return answer - Math.ceil((Math.random() * 10 + 1))
+      curAnswer = answer - Math.ceil((Math.random() * 10 + 1))
     }
-  })
+    falsyAnswers.push(curAnswer)
+  }
+
   return ShuffleArray([...falsyAnswers, answer]) as number[]
 
 }

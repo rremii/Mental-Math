@@ -9,7 +9,6 @@ interface props {
 }
 
 export const GetBtnResult = ({ btnId, clickedBtnId, result, answer, correctAnswer }: props): resultType => {
-
   if (btnId === clickedBtnId && result === "fail") return "fail"
   if (btnId === clickedBtnId && result === "success") return "success"
   if (answer === correctAnswer && result === "fail") return "success"

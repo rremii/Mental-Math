@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export const useReplaceQuestionMark = (equation: string, str: string | null) => {
+export const useReplaceQuestionMark = (equation: string, str: string | number | null) => {
 
 
   const [questionMarkPosition, setPosition] = useState<number | null>(null)
@@ -26,8 +26,9 @@ export const useReplaceQuestionMark = (equation: string, str: string | null) => 
     const equationArr = equation.split(" ")
 
     const resultEquation = equationArr.map((el, i) => {
-      if (i === questionMarkPosition) return str || "?"
-      return el
+      if (i !== questionMarkPosition || str === null) return el
+      if (!el && +str !== 0) return "?"
+      return str
     })
     setTransformedEquation(resultEquation.join(" "))
   }, [questionMarkPosition, str])

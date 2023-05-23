@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom"
 
 interface props {
   result: number
-  wrongAnswer: number | null
-  correctAnswer: number | null
+  wrongAnswer: number | null | string
+  correctAnswer: number | null | string
   isHidden: boolean
   OnRestart: () => void
   OnMenu: () => void
@@ -44,7 +44,7 @@ const ResultLayout = styled.div<{
   z-index: 3;
   background: var(--game-menu-bg);
   width: 100vw;
-  max-width: 500px;
+  max-width: 600px;
   height: 100vh;
   overflow-y: auto;
   top: 0;
