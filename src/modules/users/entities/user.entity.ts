@@ -11,6 +11,7 @@ import { IUser } from "../users.interface"
 import { QuickMath } from "../../quick-math/entities/quick-math.entity"
 import { HardMath } from "../../hard-math/entities/hard-math.entity"
 import { InputMath } from "../../input-math/entities/input-math.entity"
+import { TrueFalseMath } from "../../true-false-math/entities/true-false-math.entity"
 
 @Entity()
 @Unique(["email"])
@@ -44,4 +45,8 @@ export class User extends BaseEntity implements IUser {
   @OneToOne(() => InputMath, (inputMath) => inputMath.user)
   @JoinColumn()
   inputMath: InputMath
+
+  @OneToOne(() => TrueFalseMath, (trueFalseMath) => trueFalseMath.user)
+  @JoinColumn()
+  trueFalseMath: TrueFalseMath
 }

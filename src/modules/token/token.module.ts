@@ -10,10 +10,18 @@ import { HardMath } from "../hard-math/entities/hard-math.entity"
 import { HardMathService } from "../hard-math/hard-math.service"
 import { InputMathService } from "../input-math/input-math.service"
 import { InputMath } from "../input-math/entities/input-math.entity"
+import { TrueFalseMathService } from "../true-false-math/true-false-math.service"
+import { TrueFalseMath } from "../true-false-math/entities/true-false-math.entity"
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User, QuickMath, HardMath, InputMath]),
+    TypeOrmModule.forFeature([
+      User,
+      QuickMath,
+      HardMath,
+      InputMath,
+      TrueFalseMath,
+    ]),
     JwtModule,
   ],
   providers: [
@@ -23,6 +31,7 @@ import { InputMath } from "../input-math/entities/input-math.entity"
     QuickMathService,
     HardMathService,
     InputMathService,
+    TrueFalseMathService,
   ],
   exports: [TokenService, JwtService, UsersService],
 })

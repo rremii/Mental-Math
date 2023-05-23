@@ -10,6 +10,7 @@ import { RefreshTokenStrategy } from "../../strategy/refresh-token.strategy"
 import { QuickMathService } from "../quick-math/quick-math.service"
 import { HardMathService } from "../hard-math/hard-math.service"
 import { InputMathService } from "../input-math/input-math.service"
+import { TrueFalseMathService } from "../true-false-math/true-false-math.service"
 
 @Module({
   imports: [UsersModule, JwtModule],
@@ -24,6 +25,7 @@ import { InputMathService } from "../input-math/input-math.service"
     QuickMathService,
     HardMathService,
     InputMathService,
+    TrueFalseMathService,
   ],
 })
 export class AuthModule {}

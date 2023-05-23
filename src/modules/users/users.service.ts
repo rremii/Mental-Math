@@ -16,6 +16,8 @@ import { HardMathService } from "../hard-math/hard-math.service"
 import { HardMath } from "../hard-math/entities/hard-math.entity"
 import { InputMath } from "../input-math/entities/input-math.entity"
 import { InputMathService } from "../input-math/input-math.service"
+import { TrueFalseMathService } from "../true-false-math/true-false-math.service"
+import { TrueFalseMath } from "../true-false-math/entities/true-false-math.entity"
 
 @Injectable()
 export class UsersService {
@@ -32,6 +34,7 @@ export class UsersService {
     private readonly quickMathService: QuickMathService,
     private readonly hardMathService: HardMathService,
     private readonly inputMathService: InputMathService,
+    private readonly trueFalseMathService: TrueFalseMathService,
   ) {}
 
   async findUserByEmail(email: string): Promise<User> {
@@ -42,12 +45,14 @@ export class UsersService {
     const quickMath = new QuickMath()
     const hardMath = new HardMath()
     const inputMath = new InputMath()
+    const trueFalseMath = new TrueFalseMath()
 
     await quickMath.save()
     await hardMath.save()
     await inputMath.save()
+    await trueFalseMath.save()
 
-    if (!quickMath || !hardMath || !inputMath)
+    if (!quickMath || !hardMath || !inputMath || !trueFalseMath)
       throw new BadRequestException("could not create one of math games")
 
     const newUser = new User()
@@ -58,6 +63,7 @@ export class UsersService {
     newUser.quickMath = quickMath
     newUser.hardMath = hardMath
     newUser.inputMath = inputMath
+    newUser.trueFalseMath = trueFalseMath
 
     await newUser.save()
 
@@ -99,7 +105,9 @@ export class UsersService {
     const { score: inputMathScore } = await this.inputMathService.getScoreById(
       id,
     )
+    const { score: trueFalseMathScore } =
+      await this.trueFalseMathService.getScoreById(id)
 
-    return { quickMathScore, hardMathScore, inputMathScore }
+    return { quickMathScore, hardMathScore, inputMathScore, trueFalseMathScore }
   }
 }

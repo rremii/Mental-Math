@@ -13,6 +13,8 @@ import { HardMath } from "./hard-math/entities/hard-math.entity"
 import { HardMathModule } from "./hard-math/hard-math.module"
 import { InputMathModule } from "./input-math/input-math.module"
 import { InputMath } from "./input-math/entities/input-math.entity"
+import { TrueFalseMathModule } from "./true-false-math/true-false-math.module"
+import { TrueFalseMath } from "./true-false-math/entities/true-false-math.entity"
 
 @Module({
   imports: [
@@ -27,6 +29,7 @@ import { InputMath } from "./input-math/entities/input-math.entity"
     HardMathModule,
     InputMathModule,
     TokenModule,
+    TrueFalseMathModule,
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (config: ConfigService) => {
@@ -40,7 +43,7 @@ import { InputMath } from "./input-math/entities/input-math.entity"
           database: config.get("db_name"),
           synchronize: true,
 
-          entities: [User, QuickMath, HardMath, InputMath],
+          entities: [User, QuickMath, HardMath, InputMath, TrueFalseMath],
 
           ssl: true,
           extra: {

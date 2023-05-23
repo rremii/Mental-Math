@@ -9,4 +9,7 @@ export class GameResultsResponse {
 
   @IsNumber()
   inputMathScore: number
+
+  @IsNumber()
+  trueFalseMathScore: number
 }
