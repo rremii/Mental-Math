@@ -14,7 +14,7 @@ export const EquationSection: FC<props> = ({ equation }) => {
     </div>
   </EquationSectionLayout>
 }
-const EquationSectionLayout = styled.div`
+const EquationSectionLayout = styled.pre`
 
   width: 100%;
   flex: 1 1 auto;
@@ -31,7 +31,7 @@ const EquationSectionLayout = styled.div`
     font-style: normal;
     font-weight: 500;
     font-size: 40px;
-    line-height: 50px;
+    line-height: 80px;
 
     /* identical to box height, or 75% */
     min-height: 55px;

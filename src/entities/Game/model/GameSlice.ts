@@ -14,7 +14,10 @@ interface initialStateType {
   quickAnswers: string[] | number[]
   hardAnswers: string[] | number[]
   trueFalseAnswers: ["true", "false"]
-  // balanceAnswers: "left" | "right"
+  balanceAnswers: ["greater", "smaller"]
+
+  balanceEquations: [string, string]
+  balanceCorrectAnswer: "greater" | "smaller"
 
 }
 
@@ -25,6 +28,9 @@ const initialState = {
   quickAnswers: ["", "", "", ""],
   hardAnswers: ["", "", "", ""],
   trueFalseAnswers: ["true", "false"],
+  balanceAnswers: ["greater", "smaller"],
+
+  balanceEquations: ["", ""],
 
   difficulty: 1,
   mulDifficulty: 1,
@@ -61,11 +67,20 @@ const GameSlice = createSlice({
     clearAnswers(state) {
       state.quickAnswers = ["", "", "", ""]
       state.hardAnswers = ["", "", "", ""]
+    },
+
+
+    setBalanceCorrect(state, action: PayloadAction<"greater" | "smaller">) {
+      state.balanceCorrectAnswer = action.payload
+    },
+    setBalanceEquations(state, action: PayloadAction<[string, string]>) {
+      state.balanceEquations = action.payload
     }
 
   }
 })
 export const {
+  setBalanceCorrect, setBalanceEquations,
   clearAnswers, setEquation, setMulDifficulty, setDifficulty,
   setWrongAnswer, setCorrectAnswer, setQuickAnswers, setHardAnswers
 }

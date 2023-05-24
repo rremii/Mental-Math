@@ -8,11 +8,19 @@ interface MathGame {
   score: number
 }
 
+export enum VariablePlaceSide {
+  leftSide = 0,
+  rightSide = 1,
+  random = 0.5,
+}
+
+
 export interface IQuickMath extends MathGame {
 }
 
 export interface IHardMath extends MathGame {
 }
+
 export interface IInputMath extends MathGame {
 }
 

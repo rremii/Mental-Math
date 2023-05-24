@@ -1,8 +1,9 @@
 import { ShuffleArray } from "@shared/helpers/ShuffleArray"
 import { GetRandomArrElId } from "@shared/helpers/GetRandomArrElId"
 import { GetHardEquationStr } from "@entities/Game/helpers/GetHardEquationStr"
+import { VariablePlaceSide } from "@entities/Game"
 
-export const CreateHardMultiplyEquation = (mulDifficulty: number) => {
+export const CreateHardMultiplyEquation = (mulDifficulty: number, varPlaceSide: VariablePlaceSide) => {
   const num1 = Math.floor(Math.random() * (5 + mulDifficulty) + 1)
   const num2 = Math.floor(Math.random() * (5 + mulDifficulty) + 1)
   const num3 = Math.floor(Math.random() * (5 + mulDifficulty) + 1)
@@ -10,7 +11,7 @@ export const CreateHardMultiplyEquation = (mulDifficulty: number) => {
 
   const num4 = num1 * num2 * num3
 
-  if (Math.random() > 0.5) {
+  if (Math.random() > varPlaceSide) {
 
     const elements = [num2, num1, num3]
 
