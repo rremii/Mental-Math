@@ -1,4 +1,3 @@
-import { CreateMultiplyEquation } from "@entities/Game/helpers/CreateMultiplyEquation"
 import {
   MultiplyChance,
   setBalanceCorrect,
@@ -7,9 +6,10 @@ import {
   setMulDifficulty,
   VariablePlaceSide
 } from "@entities/Game"
-import { CreateEquation } from "@entities/Game/helpers/CreateEquation"
 import { SolveEquation } from "@shared/helpers/SolveEquation"
 import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
+import { CreateHardMultiplyEquation } from "@entities/Game/helpers/CreateHardMultiplyEquation"
+import { CreateHardEquation } from "@entities/Game/helpers/CreateHardEquation"
 
 const IsMultiply = () => {
   const random = Math.random()
@@ -27,10 +27,10 @@ export const useBalanceEquation = (answersAmount?: number) => {
   const GetEquation = (): string => {
     let equation = ""
     if (IsMultiply()) {
-      equation = CreateMultiplyEquation(mulDifficulty, VariablePlaceSide.rightSide)
+      equation = CreateHardMultiplyEquation(mulDifficulty, VariablePlaceSide.rightSide)
       dispatch(setMulDifficulty(difficulty + 1))
     } else {
-      equation = CreateEquation(difficulty, VariablePlaceSide.rightSide)
+      equation = CreateHardEquation(difficulty, VariablePlaceSide.rightSide)
       dispatch(setDifficulty(difficulty + 1))
     }
     return equation

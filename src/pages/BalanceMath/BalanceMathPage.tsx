@@ -1,6 +1,4 @@
 import styled from "styled-components"
-import { HardMathMenu, HardMathResultMenu } from "@widgets/HardMathMenu"
-import { TrueFalseMathMenu, TrueFalseMathResultMenu } from "@widgets/TrueFalseMathMenu"
 import { BalanceMathMenu, BalanceMathResultMenu } from "@widgets/BalanceMathMenu"
 
 const BalanceMathPage = () => {

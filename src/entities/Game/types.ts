@@ -27,6 +27,9 @@ export interface IInputMath extends MathGame {
 export interface ITrueFalseMath extends MathGame {
 }
 
+export interface IBalanceMath extends MathGame {
+}
+
 
 export interface UserQuickMath extends User {
   quickMath: IQuickMath
@@ -42,4 +45,8 @@ export interface UserInputMath extends User {
 
 export interface UserTrueFalseMath extends User {
   trueFalseMath: ITrueFalseMath
+}
+
+export interface UserBalanceMath extends User {
+  balanceMath: IBalanceMath
 }

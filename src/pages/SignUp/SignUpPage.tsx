@@ -20,7 +20,7 @@ const SignUpLayout = styled.div`
   position: relative;
   overflow-y: auto;
   min-height: 100vh;
-  height: min-content;
+  //height: min-content;
 
   max-width: 600px;
   width: 100%;

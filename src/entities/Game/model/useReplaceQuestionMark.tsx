@@ -27,7 +27,7 @@ export const useReplaceQuestionMark = (equation: string, str: string | number | 
 
     const resultEquation = equationArr.map((el, i) => {
       if (i !== questionMarkPosition || str === null) return el
-      if (!el && +str !== 0) return "?"
+      if (!str) return "?"
       return str
     })
     setTransformedEquation(resultEquation.join(" "))

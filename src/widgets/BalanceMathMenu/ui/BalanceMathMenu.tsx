@@ -7,43 +7,23 @@ import { ResultBtn } from "@shared/ui/ResultBtn"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
 import { PreStartTimer } from "@shared/ui/PreStartTimer"
 import { GetBtnResult } from "@shared/helpers/GetBtnResult"
-import { HardStageTime, PreStartGap, PreStartTime, TrueFalseStageTime, useIsPreStart, useStage } from "@entities/Game"
-import { useHardEquation } from "@entities/Game/model/useHardEquation"
-import { useUpdateHardMathScoreMutation } from "@entities/Game/api/HardMathApi"
-import { useGetUserQuery } from "@entities/User"
-import { useQuickEquation } from "@entities/Game/model/useQuickEquation"
-import { useReplaceQuestionMark } from "@entities/Game/model/useReplaceQuestionMark"
-import { GetRandomArrElId } from "@shared/helpers/GetRandomArrElId"
-import { useEffect, useState } from "react"
-import { useUpdateTrueFalseMathScoreMutation } from "@entities/Game/api/TrueFalseMathApi"
+import { BalanceStageTime, PreStartGap, PreStartTime, useIsPreStart, useStage } from "@entities/Game"
 import { useBalanceEquation } from "@entities/Game/model/useBalanceEquation"
+import { useUpdateBalanceMathScoreMutation } from "@entities/Game/api/BalanceMathApi"
+import { useGetUserQuery } from "@entities/User"
 
-function GetRandomArrEl<T>(arr: T[]) {
-  return arr[GetRandomArrElId(arr)]
-}
 
-const HelloTitle = `
-Welcome back, please 
-  login to continue
-    your journey..
-  `
 export const BalanceMathMenu = () => {
   const stage = useTypedSelector(state => state.Stage.stage)
   const result = useTypedSelector(state => state.Stage.result)
   const stageState = useTypedSelector(state => state.Stage.stageState)
   const clickedBtnId = useTypedSelector(state => state.Stage.clickedBtnId)
-  const equation = useTypedSelector(state => state.Game.equation)
+  const balanceCorrectAnswer = useTypedSelector(state => state.Game.balanceCorrectAnswer)
   const balanceAnswers = useTypedSelector(state => state.Game.balanceAnswers)
   const balanceEquations = useTypedSelector(state => state.Game.balanceEquations)
   const correctAnswer = useTypedSelector(state => state.Game.correctAnswer)
-  const hardAnswers = useTypedSelector(state => state.Game.hardAnswers)
 
-  // const [curAnswer, setCurAnswer] = useState(hardAnswers[0])
-  //
-  // useEffect(() => {
-  //   setCurAnswer(hardAnswers[0])
-  // }, [hardAnswers])
-  //
+
   useIsPreStart()
 
 
@@ -51,34 +31,29 @@ export const BalanceMathMenu = () => {
 
 
   // const { transformedEquation } = useReplaceQuestionMark(equation, curAnswer)
-  // const [updateTrueFalseMathScore] = useUpdateTrueFalseMathScoreMutation()
-  // const { data: user } = useGetUserQuery()
-  //
-  // const UpdateUserScore = () => {
-  //   if (!user) return
-  //   updateTrueFalseMathScore({ newScore: stage, userId: user.id })
-  // }
+  const [updateBalanceMathScore] = useUpdateBalanceMathScoreMutation()
+  const { data: user } = useGetUserQuery()
 
-  const { stageTime, HandleFail, HandleSuccess } = useStage(updateEquation, () => undefined, 150000)
+  const UpdateUserScore = () => {
+    if (!user) return
+    updateBalanceMathScore({ newScore: stage, userId: user.id })
+  }
 
-  //
-  // const CheckAnswer = (answer: "true" | "false", clickedBtnId: number) => {
-  //   if (correctAnswer === curAnswer && answer === "true") return HandleSuccess(clickedBtnId)
-  //   if (correctAnswer !== curAnswer && answer === "false") return HandleSuccess(clickedBtnId)
-  //   else HandleFail(+curAnswer, clickedBtnId)
-  // }
+  const { stageTime, HandleFail, HandleSuccess } = useStage(updateEquation, UpdateUserScore, BalanceStageTime)
+
+
+  const CheckAnswer = (answer: "greater" | "smaller", clickedBtnId: number) => {
+    if (answer === balanceCorrectAnswer) HandleSuccess(clickedBtnId)
+    else HandleFail(undefined, clickedBtnId)
+  }
 
   return <MathLayout>
-    <GameHeader time={0} currentScore={stage} />
-    <ProgressBar progress={0 / 10} />
+    <GameHeader time={stageTime} currentScore={stage} />
+    <ProgressBar progress={stageTime / BalanceStageTime} />
     {stageState === "preStart" ? <>
         <h3 className="preTitle">Choose the right answer</h3>
         <PreStartTimer initTime={PreStartTime} timeGap={PreStartGap} /></>
-      : <>
-
-        <EquationSection equation={`   ${balanceEquations[0]}\n ?   than \n   ${balanceEquations[1]}`} />
-        {/*<EquationSection equation={balanceEquations[1]} />*/}
-      </>}
+      : <EquationSection equation={`${balanceEquations[0]}\n   ?  than \n       ${balanceEquations[1]}`} />}
     <ButtonsSection>
 
       {balanceAnswers?.map((answer, btnId) => {
@@ -90,7 +65,7 @@ export const BalanceMathMenu = () => {
           answer
         })
         return <ResultBtn isDisabled={result !== "initial" || stageState !== "running"} result={btnResult}
-                          onClick={() => null}
+                          onClick={() => CheckAnswer(answer, btnId)}
                           key={btnId}>{answer}</ResultBtn>
       })}
     </ButtonsSection>

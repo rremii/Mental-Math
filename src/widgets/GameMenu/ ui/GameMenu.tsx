@@ -23,7 +23,7 @@ export const GameMenu = () => {
     { name: "Hard\n Math", href: "hard-math", icon: HardMathIcon, score: gameResults?.hardMathScore },
     { name: "Input\n Math", href: "input-math", icon: InputMathIcon, score: gameResults?.inputMathScore },
     { name: "True\n False", href: "true-false-math", icon: TrueFalseIcon, score: gameResults?.trueFalseMathScore },
-    { name: "Balance", href: "balance-math", icon: BalanceIcon, score: 0 }
+    { name: "Balance", href: "balance-math", icon: BalanceIcon, score: gameResults?.balanceMathScore }
   ], [gameResults])
 
   return <GameMenuLayout>
@@ -42,4 +42,5 @@ const GameMenuLayout = styled.main`
   align-items: center;
   padding: 20px 7px;
   gap: 7px;
+  //height: 100%;
 `

@@ -10,6 +10,7 @@ export const QuickStageTime = 10
 export const HardStageTime = 20
 export const InputStageTime = 15
 export const TrueFalseStageTime = 15
+export const BalanceStageTime = 7
 export const StageTimeGap = 1
 
 export const AmountOfBestUsers = 10

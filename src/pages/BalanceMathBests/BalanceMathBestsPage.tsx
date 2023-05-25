@@ -1,12 +1,14 @@
 import styled from "styled-components"
 import { TrueFalseMathBestsMenu } from "@widgets/TrueFalseMathBestsMenu"
+import { BalanceMathResultMenu } from "@widgets/BalanceMathMenu"
+import { BalanceMathBestsMenu } from "@widgets/BalanceMathBestsMenu"
 
-const TrueFalseMathBestsPage = () => {
+const BalanceMathBestsPage = () => {
   return <MathBestsLayout>
-    <TrueFalseMathBestsMenu />
+    <BalanceMathBestsMenu />
   </MathBestsLayout>
 }
-export default TrueFalseMathBestsPage
+export default BalanceMathBestsPage
 const MathBestsLayout = styled.div`
   max-width: 600px;
   width: 100%;

@@ -7,5 +7,7 @@ export const AuthProtectedRoutes = [
   "/input-math",
   "/leaderboard/input-math",
   "/true-false-math",
-  "/leaderboard/true-false-math"
+  "/leaderboard/true-false-math",
+  "/balance-math",
+  "/leaderboard/balance-math"
 ]

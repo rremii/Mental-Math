@@ -26,7 +26,7 @@ export const useRegister = () => {
   }, [isSuccess, data])
 
   const Register = async (data: RegisterDto) => {
-    await register({ ...data, avatar: "avatar1" }).unwrap().catch(err => {
+    await register({ ...data }).unwrap().catch(err => {
       ShowToast(err.message)
       dispatch(setAuthRejected())
     })

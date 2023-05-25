@@ -1,12 +1,6 @@
 import { useEffect } from "react"
 import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
-import {
-  setCorrectAnswer,
-  setDifficulty,
-  setMulDifficulty,
-  setWrongAnswer,
-  StageTimeGap
-} from "@entities/Game"
+import { setCorrectAnswer, setDifficulty, setMulDifficulty, setWrongAnswer, StageTimeGap } from "@entities/Game"
 import { useTimer } from "@shared/Hooks/useTimer"
 import { setBtnId, setResult, setStage, setStageState } from "./StageSlice"
 
@@ -40,6 +34,7 @@ export const useStage = (UpdateEquation: () => void, UpdateUserScore: () => void
       dispatch(setStageState("finished"))
       dispatch(setCorrectAnswer(correctAnswer))
       resetDifficulty()
+      UpdateUserScore()
     }
 
     if (timerState === "initial" && stageState === "running") StartTimer()
@@ -74,10 +69,10 @@ export const useStage = (UpdateEquation: () => void, UpdateUserScore: () => void
     if (clickedBtnId || clickedBtnId === 0) dispatch(setBtnId(clickedBtnId))
     StopTimer()
   }
-  const HandleFail = (answer: number, clickedBtnId?: number) => {
+  const HandleFail = (answer?: number, clickedBtnId?: number) => {
     dispatch(setResult("fail"))
     dispatch(setCorrectAnswer(correctAnswer))
-    dispatch(setWrongAnswer(answer))
+    if (answer) dispatch(setWrongAnswer(answer))
     resetDifficulty()
     dispatch(setStageState("finished"))
     if (clickedBtnId || clickedBtnId === 0) dispatch(setBtnId(clickedBtnId))

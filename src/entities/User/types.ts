@@ -28,4 +28,5 @@ export interface GameResults {
   hardMathScore: number
   inputMathScore: number
   trueFalseMathScore: number
+  balanceMathScore: number
 }

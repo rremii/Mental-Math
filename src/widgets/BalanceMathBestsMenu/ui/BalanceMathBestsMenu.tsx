@@ -3,22 +3,21 @@ import { RatingHeader } from "@shared/ui/RatingHeader"
 import { RatingCell } from "@shared/ui/RatingCell"
 import { MenuBtn } from "@shared/ui/MenuBtn"
 import { AvatarSrc } from "@entities/Avatar"
-import { RatingSrc, UserTrueFalseMath } from "@entities/Game"
-import { useGetTrueFalseMathBestUsersQuery } from "@entities/Game/api/TrueFalseMathApi"
+import { RatingSrc, UserBalanceMath, UserTrueFalseMath } from "@entities/Game"
+import { useGetBalanceMathBestUsersQuery } from "@entities/Game/api/BalanceMathApi"
 
-export const TrueFalseMathBestsMenu = () => {
+export const BalanceMathBestsMenu = () => {
 
-
-  const { data: bestUsers } = useGetTrueFalseMathBestUsersQuery()
+  const { data: bestUsers } = useGetBalanceMathBestUsersQuery()
 
 
   return <MathBestsLayout>
-    <RatingHeader title={"Input Math"} />
+    <RatingHeader title={"Balance Math"} />
     <div className="cell-cont">
-      {bestUsers?.map(({ userName, avatar, trueFalseMath, id }: UserTrueFalseMath, i) => {
+      {bestUsers?.map(({ userName, avatar, balanceMath, id }: UserBalanceMath, i) => {
         const avatarSrc = AvatarSrc.get(avatar)
         const ratingSrc = RatingSrc.get(i)
-        return <RatingCell key={id} ratingSrc={ratingSrc} avatar={avatarSrc} score={trueFalseMath?.score || ""}
+        return <RatingCell key={id} ratingSrc={ratingSrc} avatar={avatarSrc} score={balanceMath?.score || ""}
                            userName={userName} />
       })}
     </div>

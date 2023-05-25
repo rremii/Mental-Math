@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { HardMathBestsMenu } from "@widgets/HardMathBestsMenu"
 import { InputMathBestsMenu } from "@widgets/InputMathBestsMenu"
 
 const InputMathBestsPage = () => {
