@@ -12,4 +12,7 @@ export class GameResultsResponse {
 
   @IsNumber()
   trueFalseMathScore: number
+
+  @IsNumber()
+  balanceMathScore: number
 }

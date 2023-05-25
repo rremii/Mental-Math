@@ -12,6 +12,8 @@ import { InputMathService } from "../input-math/input-math.service"
 import { InputMath } from "../input-math/entities/input-math.entity"
 import { TrueFalseMathService } from "../true-false-math/true-false-math.service"
 import { TrueFalseMath } from "../true-false-math/entities/true-false-math.entity"
+import { BalanceMathService } from "../balance-math/balance-math.service"
+import { BalanceMath } from "../balance-math/entities/balance-math.entity"
 
 @Module({
   imports: [
@@ -21,6 +23,7 @@ import { TrueFalseMath } from "../true-false-math/entities/true-false-math.entit
       HardMath,
       InputMath,
       TrueFalseMath,
+      BalanceMath,
     ]),
     JwtModule,
   ],
@@ -32,6 +35,7 @@ import { TrueFalseMath } from "../true-false-math/entities/true-false-math.entit
     HardMathService,
     InputMathService,
     TrueFalseMathService,
+    BalanceMathService,
   ],
   exports: [TokenService, JwtService, UsersService],
 })

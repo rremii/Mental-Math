@@ -18,6 +18,8 @@ import { InputMath } from "../input-math/entities/input-math.entity"
 import { InputMathService } from "../input-math/input-math.service"
 import { TrueFalseMathService } from "../true-false-math/true-false-math.service"
 import { TrueFalseMath } from "../true-false-math/entities/true-false-math.entity"
+import { BalanceMathService } from "../balance-math/balance-math.service"
+import { BalanceMath } from "../balance-math/entities/balance-math.entity"
 
 @Injectable()
 export class UsersService {
@@ -35,6 +37,7 @@ export class UsersService {
     private readonly hardMathService: HardMathService,
     private readonly inputMathService: InputMathService,
     private readonly trueFalseMathService: TrueFalseMathService,
+    private readonly balanceMathService: BalanceMathService,
   ) {}
 
   async findUserByEmail(email: string): Promise<User> {
@@ -46,13 +49,15 @@ export class UsersService {
     const hardMath = new HardMath()
     const inputMath = new InputMath()
     const trueFalseMath = new TrueFalseMath()
+    const balanceMath = new BalanceMath()
 
     await quickMath.save()
     await hardMath.save()
     await inputMath.save()
     await trueFalseMath.save()
+    await balanceMath.save()
 
-    if (!quickMath || !hardMath || !inputMath || !trueFalseMath)
+    if (!quickMath || !hardMath || !inputMath || !trueFalseMath || !balanceMath)
       throw new BadRequestException("could not create one of math games")
 
     const newUser = new User()
@@ -64,6 +69,7 @@ export class UsersService {
     newUser.hardMath = hardMath
     newUser.inputMath = inputMath
     newUser.trueFalseMath = trueFalseMath
+    newUser.balanceMath = balanceMath
 
     await newUser.save()
 
@@ -108,6 +114,15 @@ export class UsersService {
     const { score: trueFalseMathScore } =
       await this.trueFalseMathService.getScoreById(id)
 
-    return { quickMathScore, hardMathScore, inputMathScore, trueFalseMathScore }
+    const { score: balanceMathScore } =
+      await this.balanceMathService.getScoreById(id)
+
+    return {
+      quickMathScore,
+      hardMathScore,
+      inputMathScore,
+      trueFalseMathScore,
+      balanceMathScore,
+    }
   }
 }

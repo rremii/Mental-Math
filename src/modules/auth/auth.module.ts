@@ -11,6 +11,7 @@ import { QuickMathService } from "../quick-math/quick-math.service"
 import { HardMathService } from "../hard-math/hard-math.service"
 import { InputMathService } from "../input-math/input-math.service"
 import { TrueFalseMathService } from "../true-false-math/true-false-math.service"
+import { BalanceMathService } from "../balance-math/balance-math.service"
 
 @Module({
   imports: [UsersModule, JwtModule],
@@ -26,6 +27,7 @@ import { TrueFalseMathService } from "../true-false-math/true-false-math.service
     HardMathService,
     InputMathService,
     TrueFalseMathService,
+    BalanceMathService,
   ],
 })
 export class AuthModule {}

@@ -15,6 +15,8 @@ import { InputMathModule } from "./input-math/input-math.module"
 import { InputMath } from "./input-math/entities/input-math.entity"
 import { TrueFalseMathModule } from "./true-false-math/true-false-math.module"
 import { TrueFalseMath } from "./true-false-math/entities/true-false-math.entity"
+import { BalanceMathModule } from "./balance-math/balance-math.module"
+import { BalanceMath } from "./balance-math/entities/balance-math.entity"
 
 @Module({
   imports: [
@@ -30,6 +32,7 @@ import { TrueFalseMath } from "./true-false-math/entities/true-false-math.entity
     InputMathModule,
     TokenModule,
     TrueFalseMathModule,
+    BalanceMathModule,
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (config: ConfigService) => {
@@ -43,7 +46,14 @@ import { TrueFalseMath } from "./true-false-math/entities/true-false-math.entity
           database: config.get("db_name"),
           synchronize: true,
 
-          entities: [User, QuickMath, HardMath, InputMath, TrueFalseMath],
+          entities: [
+            User,
+            QuickMath,
+            HardMath,
+            InputMath,
+            TrueFalseMath,
+            BalanceMath,
+          ],
 
           ssl: true,
           extra: {
