@@ -3,7 +3,7 @@ import { GetRandomArrElId } from "@shared/helpers/GetRandomArrElId"
 import { GetHardEquationStr } from "@entities/Game/helpers/GetHardEquationStr"
 import { VariablePlaceSide } from "@entities/Game"
 
-export const CreateHardMultiplyEquation = (mulDifficulty: number, varPlaceSide: VariablePlaceSide) => {
+export const CreateHardMultiplyEquation = (mulDifficulty: number, varPlaceSide: VariablePlaceSide = VariablePlaceSide.random) => {
   const num1 = Math.floor(Math.random() * (5 + mulDifficulty) + 1)
   const num2 = Math.floor(Math.random() * (5 + mulDifficulty) + 1)
   const num3 = Math.floor(Math.random() * (5 + mulDifficulty) + 1)
