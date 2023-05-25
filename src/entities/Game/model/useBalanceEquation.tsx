@@ -40,8 +40,8 @@ export const useBalanceEquation = (answersAmount?: number) => {
 
     let answer1: number
     let answer2: number
-    let equation1: string = ""
-    let equation2: string = ""
+    let equation1 = ""
+    let equation2 = ""
 
 
     do {
@@ -52,8 +52,8 @@ export const useBalanceEquation = (answersAmount?: number) => {
       answer2 = SolveEquation(equation2)
     } while (answer1 === answer2)
 
-    let equalId1: number = 0
-    let equalId2: number = 0
+    let equalId1 = 0
+    let equalId2 = 0
     equation1.split("").forEach((el, i) => {
       if (el === "=") equalId1 = i
     })
