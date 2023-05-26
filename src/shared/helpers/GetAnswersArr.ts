@@ -1,6 +1,6 @@
 import { ShuffleArray } from "@shared/helpers/ShuffleArray"
 
-export const GetAnswersArr = (answer: number, amount: number = 4) => {
+export const GetAnswersArr = (answer: number, amount = 4) => {
 
 
   const falsyAnswers: number[] = []

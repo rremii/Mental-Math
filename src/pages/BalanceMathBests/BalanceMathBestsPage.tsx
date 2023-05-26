@@ -1,6 +1,4 @@
 import styled from "styled-components"
-import { TrueFalseMathBestsMenu } from "@widgets/TrueFalseMathBestsMenu"
-import { BalanceMathResultMenu } from "@widgets/BalanceMathMenu"
 import { BalanceMathBestsMenu } from "@widgets/BalanceMathBestsMenu"
 
 const BalanceMathBestsPage = () => {

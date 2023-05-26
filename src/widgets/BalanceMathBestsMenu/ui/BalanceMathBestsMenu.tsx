@@ -3,8 +3,7 @@ import { RatingHeader } from "@shared/ui/RatingHeader"
 import { RatingCell } from "@shared/ui/RatingCell"
 import { MenuBtn } from "@shared/ui/MenuBtn"
 import { AvatarSrc } from "@entities/Avatar"
-import { RatingSrc, UserBalanceMath, UserTrueFalseMath } from "@entities/Game"
-import { useGetBalanceMathBestUsersQuery } from "@entities/Game/api/BalanceMathApi"
+import { RatingSrc, useGetBalanceMathBestUsersQuery, UserBalanceMath } from "@entities/Game"
 
 export const BalanceMathBestsMenu = () => {
 

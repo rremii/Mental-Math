@@ -20,6 +20,7 @@ export const LabelWithEdit = ({ labelText = "", onClick, onBlur, isLoading }: pr
   useEffect(() => {
     setLabel(labelText)
   }, [labelText])
+
   useEffect(() => {
     inputRef.current?.focus()
   }, [isEdit])

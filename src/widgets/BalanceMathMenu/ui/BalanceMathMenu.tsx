@@ -7,9 +7,15 @@ import { ResultBtn } from "@shared/ui/ResultBtn"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
 import { PreStartTimer } from "@shared/ui/PreStartTimer"
 import { GetBtnResult } from "@shared/helpers/GetBtnResult"
-import { BalanceStageTime, PreStartGap, PreStartTime, useIsPreStart, useStage } from "@entities/Game"
-import { useBalanceEquation } from "@entities/Game/model/useBalanceEquation"
-import { useUpdateBalanceMathScoreMutation } from "@entities/Game/api/BalanceMathApi"
+import {
+  BalanceStageTime,
+  PreStartGap,
+  PreStartTime,
+  useBalanceEquation,
+  useIsPreStart,
+  useStage,
+  useUpdateBalanceMathScoreMutation
+} from "@entities/Game"
 import { useGetUserQuery } from "@entities/User"
 
 
@@ -18,10 +24,13 @@ export const BalanceMathMenu = () => {
   const result = useTypedSelector(state => state.Stage.result)
   const stageState = useTypedSelector(state => state.Stage.stageState)
   const clickedBtnId = useTypedSelector(state => state.Stage.clickedBtnId)
-  const balanceCorrectAnswer = useTypedSelector(state => state.Game.balanceCorrectAnswer)
-  const balanceAnswers = useTypedSelector(state => state.Game.balanceAnswers)
-  const balanceEquations = useTypedSelector(state => state.Game.balanceEquations)
-  const correctAnswer = useTypedSelector(state => state.Game.correctAnswer)
+
+  // const correctAnswer = useTypedSelector(state => state.Game.correctAnswer)
+
+
+  const balanceCorrectAnswer = useTypedSelector(state => state.Balance.balanceCorrectAnswer)
+  const balanceAnswers = useTypedSelector(state => state.Balance.balanceAnswers)
+  const balanceEquations = useTypedSelector(state => state.Balance.balanceEquations)
 
 
   useIsPreStart()
@@ -30,7 +39,6 @@ export const BalanceMathMenu = () => {
   const { updateEquation } = useBalanceEquation()
 
 
-  // const { transformedEquation } = useReplaceQuestionMark(equation, curAnswer)
   const [updateBalanceMathScore] = useUpdateBalanceMathScoreMutation()
   const { data: user } = useGetUserQuery()
 
@@ -61,7 +69,7 @@ export const BalanceMathMenu = () => {
           btnId,
           result,
           clickedBtnId,
-          correctAnswer,
+          correctAnswer: balanceCorrectAnswer,
           answer
         })
         return <ResultBtn isDisabled={result !== "initial" || stageState !== "running"} result={btnResult}

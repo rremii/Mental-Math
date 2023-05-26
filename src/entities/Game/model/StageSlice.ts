@@ -1,8 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { resultType, stageType } from "../types"
 
-// import { resultType, stageType } from "@entities/QuickMath/types"
-
 
 interface initialStateType {
 

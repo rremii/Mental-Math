@@ -4,8 +4,8 @@ interface props {
   clickedBtnId: number | null
   btnId: number
   result: resultType
-  answer: number | string
-  correctAnswer: number | null
+  answer: unknown
+  correctAnswer: unknown
 }
 
 export const GetBtnResult = ({ btnId, clickedBtnId, result, answer, correctAnswer }: props): resultType => {

@@ -16,6 +16,7 @@ import TrueFalseMathBests from "./TrueFalseMathBests/TrueFalseMathBestsPage"
 import BalanceMath from "./BalanceMath/BalanceMathPage"
 import BalanceMathBests from "./BalanceMathBests/BalanceMathBestsPage"
 
+//TODO check
 // const GameMenu = lazy(() => import("./GameMenu/GameMenuPage"))
 
 

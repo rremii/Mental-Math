@@ -3,7 +3,7 @@ import { useChangeNameMutation, useGetUserQuery } from "@entities/User"
 
 export const ChangeName = () => {
 
-  const { data: user, isError } = useGetUserQuery()
+  const { data: user } = useGetUserQuery()
   const [changeName, { isLoading }] = useChangeNameMutation()
 
   const ChangeName = (inputText: string) => {

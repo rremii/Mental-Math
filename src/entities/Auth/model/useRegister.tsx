@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom"
 import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
 import { setAuthRejected, setAuthSuccess } from ".."
 
+const ToastDuration = 5
+
 export const useRegister = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
@@ -13,7 +15,7 @@ export const useRegister = () => {
   const isError = useTypedSelector(state => state.Toast.isShown)
 
 
-  const { ShowToast } = useToast(5000)
+  const { ShowToast } = useToast(ToastDuration * 1000)
 
 
   const [register, { isSuccess, isLoading, data }] = useRegisterMutation()

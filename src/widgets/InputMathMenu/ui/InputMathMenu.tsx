@@ -6,12 +6,18 @@ import { ProgressBar } from "@shared/ui/ProgressBar"
 import { ResultBtn } from "@shared/ui/ResultBtn"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
 import { PreStartTimer } from "@shared/ui/PreStartTimer"
-import { InputStageTime, PreStartGap, PreStartTime, useIsPreStart, useStage } from "@entities/Game"
+import {
+  InputStageTime,
+  PreStartGap,
+  PreStartTime,
+  useIsPreStart,
+  useQuickEquation,
+  useReplaceQuestionMark,
+  useStage,
+  useUpdateInputMathScoreMutation
+} from "@entities/Game"
 import { useGetUserQuery } from "@entities/User"
 import { useEffect, useState } from "react"
-import { useQuickEquation } from "@entities/Game/model/useQuickEquation"
-import { useReplaceQuestionMark } from "@entities/Game/model/useReplaceQuestionMark"
-import { useUpdateInputMathScoreMutation } from "@entities/Game/api/InputMathApi"
 import ArrowIcon from "@shared/assets/DarkTheme/arrowIcon.svg"
 
 export const InputMathMenu = () => {

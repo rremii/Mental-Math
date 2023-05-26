@@ -15,17 +15,6 @@ interface props {
 export const RatingCell: FC<props> = ({ ratingSrc, score, userName, avatar }) => {
 
 
-//put ot helpers
-  const GetRatingSrc = (place: placeType) => {
-    switch (place) {
-      case "first":
-        return Rating
-      case "second":
-        return Rating
-      case "third":
-        return Rating
-    }
-  }
 
 
   return <CellLayout>

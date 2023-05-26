@@ -7,17 +7,19 @@ import { ResultBtn } from "@shared/ui/ResultBtn"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
 import { PreStartTimer } from "@shared/ui/PreStartTimer"
 import { GetBtnResult } from "@shared/helpers/GetBtnResult"
-import { PreStartGap, PreStartTime, TrueFalseStageTime, useIsPreStart, useStage } from "@entities/Game"
-import { useHardEquation } from "@entities/Game/model/useHardEquation"
+import {
+  PreStartGap,
+  PreStartTime,
+  TrueFalseStageTime,
+  useHardEquation,
+  useIsPreStart,
+  useReplaceQuestionMark,
+  useStage,
+  useUpdateTrueFalseMathScoreMutation
+} from "@entities/Game"
 import { useGetUserQuery } from "@entities/User"
-import { useReplaceQuestionMark } from "@entities/Game/model/useReplaceQuestionMark"
-import { GetRandomArrElId } from "@shared/helpers/GetRandomArrElId"
 import { useEffect, useState } from "react"
-import { useUpdateTrueFalseMathScoreMutation } from "@entities/Game/api/TrueFalseMathApi"
 
-function GetRandomArrEl<T>(arr: T[]) {
-  return arr[GetRandomArrElId(arr)]
-}
 
 export const TrueFalseMathMenu = () => {
   const stage = useTypedSelector(state => state.Stage.stage)

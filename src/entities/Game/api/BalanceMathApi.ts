@@ -1,7 +1,7 @@
 import { Api } from "@shared/api/config/Api"
-import { DefaultResponse } from "@entities/User/types"
 import { AmountOfBestUsers } from "@entities/Game/constants"
-import { UserBalanceMath, UserTrueFalseMath } from "@entities/Game/types"
+import { UserBalanceMath } from "@entities/Game/types"
+import { DefaultResponse } from "@entities/User"
 
 export const BalanceMathApi = Api.injectEndpoints({
 
@@ -28,5 +28,4 @@ export const BalanceMathApi = Api.injectEndpoints({
   }),
   overrideExisting: false
 })
-// export const {getQuickMathResult} = HardMathApi.endpoints
 export const { useGetBalanceMathBestUsersQuery, useUpdateBalanceMathScoreMutation } = BalanceMathApi

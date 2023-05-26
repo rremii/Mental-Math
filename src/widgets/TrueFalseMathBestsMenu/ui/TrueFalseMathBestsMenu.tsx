@@ -3,8 +3,7 @@ import { RatingHeader } from "@shared/ui/RatingHeader"
 import { RatingCell } from "@shared/ui/RatingCell"
 import { MenuBtn } from "@shared/ui/MenuBtn"
 import { AvatarSrc } from "@entities/Avatar"
-import { RatingSrc, UserTrueFalseMath } from "@entities/Game"
-import { useGetTrueFalseMathBestUsersQuery } from "@entities/Game/api/TrueFalseMathApi"
+import { RatingSrc, useGetTrueFalseMathBestUsersQuery, UserTrueFalseMath } from "@entities/Game"
 
 export const TrueFalseMathBestsMenu = () => {
 

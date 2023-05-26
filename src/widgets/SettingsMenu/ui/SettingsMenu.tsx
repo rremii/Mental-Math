@@ -1,10 +1,9 @@
 import styled from "styled-components"
 import { SettingsBox } from "./SettingsBox"
 import { Header } from "./Header"
-import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
+import { useTypedSelector } from "@shared/Hooks/store-hooks"
 
 export const SettingsMenu = () => {
-  const dispatch = useAppDispatch()
 
   const isSettingsMenuOpen = useTypedSelector(state => state.SettingsMenu.isSettingsMenuOpen)
 

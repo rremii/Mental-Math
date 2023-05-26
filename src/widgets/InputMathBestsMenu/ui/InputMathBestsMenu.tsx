@@ -3,8 +3,7 @@ import { RatingHeader } from "@shared/ui/RatingHeader"
 import { RatingCell } from "@shared/ui/RatingCell"
 import { MenuBtn } from "@shared/ui/MenuBtn"
 import { AvatarSrc } from "@entities/Avatar"
-import { RatingSrc, UserInputMath } from "@entities/Game"
-import { useGetInputMathBestUsersQuery } from "@entities/Game/api/InputMathApi"
+import { RatingSrc, useGetInputMathBestUsersQuery, UserInputMath } from "@entities/Game"
 
 export const InputMathBestsMenu = () => {
 

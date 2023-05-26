@@ -7,9 +7,15 @@ import { ResultBtn } from "@shared/ui/ResultBtn"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
 import { PreStartTimer } from "@shared/ui/PreStartTimer"
 import { GetBtnResult } from "@shared/helpers/GetBtnResult"
-import { HardStageTime, PreStartGap, PreStartTime, useIsPreStart, useStage } from "@entities/Game"
-import { useHardEquation } from "@entities/Game/model/useHardEquation"
-import { useUpdateHardMathScoreMutation } from "@entities/Game/api/HardMathApi"
+import {
+  HardStageTime,
+  PreStartGap,
+  PreStartTime,
+  useHardEquation,
+  useIsPreStart,
+  useStage,
+  useUpdateHardMathScoreMutation
+} from "@entities/Game"
 import { useGetUserQuery } from "@entities/User"
 
 

@@ -1,6 +1,6 @@
 import { ResultMenu } from "@shared/ui/ResultMenu"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
-import { useRestartGame } from "@entities/Game/model/useRestartGame"
+import { useRestartGame } from "@entities/Game"
 
 export const TrueFalseMathResultMenu = () => {
 

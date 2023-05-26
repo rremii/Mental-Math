@@ -4,8 +4,7 @@ import {
   setCorrectAnswer,
   setDifficulty,
   setEquation,
-  setMulDifficulty,
-  setQuickAnswers
+  setMulDifficulty, setQuickAnswers, setQuickCorrect, setQuickEquation
 } from "@entities/Game"
 import { CreateEquation } from "@entities/Game/helpers/CreateEquation"
 import { SolveEquation } from "@shared/helpers/SolveEquation"
@@ -33,10 +32,10 @@ export const useQuickEquation = (answersAmount?: number) => {
       equation = CreateEquation(difficulty)
       dispatch(setDifficulty(difficulty + 1))
     }
-    dispatch(setEquation(equation))
+    dispatch(setQuickEquation(equation))
 
     const answer = SolveEquation(equation)
-    dispatch(setCorrectAnswer(answer))
+    dispatch(setQuickCorrect(answer))
     const answers = GetAnswersArr(answer, answersAmount)
     dispatch(setQuickAnswers(answers))
   }

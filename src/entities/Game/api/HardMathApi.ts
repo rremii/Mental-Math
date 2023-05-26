@@ -1,5 +1,5 @@
 import { Api } from "@shared/api/config/Api"
-import { DefaultResponse } from "@entities/User/types"
+import { DefaultResponse } from "@entities/User"
 import { AmountOfBestUsers } from "@entities/Game/constants"
 import { UserHardMath } from "@entities/Game/types"
 
@@ -28,5 +28,4 @@ export const HardMathApi = Api.injectEndpoints({
   }),
   overrideExisting: false
 })
-// export const {getQuickMathResult} = HardMathApi.endpoints
 export const { useUpdateHardMathScoreMutation, useGetHardMathBestUsersQuery } = HardMathApi

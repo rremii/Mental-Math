@@ -11,7 +11,5 @@ export default TrueFalseMathPage
 const MathLayout = styled.div`
   max-width: 600px;
   width: 100%;
-  //display: flex;
-  //flex-direction: column;
   height: 100vh;
 `

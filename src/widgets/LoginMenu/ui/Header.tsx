@@ -1,5 +1,4 @@
 import styled from "styled-components"
-// import Logo from '@shared/assets/DarkTheme/l'
 
 export const Header = () => {
   return <HeaderLayout>

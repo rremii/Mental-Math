@@ -4,11 +4,8 @@ import { ChangeAvatar } from "@features/ChangeAvatar"
 import { ChangeName } from "@features/ChangeName"
 import { ToggleTheme } from "@features/ToggleTheme"
 
-interface props {
-  // children: ReactNode
-}
 
-export const SettingsBox: FC<props> = () => {
+export const SettingsBox: FC = () => {
 
   return <SettingsBoxLayout>
     <ChangeAvatar />

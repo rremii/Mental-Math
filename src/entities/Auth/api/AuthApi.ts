@@ -12,7 +12,6 @@ export const AuthApi = Api.injectEndpoints({
         data: registerData
       })
 
-      // invalidatesTags: ["Message"]
     }),
     login: build.mutation<AuthResponse, LoginDto>({
       query: (loginData) => ({
@@ -30,23 +29,6 @@ export const AuthApi = Api.injectEndpoints({
 
     })
 
-    // getAllMessages: build.query <message[], { chat_id: number | null, user_id: number }>({
-    //   query: ({chat_id, user_id}) => ({
-    //     url: "messages/" + chat_id + "/" + user_id,
-    //     method: "GET"
-    //   }),
-    //   providesTags: ["Message"],
-    // }),
-    //
-    // addMessage: build.mutation<message, messageData>({
-    //   query: (messageData) => ({
-    //     url: "messages",
-    //     method: "POST",
-    //     data: messageData
-    //   }),
-    //   invalidatesTags: ["Message"]
-    // }),
-    //
   }),
   overrideExisting: false
 })

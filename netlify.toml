@@ -4,6 +4,7 @@ to = "/"
 status = 200
 force = true
 
+
 [[redirects]]
 from = "/quick-math"
 to = "/"
@@ -12,6 +13,58 @@ force = true
 
 [[redirects]]
 from = "/leaderboard/quick-math"
+to = "/"
+status = 200
+force = true
+
+
+[[redirects]]
+from = "/hard-math"
+to = "/"
+status = 200
+force = true
+
+[[redirects]]
+from = "/leaderboard/hard-math"
+to = "/"
+status = 200
+force = true
+
+
+[[redirects]]
+from = "/input-math"
+to = "/"
+status = 200
+force = true
+
+[[redirects]]
+from = "/leaderboard/input-math"
+to = "/"
+status = 200
+force = true
+
+
+[[redirects]]
+from = "/true-false-math"
+to = "/"
+status = 200
+force = true
+
+[[redirects]]
+from = "/leaderboard/true-false-math"
+to = "/"
+status = 200
+force = true
+
+
+[[redirects]]
+from = "/balance-math"
+to = "/"
+status = 200
+force = true
+
+[[redirects]]
+from = "/leaderboard/balance-math"
 to = "/"
 status = 200
 force = true

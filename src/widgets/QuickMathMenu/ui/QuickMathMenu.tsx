@@ -12,11 +12,11 @@ import {
   PreStartTime,
   QuickStageTime,
   useIsPreStart,
+  useQuickEquation,
   useStage,
   useUpdateQuickMathScoreMutation
 } from "@entities/Game"
 import { useGetUserQuery } from "@entities/User"
-import { useQuickEquation } from "@entities/Game/model/useQuickEquation"
 
 
 export const QuickMathMenu = () => {
@@ -25,9 +25,11 @@ export const QuickMathMenu = () => {
   const result = useTypedSelector(state => state.Stage.result)
   const stageState = useTypedSelector(state => state.Stage.stageState)
   const clickedBtnId = useTypedSelector(state => state.Stage.clickedBtnId)
-  const equation = useTypedSelector(state => state.Game.equation)
-  const quickAnswers = useTypedSelector(state => state.Game.quickAnswers)
-  const correctAnswer = useTypedSelector(state => state.Game.correctAnswer)
+  // const equation = useTypedSelector(state => state.Game.equation)
+  const quickAnswers = useTypedSelector(state => state.Quick.quickAnswers)
+  const quickCorrectAnswer = useTypedSelector(state => state.Quick.quickCorrectAnswer)
+  const quickEquation = useTypedSelector(state => state.Quick.quickEquation)
+  // const correctAnswer = useTypedSelector(state => state.Game.correctAnswer)
 
   useIsPreStart()
 
@@ -45,14 +47,14 @@ export const QuickMathMenu = () => {
 
 
   const CheckAnswer = (answer: number, clickedBtnId: number) => {
-    if (correctAnswer === answer) HandleSuccess(clickedBtnId)
-    else HandleFail( answer,clickedBtnId)
+    if (quickCorrectAnswer === answer) HandleSuccess(clickedBtnId)
+    else HandleFail(answer, clickedBtnId)
   }
 
   return <MathLayout>
     <GameHeader time={stageTime} currentScore={stage} />
     <ProgressBar progress={stageTime / QuickStageTime} />
-    {stageState !== "preStart" ? <EquationSection equation={equation} />
+    {stageState !== "preStart" ? <EquationSection equation={quickEquation} />
       : <>
         <h3 className="preTitle">Choose the right answer</h3>
         <PreStartTimer initTime={PreStartTime} timeGap={PreStartGap} /></>}
@@ -63,7 +65,7 @@ export const QuickMathMenu = () => {
           btnId,
           result,
           clickedBtnId,
-          correctAnswer,
+          correctAnswer: quickCorrectAnswer,
           answer
         })
         return <ResultBtn isDisabled={result !== "initial" || stageState !== "running"} result={btnResult}
@@ -84,6 +86,7 @@ const MathLayout = styled.div`
   @media screen and (max-width: 600px) {
     padding: 0 20px 70px;
   }
+
   .preStartTimer {
     flex: 1 1 auto;
     width: 100%;

@@ -17,7 +17,7 @@ const IsMultiply = () => {
 }
 
 
-export const useBalanceEquation = (answersAmount?: number) => {
+export const useBalanceEquation = () => {
   const dispatch = useAppDispatch()
 
   const mulDifficulty = useTypedSelector(state => state.Game.mulDifficulty)
@@ -68,8 +68,6 @@ export const useBalanceEquation = (answersAmount?: number) => {
     } else {
       dispatch(setBalanceCorrect("smaller"))
     }
-    // const answers = GetAnswersArr(answer, answersAmount)
-    // dispatch(setQuickAnswers(answers))
   }
 
   return { updateEquation }

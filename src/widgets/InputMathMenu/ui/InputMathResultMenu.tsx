@@ -1,6 +1,6 @@
 import { ResultMenu } from "@shared/ui/ResultMenu"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
-import { useRestartGame } from "@entities/Game/model/useRestartGame"
+import { useRestartGame } from "@entities/Game"
 
 export const InputMathResultMenu = () => {
 
@@ -8,7 +8,6 @@ export const InputMathResultMenu = () => {
   const result = useTypedSelector(state => state.Stage.result)
   const correctAnswer = useTypedSelector(state => state.Game.correctAnswer)
   const wrongAnswer = useTypedSelector(state => state.Game.wrongAnswer)
-//replace special result pages by one cuz they are the same
 
   const { ResetGame, ResetStage } = useRestartGame()
 

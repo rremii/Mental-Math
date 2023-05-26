@@ -4,8 +4,8 @@ import { ToastReducer } from "@shared/store/global-slices/ToastSlice"
 import { SettingsMenuReducer } from "@entities/Settings/model/SettingsSlice"
 import { AvatarMenuReducer } from "@entities/Avatar/model/AvatarMenuSlice"
 import { AuthReducer } from "@entities/Auth"
-import { GameReducer } from "@entities/Game"
-import { StageReducer } from "@entities/Game/model/StageSlice"
+import { GameReducer, QuickReducer, StageReducer } from "@entities/Game"
+import { BalanceReducer } from "@entities/Game/model/BalanceSlice"
 
 const rootReducer = combineReducers({
   AvatarMenu: AvatarMenuReducer,
@@ -14,8 +14,8 @@ const rootReducer = combineReducers({
   Toast: ToastReducer,
   Game: GameReducer,
   Stage: StageReducer,
-  // QuickMath: QuickMathReducer,
-  // HardMath: HardMathReducer,
+  Balance: BalanceReducer,
+  Quick:QuickReducer,
   [Api.reducerPath]: Api.reducer
 })
 

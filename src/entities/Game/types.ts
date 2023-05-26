@@ -1,4 +1,4 @@
-import { User } from "@entities/User/types"
+import { User } from "@entities/User"
 
 export type resultType = "initial" | "success" | "fail"
 export type stageType = "preStart" | "running" | "finished"
@@ -15,20 +15,15 @@ export enum VariablePlaceSide {
 }
 
 
-export interface IQuickMath extends MathGame {
-}
+export type IQuickMath = MathGame
 
-export interface IHardMath extends MathGame {
-}
+export type IHardMath = MathGame
 
-export interface IInputMath extends MathGame {
-}
+export type IInputMath = MathGame
 
-export interface ITrueFalseMath extends MathGame {
-}
+export type ITrueFalseMath = MathGame
 
-export interface IBalanceMath extends MathGame {
-}
+export type IBalanceMath = MathGame
 
 
 export interface UserQuickMath extends User {

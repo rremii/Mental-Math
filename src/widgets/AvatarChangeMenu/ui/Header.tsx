@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import Arrow from "@shared/assets/DarkTheme/arrowIcon.svg"
 import { useAppDispatch } from "@shared/Hooks/store-hooks"
-import { HeaderWrapper } from "@shared/ui/HeaderWrapper"
 import { setAvatarMenuOpen } from "@entities/Avatar"
 
 export const Header = () => {
@@ -20,7 +19,7 @@ export const Header = () => {
 
   </HeaderLayout>
 }
-const HeaderLayout = styled(HeaderWrapper)`
+const HeaderLayout = styled.header`
   height: 72px;
   position: relative;
   display: flex;

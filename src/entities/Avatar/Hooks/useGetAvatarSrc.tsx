@@ -1,6 +1,6 @@
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
-import { useGetUserQuery } from "@entities/User/api/UserApi"
 import { AvatarSrc } from "@entities/Avatar"
+import { useGetUserQuery } from "@entities/User"
 
 export const useGetAvatarSrc = () => {
   const avatar = useTypedSelector(state => state.AvatarMenu.avatar)
