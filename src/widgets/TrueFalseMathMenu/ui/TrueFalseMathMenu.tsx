@@ -7,18 +7,8 @@ import { ResultBtn } from "@shared/ui/ResultBtn"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
 import { PreStartTimer } from "@shared/ui/PreStartTimer"
 import { GetBtnResult } from "@shared/helpers/GetBtnResult"
-import {
-  PreStartGap,
-  PreStartTime,
-  TrueFalseStageTime,
-  useHardEquation,
-  useIsPreStart,
-  useReplaceQuestionMark,
-  useStage,
-  useUpdateTrueFalseMathScoreMutation
-} from "@entities/Game"
-import { useGetUserQuery } from "@entities/User"
-import { useEffect, useState } from "react"
+import { PreStartGap, PreStartTime, TrueFalseStageTime, useIsPreStart, useReplaceQuestionMark } from "@entities/Game"
+import { useTrueFalseEquation } from "@entities/Game/"
 
 
 export const TrueFalseMathMenu = () => {
@@ -26,37 +16,23 @@ export const TrueFalseMathMenu = () => {
   const result = useTypedSelector(state => state.Stage.result)
   const stageState = useTypedSelector(state => state.Stage.stageState)
   const clickedBtnId = useTypedSelector(state => state.Stage.clickedBtnId)
-  const equation = useTypedSelector(state => state.Game.equation)
-  const trueFalseAnswers = useTypedSelector(state => state.Game.trueFalseAnswers)
-  const correctAnswer = useTypedSelector(state => state.Game.correctAnswer)
-  const hardAnswers = useTypedSelector(state => state.Game.hardAnswers)
+  const equation = useTypedSelector(state => state.TrueFalse.trueFalseEquation)
+  const trueFalseAnswers = useTypedSelector(state => state.TrueFalse.trueFalseAnswers)
+  const correctAnswer = useTypedSelector(state => state.TrueFalse.trueFalseCorrectAnswer)
+  const currentAnswer = useTypedSelector(state => state.TrueFalse.trueFalseCurrentAnswer)
 
-  const [curAnswer, setCurAnswer] = useState(hardAnswers[0])
 
-  useEffect(() => {
-    setCurAnswer(hardAnswers[0])
-  }, [hardAnswers])
 
   useIsPreStart()
 
 
-  const { updateEquation } = useHardEquation(2)
-  const { transformedEquation } = useReplaceQuestionMark(equation, curAnswer)
-  const [updateTrueFalseMathScore] = useUpdateTrueFalseMathScoreMutation()
-  const { data: user } = useGetUserQuery()
-
-  const UpdateUserScore = () => {
-    if (!user) return
-    updateTrueFalseMathScore({ newScore: stage, userId: user.id })
-  }
-
-  const { stageTime, HandleFail, HandleSuccess } = useStage(updateEquation, UpdateUserScore, TrueFalseStageTime)
-
+  const { transformedEquation } = useReplaceQuestionMark(equation, currentAnswer)
+  const { stageTime, HandleFail, HandleSuccess } = useTrueFalseEquation(TrueFalseStageTime)
 
   const CheckAnswer = (answer: "true" | "false", clickedBtnId: number) => {
-    if (correctAnswer === curAnswer && answer === "true") return HandleSuccess(clickedBtnId)
-    if (correctAnswer !== curAnswer && answer === "false") return HandleSuccess(clickedBtnId)
-    else HandleFail(+curAnswer, clickedBtnId)
+    if (correctAnswer === currentAnswer && answer === "true") return HandleSuccess(clickedBtnId)
+    if (correctAnswer !== currentAnswer && answer === "false") return HandleSuccess(clickedBtnId)
+    else HandleFail(clickedBtnId)
   }
 
   return <MathLayout>

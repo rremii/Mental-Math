@@ -1,7 +1,7 @@
 import { Api } from "@shared/api/config/Api"
 import { DefaultResponse } from "@entities/User"
-import { AmountOfBestUsers } from "@entities/Game/constants"
-import { UserInputMath } from "@entities/Game/types"
+import { AmountOfBestUsers } from "@entities/Game"
+import { UserInputMath } from "@entities/Game"
 
 export const InputMathApi = Api.injectEndpoints({
 

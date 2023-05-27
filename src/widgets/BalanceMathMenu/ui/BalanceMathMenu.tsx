@@ -7,16 +7,7 @@ import { ResultBtn } from "@shared/ui/ResultBtn"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
 import { PreStartTimer } from "@shared/ui/PreStartTimer"
 import { GetBtnResult } from "@shared/helpers/GetBtnResult"
-import {
-  BalanceStageTime,
-  PreStartGap,
-  PreStartTime,
-  useBalanceEquation,
-  useIsPreStart,
-  useStage,
-  useUpdateBalanceMathScoreMutation
-} from "@entities/Game"
-import { useGetUserQuery } from "@entities/User"
+import { BalanceStageTime, PreStartGap, PreStartTime, useBalanceEquation, useIsPreStart } from "@entities/Game"
 
 
 export const BalanceMathMenu = () => {
@@ -36,18 +27,18 @@ export const BalanceMathMenu = () => {
   useIsPreStart()
 
 
-  const { updateEquation } = useBalanceEquation()
+  const { stageTime, HandleFail, HandleSuccess } = useBalanceEquation(BalanceStageTime)
 
 
-  const [updateBalanceMathScore] = useUpdateBalanceMathScoreMutation()
-  const { data: user } = useGetUserQuery()
+  // const [updateBalanceMathScore] = useUpdateBalanceMathScoreMutation()
+  // const { data: user } = useGetUserQuery()
 
-  const UpdateUserScore = () => {
-    if (!user) return
-    updateBalanceMathScore({ newScore: stage, userId: user.id })
-  }
+  // const UpdateUserScore = () => {
+  //   if (!user) return
+  //   updateBalanceMathScore({ newScore: stage, userId: user.id })
+  // }
 
-  const { stageTime, HandleFail, HandleSuccess } = useStage(updateEquation, UpdateUserScore, BalanceStageTime)
+  // const { stageTime, HandleFail, HandleSuccess } = useStage(updateEquation, UpdateUserScore, BalanceStageTime)
 
 
   const CheckAnswer = (answer: "greater" | "smaller", clickedBtnId: number) => {

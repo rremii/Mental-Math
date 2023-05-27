@@ -1,6 +1,6 @@
 import { Api } from "@shared/api/config/Api"
 import { DefaultResponse } from "@entities/User"
-import { AmountOfBestUsers } from "@entities/Game/constants"
+import { AmountOfBestUsers } from "@entities/Game"
 import { UserQuickMath } from "@entities/Game/types"
 
 export const QuickMathApi = Api.injectEndpoints({

@@ -6,14 +6,14 @@ export const TrueFalseMathResultMenu = () => {
 
   const stage = useTypedSelector(state => state.Stage.stage)
   const result = useTypedSelector(state => state.Stage.result)
-  const correctAnswer = useTypedSelector(state => state.Game.correctAnswer)
-  const wrongAnswer = useTypedSelector(state => state.Game.wrongAnswer)
+  const correctAnswer = useTypedSelector(state => state.TrueFalse.trueFalseCorrectAnswer)
+  const currentAnswer = useTypedSelector(state => state.TrueFalse.trueFalseCurrentAnswer)
 
 
   const { ResetGame, ResetStage } = useRestartGame()
 
 
-  return <ResultMenu isHidden={result !== "fail"} result={stage} wrongAnswer={"" + (wrongAnswer !== correctAnswer)}
-                     correctAnswer={"" + (wrongAnswer === correctAnswer)}
+  return <ResultMenu isHidden={result !== "fail"} result={stage} wrongAnswer={"" + (currentAnswer !== correctAnswer)}
+                     correctAnswer={"" + (currentAnswer === correctAnswer)}
                      OnRestart={ResetStage} OnMenu={ResetGame} />
 }

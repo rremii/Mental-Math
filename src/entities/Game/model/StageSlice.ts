@@ -8,6 +8,8 @@ interface initialStateType {
   result: resultType
   stageState: stageType
   clickedBtnId: number | null
+  difficulty: number
+  mulDifficulty: number
 }
 
 const initialState = {
@@ -15,9 +17,8 @@ const initialState = {
   result: "initial",
   stageState: "preStart",
   stage: 0,
-  correctAnswer: null,
-  wrongAnswer: null
-
+  difficulty: 1,
+  mulDifficulty: 1
 } as initialStateType
 
 const StageSlice = createSlice({
@@ -35,12 +36,18 @@ const StageSlice = createSlice({
     },
     setBtnId(state, action: PayloadAction<number | null>) {
       state.clickedBtnId = action.payload
+    },
+    setDifficulty(state, action: PayloadAction<number>) {
+      state.difficulty = action.payload
+    },
+    setMulDifficulty(state, action: PayloadAction<number>) {
+      state.difficulty = action.payload
     }
 
   }
 })
 export const {
-  setStage, setStageState, setResult, setBtnId
+  setStage, setStageState, setResult, setBtnId, setMulDifficulty, setDifficulty
 }
   = StageSlice.actions
 export const StageReducer = StageSlice.reducer

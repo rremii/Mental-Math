@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import Rating from "@shared/assets/DarkTheme/rating.svg"
 import { Avatars } from "@entities/Avatar/model/types"
 import { FC } from "react"
 

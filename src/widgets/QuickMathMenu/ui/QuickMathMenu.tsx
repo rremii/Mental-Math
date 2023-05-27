@@ -7,16 +7,7 @@ import { ResultBtn } from "@shared/ui/ResultBtn"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
 import { PreStartTimer } from "@shared/ui/PreStartTimer"
 import { GetBtnResult } from "@shared/helpers/GetBtnResult"
-import {
-  PreStartGap,
-  PreStartTime,
-  QuickStageTime,
-  useIsPreStart,
-  useQuickEquation,
-  useStage,
-  useUpdateQuickMathScoreMutation
-} from "@entities/Game"
-import { useGetUserQuery } from "@entities/User"
+import { PreStartGap, PreStartTime, QuickStageTime, useIsPreStart, useQuickEquation } from "@entities/Game"
 
 
 export const QuickMathMenu = () => {
@@ -25,25 +16,14 @@ export const QuickMathMenu = () => {
   const result = useTypedSelector(state => state.Stage.result)
   const stageState = useTypedSelector(state => state.Stage.stageState)
   const clickedBtnId = useTypedSelector(state => state.Stage.clickedBtnId)
-  // const equation = useTypedSelector(state => state.Game.equation)
   const quickAnswers = useTypedSelector(state => state.Quick.quickAnswers)
   const quickCorrectAnswer = useTypedSelector(state => state.Quick.quickCorrectAnswer)
   const quickEquation = useTypedSelector(state => state.Quick.quickEquation)
-  // const correctAnswer = useTypedSelector(state => state.Game.correctAnswer)
 
   useIsPreStart()
 
 
-  const { updateEquation } = useQuickEquation()
-  const [updateHardMathScore] = useUpdateQuickMathScoreMutation()
-  const { data: user } = useGetUserQuery()
-
-  const UpdateUserScore = () => {
-    if (!user) return
-    updateHardMathScore({ newScore: stage, userId: user.id })
-  }
-
-  const { stageTime, HandleFail, HandleSuccess } = useStage(updateEquation, UpdateUserScore, QuickStageTime)
+  const {  HandleFail, HandleSuccess, stageTime } = useQuickEquation(QuickStageTime)
 
 
   const CheckAnswer = (answer: number, clickedBtnId: number) => {

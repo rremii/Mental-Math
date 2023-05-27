@@ -23,7 +23,7 @@ const BalanceSlice = createSlice({
       // state.balanceWrongAnswer = null
       state.balanceCorrectAnswer = null
     },
-    setBalanceCorrect(state, action: PayloadAction<"greater" | "smaller">) {
+    setBalanceCorrect(state, action: PayloadAction<"greater" | "smaller" | null>) {
       state.balanceCorrectAnswer = action.payload
     },
     // setBalanceWrong(state, action: PayloadAction<"greater" | "smaller">) {

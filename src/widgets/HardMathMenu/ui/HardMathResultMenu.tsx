@@ -6,8 +6,8 @@ export const HardMathResultMenu = () => {
 
   const stage = useTypedSelector(state => state.Stage.stage)
   const result = useTypedSelector(state => state.Stage.result)
-  const correctAnswer = useTypedSelector(state => state.Game.correctAnswer)
-  const wrongAnswer = useTypedSelector(state => state.Game.wrongAnswer)
+  const correctAnswer = useTypedSelector(state => state.Hard.hardCorrectAnswer)
+  const wrongAnswer = useTypedSelector(state => state.Hard.hardWrongAnswer)
 
 
   const { ResetGame, ResetStage } = useRestartGame()

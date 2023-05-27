@@ -1,5 +1,5 @@
 import { Api } from "@shared/api/config/Api"
-import { AmountOfBestUsers } from "@entities/Game/constants"
+import { AmountOfBestUsers } from "@entities/Game"
 import { UserBalanceMath } from "@entities/Game/types"
 import { DefaultResponse } from "@entities/User"
 

@@ -1,3 +1,4 @@
+import { CreateMultiplyEquation } from "@entities/Game/helpers/CreateMultiplyEquation"
 import {
   MultiplyChance,
   setBtnId,
@@ -7,30 +8,29 @@ import {
   setStage,
   setStageState,
   StageTimeGap,
-  useUpdateHardMathScoreMutation
+  useUpdateInputMathScoreMutation
 } from "@entities/Game"
+import { CreateEquation } from "@entities/Game/helpers/CreateEquation"
 import { SolveEquation } from "@shared/helpers/SolveEquation"
 import { GetAnswersArr } from "@shared/helpers/GetAnswersArr"
 import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
 import { useTimer } from "@shared/Hooks/useTimer"
 import { useEffect } from "react"
 import { useGetUserQuery } from "@entities/User"
-import { setHardAnswers, setHardCorrect, setHardEquation, setHardWrong } from "@entities/Game/model/HardSlice"
-import { CreateHardMultiplyEquation } from "@entities/Game/helpers/CreateHardMultiplyEquation"
-import { CreateHardEquation } from "@entities/Game/helpers/CreateHardEquation"
+import { setInputAnswers, setInputCorrect, setInputEquation, setInputWrong } from "@entities/Game/model/InputSlice"
 
 const IsMultiply = () => {
   const random = Math.random()
   return random < MultiplyChance
 }
 
-export const useHardEquation = (StageTime: number, answersAmount?: number) => {
+export const useInputEquation = (StageTime: number) => {
   const dispatch = useAppDispatch()
 
   const stage = useTypedSelector(state => state.Stage.stage)
   const result = useTypedSelector(state => state.Stage.result)
   const stageState = useTypedSelector(state => state.Stage.stageState)
-  const hardCorrect = useTypedSelector(state => state.Hard.hardCorrectAnswer)
+  const inputCorrect = useTypedSelector(state => state.Input.inputCorrectAnswer)
   const mulDifficulty = useTypedSelector(state => state.Stage.mulDifficulty)
   const difficulty = useTypedSelector(state => state.Stage.difficulty)
 
@@ -41,12 +41,12 @@ export const useHardEquation = (StageTime: number, answersAmount?: number) => {
     time: stageTime,
     timerState
   } = useTimer(StageTime, StageTimeGap)
-  const [updateHardMathScore] = useUpdateHardMathScoreMutation()
+  const [updateInputMathScore] = useUpdateInputMathScoreMutation()
   const { data: user } = useGetUserQuery()
 
   const UpdateUserScore = () => {
     if (!user) return
-    updateHardMathScore({ newScore: stage, userId: user.id })
+    updateInputMathScore({ newScore: stage, userId: user.id })
   }
 
   const resetDifficulty = () => {
@@ -57,17 +57,17 @@ export const useHardEquation = (StageTime: number, answersAmount?: number) => {
   const UpdateEquation = (): void => {
     let equation = ""
     if (IsMultiply()) {
-      equation = CreateHardMultiplyEquation(mulDifficulty)
+      equation = CreateMultiplyEquation(mulDifficulty)
       dispatch(setMulDifficulty(difficulty + 1))
     } else {
-      equation = CreateHardEquation(difficulty)
+      equation = CreateEquation(difficulty)
       dispatch(setDifficulty(difficulty + 1))
     }
-    dispatch(setHardEquation(equation))
+    dispatch(setInputEquation(equation))
     const answer = SolveEquation(equation)
-    dispatch(setHardCorrect(answer))
-    const answers = GetAnswersArr(answer, answersAmount)
-    dispatch(setHardAnswers(answers))
+    dispatch(setInputCorrect(answer))
+    const answers = GetAnswersArr(answer, 4)
+    dispatch(setInputAnswers(answers))
   }
 
   const HandleSuccess = (clickedBtnId?: number) => {
@@ -79,8 +79,8 @@ export const useHardEquation = (StageTime: number, answersAmount?: number) => {
   }
   const HandleFail = (answer?: number, clickedBtnId?: number) => {
     dispatch(setResult("fail"))
-    dispatch(setHardCorrect(hardCorrect))
-    if (answer || answer === 0) dispatch(setHardWrong(answer))
+    dispatch(setInputCorrect(inputCorrect))
+    if (answer || answer === 0) dispatch(setInputWrong(answer))
     resetDifficulty()
     dispatch(setStageState("finished"))
     if (clickedBtnId || clickedBtnId === 0) dispatch(setBtnId(clickedBtnId))
@@ -93,7 +93,7 @@ export const useHardEquation = (StageTime: number, answersAmount?: number) => {
     if (timerState === "timeout") {
       dispatch(setResult("fail"))
       dispatch(setStageState("finished"))
-      dispatch(setHardCorrect(hardCorrect))
+      dispatch(setInputCorrect(inputCorrect))
       dispatch(setDifficulty(1))
       dispatch(setMulDifficulty(1))
       UpdateUserScore()

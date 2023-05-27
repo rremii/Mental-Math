@@ -6,46 +6,24 @@ import { ProgressBar } from "@shared/ui/ProgressBar"
 import { ResultBtn } from "@shared/ui/ResultBtn"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
 import { PreStartTimer } from "@shared/ui/PreStartTimer"
-import {
-  InputStageTime,
-  PreStartGap,
-  PreStartTime,
-  useIsPreStart,
-  useQuickEquation,
-  useReplaceQuestionMark,
-  useStage,
-  useUpdateInputMathScoreMutation
-} from "@entities/Game"
-import { useGetUserQuery } from "@entities/User"
+import { InputStageTime, PreStartGap, PreStartTime, useIsPreStart, useReplaceQuestionMark } from "@entities/Game"
 import { useEffect, useState } from "react"
 import ArrowIcon from "@shared/assets/DarkTheme/arrowIcon.svg"
+import { useInputEquation } from "@entities/Game/"
 
 export const InputMathMenu = () => {
   const stage = useTypedSelector(state => state.Stage.stage)
   const stageState = useTypedSelector(state => state.Stage.stageState)
-  const equation = useTypedSelector(state => state.Game.equation)
-  const correctAnswer = useTypedSelector(state => state.Game.correctAnswer)
+  const equation = useTypedSelector(state => state.Input.inputEquation)
+  const inputCorrect = useTypedSelector(state => state.Input.inputCorrectAnswer)
 
 
   const [curAnswer, setCurAnswer] = useState<string>("")
-
-
   const { transformedEquation } = useReplaceQuestionMark(equation, curAnswer)
 
 
   useIsPreStart()
-
-
-  const { updateEquation } = useQuickEquation()
-  const [updateInputMathScore] = useUpdateInputMathScoreMutation()
-  const { data: user } = useGetUserQuery()
-
-  const UpdateUserScore = () => {
-    if (!user) return
-    updateInputMathScore({ newScore: stage, userId: user.id })
-  }
-
-  const { stageTime, HandleFail, HandleSuccess } = useStage(updateEquation, UpdateUserScore, InputStageTime)
+  const { stageTime, HandleFail, HandleSuccess } = useInputEquation(InputStageTime)
 
 
   useEffect(() => {
@@ -53,8 +31,8 @@ export const InputMathMenu = () => {
   }, [equation])
 
   useEffect(() => {
-    if (("" + correctAnswer).length !== curAnswer.length) return
-    if (correctAnswer === +curAnswer) HandleSuccess()
+    if (("" + inputCorrect).length !== curAnswer.length) return
+    if (inputCorrect === +curAnswer) HandleSuccess()
     else HandleFail(+curAnswer)
   }, [curAnswer])
 

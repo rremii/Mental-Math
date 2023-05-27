@@ -7,16 +7,7 @@ import { ResultBtn } from "@shared/ui/ResultBtn"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
 import { PreStartTimer } from "@shared/ui/PreStartTimer"
 import { GetBtnResult } from "@shared/helpers/GetBtnResult"
-import {
-  HardStageTime,
-  PreStartGap,
-  PreStartTime,
-  useHardEquation,
-  useIsPreStart,
-  useStage,
-  useUpdateHardMathScoreMutation
-} from "@entities/Game"
-import { useGetUserQuery } from "@entities/User"
+import { HardStageTime, PreStartGap, PreStartTime, useHardEquation, useIsPreStart } from "@entities/Game"
 
 
 export const HardMathMenu = () => {
@@ -24,22 +15,12 @@ export const HardMathMenu = () => {
   const result = useTypedSelector(state => state.Stage.result)
   const stageState = useTypedSelector(state => state.Stage.stageState)
   const clickedBtnId = useTypedSelector(state => state.Stage.clickedBtnId)
-  const equation = useTypedSelector(state => state.Game.equation)
-  const hardAnswers = useTypedSelector(state => state.Game.hardAnswers)
-  const correctAnswer = useTypedSelector(state => state.Game.correctAnswer)
+  const equation = useTypedSelector(state => state.Hard.hardEquation)
+  const hardAnswers = useTypedSelector(state => state.Hard.hardAnswers)
+  const correctAnswer = useTypedSelector(state => state.Hard.hardCorrectAnswer)
 
   useIsPreStart()
-
-  const { updateEquation } = useHardEquation()
-  const [updateHardMathScore] = useUpdateHardMathScoreMutation()
-  const { data: user } = useGetUserQuery()
-
-  const UpdateUserScore = () => {
-    if (!user) return
-    updateHardMathScore({ newScore: stage, userId: user.id })
-  }
-
-  const { stageTime, HandleFail, HandleSuccess } = useStage(updateEquation, UpdateUserScore, HardStageTime)
+  const { stageTime, HandleFail, HandleSuccess } = useHardEquation(HardStageTime)
 
 
   const CheckAnswer = (answer: number, clickedBtnId: number) => {
@@ -78,9 +59,9 @@ const MathLayout = styled.div`
   color: var(--main-text-color);
   display: flex;
   flex-direction: column;
-    padding: 0 20px 25px;
+  padding: 0 20px 25px;
   @media screen and (max-width: 600px) {
-  padding: 0 20px 70px;
+    padding: 0 20px 70px;
 
   }
 
