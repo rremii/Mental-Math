@@ -1,11 +1,11 @@
-import Avatar1 from "@shared/assets/DarkTheme/avatars/avatarIcon1.png"
-import Avatar2 from "@shared/assets/DarkTheme/avatars/avatarIcon2.png"
-import Avatar3 from "@shared/assets/DarkTheme/avatars/avatarIcon3.png"
-import Avatar4 from "@shared/assets/DarkTheme/avatars/avatarIcon4.png"
-import Avatar5 from "@shared/assets/DarkTheme/avatars/avatarIcon5.png"
-import Avatar6 from "@shared/assets/DarkTheme/avatars/avatarIcon6.png"
-import Avatar7 from "@shared/assets/DarkTheme/avatars/avatarIcon7.png"
-import NoAvatar from "@shared/assets/DarkTheme/avatars/NoAvatarIcon.svg"
+import Avatar1 from "@shared/assets/avatars/avatarIcon1.png"
+import Avatar2 from "@shared/assets/avatars/avatarIcon2.png"
+import Avatar3 from "@shared/assets/avatars/avatarIcon3.png"
+import Avatar4 from "@shared/assets/avatars/avatarIcon4.png"
+import Avatar5 from "@shared/assets/avatars/avatarIcon5.png"
+import Avatar6 from "@shared/assets/avatars/avatarIcon6.png"
+import Avatar7 from "@shared/assets/avatars/avatarIcon7.png"
+import NoAvatar from "@shared/assets/avatars/NoAvatarIcon.svg"
 
 export const AvatarSrc = new Map()
 

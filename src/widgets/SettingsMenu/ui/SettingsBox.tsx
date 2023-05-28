@@ -21,7 +21,7 @@ const SettingsBoxLayout = styled.div`
   color: var(--main-text-color);
   padding: 24px 30px;
   gap: 20px;
-  height: 100%;
+  flex: 1 1 auto;
 
   .ChangeAvatar {
     width: 100%;

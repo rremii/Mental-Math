@@ -14,6 +14,7 @@ const BtnLayout = styled(NavLink)`
   font-size: 16px;
   line-height: 30px;
   /* identical to box height, or 188% */
+  color: var(--sub-text-color);
   display: flex;
   align-items: center;
   justify-content: center;

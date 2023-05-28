@@ -14,8 +14,6 @@ interface props {
 export const RatingCell: FC<props> = ({ ratingSrc, score, userName, avatar }) => {
 
 
-
-
   return <CellLayout>
     <div className="avatar">
       <img src={avatar} alt="avatar" />
@@ -75,7 +73,7 @@ const CellLayout = styled.div`
 
       letter-spacing: 0.05em;
 
-      color: var(--sub-text-color);
+      color: var(--main-text-color);
     }
   }
 

@@ -39,6 +39,6 @@ const EquationSectionLayout = styled.pre`
     display: flex;
     align-items: center;
     justify-items: center;
-    color: #FFFFFF;
+    color: var(--main-text-color);
   }
 `

@@ -30,5 +30,5 @@ const HeaderLayout = styled.header`
   padding: 15px 0;
   letter-spacing: 0.2em;
 
-  color: var(--sub-text-color);
+  color: var(--main-text-color);
 `

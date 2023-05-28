@@ -10,6 +10,10 @@ export const DarkTheme = [
   { property: "--text-shadow-dark", value: "rgba(0, 0, 0, 0.25)" },
   { property: "--separator-color", value: "rgba(155, 139, 188, 0.2)" },
   { property: "--btn-border-color", value: "rgba(255, 255, 255, 0.49)" },
+  { property: "--separator-result-menu", value: "rgba(84, 51, 125, 1)" },
+  { property: "--result-menu-btn-text", value: "#A954FD" },
+  { property: "--correct-answer", value: "#96FD94" },
+  { property: "--fail-answer", value: "#FF6565" },
 
   //backgrounds
   { property: "--sub-background", value: "white" },
@@ -26,8 +30,26 @@ export const DarkTheme = [
     property: "--auth-form-bg-color",
     value: "linear-gradient(179.5deg, #240E2C 0.43%, rgba(124, 60, 154, 0.32) 95.39%)"
   },
-  { property: "--auth-form-btn-color", value: "rgba(86, 43, 150, 0.71)" },
+  { property: "--auth-form-btn-color", value: "rgb(132,86,201)" },
+  { property: "--auth-form-btn-color-clicked", value: "rgba(86, 43, 150, 0.71)" },
   { property: "--default-menu-bg-color", value: "#100022" },
+  { property: "--progress-bar-color", value: "rgba(255, 255, 255, 0.86)" },
+  { property: "--progress-bar-fill-color", value: "#6f11a8" },
+  { property: "--result-menu-header", value: "#EED9F8" },
+  {
+    property: "--result-btn-success",
+    value: "linear-gradient(255.8deg, rgb(17, 173, 33) 0%, rgba(32, 180, 19, 0.3) 100%)"
+  },
+  {
+    property: "--result-btn-initial",
+    value: "linear-gradient(255.8deg, rgb(115, 17, 173) 0%, rgba(119, 19, 180, 0.3) 100%)"
+  },
+  {
+    property: "--result-btn-fail",
+    value: "linear-gradient(255.8deg, rgb(173, 17, 30) 0%, rgba(180, 19, 19, 0.3) 100%)"
+  },
+  { property: "--game-menu-bg", value: "linear-gradient(121.57deg, #1f0031 49.39%, #150024 50.22%)" },
+  { property: "--restart-game-btn", value: "#7713B4" },
 
   //hovers
   { property: "--hover1-color", value: "rgba(255, 255, 255, 0.1)" },
@@ -39,7 +61,7 @@ export const DarkTheme = [
 ]
 export const LightTheme = [
   //text and others
-  { property: "--main-text-color", value: "rgba(82, 255, 99, 1)" },
+  { property: "--main-text-color", value: "#01c401" },
   { property: "--sub-text-color", value: "rgba(255, 255, 255, 0.8)" },
   { property: "--placeholder-color", value: "rgba(169, 84, 253, 0.56)" },
   { property: "--input-text-color", value: "#A954FD" },
@@ -49,6 +71,10 @@ export const LightTheme = [
   { property: "--text-shadow-dark", value: "rgba(0, 0, 0, 0.25)" },
   { property: "--separator-color", value: "rgba(155, 139, 188, 0.2)" },
   { property: "--btn-border-color", value: "rgba(255, 255, 255, 0.49)" },
+  { property: "--separator-result-menu", value: "rgba(84, 51, 125, 1)" },
+  { property: "--result-menu-btn-text", value: "#A954FD" },
+  { property: "--correct-answer", value: "#96FD94" },
+  { property: "--fail-answer", value: "#FF6565" },
 
   //backgrounds
   { property: "--sub-background", value: "white" },
@@ -65,8 +91,26 @@ export const LightTheme = [
     property: "--auth-form-bg-color",
     value: "linear-gradient(179.5deg, #240E2C 0.43%, rgba(124, 60, 154, 0.32) 95.39%)"
   },
-  { property: "--auth-form-btn-color", value: "rgba(86, 43, 150, 0.71)" },
+  { property: "--auth-form-btn-color", value: "rgb(132,86,201)" },
+  { property: "--auth-form-btn-color-clicked", value: "rgba(86, 43, 150, 0.71)" },
   { property: "--default-menu-bg-color", value: "#100022" },
+  { property: "--progress-bar-color", value: "rgba(255, 255, 255, 0.86)" },
+  { property: "--progress-bar-fill-color", value: "#6f11a8" },
+  { property: "--result-menu-header", value: "#EED9F8" },
+  {
+    property: "--result-btn-success",
+    value: "linear-gradient(255.8deg, rgb(17, 173, 33) 0%, rgba(32, 180, 19, 0.3) 100%)"
+  },
+  {
+    property: "--result-btn-initial",
+    value: "linear-gradient(255.8deg, rgb(115, 17, 173) 0%, rgba(119, 19, 180, 0.3) 100%)"
+  },
+  {
+    property: "--result-btn-fail",
+    value: "linear-gradient(255.8deg, rgb(173, 17, 30) 0%, rgba(180, 19, 19, 0.3) 100%)"
+  },
+  { property: "--game-menu-bg", value: "linear-gradient(121.57deg, #1f0031 49.39%, #150024 50.22%)" },
+  { property: "--restart-game-btn", value: "#7713B4" },
 
   //hovers
   { property: "--hover1-color", value: "rgba(255, 255, 255, 0.1)" },
@@ -74,4 +118,5 @@ export const LightTheme = [
     property: "--hover2-color",
     value: "linear-gradient(349.08deg, rgba(92, 7, 123, 0.22) 7.62%, rgba(60, 2, 139, 0.14) 91.55%)"
   }
+
 ]

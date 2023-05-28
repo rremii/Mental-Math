@@ -119,7 +119,7 @@ const FormLayout = styled.form<{
       background: ${({
                        isError,
                        isPending
-                     }) => isPending && `var(--auth-form-btn-color)` || isError && "red" || "#A954FD"};
+                     }) => isPending && "var(--auth-form-btn-color-clicked)" || isError && "red" || "var(--auth-form-btn-color)"};
       border-radius: 9px;
       padding: 5px 19px;
       font-family: 'Inter', sans-serif;

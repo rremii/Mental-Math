@@ -16,15 +16,18 @@ export const SettingsMenu = () => {
 const SettingsMenuLayout = styled.div<{
   isActive: boolean
 }>`
-  position: fixed;
+  position: absolute;
+  //left: 0;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
   background-color: var(--default-menu-bg-color);
   width: 100vw;
   max-width: 600px;
-  height: 100vh;
-  overflow-y: auto;
+  height: 100%;
+  //overflow-y: auto;
   transition: 0.5s;
-  transform: ${({ isActive }) => isActive ? "translateX(0)" : "translateX(100%)"};
+  left: ${({ isActive }) => isActive ? "0" : "100%"};
   pointer-events: ${({ isActive }) => isActive ? "initial" : "none"};
 
 

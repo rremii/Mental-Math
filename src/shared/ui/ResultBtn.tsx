@@ -17,7 +17,7 @@ export const ResultBtn: FC<props> = (props = {
   const { result, isDisabled, children, onClick } = props
 
 
-  return <ButtonLayout className='ResultBtn' disabled={isDisabled} onClick={onClick} result={result || "initial"}>
+  return <ButtonLayout className="ResultBtn" disabled={isDisabled} onClick={onClick} result={result || "initial"}>
     {children}
   </ButtonLayout>
 }
@@ -41,8 +41,6 @@ const ButtonLayout = styled.button<{
 
   letter-spacing: 0.2em;
 
-  color: var(--main-text-color);
-
-
+  color: var(--sub-text-color);
 
 `

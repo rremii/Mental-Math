@@ -26,7 +26,7 @@ const HeaderLayout = styled.header`
     line-height: 39px;
 
 
-    color: #FFFFFF;
+    color: var(--main-text-color);
 
     text-shadow: 0px 1px 7px rgba(255, 255, 255, 0.25);
   }

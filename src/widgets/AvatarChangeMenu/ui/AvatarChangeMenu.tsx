@@ -45,15 +45,16 @@ export const AvatarChangeMenu = () => {
 const AvatarMenuLayout = styled.div<{
   isActive: boolean
 }>`
-  position: fixed;
+  position: absolute;
   z-index: 2;
   background-color: var(--default-menu-bg-color);
   width: 100vw;
   max-width: 600px;
-  height: 100vh;
+  //height: 100vh;
+  height: 100%;
   overflow-y: auto;
   transition: 0.5s;
-  transform: ${({ isActive }) => isActive ? "translateX(0)" : "translateX(100%)"};
+  left: ${({ isActive }) => isActive ? "0" : "100%"};
   pointer-events: ${({ isActive }) => isActive ? "initial" : "none"};
 
 

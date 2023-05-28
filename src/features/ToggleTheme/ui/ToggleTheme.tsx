@@ -18,7 +18,6 @@ export const ToggleTheme = () => {
   </ToggleBtnLayout>
 }
 const ToggleBtnLayout = styled.div`
-
   display: flex;
   gap: 30px;
   align-items: center;
