@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import background from "@shared/assets/DarkTheme/background.png"
 import DarkBackground from "@shared/assets/DarkTheme/background.png"
 import LightBackground from "@shared/assets/LightTheme/background.png"
 import React from "react"
@@ -7,6 +6,7 @@ import { GameMenu, Header } from "@widgets/GameMenu"
 import { SettingsMenu } from "@widgets/SettingsMenu"
 import { AvatarChangeMenu } from "@widgets/AvatarChangeMenu"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
+
 
 const GameMenuPage = () => {
   const isDarkMode = useTypedSelector(state => state.SettingsMenu.isDarkMode)

@@ -1,7 +1,6 @@
 import { Api } from "@shared/api/config/Api"
 import { DefaultResponse } from "@entities/User"
-import { AmountOfBestUsers } from "@entities/Game"
-import { UserHardMath } from "@entities/Game"
+import { AmountOfBestUsers, UserHardMath } from "@entities/Game"
 
 export const HardMathApi = Api.injectEndpoints({
 

@@ -3,10 +3,13 @@ import {
   clearHardAnswers,
   clearInputAnswers,
   clearQuickAnswers,
-  clearTrueFalseAnswers
+  clearTrueFalseAnswers,
+  setBtnId,
+  setResult,
+  setStage,
+  setStageState
 } from "@entities/Game"
 import { useAppDispatch } from "@shared/Hooks/store-hooks"
-import { setBtnId, setResult, setStage, setStageState } from "@entities/Game"
 
 export const useRestartGame = () => {
   const dispatch = useAppDispatch()

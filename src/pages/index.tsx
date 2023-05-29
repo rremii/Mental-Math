@@ -1,23 +1,21 @@
-import React from "react"
+import React, { lazy } from "react"
 import { Route, Routes } from "react-router-dom"
 import Login from "./Login/LoginPage"
 import SignUp from "./SignUp/SignUpPage"
 import GameMenu from "./GameMenu/GameMenuPage"
 import { useIsAuth } from "@entities/Auth"
 import { useChangeTheme } from "@entities/Settings"
-import QuickMath from "./QuickMath/QuickMathPage"
-import QuickMathBests from "./QuickMathBests/QuickMathBestsPage"
-import HardMath from "./HardMath/HardMathPage"
-import HardMathBests from "./HardMathBests/HardMathBestsPage"
-import InputMath from "./InputMath/InputMathPage"
-import InputMathBests from "./InputMathBests/InputMathBestsPage"
-import TrueFalseMath from "./TrueFalseMath/TrueFalseMathPage"
-import TrueFalseMathBests from "./TrueFalseMathBests/TrueFalseMathBestsPage"
-import BalanceMath from "./BalanceMath/BalanceMathPage"
-import BalanceMathBests from "./BalanceMathBests/BalanceMathBestsPage"
 
-//TODO check
-// const GameMenu = lazy(() => import("./GameMenu/GameMenuPage"))
+const QuickMath = lazy(() => import("./QuickMath/QuickMathPage"))
+const QuickMathBests = lazy(() => import("./QuickMathBests/QuickMathBestsPage"))
+const HardMath = lazy(() => import("./HardMath/HardMathPage"))
+const HardMathBests = lazy(() => import("./HardMathBests/HardMathBestsPage"))
+const InputMath = lazy(() => import("./InputMath/InputMathPage"))
+const InputMathBests = lazy(() => import("./InputMathBests/InputMathBestsPage"))
+const TrueFalseMath = lazy(() => import("./TrueFalseMath/TrueFalseMathPage"))
+const TrueFalseMathBests = lazy(() => import("./TrueFalseMathBests/TrueFalseMathBestsPage"))
+const BalanceMath = lazy(() => import("./BalanceMath/BalanceMathPage"))
+const BalanceMathBests = lazy(() => import("./BalanceMathBests/BalanceMathBestsPage"))
 
 
 export const Routing = () => {
