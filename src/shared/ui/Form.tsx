@@ -69,7 +69,7 @@ const FormLayout = styled.form<{
       font-size: 40px;
       line-height: 52px;
       /* identical to box height */
-      color: var(--main-text-color);
+      color: var(--sub-text-color);
     }
   }
 
@@ -128,7 +128,7 @@ const FormLayout = styled.form<{
       font-size: 25px;
       line-height: 30px;
 
-      color: var(--main-text-color);
+      color: var(--sub-text-color);
     }
   }
 
@@ -139,6 +139,6 @@ const FormLayout = styled.form<{
     font-size: 16px;
     line-height: 19px;
 
-    color: var(--main-text-color);
+    color: var(--sub-text-color);
   }
 `

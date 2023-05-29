@@ -19,44 +19,44 @@
 // wrapper ============================================================================================================================================================================================================================================================================================================================================================================================================================================
 :root {
   //text and others
-  --main-text-color: #01c401 !important;
-  --sub-text-color: rgba(255, 255, 255, 0.8) !important;
-  --placeholder-color: rgba(169, 84, 253, 0.56) !important;
-  --input-text-color: #A954FD !important;
-  --typing-animation-sub-color: rgb(82, 255, 252) !important;
-  --input-border-bottom: rgba(217, 217, 217, 0.49);
-  --text-shadow: rgba(255, 255, 255, 0.25);
-  --text-shadow-dark: rgba(0, 0, 0, 0.25);
-  --separator-color: rgba(155, 139, 188, 0.2);
-  --btn-border-color: rgba(105, 105, 105, 0.49) !important;
-  --separator-result-menu: rgba(84, 51, 125, 1) !important;
-  --result-menu-btn-text: #2bb900 !important;
-  --correct-answer: #96FD94;
-  --fail-answer: #FF6565;
-  //backgrounds
-  --sub-background: white;
-  --header-color: linear-gradient(349.08deg, #e9e4eb 7.62%, #d0ced2 91.55%) !important;
-  --game-cell-bg-color: linear-gradient(268.07deg, #0e6d01 12.96%, rgba(86, 179, 75, 0.8) 97.1%) !important;
-  --header-shadow-color: rgba(67, 161, 23, 0.57) !important;
-  --toggle-btn: #6a1394;
-  --toggle-btn-shadow: #ffffff;
-  --typing-animation-color: #6ad94f !important;
-  --auth-form-bg-color: linear-gradient(179.5deg, #4ad445 0.43%, rgba(66, 154, 60, 0.32) 95.39%) !important;
-  --auth-form-btn-color: rgb(94, 178, 78) !important;
-  --auth-form-btn-color-clicked: rgba(77, 150, 43, 0.71) !important;
-  --default-menu-bg-color: #eaeaea !important;
-  --progress-bar-color: rgba(255, 255, 255, 0.86);
-  --progress-bar-fill-color: #16a811 !important;
-  --result-menu-header: rgba(43, 169, 0, 0.59) !important;
-  --result-btn-success: linear-gradient(255.8deg, rgb(17, 173, 33) 0%, rgba(32, 180, 19, 0.3) 100%) !important;
-  --result-btn-initial: linear-gradient(255.8deg, rgb(100, 100, 100) 0%, rgba(255, 255, 255, 0.3) 100%) !important;
-  --result-btn-fail: linear-gradient(255.8deg, rgb(173, 17, 30) 0%, rgba(180, 19, 19, 0.3) 100%) !important;
-  --game-menu-bg: linear-gradient(121.57deg, #ffffff 49.39%, #f5f5f5 50.22%) !important;
-  --restart-game-btn: #2eb413 !important;
-
-  //hovers
-  --hover1-color: rgba(123, 123, 123, 0.06) !important;
-  --hover2-color: linear-gradient(349.08deg, rgba(92, 7, 123, 0.22) 7.62%, rgba(60, 2, 139, 0.14) 91.55%);
+  //--main-text-color: #01c401 !important;
+  //--sub-text-color: rgba(255, 255, 255, 0.8) !important;
+  //--placeholder-color: rgba(169, 84, 253, 0.56) !important;
+  //--input-text-color: #A954FD !important;
+  //--typing-animation-sub-color: rgb(82, 255, 252) !important;
+  //--input-border-bottom: rgba(217, 217, 217, 0.49);
+  //--text-shadow: rgba(255, 255, 255, 0.25);
+  //--text-shadow-dark: rgba(0, 0, 0, 0.25);
+  //--separator-color: rgba(155, 139, 188, 0.2);
+  //--btn-border-color: rgba(105, 105, 105, 0.49) !important;
+  //--separator-result-menu: rgba(84, 51, 125, 1) !important;
+  //--result-menu-btn-text: #2bb900 !important;
+  //--correct-answer: #96FD94;
+  //--fail-answer: #FF6565;
+  ////backgrounds
+  //--sub-background: white;
+  //--header-color: linear-gradient(349.08deg, #e9e4eb 7.62%, #d0ced2 91.55%) !important;
+  //--game-cell-bg-color: linear-gradient(268.07deg, #0e6d01 12.96%, rgba(86, 179, 75, 0.8) 97.1%) !important;
+  //--header-shadow-color: rgba(67, 161, 23, 0.57) !important;
+  //--toggle-btn: #6a1394;
+  //--toggle-btn-shadow: #ffffff;
+  //--typing-animation-color: #6ad94f !important;
+  //--auth-form-bg-color: linear-gradient(179.5deg, #4ad445 0.43%, rgba(66, 154, 60, 0.32) 95.39%) !important;
+  //--auth-form-btn-color: rgb(94, 178, 78) !important;
+  //--auth-form-btn-color-clicked: rgba(77, 150, 43, 0.71) !important;
+  //--default-menu-bg-color: #eaeaea !important;
+  //--progress-bar-color: rgba(255, 255, 255, 0.86);
+  //--progress-bar-fill-color: #16a811 !important;
+  //--result-menu-header: rgba(43, 169, 0, 0.59) !important;
+  //--result-btn-success: linear-gradient(255.8deg, rgb(17, 173, 33) 0%, rgba(32, 180, 19, 0.3) 100%) !important;
+  //--result-btn-initial: linear-gradient(255.8deg, rgb(100, 100, 100) 0%, rgba(255, 255, 255, 0.3) 100%) !important;
+  //--result-btn-fail: linear-gradient(255.8deg, rgb(173, 17, 30) 0%, rgba(180, 19, 19, 0.3) 100%) !important;
+  //--game-menu-bg: linear-gradient(121.57deg, #ffffff 49.39%, #f5f5f5 50.22%) !important;
+  //--restart-game-btn: #2eb413 !important;
+  //
+  ////hovers
+  //--hover1-color: rgba(123, 123, 123, 0.06) !important;
+  //--hover2-color: linear-gradient(349.08deg, rgba(92, 7, 123, 0.22) 7.62%, rgba(60, 2, 139, 0.14) 91.55%);
 }
 
 body {
