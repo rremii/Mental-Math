@@ -57,7 +57,7 @@ const HeaderLayout = styled.header`
     font-weight: 400;
     font-size: 25px;
     line-height: 39px;
-    color: var(--main-text-color);
+    color: var(--sub-text-color);
     text-shadow: 0px 1px 7px rgba(255, 255, 255, 0.25);
   }
 `

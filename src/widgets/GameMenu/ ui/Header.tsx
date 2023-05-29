@@ -43,7 +43,7 @@ const HeaderLayout = styled.header<{
     line-height: 39px;
 
 
-    color: var(--main-text-color);
+    color: var(--sub-text-color);
 
     text-shadow: 0px 1px 7px var(--text-shadow);
   }
