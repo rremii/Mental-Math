@@ -78,7 +78,7 @@ export const LightTheme = [
 
   //backgrounds
   { property: "--sub-background", value: "white" },
-  { property: "--header-color", value: "linear-gradient(349.08deg, #e9e4eb 7.62%, #d0ced2 91.55%)" },
+  { property: "--header-color", value: "linear-gradient(349.08deg, #cb7eea 7.62%, #ccf3a5 91.55%)" },
   {
     property: "--game-cell-bg-color",
     value: "linear-gradient(268.07deg, #0e6d01 12.96%, rgba(86, 179, 75, 0.8) 97.1%)"
@@ -93,7 +93,7 @@ export const LightTheme = [
   },
   { property: "--auth-form-btn-color", value: "rgb(94, 178, 78)" },
   { property: "--auth-form-btn-color-clicked", value: "rgba(77, 150, 43, 0.71)" },
-  { property: "--default-menu-bg-color", value: "#eaeaea" },
+  { property: "--default-menu-bg-color", value: "#f6f5f5" },
   { property: "--progress-bar-color", value: "rgba(255, 255, 255, 0.86)" },
   { property: "--progress-bar-fill-color", value: "#16a811" },
   { property: "--result-menu-header", value: "rgba(43, 169, 0, 0.59)" },
