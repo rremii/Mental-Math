@@ -12,4 +12,6 @@ const MathLayout = styled.div`
   max-width: 600px;
   width: 100%;
   height: 100vh;
+  overflow-x: hidden;
+  position: relative;
 `

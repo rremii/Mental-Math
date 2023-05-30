@@ -1,12 +1,14 @@
 import styled from "styled-components"
 import React, { FC } from "react"
 import { Toast } from "@shared/ui/Toast"
+import { useChangeTheme } from "@entities/Settings"
 
 interface Props {
   children: React.ReactNode
 }
 
 const Layout: FC<Props> = ({ children }) => {
+
 
 
   return <LayoutStyles>

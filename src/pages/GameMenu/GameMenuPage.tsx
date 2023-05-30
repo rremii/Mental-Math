@@ -6,6 +6,7 @@ import { GameMenu, Header } from "@widgets/GameMenu"
 import { SettingsMenu } from "@widgets/SettingsMenu"
 import { AvatarChangeMenu } from "@widgets/AvatarChangeMenu"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
+import { useChangeTheme } from "@entities/Settings"
 
 
 const GameMenuPage = () => {

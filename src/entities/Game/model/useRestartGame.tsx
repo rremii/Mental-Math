@@ -14,8 +14,7 @@ import { useAppDispatch } from "@shared/Hooks/store-hooks"
 export const useRestartGame = () => {
   const dispatch = useAppDispatch()
 
-
-  const ResetStage = () => {
+  const MainReset = () => {
     dispatch(clearQuickAnswers())
     dispatch(clearHardAnswers())
     dispatch(clearInputAnswers())
@@ -24,12 +23,14 @@ export const useRestartGame = () => {
     dispatch(setStage(0))
     dispatch(setBtnId(null))
     dispatch(setResult("initial"))
+  }
+
+  const ResetStage = () => {
+    MainReset()
     dispatch(setStageState("running"))
   }
   const ResetGame = () => {
-    dispatch(setStage(0))
-    dispatch(setBtnId(null))
-    dispatch(setResult("initial"))
+    MainReset()
     dispatch(setStageState("preStart"))
   }
 

@@ -40,7 +40,7 @@ export const ResultMenu: FC<props> = memo(({ wrongAnswer, result, isHidden, OnRe
 const ResultLayout = styled.div<{
   isHidden: boolean
 }>`
-  position: fixed;
+  position: absolute;
   z-index: 3;
   background: var(--game-menu-bg);
   width: 100vw;
@@ -48,7 +48,9 @@ const ResultLayout = styled.div<{
   height: 100vh;
   overflow-y: auto;
   top: 0;
+  //transform: translateX(-50%);
   left: ${({ isHidden }) => isHidden ? "100%" : "0"};
+  //transform: translateX(-50%);
   color: var(--main-text-color);
   padding: 10px 16px 25px;
   transition: 0.5s;

@@ -2,10 +2,13 @@ import styled from "styled-components"
 import { SettingsBox } from "./SettingsBox"
 import { Header } from "./Header"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
+import { useChangeTheme } from "@entities/Settings"
 
 export const SettingsMenu = () => {
 
   const isSettingsMenuOpen = useTypedSelector(state => state.SettingsMenu.isSettingsMenuOpen)
+
+  useChangeTheme()
 
 
   return <SettingsMenuLayout isActive={isSettingsMenuOpen}>
