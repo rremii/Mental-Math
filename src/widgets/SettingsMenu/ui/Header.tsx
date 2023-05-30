@@ -43,7 +43,7 @@ const HeaderLayout = styled.div`
     }
 
     img {
-
+      height: 35px;
       width: 35px;
     }
   }

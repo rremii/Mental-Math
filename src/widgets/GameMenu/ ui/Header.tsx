@@ -63,6 +63,11 @@ const HeaderLayout = styled.header<{
     &:hover {
       background: var(--hover2-color);
     }
+
+    img {
+      width: 30px;
+      height: 30px;
+    }
   }
 
 `

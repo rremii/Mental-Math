@@ -22,6 +22,7 @@ const ChangeAvatarLayout = styled.button`
   height: 125px;
 
   img {
+    height: 100%;
     width: 100%;
   }
 
