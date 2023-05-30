@@ -19,9 +19,11 @@ const LoginLayout = styled.div<{
 }>`
   max-width: 600px;
   width: 100%;
+  min-height: 100vh;
+  height: min-content;
   background-image: url("${({ isDarkMode }) => isDarkMode ? DarkBackground : LightBackground}");
   background-size: cover;
   display: flex;
   flex-direction: column;
-  padding-bottom: 50px;
+  //padding-bottom: 50px;
 `

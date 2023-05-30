@@ -19,8 +19,8 @@ const SignUpMenuLayout = styled.main`
   //justify-content: space-evenly;
   max-height: 100%;
   gap: 62px;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 30px;
+  //padding-bottom: 50px;
 
   .change-avatar-box {
     width: 280px;
