@@ -1,5 +1,4 @@
-import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { RootState } from "@shared/store/ReduxStore"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 
 interface initialStateType {

@@ -10,7 +10,6 @@ import { InputStageTime, PreStartGap, PreStartTime, useIsPreStart, useReplaceQue
 import { useCallback, useEffect, useMemo, useState } from "react"
 import ArrowIcon from "@shared/assets/DarkTheme/arrowIcon.svg"
 import { useInputEquation } from "@entities/Game/"
-import { number } from "yup"
 
 export const InputMathMenu = () => {
   const stage = useTypedSelector(state => state.Stage.stage)

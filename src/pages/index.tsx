@@ -1,11 +1,10 @@
-import React, { lazy, useEffect } from "react"
+import React, { lazy } from "react"
 import { Route, Routes } from "react-router-dom"
 import Login from "./Login/LoginPage"
 import SignUp from "./SignUp/SignUpPage"
 import GameMenu from "./GameMenu/GameMenuPage"
 import { useIsAuth } from "@entities/Auth"
 import { useChangeTheme } from "@entities/Settings"
-import { useTypedSelector } from "@shared/Hooks/store-hooks"
 import LoadingPage from "./Loading/MainLoadingPage"
 
 // import QuickMath from "./QuickMath/QuickMathPage"

@@ -7,15 +7,7 @@ import { ResultBtn } from "@shared/ui/ResultBtn"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
 import { PreStartTimer } from "@shared/ui/PreStartTimer"
 import { GetBtnResult } from "@shared/helpers/GetBtnResult"
-import {
-  PreStartGap,
-  PreStartTime,
-  QuickStageTime,
-  SelectQuickAnswers,
-  useIsPreStart,
-  useQuickEquation
-} from "@entities/Game"
-import { createSelector } from "@reduxjs/toolkit"
+import { PreStartGap, PreStartTime, QuickStageTime, useIsPreStart, useQuickEquation } from "@entities/Game"
 import { useCallback } from "react"
 
 
