@@ -15,7 +15,8 @@ const Loading = styled.div`
   z-index: 100;
   position: fixed;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
