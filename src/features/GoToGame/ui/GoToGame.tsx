@@ -62,6 +62,8 @@ const GameLayout = styled(NavLink)`
       align-items: center;
       justify-content: center;
       flex: 0 0 70px;
+      //max-height: 30px;
+      height: 55px;
 
       img {
         width: 100%;
