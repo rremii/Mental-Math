@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { Header, LoginMenu } from "@widgets/LoginMenu"
-import DarkBackground from "@shared/assets/DarkTheme/background.png"
-import LightBackground from "@shared/assets/LightTheme/background.png"
+import DarkBackground from "@shared/assets/DarkTheme/background.avif"
+import LightBackground from "@shared/assets/LightTheme/background.avif"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
 
 const LoginPage = () => {

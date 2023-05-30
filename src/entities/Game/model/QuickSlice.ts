@@ -44,6 +44,4 @@ export const {
 export const QuickReducer = QuickSlice.reducer
 
 
-export const GetQuickAnswers = (state: RootState) => state.Quick.quickAnswers
 
-export const SelectQuickAnswers = createSelector([GetQuickAnswers], (answers) => answers)

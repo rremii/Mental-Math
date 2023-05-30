@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import DarkBackground from "@shared/assets/DarkTheme/background.png"
-import LightBackground from "@shared/assets/LightTheme/background.png"
+import DarkBackground from "@shared/assets/DarkTheme/background.avif"
+import LightBackground from "@shared/assets/LightTheme/background.avif"
 import { Header, SignUpMenu } from "@widgets/SignUpMenu"
 import React from "react"
 import { AvatarChangeMenu } from "@widgets/AvatarChangeMenu"

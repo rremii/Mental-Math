@@ -25,7 +25,7 @@ export const QuickMathMenu = () => {
   const result = useTypedSelector(state => state.Stage.result)
   const stageState = useTypedSelector(state => state.Stage.stageState)
   const clickedBtnId = useTypedSelector(state => state.Stage.clickedBtnId)
-  const quickAnswers = useTypedSelector(SelectQuickAnswers)
+  const quickAnswers = useTypedSelector(state => state.Quick.quickAnswers)
   const quickCorrectAnswer = useTypedSelector(state => state.Quick.quickCorrectAnswer)
   const quickEquation = useTypedSelector(state => state.Quick.quickEquation)
 
