@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { RootState } from "@shared/store/ReduxStore"
 
 
 interface initialStateType {
@@ -41,3 +42,8 @@ export const {
 }
   = QuickSlice.actions
 export const QuickReducer = QuickSlice.reducer
+
+
+export const GetQuickAnswers = (state: RootState) => state.Quick.quickAnswers
+
+export const SelectQuickAnswers = createSelector([GetQuickAnswers], (answers) => answers)

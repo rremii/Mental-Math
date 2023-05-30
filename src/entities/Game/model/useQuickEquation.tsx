@@ -19,7 +19,7 @@ import { SolveEquation } from "@shared/helpers/SolveEquation"
 import { GetAnswersArr } from "@shared/helpers/GetAnswersArr"
 import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
 import { useTimer } from "@shared/Hooks/useTimer"
-import { useEffect } from "react"
+import { useCallback, useEffect } from "react"
 import { useGetUserQuery } from "@entities/User"
 
 const IsMultiply = () => {

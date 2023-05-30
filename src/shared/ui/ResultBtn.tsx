@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import React, { FC } from "react"
+import React, { FC, memo } from "react"
 import { resultType } from "@entities/Game"
 
 interface props {
@@ -7,12 +7,14 @@ interface props {
   result?: resultType
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
   isDisabled?: boolean
+
 }
 
 
-export const ResultBtn: FC<props> = (props = {
+export const ResultBtn: FC<props> = memo((props = {
   result: "initial", isDisabled: false, children: "", onClick: () => undefined
 }) => {
+
 
   const { result, isDisabled, children, onClick } = props
 
@@ -20,7 +22,7 @@ export const ResultBtn: FC<props> = (props = {
   return <ButtonLayout className="ResultBtn" disabled={isDisabled} onClick={onClick} result={result || "initial"}>
     {children}
   </ButtonLayout>
-}
+})
 const ButtonLayout = styled.button<{
   result: resultType
 }>`

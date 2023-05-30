@@ -7,9 +7,10 @@ import { ResultBtn } from "@shared/ui/ResultBtn"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
 import { PreStartTimer } from "@shared/ui/PreStartTimer"
 import { InputStageTime, PreStartGap, PreStartTime, useIsPreStart, useReplaceQuestionMark } from "@entities/Game"
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 import ArrowIcon from "@shared/assets/DarkTheme/arrowIcon.svg"
 import { useInputEquation } from "@entities/Game/"
+import { number } from "yup"
 
 export const InputMathMenu = () => {
   const stage = useTypedSelector(state => state.Stage.stage)
@@ -46,6 +47,19 @@ export const InputMathMenu = () => {
   }
 
 
+  const InputBtns = useMemo(() => [
+    { answer: 1 },
+    { answer: 2 },
+    { answer: 3 },
+    { answer: 4 },
+    { answer: 5 },
+    { answer: 6 },
+    { answer: 7 },
+    { answer: 8 },
+    { answer: 9 },
+    { answer: 0 }
+  ], [])
+
   return <MathLayout>
     <GameHeader time={stageTime} currentScore={stage} />
     <ProgressBar progress={stageTime / InputStageTime} />
@@ -54,20 +68,14 @@ export const InputMathMenu = () => {
         <h3 className="preTitle">Choose the right answer</h3>
         <PreStartTimer initTime={PreStartTime} timeGap={PreStartGap} /></>}
     <ButtonsSection>
-      <ResultBtn onClick={() => SetAnswer(1)}>1</ResultBtn>
-      <ResultBtn onClick={() => SetAnswer(2)}>2</ResultBtn>
-      <ResultBtn onClick={() => SetAnswer(3)}>3</ResultBtn>
-      <ResultBtn onClick={() => SetAnswer(4)}>4</ResultBtn>
-      <ResultBtn onClick={() => SetAnswer(5)}>5</ResultBtn>
-      <ResultBtn onClick={() => SetAnswer(6)}>6</ResultBtn>
-      <ResultBtn onClick={() => SetAnswer(7)}>7</ResultBtn>
-      <ResultBtn onClick={() => SetAnswer(8)}>8</ResultBtn>
-      <ResultBtn onClick={() => SetAnswer(9)}>9</ResultBtn>
+      {InputBtns.map(({ answer }) => {
+        const handleClick = useCallback(() => SetAnswer(answer), [])
+        return <ResultBtn onClick={handleClick}>{answer}</ResultBtn>
+      })}
       <div className="option-btn">
         {curAnswer.length > 0 ? <ResultBtn onClick={DeleteLastNumber}><img src={ArrowIcon} alt="delete" /></ResultBtn> :
-          <ResultBtn onClick={() => SetAnswer("-")}>-</ResultBtn>}
+          <ResultBtn onClick={useCallback(() => SetAnswer("-"), [])}>-</ResultBtn>}
       </div>
-      <ResultBtn onClick={() => SetAnswer(0)}>0</ResultBtn>
     </ButtonsSection>
   </MathLayout>
 }
@@ -123,6 +131,8 @@ const MathLayout = styled.div`
     //column-gap: 0;
     //gap: 5px;
     width: 100%;
+
+
   }
 
   .ResultBtn {
@@ -132,6 +142,11 @@ const MathLayout = styled.div`
     min-width: 50px;
     @media screen and (max-width: 400px) {
       height: 45px;
+    }
+
+    &:nth-child(10) {
+      grid-column: 2/3;
+      grid-row: 4/5;
     }
   }
 

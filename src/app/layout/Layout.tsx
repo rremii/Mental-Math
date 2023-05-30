@@ -11,8 +11,6 @@ const Layout: FC<Props> = ({ children }) => {
 
   return <LayoutStyles>
     <Toast />
-
-
     {children}
   </LayoutStyles>
 

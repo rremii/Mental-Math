@@ -8,6 +8,7 @@ import { useTypedSelector } from "@shared/Hooks/store-hooks"
 import { PreStartTimer } from "@shared/ui/PreStartTimer"
 import { GetBtnResult } from "@shared/helpers/GetBtnResult"
 import { HardStageTime, PreStartGap, PreStartTime, useHardEquation, useIsPreStart } from "@entities/Game"
+import { useCallback } from "react"
 
 
 export const HardMathMenu = () => {
@@ -45,8 +46,11 @@ export const HardMathMenu = () => {
           correctAnswer,
           answer
         })
+        const handleClick = useCallback(() => {
+          CheckAnswer(+answer, btnId)
+        }, [answer, btnId])
         return <ResultBtn isDisabled={result !== "initial" || stageState !== "running"} result={btnResult}
-                          onClick={() => CheckAnswer(+answer, btnId)}
+                          onClick={handleClick}
                           key={btnId}>{answer}</ResultBtn>
       })}
     </ButtonsSection>

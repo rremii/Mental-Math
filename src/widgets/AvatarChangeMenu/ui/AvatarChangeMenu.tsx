@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import { AvatarList } from "./AvatarList"
 import { Header } from "./Header"
-
 import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
 import { Avatar } from "@shared/ui/Avatar"
 import { useChangeAvatarMutation, useGetUserQuery } from "@entities/User"

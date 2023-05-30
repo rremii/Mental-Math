@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { QuickMathMenu, QuickMathResultMenu } from "@widgets/QuickMathMenu"
 
 const QuickMathPage = () => {
+
   return <MathLayout>
     <QuickMathResultMenu />
     <QuickMathMenu />

@@ -1,6 +1,7 @@
 import { ResultMenu } from "@shared/ui/ResultMenu"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
 import { useRestartGame } from "@entities/Game"
+import { memo } from "react"
 
 export const QuickMathResultMenu = () => {
   const stage = useTypedSelector(state => state.Stage.stage)

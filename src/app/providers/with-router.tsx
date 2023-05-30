@@ -1,10 +1,10 @@
 import { FC, Suspense } from "react"
 import { BrowserRouter } from "react-router-dom"
-import LoadingPage from "../../pages/Loading/LoadingPage"
+import GameLoadingPage from "../../pages/Loading/GameLoadingPage"
 
 export const withRouter = (Component: FC) => () => (
   <BrowserRouter>
-    <Suspense fallback={<LoadingPage />}>
+    <Suspense fallback={<GameLoadingPage />}>
       <Component />
     </Suspense>
   </BrowserRouter>

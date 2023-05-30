@@ -1,11 +1,11 @@
 import styled from "styled-components"
-import { FC } from "react"
+import { FC, memo } from "react"
 
 interface props {
   equation?: string
 }
 
-export const EquationSection: FC<props> = ({ equation }) => {
+export const EquationSection: FC<props> = memo(({ equation }) => {
 
 
   return <EquationSectionLayout>
@@ -13,7 +13,7 @@ export const EquationSection: FC<props> = ({ equation }) => {
       {equation}
     </div>
   </EquationSectionLayout>
-}
+})
 const EquationSectionLayout = styled.pre`
 
   width: 100%;

@@ -78,7 +78,7 @@ export const LightTheme = [
 
   //backgrounds
   { property: "--sub-background", value: "white" },
-  { property: "--header-color", value: "linear-gradient(349.08deg, #cb7eea 7.62%, #ccf3a5 91.55%)" },
+  { property: "--header-color", value: "linear-gradient(349.08deg, #b963e8 7.62%, #9bef47 91.55%)" },
   {
     property: "--game-cell-bg-color",
     value: "linear-gradient(268.07deg, #0e6d01 12.96%, rgba(86, 179, 75, 0.8) 97.1%)"

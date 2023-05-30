@@ -7,7 +7,16 @@ import { ResultBtn } from "@shared/ui/ResultBtn"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
 import { PreStartTimer } from "@shared/ui/PreStartTimer"
 import { GetBtnResult } from "@shared/helpers/GetBtnResult"
-import { PreStartGap, PreStartTime, QuickStageTime, useIsPreStart, useQuickEquation } from "@entities/Game"
+import {
+  PreStartGap,
+  PreStartTime,
+  QuickStageTime,
+  SelectQuickAnswers,
+  useIsPreStart,
+  useQuickEquation
+} from "@entities/Game"
+import { createSelector } from "@reduxjs/toolkit"
+import { useCallback } from "react"
 
 
 export const QuickMathMenu = () => {
@@ -16,20 +25,21 @@ export const QuickMathMenu = () => {
   const result = useTypedSelector(state => state.Stage.result)
   const stageState = useTypedSelector(state => state.Stage.stageState)
   const clickedBtnId = useTypedSelector(state => state.Stage.clickedBtnId)
-  const quickAnswers = useTypedSelector(state => state.Quick.quickAnswers)
+  const quickAnswers = useTypedSelector(SelectQuickAnswers)
   const quickCorrectAnswer = useTypedSelector(state => state.Quick.quickCorrectAnswer)
   const quickEquation = useTypedSelector(state => state.Quick.quickEquation)
 
+
   useIsPreStart()
 
-
-  const {  HandleFail, HandleSuccess, stageTime } = useQuickEquation(QuickStageTime)
+  const { HandleFail, HandleSuccess, stageTime } = useQuickEquation(QuickStageTime)
 
 
   const CheckAnswer = (answer: number, clickedBtnId: number) => {
     if (quickCorrectAnswer === answer) HandleSuccess(clickedBtnId)
     else HandleFail(answer, clickedBtnId)
   }
+
 
   return <MathLayout>
     <GameHeader time={stageTime} currentScore={stage} />
@@ -48,8 +58,11 @@ export const QuickMathMenu = () => {
           correctAnswer: quickCorrectAnswer,
           answer
         })
+        const handleClick = useCallback(() => {
+          CheckAnswer(+answer, btnId)
+        }, [answer, btnId])
         return <ResultBtn isDisabled={result !== "initial" || stageState !== "running"} result={btnResult}
-                          onClick={() => CheckAnswer(+answer, btnId)}
+                          onClick={handleClick}
                           key={btnId}>{answer}</ResultBtn>
       })}
     </ButtonsSection>

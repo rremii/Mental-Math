@@ -1,10 +1,10 @@
-import Avatar1 from "@shared/assets/avatars/avatarIcon1.png"
-import Avatar2 from "@shared/assets/avatars/avatarIcon2.png"
-import Avatar3 from "@shared/assets/avatars/avatarIcon3.png"
-import Avatar4 from "@shared/assets/avatars/avatarIcon4.png"
-import Avatar5 from "@shared/assets/avatars/avatarIcon5.png"
-import Avatar6 from "@shared/assets/avatars/avatarIcon6.png"
-import Avatar7 from "@shared/assets/avatars/avatarIcon7.png"
+import Avatar1 from "@shared/assets/avatars/avatarIcon1.avif"
+import Avatar2 from "@shared/assets/avatars/avatarIcon2.avif"
+import Avatar3 from "@shared/assets/avatars/avatarIcon3.avif"
+import Avatar4 from "@shared/assets/avatars/avatarIcon4.avif"
+import Avatar5 from "@shared/assets/avatars/avatarIcon5.avif"
+import Avatar6 from "@shared/assets/avatars/avatarIcon6.avif"
+import Avatar7 from "@shared/assets/avatars/avatarIcon7.avif"
 import NoAvatar from "@shared/assets/avatars/NoAvatarIcon.svg"
 
 export const AvatarSrc = new Map()

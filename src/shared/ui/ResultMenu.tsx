@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { FC } from "react"
+import { FC, memo } from "react"
 import { useNavigate } from "react-router-dom"
 
 interface props {
@@ -11,7 +11,7 @@ interface props {
   OnMenu: () => void
 }
 
-export const ResultMenu: FC<props> = ({ wrongAnswer, result, isHidden, OnRestart, correctAnswer, OnMenu }) => {
+export const ResultMenu: FC<props> = memo(({ wrongAnswer, result, isHidden, OnRestart, correctAnswer, OnMenu }) => {
   const navigate = useNavigate()
 
   const OnMenuClick = () => {
@@ -36,7 +36,7 @@ export const ResultMenu: FC<props> = ({ wrongAnswer, result, isHidden, OnRestart
       <button onClick={OnRestart} className="restart">Restart</button>
     </div>
   </ResultLayout>
-}
+})
 const ResultLayout = styled.div<{
   isHidden: boolean
 }>`
