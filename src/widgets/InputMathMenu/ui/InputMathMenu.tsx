@@ -38,7 +38,7 @@ export const InputMathMenu = () => {
 
 
   const SetAnswer = (btnNumber: number | string) => {
-    setCurAnswer((answer) => answer + btnNumber)
+    setCurAnswer((answer) => answer + btnNumber + "")
   }
 
   const DeleteLastNumber = () => {
@@ -47,17 +47,18 @@ export const InputMathMenu = () => {
 
 
   const InputBtns = useMemo(() => [
-    { answer: 1 },
-    { answer: 2 },
-    { answer: 3 },
-    { answer: 4 },
-    { answer: 5 },
-    { answer: 6 },
-    { answer: 7 },
-    { answer: 8 },
-    { answer: 9 },
-    { answer: 0 }
+    { answer: "1" },
+    { answer: "2" },
+    { answer: "3" },
+    { answer: "4" },
+    { answer: "5" },
+    { answer: "6" },
+    { answer: "7" },
+    { answer: "8" },
+    { answer: "9" },
+    { answer: "0" }
   ], [])
+
 
   return <MathLayout>
     <GameHeader time={stageTime} currentScore={stage} />
@@ -69,11 +70,11 @@ export const InputMathMenu = () => {
     <ButtonsSection>
       {InputBtns.map(({ answer }) => {
         const handleClick = useCallback(() => SetAnswer(answer), [])
-        return <ResultBtn onClick={handleClick}>{answer}</ResultBtn>
+        return <ResultBtn key={answer} onClick={handleClick}>{answer}</ResultBtn>
       })}
       <div className="option-btn">
         {curAnswer.length > 0 ? <ResultBtn onClick={DeleteLastNumber}><img src={ArrowIcon} alt="delete" /></ResultBtn> :
-          <ResultBtn onClick={useCallback(() => SetAnswer("-"), [])}>-</ResultBtn>}
+          <ResultBtn onClick={() => SetAnswer("-")}>-</ResultBtn>}
       </div>
     </ButtonsSection>
   </MathLayout>

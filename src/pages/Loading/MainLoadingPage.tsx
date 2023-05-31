@@ -20,6 +20,10 @@ const Loading = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-bottom: 25px;
+  @media screen and (max-width: 600px) {
+    padding-bottom: 70px;
+  }
 
   img {
     width: 50%;

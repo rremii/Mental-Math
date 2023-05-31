@@ -71,12 +71,11 @@ export const useTrueFalseEquation = (StageTime: number) => {
   }
 
   const UpdateEquation = (): void => {
-    let equation = GetEquation()
-    dispatch(setTrueFalseEquation(equation))
-
+    const equation = GetEquation()
     const correctAnswer = SolveEquation(equation)
     const answers = GetAnswersArr(correctAnswer, 2)
 
+    dispatch(setTrueFalseEquation(equation))
     dispatch(setTrueFalseCorrect(correctAnswer))
     dispatch(setTrueFalseCurrent(answers[0]))
   }

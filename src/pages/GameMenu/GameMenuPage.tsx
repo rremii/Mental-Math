@@ -1,16 +1,22 @@
 import styled from "styled-components"
 import DarkBackground from "@shared/assets/DarkTheme/background.avif"
 import LightBackground from "@shared/assets/LightTheme/background.avif"
-import React from "react"
+import React, { useEffect } from "react"
 import { GameMenu, Header } from "@widgets/GameMenu"
 import { SettingsMenu } from "@widgets/SettingsMenu"
 import { AvatarChangeMenu } from "@widgets/AvatarChangeMenu"
 import { useTypedSelector } from "@shared/Hooks/store-hooks"
 import { useChangeTheme } from "@entities/Settings"
+import { useRestartGame } from "@entities/Game"
 
 
 const GameMenuPage = () => {
   const isDarkMode = useTypedSelector(state => state.SettingsMenu.isDarkMode)
+
+  const { ResetGame } = useRestartGame()
+  useEffect(() => {
+    ResetGame()
+  }, [])
 
   return <GameMenuLayout isDarkMode={isDarkMode}>
     <AvatarChangeMenu />

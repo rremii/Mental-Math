@@ -18,7 +18,7 @@ import { useAppDispatch } from "@shared/Hooks/store-hooks"
 // import TrueFalseMathBests from "./TrueFalseMathBests/TrueFalseMathBestsPage"
 // import BalanceMath from "./BalanceMath/BalanceMathPage"
 // import BalanceMathBests from "./BalanceMathBests/BalanceMathBestsPage"
-//
+
 const QuickMath = lazy(() => import("./QuickMath/QuickMathPage"))
 const QuickMathBests = lazy(() => import("./QuickMathBests/QuickMathBestsPage"))
 const HardMath = lazy(() => import("./HardMath/HardMathPage"))

@@ -9,7 +9,7 @@ import { PreStartTimer } from "@shared/ui/PreStartTimer"
 import { GetBtnResult } from "@shared/helpers/GetBtnResult"
 import { PreStartGap, PreStartTime, TrueFalseStageTime, useIsPreStart, useReplaceQuestionMark } from "@entities/Game"
 import { useTrueFalseEquation } from "@entities/Game/"
-import { useCallback } from "react"
+import { useCallback, useEffect } from "react"
 
 
 export const TrueFalseMathMenu = () => {
@@ -22,10 +22,7 @@ export const TrueFalseMathMenu = () => {
   const correctAnswer = useTypedSelector(state => state.TrueFalse.trueFalseCorrectAnswer)
   const currentAnswer = useTypedSelector(state => state.TrueFalse.trueFalseCurrentAnswer)
 
-
-
   useIsPreStart()
-
 
   const { transformedEquation } = useReplaceQuestionMark(equation, currentAnswer)
   const { stageTime, HandleFail, HandleSuccess } = useTrueFalseEquation(TrueFalseStageTime)
@@ -56,7 +53,7 @@ export const TrueFalseMathMenu = () => {
         })
         const handleClick = useCallback(() => {
           CheckAnswer(answer, btnId)
-        }, [answer, btnId])
+        }, [answer, btnId, correctAnswer, currentAnswer])
         return <ResultBtn isDisabled={result !== "initial" || stageState !== "running"} result={btnResult}
                           onClick={handleClick}
                           key={btnId}>{answer}</ResultBtn>

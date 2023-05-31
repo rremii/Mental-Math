@@ -16,10 +16,6 @@ export const BalanceMathMenu = () => {
   const result = useTypedSelector(state => state.Stage.result)
   const stageState = useTypedSelector(state => state.Stage.stageState)
   const clickedBtnId = useTypedSelector(state => state.Stage.clickedBtnId)
-
-  // const correctAnswer = useTypedSelector(state => state.Game.correctAnswer)
-
-
   const balanceCorrectAnswer = useTypedSelector(state => state.Balance.balanceCorrectAnswer)
   const balanceAnswers = useTypedSelector(state => state.Balance.balanceAnswers)
   const balanceEquations = useTypedSelector(state => state.Balance.balanceEquations)
@@ -27,19 +23,7 @@ export const BalanceMathMenu = () => {
 
   useIsPreStart()
 
-
   const { stageTime, HandleFail, HandleSuccess } = useBalanceEquation(BalanceStageTime)
-
-
-  // const [updateBalanceMathScore] = useUpdateBalanceMathScoreMutation()
-  // const { data: user } = useGetUserQuery()
-
-  // const UpdateUserScore = () => {
-  //   if (!user) return
-  //   updateBalanceMathScore({ newScore: stage, userId: user.id })
-  // }
-
-  // const { stageTime, HandleFail, HandleSuccess } = useStage(updateEquation, UpdateUserScore, BalanceStageTime)
 
 
   const CheckAnswer = (answer: "greater" | "smaller", clickedBtnId: number) => {
@@ -66,7 +50,7 @@ export const BalanceMathMenu = () => {
         })
         const handleClick = useCallback(() => {
           CheckAnswer(answer, btnId)
-        }, [answer, btnId])
+        }, [answer, btnId, balanceCorrectAnswer])
         return <ResultBtn isDisabled={result !== "initial" || stageState !== "running"} result={btnResult}
                           onClick={handleClick}
                           key={btnId}>{answer}</ResultBtn>
@@ -84,7 +68,6 @@ const MathLayout = styled.div`
   padding: 0 20px 25px;
   @media screen and (max-width: 600px) {
     padding: 0 20px 70px;
-
   }
 
   .preStartTimer {
