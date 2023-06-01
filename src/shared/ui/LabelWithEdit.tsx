@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { useEffect, useRef, useState } from "react"
-import Pencil from "@shared/assets/DarkTheme/pencil.svg"
+import Pencil from "@shared/assets/pencil.svg"
 
 interface props {
   labelText?: string

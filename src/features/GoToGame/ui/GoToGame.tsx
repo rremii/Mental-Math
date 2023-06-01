@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import React, { FC } from "react"
-import ratingIcon from "@shared/assets/DarkTheme/rating.svg"
+import ratingIcon from "@shared/assets/rating.svg"
 import { NavLink, useNavigate } from "react-router-dom"
 
 interface IProps {

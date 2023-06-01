@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import Settings from "@shared/assets/DarkTheme/settings.svg"
+import Settings from "@shared/assets/settings.svg"
 import { useAppDispatch, useTypedSelector } from "@shared/Hooks/store-hooks"
 import { setSettingsMenu } from "@entities/Settings"
 

@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import ClockIcon from "@shared/assets/DarkTheme/clock-icon.svg"
-import CupIcon from "@shared/assets/DarkTheme/cup-icon.svg"
+import ClockIcon from "@shared/assets/clock-icon.svg"
+import CupIcon from "@shared/assets/cup-icon.svg"
 import { FC } from "react"
 
 interface props {

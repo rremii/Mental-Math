@@ -8,7 +8,7 @@ import { useTypedSelector } from "@shared/Hooks/store-hooks"
 import { PreStartTimer } from "@shared/ui/PreStartTimer"
 import { InputStageTime, PreStartGap, PreStartTime, useIsPreStart, useReplaceQuestionMark } from "@entities/Game"
 import { useCallback, useEffect, useMemo, useState } from "react"
-import ArrowIcon from "@shared/assets/DarkTheme/arrowIcon.svg"
+import DeleteIcon from "@shared/assets/delete.svg"
 import { useInputEquation } from "@entities/Game/"
 
 export const InputMathMenu = () => {
@@ -73,7 +73,8 @@ export const InputMathMenu = () => {
         return <ResultBtn key={answer} onClick={handleClick}>{answer}</ResultBtn>
       })}
       <div className="option-btn">
-        {curAnswer.length > 0 ? <ResultBtn onClick={DeleteLastNumber}><img src={ArrowIcon} alt="delete" /></ResultBtn> :
+        {curAnswer.length > 0 ?
+          <ResultBtn onClick={DeleteLastNumber}><img src={DeleteIcon} alt="delete" /></ResultBtn> :
           <ResultBtn onClick={() => SetAnswer("-")}>-</ResultBtn>}
       </div>
     </ButtonsSection>
@@ -164,7 +165,9 @@ const MathLayout = styled.div`
     }
 
     img {
-      width: 20px;
+      transform: translate(-5px, 3px  );
+      height: 25px;
+      width: 25px;
     }
   }
 `

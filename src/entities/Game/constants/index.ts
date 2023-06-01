@@ -1,4 +1,4 @@
-import Rating from "@shared/assets/DarkTheme/rating.svg"
+import Rating from "@shared/assets/rating.svg"
 
 export const MultiplyChance = 0.25
 export const NoneMultiplySigns = ["+", "-"]

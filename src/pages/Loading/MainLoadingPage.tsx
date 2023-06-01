@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import Logo from "@shared/assets/DarkTheme/clock-icon.svg"
+import Logo from "@shared/assets/logo.png"
 
 const LoadingPage = () => {
   return <Loading>
@@ -27,6 +27,6 @@ const Loading = styled.div`
 
   img {
     width: 50%;
-    max-width: 100px;
+    max-width: 300px;
   }
 `
